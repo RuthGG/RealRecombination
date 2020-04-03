@@ -1,2 +1,4 @@
 data/*
 tmp/*
+!data/raw/README.md
+!data/use/README.md
