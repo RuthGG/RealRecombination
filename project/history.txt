@@ -1,1 +1,43 @@
 20200401_RealRecombination structure was created.
+2020-04-03 dbgap_data branch history
+# From https://www.ncbi.nlm.nih.gov/sra/docs/sra-dbgap-download/
+cd code/software/
+wget --output-document sratoolkit.tar.gz http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-ubuntu64.tar.gz
+tar -vxzf sratoolkit.tar.gz
+rm sratoolkit.tar.gz
+sratoolkit.2.10.5-ubuntu64/bin/vdb-config -i
+# Proceed to the "Cache" tab where you will want to enable "local file-caching" and you want to set the "public user-repository" --> 20200401_RealRecombination/data/raw/avery_SRA
+# Test that the toolkit is functional 
+sratoolkit.2.10.5-ubuntu64/bin/fastq-dump --stdout SRR390728 | head -n 8
+##not wuite right... :/
+## TEst 
+sratoolkit.2.10.5-ubuntu64/bin/prefetch SRR390728
+fastq-dump ../../data/raw/avery_SRA/sra/SRR390728.sra 
+#it wnt well
+# sratoolkit.2.10.5-ubuntu64/bin/prefetch --max-size 100G --ngc ../../data/raw/avery_SRA_key/prj_21579.ngc  SRR10140422
+sratoolkit.2.10.5-ubuntu64/bin/prefetch --max-size 100G --ngc ../../data/raw/avery_SRA_key/prj_21579.ngc  SRR10140423
+cd ../../data/raw/
+mkdir avery_fastq
+cd avery_fastq
+# sratoolkit.2.10.5-ubuntu64/bin/fastq-dump --stdout SRR10140422 | head -n 8
+fastq-dump ../../data/raw/avery_SRA/sra/SRR10140422.sra 
+cd ../avery_SRA/
+vdb-config --import ../avery_SRA_key/prj_21579.ngc ./
+test-sra sra/SRR10140423_dbGaP-21579.sra #salen cosas
+# from SRR10140422_dbGaP-21579.sra to SRR10140422.sra
+# now, in avery_fastq: no funciona
+# now, in avery_SRA/sra
+vdb-config --import ../../avery_SRA_key/prj_21579.ngc ./
+fastq-dump -X 5 -Z SRR10140422.sra #it works!
+fastq-dump -v --gzip -O ../../avery_fastq/ SRR10140422.sra
+fastq-dump -v -v -v --gzip -O ../../avery_fastq/ SRR10140423.sra
+
+# with the update the options/version changed...
+fastq-dump --ngc ../../avery_SRA_key/prj_21579.ngc  -O ../../avery_fastq/ SRR10140423.sra # worked wonderfully!
+fastq-dump --ngc ../../avery_SRA_key/prj_21579.ngc  -O ../../avery_fastq/ SRR10140422.sra # ran out disk space
+
+# I'll try to copy the files into crick, for example
+/run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez
+# OK so this works!
+
+fastq-dump --ngc ../../avery_SRA_key/prj_21579.ngc  -O /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez  SRR390728.sra 
