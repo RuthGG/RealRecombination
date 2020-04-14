@@ -15,4 +15,4 @@
 	cd avery_SRA/sra/sra/
 	fastq-dump --ngc ../../../avery_SRA_key/prj_21579.ngc  -O /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/20200401_RealRecombination/data/raw/avery_fastq SRR10140422.sra 
 	fastq-dump --ngc ../../../avery_SRA_key/prj_21579.ngc  -O /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/20200401_RealRecombination/data/raw/avery_fastq SRR10140423.sra 
-
+2020-04-14 Manually copied avery_individuals data.
