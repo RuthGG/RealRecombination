@@ -1,1 +1,18 @@
-20200401_RealRecombination structure was created.
+2020-04-01 RealRecombination structure was created.
+2020-04-13 Manually download data for a breakseq test:
+	# TOOL VERSION: 2.10.4
+	cd data/raw 
+	mkdir avery_SRA_key avery_SRA avery_fastq
+	# Downloaded SRA key for this dataset prj_21579.ngc into data/raw/avery_SRA_key (manually).
+	# Wrote into rawdata readme (manually).
+	# Copied directory structure into Crick (manually).
+	vdb-config -i
+	# I make sure that the "Cache" tab has "local file-caching" enabled and set the "public user-repository" to 20200401_RealRecombination/data/raw/avery_SRA (manually).
+	# Prefetch:
+	prefetch --max_size 100000000 --ngc avery_SRA_key/prj_21579.ngc  SRR10140422
+	prefetch --max_size 100000000 --ngc avery_SRA_key/prj_21579.ngc  SRR10140423
+	# Fastq conversion - I store it into Crick:
+	cd avery_SRA/sra/sra/
+	fastq-dump --ngc ../../../avery_SRA_key/prj_21579.ngc  -O /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/20200401_RealRecombination/data/raw/avery_fastq SRR10140422.sra 
+	fastq-dump --ngc ../../../avery_SRA_key/prj_21579.ngc  -O /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/20200401_RealRecombination/data/raw/avery_fastq SRR10140423.sra 
+
