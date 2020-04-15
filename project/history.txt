@@ -14,5 +14,12 @@
 	# Fastq conversion - I store it into Crick:
 	cd avery_SRA/sra/sra/
 	fastq-dump --ngc ../../../avery_SRA_key/prj_21579.ngc  -O /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/20200401_RealRecombination/data/raw/avery_fastq SRR10140422.sra 
-	fastq-dump --ngc ../../../avery_SRA_key/prj_21579.ngc  -O /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/20200401_RealRecombination/data/raw/avery_fastq SRR10140423.sra 
+	# Read 440677597 spots for SRR10140422.sra
+	# Written 440677597 spots for SRR10140422.sra
+	fastq-dump --ngc ../../../avery_SRA_key/prj_21579.ngc  -O ../../../avery_fastq SRR10140423.sra
+	# Read 399028996 spots for SRR10140423.sra
+	# Written 399028996 spots for SRR10140423.sra
+	cd ../../../avery_fastq/
+	bgzip SRR10140423.fastq
 2020-04-14 Manually copied avery_individuals data.
+2020-04-15: runall.sh all -a hg19 -i data/raw/avery_individuals -s 5

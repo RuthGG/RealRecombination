@@ -1,0 +1,964 @@
+## DOWNLOAD RAW DATA
+# 1000 genomes vcfs
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+## PREPROCESS RAW DATA
+# Join all files found in INDIR - if necessary
+# Transform to hg19
+01:sh code/bash/changeAssembly.sh /home/rgomez/20200401_RealRecombination data/raw/1000genomes_hg19 tmp/2020-04-14_preprocess_raw data/use/avery_individuals tmp/2020-04-14_preprocess_raw/20ind.vcf.gz tmp/2020-04-14_preprocess_raw/chromlist_part/chromlist01 
+02:sh code/bash/changeAssembly.sh /home/rgomez/20200401_RealRecombination data/raw/1000genomes_hg19 tmp/2020-04-14_preprocess_raw data/use/avery_individuals tmp/2020-04-14_preprocess_raw/20ind.vcf.gz tmp/2020-04-14_preprocess_raw/chromlist_part/chromlist02 
+03:sh code/bash/changeAssembly.sh /home/rgomez/20200401_RealRecombination data/raw/1000genomes_hg19 tmp/2020-04-14_preprocess_raw data/use/avery_individuals tmp/2020-04-14_preprocess_raw/20ind.vcf.gz tmp/2020-04-14_preprocess_raw/chromlist_part/chromlist03 
+04:sh code/bash/changeAssembly.sh /home/rgomez/20200401_RealRecombination data/raw/1000genomes_hg19 tmp/2020-04-14_preprocess_raw data/use/avery_individuals tmp/2020-04-14_preprocess_raw/20ind.vcf.gz tmp/2020-04-14_preprocess_raw/chromlist_part/chromlist04 
+05:sh code/bash/changeAssembly.sh /home/rgomez/20200401_RealRecombination data/raw/1000genomes_hg19 tmp/2020-04-14_preprocess_raw data/use/avery_individuals tmp/2020-04-14_preprocess_raw/20ind.vcf.gz tmp/2020-04-14_preprocess_raw/chromlist_part/chromlist05 
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+Hangup
+re screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15852.preprocess_05	(Detached)
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15812.preprocess_04	(Detached)
+	15770.preprocess_03	(Detached)
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	15727.preprocess_02	(Detached)
+	15711.preprocess_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	15711.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+# Merge to do the PCA
+ls: cannot access data/use/avery_individuals/*.gz: No such file or directory
+Could not read the file: tmp/2020-04-14_preprocess_raw/indlist.txt
+tbx_index_build failed: data/use/avery_individuals/20ind_ref_allchr.vcf.gz
