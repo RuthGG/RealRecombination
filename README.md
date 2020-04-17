@@ -11,7 +11,7 @@ Give project objective, description and scope
 * `analysis`: a directory for each new run should be created, with the parameter files for that run if necessary.
 * `code`: `software/` is for external code and the others are original code.
 * `data`: `raw/` for data as-is and `use/` for preprocessed data that is the same regardless of analysis parameters. Please explain origin, content and format of each file in `raw/` to make it reproducible. 
-* `project`: papers and other useful bibliography, project history.
+* `project`: papers and other useful bibliography, project history.  Project history should have all pushed tests, even if they were discarded. Discarded tests should be added a comment about why they were discarded. 
 * `report`: reports, power points, etc. each in its directory. Final, sent files should be in deliver/ subdirectories.
 * `tmp`: temporary files, organized as in `analysis`. 
 
@@ -30,6 +30,9 @@ The analysis is divided in different parts, that are options in `runall.sh`. Eac
 * `runall all` runs all the analyses.
 * `runall download` downloads available raw data (`data/raw`).
 * `runall preprocess` processes raw data to use it (`data/use`).
+* `runall merge` merges test and reference data for all chromosomes in preparation to do the PCA. 
+* `runall pca` performs the pca analysis.
+<!-- * `runall pcaplot` makes the plot for the pca results. It is separated from pca to allow independent adjustments in plots.  -->
 
 ## A note on code comment structure
 

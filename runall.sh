@@ -27,6 +27,8 @@ usage()
   all [OPTIONS]                       Run all commands (requires mandatory options).
   download -a [hg19|hg38] [-s]        Download publicly available data.
   preprocess -i -r [-s]               Prepare raw data to use it in the analysis commands.
+  merge -i -r [-s]                    Make PCA data (joins .vcf.gz files)
+  pca -f 
   "
   echo "Options:
 
@@ -35,6 +37,7 @@ usage()
     -a [hg19|hg38]                    Set assembly to work with.
     -i <directory>                    Directory that contains files with test VCFs indexed.
     -r <directory>                    Directory that contains reference genome files.
+    -f <file>             File to use as input.
   "
 
 }
@@ -62,6 +65,7 @@ CURDIR=$(pwd)
 ASSEMBLY="";
 INDIR="";
 REFDIR="";
+FILE="";
 
 # Parse command optons
 case "$COMMAND" in
@@ -105,6 +109,26 @@ case "$COMMAND" in
     done
     shift $((OPTIND -1))
     ;;
+  #Make PCA data
+  merge ) 
+    while getopts "s:i:r:" OPTIONS ; do
+      case "$OPTIONS" in
+        s)  SCREENS=${OPTARG} ;;
+        i)  INDIR=${OPTARG} ;;
+        r)  REFDIR=${OPTARG} ;;
+      esac
+    done
+    shift $((OPTIND -1))
+    ;;
+  # Execute PCA
+   pca ) 
+    while getopts "f:" OPTIONS ; do
+      case "$OPTIONS" in
+        f)  FILE=${OPTARG} ;;
+      esac
+    done
+    shift $((OPTIND -1))
+    ;;
 esac
 
 # Check that empty mandatory variables are full
@@ -116,9 +140,13 @@ elif [ "$COMMAND" == "download" ]; then
   if [ -z "$ASSEMBLY" ]; then 
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -a"; usage; exit
   fi
-elif [ "$COMMAND" == "download" ]; then
+elif [ "$COMMAND" == "download" ] || [ "$COMMAND" == "merge" ]; then
   if [ -z "$INDIR" ] || [ -z "$REFDIR" ]; then 
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -i, -r"; usage; exit
+  fi
+elif [ "$COMMAND" == "pca" ]; then
+  if [ -z "$FILE" ] ; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f"; usage; exit
   fi
 else 
   usage; exit
@@ -140,15 +168,15 @@ echo "${DATE}: $0 ${HISTORY}" >> project/history.txt
 # DOWNLOAD RAW DATA
 # All publicly available data is now downloaded to data/raw.
 # =========================================================================== #
-echo "## DOWNLOAD RAW DATA"
-
 if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "download" ]; then
+
+  echo "## DOWNLOAD RAW DATA"
 
   REFDIR=data/raw/1000genomes_${ASSEMBLY}
   mkdir -p $REFDIR
 
   # DOWNLOAD RAW DATA - 1000 genomes vcfs
-  # --------------------------------------------------------------------------- #
+  # ------------------------------------------------------------------------- #
   echo "# 1000 genomes vcfs"
 
   if [ "$ASSEMBLY" == "hg38" ]; then
@@ -183,18 +211,19 @@ fi
 # PREPROCESS RAW DATA
 # Files common for any analysis are created only once and stored in data/use.
 # =========================================================================== #
-echo "## PREPROCESS RAW DATA"
 
 if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "preprocess" ]; then
 
-  TMPDIR="tmp/${DATE}_preprocess_raw"
+  echo "## PREPROCESS RAW DATA"
+
+  TMPDIR="tmp/${DATE}_preprocessRaw"
   INDIR_NAME=$(echo $INDIR| grep -o '[^/]\+$')
   OUTDIR="data/use/${INDIR_NAME}"
   mkdir -p $TMPDIR $OUTDIR
-  echo "## ${INDIR}" >> data/use/README.md
+  echo "## ${OUTDIR}" >> data/use/README.md
 
   # PREPROCESS RAW DATA - Join all files found in INDIR - if necessary
-  # --------------------------------------------------------------------------- #
+  # ------------------------------------------------------------------------- #
   echo "# Join all files found in INDIR - if necessary"
 
   FILENUM=$(ls ${INDIR}/*.gz | wc -l)
@@ -203,7 +232,9 @@ if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "preprocess" ]; then
 
     ls ${INDIR}/*.gz > ${TMPDIR}/indlist.txt
 
-    bcftools merge --missing-to-ref -Oz -l ${TMPDIR}/indlist.txt -o ${TMPDIR}/20ind.vcf.gz
+    bcftools merge --missing-to-ref -Ov -l ${TMPDIR}/indlist.txt -o ${TMPDIR}/20ind_chr.vcf
+    awk '{gsub(/^chr/,""); print}' ${TMPDIR}/20ind_chr.vcf > ${TMPDIR}/20ind.vcf
+    bgzip ${TMPDIR}/20ind.vcf 
     tabix -p vcf ${TMPDIR}/20ind.vcf.gz
 
     MERGED="${TMPDIR}/20ind.vcf.gz"
@@ -215,7 +246,7 @@ if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "preprocess" ]; then
   fi
 
   # PREPROCESS RAW DATA - Transform to hg19
-  # --------------------------------------------------------------------------- #
+  # ------------------------------------------------------------------------- #
   echo "# Transform to hg19"
 
   # Make chromosomes file
@@ -237,22 +268,66 @@ if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "preprocess" ]; then
 
   echo "${DATE}: Ready-to-use files for ${INDIR}, in the same assembly as reference (in ${REFDIR}) and by chromosome. Also the corresponding .strand and .tbi files." >> data/use/README.md
 
-  
-  # PREPROCESS RAW DATA - Merge to do the PCA
-  # --------------------------------------------------------------------------- #
-  echo "# Merge to do the PCA"
-
-  ls ${OUTDIR}/*.gz > ${TMPDIR}/filelist.txt
-
-  bcftools concat -f ${TMPDIR}/filelist.txt -Oz -o ${OUTDIR}/20ind_ref_allchr.vcf.gz
-
-  tabix -p vcf ${OUTDIR}/20ind_ref_allchr.vcf.gz
-
-  echo "${DATE}: Concatenated chromosomes for ${INDIR}, in the same assembly as reference (in ${REFDIR}). Also the corresponding .tbi file." >> data/use/README.md
-
   # PREPROCESS RAW DATA - End of communication
-  # --------------------------------------------------------------------------- #
+  # ------------------------------------------------------------------------- #
   echo "" >> data/use/README.md
+fi
+
+# MERGE FOR PCA
+# Prepare data for executing PCA with all chromosomes present in a directory.
+# =========================================================================== #
+
+if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "merge" ]; then
+
+  echo "## MERGE FOR PCA"
+
+  if [ "$COMMAND" == "all" ] ; then
+    INDIR=${OUTDIR}
+  fi
+
+  TMPDIR="tmp/${DATE}_mergePca"
+  OUTDIR="analysis/${DATE}_mergePca"
+  mkdir -p $TMPDIR $OUTDIR
+
+  #*******************************************************************************#
+  # IMPORTANT NOTE: Chromosomes will be sorted alphabetically, not numerically.   #
+  #                 However, since both files will have the same order, it is ok. #
+  #*******************************************************************************#
+
+  # MERGE FOR PCA - Merge files
+  # ------------------------------------------------------------------------- #
+  echo "# Merge files"
+
+  ls -v1 ${INDIR}/*.gz > ${TMPDIR}/filelist.txt
+
+  bcftools concat -f ${TMPDIR}/filelist.txt --threads $SCREENS -Oz -o ${TMPDIR}/file_allchr.vcf.gz
+
+  tabix -p vcf ${TMPDIR}/file_allchr.vcf.gz
+
+  # MERGE FOR PCA - Merge references
+  # ------------------------------------------------------------------------- #
+  echo "# Merge references"
+
+  ls -v1 ${REFDIR}/*.gz > ${TMPDIR}/reflist.txt
+
+  bcftools concat -f ${TMPDIR}/reflist.txt --threads $SCREENS -Oz -o ${TMPDIR}/ref_allchr.vcf.gz
+
+  tabix -p vcf ${TMPDIR}/ref_allchr.vcf.gz
+
+  # MERGE FOR PCA - Merge files+references
+  # ------------------------------------------------------------------------- #
+  echo "# Merge files+references"
+
+  bcftools isec -p ${TMPDIR} -Oz --threads $SCREENS -n +2 ${TMPDIR}/file_allchr.vcf.gz ${TMPDIR}/ref_allchr.vcf.gz
+
+  # bgzip ${TMPDIR}/0000.vcf
+  tabix -p vcf ${TMPDIR}/0000.vcf.gz
+
+  # bgzip ${TMPDIR}/0001.vcf
+  tabix -p vcf ${TMPDIR}/0001.vcf.gz
+
+  bcftools merge ${TMPDIR}/0000.vcf.gz ${TMPDIR}/0001.vcf.gz --threads $SCREENS -Oz -o ${OUTDIR}/final_vcf.vcf.gz
+  tabix -p vcf ${OUTDIR}/final_vcf.vcf.gz
 fi
 
 

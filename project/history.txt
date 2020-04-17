@@ -21,5 +21,8 @@
 	# Written 399028996 spots for SRR10140423.sra
 	cd ../../../avery_fastq/
 	bgzip SRR10140423.fastq
+	mv SRR10140423.fastq.gz /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/20200401_RealRecombination/data/raw/avery_fastq
 2020-04-14 Manually copied avery_individuals data.
-2020-04-15: runall.sh all -a hg19 -i data/raw/avery_individuals -s 5
+2020-04-15: runall.sh all -a hg19 -i data/raw/avery_individuals -s 5: Discarded because .strand files were wrong.
+2020-04-15: runall.sh all -a hg19 -i data/raw/avery_individuals -s 10: Stopped after `download` and `preprocess` to improve `merge`. 
+2020-04-16: runall.sh merge -s 5 -r data/raw/1000genomes_hg19 -i data/use/avery_individuals: `merge` successfully finished. Ignored results because they are too heavy for git. 

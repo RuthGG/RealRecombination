@@ -1,0 +1,8 @@
+## DOWNLOAD RAW DATA
+## PREPROCESS RAW DATA
+## Merge to do the PCA
+# Merge files
+# Merge references
+# Merge files+references
+[tabix] the index file exists. Please use '-f' to overwrite.
+[tabix] the index file exists. Please use '-f' to overwrite.
