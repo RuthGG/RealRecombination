@@ -28,7 +28,8 @@ usage()
   download -a [hg19|hg38] [-s]        Download publicly available data.
   preprocess -i -r [-s]               Prepare raw data to use it in the analysis commands.
   merge -i -r [-s]                    Make PCA data (joins .vcf.gz files)
-  pca -f 
+  pca -f                              Run PCA analysis with QTL tools.
+  pcaplot -f -p                       Plot PCA results.
   "
   echo "Options:
 
@@ -37,7 +38,8 @@ usage()
     -a [hg19|hg38]                    Set assembly to work with.
     -i <directory>                    Directory that contains files with test VCFs indexed.
     -r <directory>                    Directory that contains reference genome files.
-    -f <file>             File to use as input.
+    -f <file>                         Path to file to use as input.
+    -p <file>                         Path to relevant population file.
   "
 
 }
@@ -58,14 +60,16 @@ shift $((OPTIND -1))
 COMMAND=$1; shift
 
 # Set default optional variables
-SCREENS=1;
+SCREENS=1
 CURDIR=$(pwd)
+STEP=00
 
 # Set empty mandatory variables
-ASSEMBLY="";
-INDIR="";
-REFDIR="";
-FILE="";
+ASSEMBLY=""
+INDIR=""
+REFDIR=""
+FILE=""
+POPFILE=""
 
 # Parse command optons
 case "$COMMAND" in
@@ -129,6 +133,16 @@ case "$COMMAND" in
     done
     shift $((OPTIND -1))
     ;;
+  # Execute PCA plot
+   pcaplot ) 
+    while getopts "f:p:" OPTIONS ; do
+      case "$OPTIONS" in
+        f)  FILE=${OPTARG} ;;
+        p)  POPFILE=${OPTARG} ;;
+      esac
+    done
+    shift $((OPTIND -1))
+    ;;
 esac
 
 # Check that empty mandatory variables are full
@@ -147,6 +161,10 @@ elif [ "$COMMAND" == "download" ] || [ "$COMMAND" == "merge" ]; then
 elif [ "$COMMAND" == "pca" ]; then
   if [ -z "$FILE" ] ; then 
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f"; usage; exit
+  fi
+elif [ "$COMMAND" == "pcaplot" ]; then
+  if [ -z "$FILE" ] || [ -z "$POPFILE" ] ; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f, -p"; usage; exit
   fi
 else 
   usage; exit
@@ -168,6 +186,8 @@ echo "${DATE}: $0 ${HISTORY}" >> project/history.txt
 # DOWNLOAD RAW DATA
 # All publicly available data is now downloaded to data/raw.
 # =========================================================================== #
+STEP=$(printf "%02d" $((${STEP}+1)))
+
 if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "download" ]; then
 
   echo "## DOWNLOAD RAW DATA"
@@ -211,12 +231,13 @@ fi
 # PREPROCESS RAW DATA
 # Files common for any analysis are created only once and stored in data/use.
 # =========================================================================== #
+STEP=$(printf "%02d" $((${STEP}+1)))
 
 if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "preprocess" ]; then
 
   echo "## PREPROCESS RAW DATA"
 
-  TMPDIR="tmp/${DATE}_preprocessRaw"
+  TMPDIR="tmp/${DATE}_${STEP}_preprocessRaw"
   INDIR_NAME=$(echo $INDIR| grep -o '[^/]\+$')
   OUTDIR="data/use/${INDIR_NAME}"
   mkdir -p $TMPDIR $OUTDIR
@@ -276,6 +297,7 @@ fi
 # MERGE FOR PCA
 # Prepare data for executing PCA with all chromosomes present in a directory.
 # =========================================================================== #
+STEP=$(printf "%02d" $((${STEP}+1)))
 
 if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "merge" ]; then
 
@@ -285,8 +307,8 @@ if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "merge" ]; then
     INDIR=${OUTDIR}
   fi
 
-  TMPDIR="tmp/${DATE}_mergePca"
-  OUTDIR="analysis/${DATE}_mergePca"
+  TMPDIR="tmp/${DATE}_${STEP}_mergePca"
+  OUTDIR="analysis/${DATE}_${STEP}_mergePca"
   mkdir -p $TMPDIR $OUTDIR
 
   #*******************************************************************************#
@@ -331,5 +353,45 @@ if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "merge" ]; then
 fi
 
 
+# RUN PCA ANALYSIS
+# Execute PCA with QTLTOOLS.
+# =========================================================================== #
+STEP=$(printf "%02d" $((${STEP}+1)))
+
+if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "pca" ]; then
+
+  echo "## MAKE PCA"
+
+  if [ "$COMMAND" == "all" ] ; then
+    FILE=${OUTDIR}/final_vcf.vcf.gz
+  fi
+
+  OUTDIR="analysis/${DATE}_${STEP}_runPca"
+  mkdir -p $OUTDIR
+
+  code/software/QTLtools_1.2_source/bin/QTLtools pca --vcf ${FILE} --scale --center --maf 0.05 --distance 50000 --out ${OUTDIR}/pcaResult_genotypes
+
+fi
 
 
+# MAKE PCA PLOTS
+# Execute Rscript to make PCA plot.
+# =========================================================================== #
+STEP=$(printf "%02d" $((${STEP}+1)))
+
+
+if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "pcaplot" ]; then
+
+  echo "## MAKE PCA PLOT"
+
+  if [ "$COMMAND" == "all" ] ; then
+    FILE=${OUTDIR}/pcaResult_genotypes.pca
+    POPFILE=data/raw/1000genomes_hg19/integrated_call_samples_v3.20130502.ALL.panel
+  fi
+
+  OUTDIR="analysis/${DATE}_${STEP}_plotPca"
+  mkdir -p $OUTDIR
+
+  Rscript code/rscript/test.R 
+
+fi
