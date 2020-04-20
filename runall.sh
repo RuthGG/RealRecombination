@@ -24,8 +24,9 @@ usage()
   "
   echo "Commands:
 
-  all [OPTIONS]                       Run all commands (requires mandatory options).
+  all [OPTIONS]                       Run all commands except dbgap requires mandatory options).
   download -a [hg19|hg38] [-s]        Download publicly available data.
+  dbgap -d                            A tool that downloads, compresses and copies into Crick.
   preprocess -i -r [-s]               Prepare raw data to use it in the analysis commands.
   merge -i -r [-s]                    Make PCA data (joins .vcf.gz files)
   pca -f                              Run PCA analysis with QTL tools.
@@ -40,6 +41,7 @@ usage()
     -r <directory>                    Directory that contains reference genome files.
     -f <file>                         Path to file to use as input.
     -p <file>                         Path to relevant population file.
+    -d <dbGap ID>                     dbGap ID to download.
   "
 
 }
@@ -70,6 +72,7 @@ INDIR=""
 REFDIR=""
 FILE=""
 POPFILE=""
+DBGAP=""
 
 # Parse command optons
 case "$COMMAND" in
@@ -98,6 +101,15 @@ case "$COMMAND" in
             echo "Incorrect options provided to -${OPTIONS}."
             usage; exit 
           } ;;
+      esac
+    done
+    shift $((OPTIND -1))
+    ;;
+  #Download dbgap restricted data
+  dbgap ) 
+    while getopts "d:" OPTIONS ; do
+      case "$OPTIONS" in
+        d)  DBGAP=${OPTARG} ;;
       esac
     done
     shift $((OPTIND -1))
@@ -153,6 +165,10 @@ if [ "$COMMAND" == "all" ]; then
 elif [ "$COMMAND" == "download" ]; then
   if [ -z "$ASSEMBLY" ]; then 
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -a"; usage; exit
+  fi
+elif [ "$COMMAND" == "dbgap" ]; then
+  if [ -z "$DBGAP" ]; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -d"; usage; exit
   fi
 elif [ "$COMMAND" == "download" ] || [ "$COMMAND" == "merge" ]; then
   if [ -z "$INDIR" ] || [ -z "$REFDIR" ]; then 
@@ -226,6 +242,37 @@ if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "download" ]; then
     ${DATE}: **1000 genomes project ${ASSEMBLY} vcf data and their indexes**, that were downloaded from ebi.ac.uk via ftp service.
     " >> data/raw/README.md
 
+fi
+
+# DOWNLOAD DBGAP DATA
+# A tool for the download of dbGap data.
+# =========================================================================== #
+# This step does not count in the step count. 
+
+if [ "$COMMAND" == "dbgap" ]; then
+    
+  # Prefetch
+  cd data/raw/
+  prefetch --max_size 100000000 --ngc avery_SRA_key/prj_21579.ngc  $DBGAP
+  awk -v OFS='\t' -v acc="${DBGAP}" '$2==acc{$3="PREFT"} {print $0}' ../../project/dbGapDataStatus.txt > ../../tmp/tmpDataStatus.txt && mv ../../tmp/tmpDataStatus.txt ../../project/dbGapDataStatus.txt
+  cp -f ../../project/dbGapDataStatus.txt /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/shared/ruth_fastqs/
+ 
+  # Fastq conversion - I store it in local: 
+  cd avery_SRA/sra/sra/
+  fastq-dump --ngc ../../../avery_SRA_key/prj_21579.ngc  -O ../../../avery_fastq ${DBGAP}.sra
+  awk -v OFS='\t' -v acc="${DBGAP}" '$2==acc{$3="LOCAL"} {print $0}' ../../../../../project/dbGapDataStatus.txt > ../../../../../tmp/tmpDataStatus.txt && mv ../../../../../tmp/tmpDataStatus.txt ../../../../../project/dbGapDataStatus.txt
+  cp -f ../../../../../project/dbGapDataStatus.txt /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/shared/ruth_fastqs/
+  
+  # Compression
+  cd ../../../avery_fastq/
+  bgzip ${DBGAP}.fastq
+  awk -v OFS='\t' -v acc="${DBGAP}" '$2==acc{$3="COMPR"} {print $0}'  ../../../project/dbGapDataStatus.txt > ../../../tmp/tmpDataStatus.txt && mv ../../../tmp/tmpDataStatus.txt ../../../project/dbGapDataStatus.txt
+  cp -f ../../../project/dbGapDataStatus.txt /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/shared/ruth_fastqs/
+  
+  # Move to Crick
+  mv ${DBGAP}.fastq.gz /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/shared/ruth_fastqs
+  awk -v OFS='\t' -v acc="${DBGAP}" '$2==acc{$3="CRICK"} {print $0}'  ../../../project/dbGapDataStatus.txt > ../../../tmp/tmpDataStatus.txt && mv ../../../tmp/tmpDataStatus.txt ../../../project/dbGapDataStatus.txt
+  cp -f ../../../project/dbGapDataStatus.txt /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/shared/ruth_fastqs/
 fi
 
 # PREPROCESS RAW DATA
@@ -366,32 +413,36 @@ if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "pca" ]; then
     FILE=${OUTDIR}/final_vcf.vcf.gz
   fi
 
+  TMPDIR="tmp/${DATE}_${STEP}_runPca"
   OUTDIR="analysis/${DATE}_${STEP}_runPca"
-  mkdir -p $OUTDIR
+  mkdir -p $TMPDIR $OUTDIR
 
-  code/software/QTLtools_1.2_source/bin/QTLtools pca --vcf ${FILE} --scale --center --maf 0.05 --distance 50000 --out ${OUTDIR}/pcaResult_genotypes
+  code/software/QTLtools_1.2_source/bin/QTLtools pca --vcf ${FILE} --scale --center --maf 0.05 --distance 50000 --out ${TMPDIR}/pcaResult_genotypes
+
+  Rscript code/rscript/pcaParse.R ${TMPDIR}/pcaResult_genotypes.pca ${OUTDIR}/pcaResult.Rdata
 
 fi
+
 
 
 # MAKE PCA PLOTS
 # Execute Rscript to make PCA plot.
 # =========================================================================== #
-STEP=$(printf "%02d" $((${STEP}+1)))
+# STEP=$(printf "%02d" $((${STEP}+1)))
 
 
-if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "pcaplot" ]; then
+# if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "pcaplot" ]; then
 
-  echo "## MAKE PCA PLOT"
+#   echo "## MAKE PCA PLOT"
 
-  if [ "$COMMAND" == "all" ] ; then
-    FILE=${OUTDIR}/pcaResult_genotypes.pca
-    POPFILE=data/raw/1000genomes_hg19/integrated_call_samples_v3.20130502.ALL.panel
-  fi
+#   if [ "$COMMAND" == "all" ] ; then
+#     FILE=${OUTDIR}/pcaResult_genotypes.pca
+#     POPFILE=data/raw/1000genomes_hg19/integrated_call_samples_v3.20130502.ALL.panel
+#   fi
 
-  OUTDIR="analysis/${DATE}_${STEP}_plotPca"
-  mkdir -p $OUTDIR
+#   OUTDIR="analysis/${DATE}_${STEP}_plotPca"
+#   mkdir -p $OUTDIR
 
-  Rscript code/rscript/test.R 
+#   Rscript code/rscript/test.R 
 
-fi
+# fi

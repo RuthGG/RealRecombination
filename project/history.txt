@@ -26,3 +26,8 @@
 2020-04-15: runall.sh all -a hg19 -i data/raw/avery_individuals -s 5: Discarded because .strand files were wrong.
 2020-04-15: runall.sh all -a hg19 -i data/raw/avery_individuals -s 10: Stopped after `download` and `preprocess` to improve `merge`. 
 2020-04-16: runall.sh merge -s 5 -r data/raw/1000genomes_hg19 -i data/use/avery_individuals: `merge` successfully finished. Ignored results because they are too heavy for git. 
+2020-04-17: Manually copied the results in analysis/2020-04-16_mergePca from Muscul to local.
+2020-04-17: Manually copied the file with population information from 1000k genomes to data/raw/1000genomes_hg19/integrated_call_samples_v3.20130502.ALL.panel
+2020-04-18: runall.sh pca -f analysis/2020-04-16_mergePca/final_vcf.vcf.gz
+2020-04-20: breakseq test worked wonderfully. I'll download the rest of the files. The list is in data/raw/avery_SRA_accessionlist/accession_list.txt but I won't make it automatic due to space issues. I'll put a runall option to do all the downloading and saving into crick.
+2020-04-20: runall.sh dbgap -d SRR10140453: Didn't work because license was obsolete D:
