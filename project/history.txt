@@ -32,3 +32,4 @@
 2020-04-20: breakseq test worked wonderfully. I'll download the rest of the files. The list is in data/raw/avery_SRA_accessionlist/accession_list.txt but I won't make it automatic due to space issues. I'll put a runall option to do all the downloading and saving into crick.
 2020-04-20: runall.sh dbgap -d SRR10140453: Didn't work because license was obsolete D:
 2020-04-20: runall.sh pcaplot -f analysis/2020-04-18_04_runPca/pcaResult.Rdata -p data/raw/1000genomes_hg19/integrated_call_samples_v3.20130502.ALL.panel
+2020-04-21: Manually added previous reports.
