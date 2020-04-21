@@ -40,3 +40,4 @@
 	# Manually copied `inversions_info` into raw and use data.
 	mkdir data/use/conditions
 	# Manually created imputConditions.txt
+2020-04-21: Added IMPUTE2 to the software directory. 
