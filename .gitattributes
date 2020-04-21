@@ -1,0 +1,6 @@
+code/software/qctool/build/default/components/SNPSummaryComponent/libSNPSummaryComponent.a filter=lfs diff=lfs merge=lfs -text
+code/software/qctool/build/default/genfile/all_tests filter=lfs diff=lfs merge=lfs -text
+code/software/qctool/build/release/components/SNPSummaryComponent/libSNPSummaryComponent.a filter=lfs diff=lfs merge=lfs -text
+*.a filter=lfs diff=lfs merge=lfs -text
+*qctool_v2.0.7 filter=lfs diff=lfs merge=lfs -text
+*/qctool/build/release/genfile/all_tests filter=lfs diff=lfs merge=lfs -text

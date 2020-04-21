@@ -33,3 +33,10 @@
 2020-04-20: runall.sh dbgap -d SRR10140453: Didn't work because license was obsolete D:
 2020-04-20: runall.sh pcaplot -f analysis/2020-04-18_04_runPca/pcaResult.Rdata -p data/raw/1000genomes_hg19/integrated_call_samples_v3.20130502.ALL.panel
 2020-04-21: Manually added previous reports.
+2020-04-21: Created or moved parameter and imput files for imputation:
+	# Manually copied directory data/raw/1000genomes_hg19_maps
+	# Manually copied data/use/avery_individuals/samples_population.txt
+	# Changed data/use/avery_individuals/samples_population.txt to make individual 25 AFR
+	# Manually copied `inversions_info` into raw and use data.
+	mkdir data/use/conditions
+	# Manually created imputConditions.txt
