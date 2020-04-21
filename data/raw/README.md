@@ -18,4 +18,4 @@ A directory with files obtained by personal communication by Avery Davis Bell. C
 
 ## 1000genomes_hg19
     2020-04-15: **1000 genomes project hg19 vcf data and their indexes**, that were downloaded from ebi.ac.uk via ftp service.
-    
+    2020-04-17: **1000 genomes project hg19 population data**. Origin for each individual. 

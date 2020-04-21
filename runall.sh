@@ -424,25 +424,23 @@ if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "pca" ]; then
 fi
 
 
-
 # MAKE PCA PLOTS
 # Execute Rscript to make PCA plot.
 # =========================================================================== #
-# STEP=$(printf "%02d" $((${STEP}+1)))
+STEP=$(printf "%02d" $((${STEP}+1)))
 
+if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "pcaplot" ]; then
 
-# if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "pcaplot" ]; then
+  echo "## MAKE PCA PLOT"
 
-#   echo "## MAKE PCA PLOT"
+  if [ "$COMMAND" == "all" ] ; then
+    FILE=${OUTDIR}/pcaResult.Rdata
+    POPFILE=data/raw/1000genomes_hg19/integrated_call_samples_v3.20130502.ALL.panel
+  fi
 
-#   if [ "$COMMAND" == "all" ] ; then
-#     FILE=${OUTDIR}/pcaResult_genotypes.pca
-#     POPFILE=data/raw/1000genomes_hg19/integrated_call_samples_v3.20130502.ALL.panel
-#   fi
+  OUTDIR="analysis/${DATE}_${STEP}_plotPca"
+  mkdir -p $OUTDIR
 
-#   OUTDIR="analysis/${DATE}_${STEP}_plotPca"
-#   mkdir -p $OUTDIR
+  Rscript code/rscript/pcaPlot.R $FILE $POPFILE $OUTDIR
 
-#   Rscript code/rscript/test.R 
-
-# fi
+fi
