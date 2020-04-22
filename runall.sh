@@ -24,13 +24,13 @@ usage()
   "
   echo "Commands:
 
-  all [OPTIONS]                       Run all commands except dbgap requires mandatory options).
   download -a [hg19|hg38] [-s]        Download publicly available data.
   dbgap -d                            A tool that downloads, compresses and copies into Crick.
   preprocess -i -r [-s]               Prepare raw data to use it in the analysis commands.
   merge -i -r [-s]                    Make PCA data (joins .vcf.gz files)
-  pca -f                              Run PCA analysis with QTL tools.
+  pca -f                              Run PCA analysis with QTL tools over the -f VCF file.
   pcaplot -f -p                       Plot PCA results.
+  impute -f -x -r -m -i -c -g [-s]    Impute inversions listed in -f using the conditions in -x.
   "
   echo "Options:
 
@@ -39,9 +39,13 @@ usage()
     -a [hg19|hg38]                    Set assembly to work with.
     -i <directory>                    Directory that contains files with test VCFs indexed.
     -r <directory>                    Directory that contains reference genome files.
-    -f <file>                         Path to file to use as input.
+    -f <file>                         Path to file to use as input (vcf, list of inversions...).
     -p <file>                         Path to relevant population file.
     -d <dbGap ID>                     dbGap ID to download.
+    -x <file>                         Path to file specifyig experimental conditions.
+    -m <directory>                    Path to directory containing ref. recombinat ion maps.
+    -c <file>                         Path to inversion coordinates file.
+    -g <file>                         Path to inversion genotypes file.
   "
 
 }
@@ -62,35 +66,24 @@ shift $((OPTIND -1))
 COMMAND=$1; shift
 
 # Set default optional variables
-SCREENS=1
-CURDIR=$(pwd)
-STEP=00
+SCREENS=1         # -s Number of screens 
+CURDIR=$(pwd)     # Current directory
+STEP=00           # Steps
 
 # Set empty mandatory variables
-ASSEMBLY=""
-INDIR=""
-REFDIR=""
-FILE=""
-POPFILE=""
-DBGAP=""
+ASSEMBLY=""       # -a Assembly to work with
+*** INDIR=""          # -i Directory that contains files with test VCFs indexed 
+*** REFDIR=""         # -r Directory that contains reference genome files 
+*** MAPDIR=""         # -m Path to directory containing reference recombination maps. ALL MANDATORY
+*** FILE=""           # -f Path to file to use as input. ALL MANDATORY (list of inversion)
+POPFILE=""        # -p Path to relevant population file.
+*** CONFILE=""        # -x Path to file specifyig experimental conditions. ALL MANDATORY
+DBGAP=""          # -d dbGap ID to download.
+*** INVCOORD=""       # -c Path to inversion coordinates file. ALL MANDATORY
+*** INVGENO=""        # -g Path to inversion genotypes file. ALL MANDATORY
 
 # Parse command optons
 case "$COMMAND" in
-  #Run all commands
-  all ) 
-    while getopts "s:a:i:" OPTIONS ; do
-      case "$OPTIONS" in
-        s)  SCREENS=${OPTARG} ;;
-        a)  ASSEMBLY=${OPTARG} 
-            [[ ! $ASSEMBLY =~ hg38|hg19 ]] && {
-            echo "Incorrect options provided to -${OPTIONS}."
-            usage; exit
-          } ;;
-        i)  INDIR=${OPTARG} ;;
-      esac
-    done
-    shift $((OPTIND -1)) 
-    ;;
   #Download public data
   download ) 
     while getopts "s:a:" OPTIONS ; do
@@ -155,14 +148,21 @@ case "$COMMAND" in
     done
     shift $((OPTIND -1))
     ;;
+  # Make inversion imputation
+   impute ) 
+    while getopts "f:p:c:" OPTIONS ; do
+      case "$OPTIONS" in
+        f)  FILE=${OPTARG} ;;
+        p)  POPFILE=${OPTARG} ;;
+        c)  CONFILE=${OPTARG} ;;
+      esac
+    done
+    shift $((OPTIND -1))
+    ;;
 esac
 
 # Check that empty mandatory variables are full
-if [ "$COMMAND" == "all" ]; then
-  if [ -z "$ASSEMBLY" ] || [ -z "$INDIR" ]; then 
-    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -a, -i"; usage; exit
-  fi
-elif [ "$COMMAND" == "download" ]; then
+if [ "$COMMAND" == "download" ]; then
   if [ -z "$ASSEMBLY" ]; then 
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -a"; usage; exit
   fi
@@ -181,6 +181,10 @@ elif [ "$COMMAND" == "pca" ]; then
 elif [ "$COMMAND" == "pcaplot" ]; then
   if [ -z "$FILE" ] || [ -z "$POPFILE" ] ; then 
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f, -p"; usage; exit
+  fi
+elif [ "$COMMAND" == "impute" ]; then
+  if [ -z "$FILE" ] || [ -z "$POPFILE" ] || [ -z "$CONFILE" ] ; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f, -p, -c"; usage; exit
   fi
 else 
   usage; exit
@@ -204,7 +208,7 @@ echo "${DATE}: $0 ${HISTORY}" >> project/history.txt
 # =========================================================================== #
 STEP=$(printf "%02d" $((${STEP}+1)))
 
-if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "download" ]; then
+if [ "$COMMAND" == "download" ]; then
 
   echo "## DOWNLOAD RAW DATA"
 
@@ -280,7 +284,7 @@ fi
 # =========================================================================== #
 STEP=$(printf "%02d" $((${STEP}+1)))
 
-if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "preprocess" ]; then
+if [ "$COMMAND" == "preprocess" ]; then
 
   echo "## PREPROCESS RAW DATA"
 
@@ -346,13 +350,9 @@ fi
 # =========================================================================== #
 STEP=$(printf "%02d" $((${STEP}+1)))
 
-if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "merge" ]; then
+if [ "$COMMAND" == "merge" ]; then
 
   echo "## MERGE FOR PCA"
-
-  if [ "$COMMAND" == "all" ] ; then
-    INDIR=${OUTDIR}
-  fi
 
   TMPDIR="tmp/${DATE}_${STEP}_mergePca"
   OUTDIR="analysis/${DATE}_${STEP}_mergePca"
@@ -405,13 +405,9 @@ fi
 # =========================================================================== #
 STEP=$(printf "%02d" $((${STEP}+1)))
 
-if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "pca" ]; then
+if [ "$COMMAND" == "pca" ]; then
 
   echo "## MAKE PCA"
-
-  if [ "$COMMAND" == "all" ] ; then
-    FILE=${OUTDIR}/final_vcf.vcf.gz
-  fi
 
   TMPDIR="tmp/${DATE}_${STEP}_runPca"
   OUTDIR="analysis/${DATE}_${STEP}_runPca"
@@ -429,18 +425,125 @@ fi
 # =========================================================================== #
 STEP=$(printf "%02d" $((${STEP}+1)))
 
-if [ "$COMMAND" == "all" ] || [ "$COMMAND" == "pcaplot" ]; then
+if [ "$COMMAND" == "pcaplot" ]; then
 
   echo "## MAKE PCA PLOT"
-
-  if [ "$COMMAND" == "all" ] ; then
-    FILE=${OUTDIR}/pcaResult.Rdata
-    POPFILE=data/raw/1000genomes_hg19/integrated_call_samples_v3.20130502.ALL.panel
-  fi
 
   OUTDIR="analysis/${DATE}_${STEP}_plotPca"
   mkdir -p $OUTDIR
 
   Rscript code/rscript/pcaPlot.R $FILE $POPFILE $OUTDIR
+
+fi
+
+
+# MAKE IMPUTATION
+# Execute scripts to impute inversions.
+# =========================================================================== #
+STEP=$(printf "%02d" $((${STEP}+1)))
+
+
+if  [ "$COMMAND" == "impute" ]; then
+
+  # if [ "$COMMAND" == "all" ] ; then
+
+    # Conditions
+    # CONFILE=/home/rgomez/20200401_RealRecombination/data/use/conditions/imputConditions.txt # condition list (it takes POP and IND)
+    # FILE=/home/rgomez/20200401_RealRecombination/data/use/conditions/inv1.txt # list of inversions <-- THIS CHANGES WITH SCREENS
+
+    # Reference
+    # REFDIR=/home/rgomez/20200401_RealRecombination/data/raw/1000genomes_hg19 # directory with 1000 genomes information, included population
+    # MAPDIR=/home/rgomez/20200401_RealRecombination/data/raw/1000genomes_hg19_maps # directory with recombination maps
+
+    # Test
+    INDIR="data/use/${INDIR_NAME}"
+
+    # Inversions info
+    # INVCOORD=/home/rgomez/20200401_RealRecombination/data/use/inversions_info/Inversions_coordinates_hg19.csv # inversion coordinates
+    # INVGENO=/home/rgomez/20200401_RealRecombination/data/use/inversions_info/all_genotypes.csv # inversion genotypes
+
+    # Output
+    # TMP=/home/rgomez/20200401_RealRecombination/tmp/test # output directory of this script is tmp
+
+  # fi
+
+  TMPDIR="tmp/${DATE}_${STEP}_imputation"
+  OUTDIR="analysis/${DATE}_${STEP}_imputation"
+  mkdir -p $TMPDIR $OUTDIR
+
+  # # TO DIVIDE INVERSIONS LIST
+  # cd /home/rgomez/20200227_RealRecombination/data/inversions_info
+  # mkdir -p inversion_lists
+  # split --number=l/${SCREENS} inversion_analysis.txt inversion_lists/inv_list --numeric-suffixes=1 --suffix-length=2
+
+
+# inputs : $CONFILE [[[[[[$INVFILE_PART]]]]] $REFDIR $MAPDIR $INDIR $INVCOORD $INVGENO $TMPDIR
+
+# # CONTROL
+
+# POPULATIONS="AFR EUR EAS SAS"
+# IND="500"
+# RANGE=500000
+# OUT="benchmarking_all"
+# GENOTYPES="genotypes/all_genotypes.csv"
+
+
+# for POP in $POPULATIONS; do
+#   # for ranges and inversions...
+#   #for IND in $INDIVS; do
+#   #for RANGE in $RANGES; do
+#     # TO RUN 
+#     cd /home/rgomez/20200227_RealRecombination/scripts
+#     sh runScreens.sh ${SCREENS} ${OUT}_${IND}_${POP} "sh run_impute2.sh results/imputation/${OUT}/${IND}_${POP} inversion_lists/inv_listscreencode ${RANGE} ${IND} ${POP} ${GENOTYPES} " delete
+
+#     while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
+#       screen -ls 
+#       sleep 60
+#     done
+
+#     cd /home/rgomez/20200227_RealRecombination/results/imputation/${OUT}/${IND}_${POP}
+
+#     head -n 3 "/home/rgomez/20200227_RealRecombination/results/imputation/${OUT}/${IND}_${POP}/HsInv0003/HsInv0003_${POP}_output_readable.vcf" > ${IND}_${POP}_re.vcf
+
+    
+#     for DIR in $(ls -d --  */ | sed "s/\///g"); do
+    
+#       cat $DIR/log.out >> log_${POP}.txt
+#       sed -n 4p "/home/rgomez/20200227_RealRecombination/results/imputation/${OUT}/${IND}_${POP}/${DIR}/${DIR}_${POP}_output_readable.vcf" >> ${IND}_${POP}_re.vcf
+#     done
+
+# # done
+# done
+
+# # BENCHMARK
+# POPULATIONS="ALL"
+# INDIVS="100 250 500"
+
+
+# for POP in $POPULATIONS; do
+#   # for ranges and inversions...
+#   for IND in $INDIVS; do
+#     # TO RUN 
+#     cd /home/rgomez/20200227_RealRecombination/scripts
+#     sh runScreens.sh ${SCREENS} ${OUT}_${IND}_${POP} "sh run_impute2.sh results/imputation/${OUT}/${IND}_${POP} inversion_lists/inv_listscreencode ${RANGE} ${IND} ${POP} ${GENOTYPES} " delete
+
+#     while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
+#       screen -ls 
+#       sleep 60
+#     done
+
+#     cd /home/rgomez/20200227_RealRecombination/results/imputation/${OUT}/${IND}_${POP}
+
+#     head -n 3 "/home/rgomez/20200227_RealRecombination/results/imputation/${OUT}/${IND}_${POP}/HsInv0003/HsInv0003_${POP}_output_readable.vcf" > ${IND}_${POP}_re.vcf
+
+    
+#     for DIR in $(ls -d --  */ | sed "s/\///g"); do
+    
+#       cat $DIR/log.out >> log_${POP}.txt
+#       sed -n 4p "/home/rgomez/20200227_RealRecombination/results/imputation/${OUT}/${IND}_${POP}/${DIR}/${DIR}_${POP}_output_readable.vcf" >> ${IND}_${POP}_re.vcf
+#     done
+
+#   done
+# done
 
 fi
