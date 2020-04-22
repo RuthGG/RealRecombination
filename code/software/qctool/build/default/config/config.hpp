@@ -1,0 +1,32 @@
+/* Configuration header created by Waf - do not edit */
+#ifndef _CONFIG_CONFIG_HPP_WAF
+#define _CONFIG_CONFIG_HPP_WAF
+
+#define HAVE_SYS_TIME_H 1
+#define HAVE_GETTIMEOFDAY 1
+#define HAVE_ZLIB 1
+#define HAVE_SQLITE3 1
+#define HAVE_EIGEN 1
+#define HAVE_ZSTD 1
+#define HAVE_DL 1
+#define HAVE_RT 1
+#define HAVE_M 1
+#define HAVE_BZIP2 0
+#define HAVE_MGL 0
+#define HAVE_CAIRO 0
+#define HAVE_PTHREAD 1
+#define HAVE_READLINE 1
+#define HAVE_BOOST_IOSTREAMS 1
+#define HAVE_BOOST_FILESYSTEM 1
+#define HAVE_BOOST_SYSTEM 1
+#define HAVE_BOOST_THREAD 1
+#define HAVE_BOOST_DATE_TIME 1
+#define HAVE_BOOST_UNIT_TEST_FRAMEWORK 1
+#define HAVE_BOOST_TIMER 1
+#define HAVE_BOOST_REGEX 1
+#define HAVE_BOOST_MATH 1
+#define HAVE_BOOST_FUNCTION 1
+#define HAVE_BOOST_SPIRIT 1
+#define BOOST_FILESYSTEM_VERSION 3
+#define EIGEN_NO_DEBUG 1
+#endif /* _CONFIG_CONFIG_HPP_WAF */

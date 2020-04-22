@@ -41,3 +41,4 @@
 	mkdir data/use/conditions
 	# Manually created imputConditions.txt
 2020-04-21: Added IMPUTE2 to the software directory. 
+2020-04-21: Added QCTool to the software directory.
