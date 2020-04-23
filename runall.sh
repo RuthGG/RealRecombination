@@ -23,7 +23,6 @@ usage()
   $(basename $0) <COMMAND> [OPTIONS]
   "
   echo "Commands:
-
   download -a [hg19|hg38] [-s]        Download publicly available data.
   dbgap -d                            A tool that downloads, compresses and copies into Crick.
   preprocess -i -r [-s]               Prepare raw data to use it in the analysis commands.
@@ -72,15 +71,15 @@ STEP=00           # Steps
 
 # Set empty mandatory variables
 ASSEMBLY=""       # -a Assembly to work with
-*** INDIR=""          # -i Directory that contains files with test VCFs indexed 
-*** REFDIR=""         # -r Directory that contains reference genome files 
-*** MAPDIR=""         # -m Path to directory containing reference recombination maps. ALL MANDATORY
-*** FILE=""           # -f Path to file to use as input. ALL MANDATORY (list of inversion)
+INDIR=""          # -i Directory that contains files with test VCFs indexed 
+REFDIR=""         # -r Directory that contains reference genome files 
+MAPDIR=""         # -m Path to directory containing reference recombination maps. 
+FILE=""           # -f Path to file to use as input.  
 POPFILE=""        # -p Path to relevant population file.
-*** CONFILE=""        # -x Path to file specifyig experimental conditions. ALL MANDATORY
+CONFILE=""        # -x Path to file specifyig experimental conditions.
 DBGAP=""          # -d dbGap ID to download.
-*** INVCOORD=""       # -c Path to inversion coordinates file. ALL MANDATORY
-*** INVGENO=""        # -g Path to inversion genotypes file. ALL MANDATORY
+INVCOORD=""       # -c Path to inversion coordinates file. 
+INVGENO=""        # -g Path to inversion genotypes file. 
 
 # Parse command optons
 case "$COMMAND" in
@@ -150,11 +149,16 @@ case "$COMMAND" in
     ;;
   # Make inversion imputation
    impute ) 
-    while getopts "f:p:c:" OPTIONS ; do
+    while getopts "f:x:r:m:i:c:g:s:" OPTIONS ; do
       case "$OPTIONS" in
         f)  FILE=${OPTARG} ;;
-        p)  POPFILE=${OPTARG} ;;
-        c)  CONFILE=${OPTARG} ;;
+        x)  CONFILE=${OPTARG} ;;
+        r)  REFDIR=${OPTARG} ;;
+        m)  MAPDIR=${OPTARG} ;;
+        i)  INDIR=${OPTARG} ;;
+        c)  INVCOORD=${OPTARG} ;;
+        g)  INVGENO=${OPTARG} ;;
+        s)  SCREENS=${OPTARG} ;;
       esac
     done
     shift $((OPTIND -1))
@@ -183,8 +187,8 @@ elif [ "$COMMAND" == "pcaplot" ]; then
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f, -p"; usage; exit
   fi
 elif [ "$COMMAND" == "impute" ]; then
-  if [ -z "$FILE" ] || [ -z "$POPFILE" ] || [ -z "$CONFILE" ] ; then 
-    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f, -p, -c"; usage; exit
+  if [ -z "$FILE" ] || [ -z "$CONFILE" ] || [ -z "$REFDIR" ] || [ -z "$MAPDIR" ] || [ -z "$INDIR" ] || [ -z "$INVCOORD" ] || [ -z "$INVGENO" ] ; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f, -x, -r, -m, -i, -c, -g"; usage; exit
   fi
 else 
   usage; exit
@@ -445,105 +449,48 @@ STEP=$(printf "%02d" $((${STEP}+1)))
 
 if  [ "$COMMAND" == "impute" ]; then
 
-  # if [ "$COMMAND" == "all" ] ; then
-
-    # Conditions
-    # CONFILE=/home/rgomez/20200401_RealRecombination/data/use/conditions/imputConditions.txt # condition list (it takes POP and IND)
-    # FILE=/home/rgomez/20200401_RealRecombination/data/use/conditions/inv1.txt # list of inversions <-- THIS CHANGES WITH SCREENS
-
-    # Reference
-    # REFDIR=/home/rgomez/20200401_RealRecombination/data/raw/1000genomes_hg19 # directory with 1000 genomes information, included population
-    # MAPDIR=/home/rgomez/20200401_RealRecombination/data/raw/1000genomes_hg19_maps # directory with recombination maps
-
-    # Test
-    INDIR="data/use/${INDIR_NAME}"
-
-    # Inversions info
-    # INVCOORD=/home/rgomez/20200401_RealRecombination/data/use/inversions_info/Inversions_coordinates_hg19.csv # inversion coordinates
-    # INVGENO=/home/rgomez/20200401_RealRecombination/data/use/inversions_info/all_genotypes.csv # inversion genotypes
-
-    # Output
-    # TMP=/home/rgomez/20200401_RealRecombination/tmp/test # output directory of this script is tmp
-
-  # fi
-
   TMPDIR="tmp/${DATE}_${STEP}_imputation"
   OUTDIR="analysis/${DATE}_${STEP}_imputation"
   mkdir -p $TMPDIR $OUTDIR
 
-  # # TO DIVIDE INVERSIONS LIST
-  # cd /home/rgomez/20200227_RealRecombination/data/inversions_info
-  # mkdir -p inversion_lists
-  # split --number=l/${SCREENS} inversion_analysis.txt inversion_lists/inv_list --numeric-suffixes=1 --suffix-length=2
+  # MAKE IMPUTATION - Register conditions in analysis results
+  # ------------------------------------------------------------------------- #
+  cp ${CONFILE} ${OUTDIR}
+  cp ${FILE} ${OUTDIR}
 
+  # MAKE IMPUTATION - Divide inversion into n lists where n is # of screens
+  # ------------------------------------------------------------------------- #
+  mkdir -p $TMPDIR/invlist_part 
+  split --number=l/${SCREENS} ${FILE} $TMPDIR/invlist_part/invlist --numeric-suffixes=1 --suffix-length=2
 
-# inputs : $CONFILE [[[[[[$INVFILE_PART]]]]] $REFDIR $MAPDIR $INDIR $INVCOORD $INVGENO $TMPDIR
+  # MAKE IMPUTATION - Run imputation in # of screens
+  # ------------------------------------------------------------------------- #
+  mkdir -p $TMPDIR/imputationProcess
+  sh code/bash/runScreens.sh ${SCREENS} imputation "sh code/bash/runImputation.sh $CONFILE $TMPDIR/invlist_part/invlistscreencode $REFDIR $MAPDIR $INDIR $INVCOORD $INVGENO $TMPDIR/imputationProcess" delete
 
-# # CONTROL
+  while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
+    screen -ls 
+    sleep 60
+  done
 
-# POPULATIONS="AFR EUR EAS SAS"
-# IND="500"
-# RANGE=500000
-# OUT="benchmarking_all"
-# GENOTYPES="genotypes/all_genotypes.csv"
+  # MAKE IMPUTATION - Once finished, make summary output files.
+  # ------------------------------------------------------------------------- #
+  mkdir -p project/logfiles/${DATE}_${STEP}_imputation
+  # Take first inversion to make header
+  FIRST=$(head -n1 ${FILE})
 
+  # Make a summary file for each experimental condition
+  for DIR in $(ls $TMPDIR/imputationProcess); do
+    echo $DIR
+    head -n 3 "$TMPDIR/imputationProcess/${DIR}/${FIRST}/output_readable.vcf" > ${OUTDIR}/${DIR}_readSum.vcf
 
-# for POP in $POPULATIONS; do
-#   # for ranges and inversions...
-#   #for IND in $INDIVS; do
-#   #for RANGE in $RANGES; do
-#     # TO RUN 
-#     cd /home/rgomez/20200227_RealRecombination/scripts
-#     sh runScreens.sh ${SCREENS} ${OUT}_${IND}_${POP} "sh run_impute2.sh results/imputation/${OUT}/${IND}_${POP} inversion_lists/inv_listscreencode ${RANGE} ${IND} ${POP} ${GENOTYPES} " delete
+    for DIRINV in $(ls $TMPDIR/imputationProcess/${DIR}); do
 
-#     while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
-#       screen -ls 
-#       sleep 60
-#     done
+      cat $TMPDIR/imputationProcess/${DIR}/${DIRINV}/log.out >> project/logfiles/${DATE}_${STEP}_imputation/log_${DIR}.txt
+      sed -n 4p "$TMPDIR/imputationProcess/${DIR}/${DIRINV}/output_readable.vcf" >> ${OUTDIR}/${DIR}_readSum.vcf
 
-#     cd /home/rgomez/20200227_RealRecombination/results/imputation/${OUT}/${IND}_${POP}
+    done 
 
-#     head -n 3 "/home/rgomez/20200227_RealRecombination/results/imputation/${OUT}/${IND}_${POP}/HsInv0003/HsInv0003_${POP}_output_readable.vcf" > ${IND}_${POP}_re.vcf
-
-    
-#     for DIR in $(ls -d --  */ | sed "s/\///g"); do
-    
-#       cat $DIR/log.out >> log_${POP}.txt
-#       sed -n 4p "/home/rgomez/20200227_RealRecombination/results/imputation/${OUT}/${IND}_${POP}/${DIR}/${DIR}_${POP}_output_readable.vcf" >> ${IND}_${POP}_re.vcf
-#     done
-
-# # done
-# done
-
-# # BENCHMARK
-# POPULATIONS="ALL"
-# INDIVS="100 250 500"
-
-
-# for POP in $POPULATIONS; do
-#   # for ranges and inversions...
-#   for IND in $INDIVS; do
-#     # TO RUN 
-#     cd /home/rgomez/20200227_RealRecombination/scripts
-#     sh runScreens.sh ${SCREENS} ${OUT}_${IND}_${POP} "sh run_impute2.sh results/imputation/${OUT}/${IND}_${POP} inversion_lists/inv_listscreencode ${RANGE} ${IND} ${POP} ${GENOTYPES} " delete
-
-#     while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
-#       screen -ls 
-#       sleep 60
-#     done
-
-#     cd /home/rgomez/20200227_RealRecombination/results/imputation/${OUT}/${IND}_${POP}
-
-#     head -n 3 "/home/rgomez/20200227_RealRecombination/results/imputation/${OUT}/${IND}_${POP}/HsInv0003/HsInv0003_${POP}_output_readable.vcf" > ${IND}_${POP}_re.vcf
-
-    
-#     for DIR in $(ls -d --  */ | sed "s/\///g"); do
-    
-#       cat $DIR/log.out >> log_${POP}.txt
-#       sed -n 4p "/home/rgomez/20200227_RealRecombination/results/imputation/${OUT}/${IND}_${POP}/${DIR}/${DIR}_${POP}_output_readable.vcf" >> ${IND}_${POP}_re.vcf
-#     done
-
-#   done
-# done
+  done
 
 fi

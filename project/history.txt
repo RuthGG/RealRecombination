@@ -42,3 +42,4 @@
 	# Manually created imputConditions.txt
 2020-04-21: Added IMPUTE2 to the software directory. 
 2020-04-21: Added QCTool to the software directory.
+2020-04-22: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 10
