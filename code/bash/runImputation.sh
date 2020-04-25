@@ -273,7 +273,7 @@
         
 
         # sed "s/FORMAT\t.*$/FORMAT\t${INDIVS}/" ${INV}_${POP}_output.vcf | sed "s/^\./${CHR_NUM}/g" | sed "s/\tGP\t.*$/\tGT:GP\t${GENO01}/g" > ${INV}_${POP}_output_01.vcf
-        sed "s/FORMAT\t.*$/FORMAT\t${INDIVS}/" $CURDIR/output.vcf | sed "s/^\./${CHR_NUM}/g" | sed "s/\tGP\t.*$/\tGT:GP\t${GENOSI}/g" > $CURDIR/output_readable.vcf
+        sed "s/FORMAT\t.*$/FORMAT\t${INDIVS}/" $CURDIR/output.vcf | sed "s/^\./${CHR_NUM}/g" | sed "s/\tGP\t.*$/\tGT:GP\t${GENOSI}/g" | sed "s/\t$//" > $CURDIR/output_readable.vcf
         # # TOTEST: probabilities only
         # sed "s/FORMAT\t.*$/FORMAT\t${INDIVS}/" ${INV}_${POP}_output.vcf | sed "s/^\./${CHR_NUM}/g" | sed "s/\tGP\t.*$/\tGP\t${GENOP}/g" > ${INV}_${POP}_output_GP.vcf
         # # TOTEST: genotypes only

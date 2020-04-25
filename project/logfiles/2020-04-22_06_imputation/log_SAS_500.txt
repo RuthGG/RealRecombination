@@ -18720,3 +18720,489 @@ Error: No file matching "tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/
 Thank you for using qctool.
 tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1878/output.vcf’ for reading: No such file or directory
 sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1878/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0003
+-------------------------------------------------------------------------
+## 31 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0004
+-------------------------------------------------------------------------
+## 32 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0006
+-------------------------------------------------------------------------
+## 33 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0014
+-------------------------------------------------------------------------
+## 34 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0015
+-------------------------------------------------------------------------
+## 35 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0015/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0015/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0016
+-------------------------------------------------------------------------
+## 36 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0016/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0016/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0030
+-------------------------------------------------------------------------
+## 37 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0031
+-------------------------------------------------------------------------
+## 38 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0040
+-------------------------------------------------------------------------
+## 39 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0041
+-------------------------------------------------------------------------
+## 40 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0045
+-------------------------------------------------------------------------
+## 28 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0052nd
+-------------------------------------------------------------------------
+## 29 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0052nd/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0052nd/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0052si
+-------------------------------------------------------------------------
+## 30 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0052si/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0052si/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0055
+-------------------------------------------------------------------------
+## 31 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0058
+-------------------------------------------------------------------------
+## 32 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0059
+-------------------------------------------------------------------------
+## 33 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0060
+-------------------------------------------------------------------------
+## 34 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0060/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0060/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0061
+-------------------------------------------------------------------------
+## 35 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0063
+-------------------------------------------------------------------------
+## 36 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0068
+-------------------------------------------------------------------------
+## 28 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0069
+-------------------------------------------------------------------------
+## 29 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0092
+-------------------------------------------------------------------------
+## 30 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0095
+-------------------------------------------------------------------------
+## 31 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0097
+-------------------------------------------------------------------------
+## 32 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0098
+-------------------------------------------------------------------------
+## 33 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0102
+-------------------------------------------------------------------------
+## 34 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0105
+-------------------------------------------------------------------------
+## 35 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0113
+-------------------------------------------------------------------------
+## 36 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0113/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0113/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0114
+-------------------------------------------------------------------------
+## 31 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0124
+-------------------------------------------------------------------------
+## 32 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0141
+-------------------------------------------------------------------------
+## 33 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0141/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0141/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0147
+-------------------------------------------------------------------------
+## 34 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0147/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0147/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0156
+-------------------------------------------------------------------------
+## 35 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0156/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0156/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0163
+-------------------------------------------------------------------------
+## 36 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0163/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0163/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0174
+-------------------------------------------------------------------------
+## 37 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0174/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0174/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0181
+-------------------------------------------------------------------------
+## 38 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0181/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0181/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0191
+-------------------------------------------------------------------------
+## 39 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0191/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0191/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0193
+-------------------------------------------------------------------------
+## 40 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0193/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0193/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0201
+-------------------------------------------------------------------------
+## 28 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0209
+-------------------------------------------------------------------------
+## 29 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0212
+-------------------------------------------------------------------------
+## 30 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0212/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0212/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0228
+-------------------------------------------------------------------------
+## 31 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0228/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0228/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0239
+-------------------------------------------------------------------------
+## 32 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0239/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0239/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0241
+-------------------------------------------------------------------------
+## 33 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0260
+-------------------------------------------------------------------------
+## 34 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0266
+-------------------------------------------------------------------------
+## 35 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0278
+-------------------------------------------------------------------------
+## 36 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0284
+-------------------------------------------------------------------------
+## 28 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0286
+-------------------------------------------------------------------------
+## 29 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0286/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0286/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0290
+-------------------------------------------------------------------------
+## 30 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0290/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0290/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0325
+-------------------------------------------------------------------------
+## 31 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0325/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0325/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0340
+-------------------------------------------------------------------------
+## 32 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0341
+-------------------------------------------------------------------------
+## 33 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0344
+-------------------------------------------------------------------------
+## 34 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0347
+-------------------------------------------------------------------------
+## 35 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0370nd
+-------------------------------------------------------------------------
+## 36 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0370nd/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0370nd/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0370si
+-------------------------------------------------------------------------
+## 28 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0370si/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0370si/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0371
+-------------------------------------------------------------------------
+## 29 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0371/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0371/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0374
+-------------------------------------------------------------------------
+## 30 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0379
+-------------------------------------------------------------------------
+## 31 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0382
+-------------------------------------------------------------------------
+## 32 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0382/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0382/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0442
+-------------------------------------------------------------------------
+## 33 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0442/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0442/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0486
+-------------------------------------------------------------------------
+## 34 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0486/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0486/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0573
+-------------------------------------------------------------------------
+## 35 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0573/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0573/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0626
+-------------------------------------------------------------------------
+## 36 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0786
+-------------------------------------------------------------------------
+## 31 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0786/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0786/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0790
+-------------------------------------------------------------------------
+## 32 SAVE RESULTS: In human-readable format #######################
+-------------------------------------------------------------------------
+HsInv0965
+-------------------------------------------------------------------------
+## 33 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0965/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0965/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0989
+-------------------------------------------------------------------------
+## 34 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0989/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0989/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0991
+-------------------------------------------------------------------------
+## 35 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0991/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv0991/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1057
+-------------------------------------------------------------------------
+## 36 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1057/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1057/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1066
+-------------------------------------------------------------------------
+## 37 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1066/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1066/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1070
+-------------------------------------------------------------------------
+## 38 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1070/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1070/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1075
+-------------------------------------------------------------------------
+## 39 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1075/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1075/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1110
+-------------------------------------------------------------------------
+## 40 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1110/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1110/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1111
+-------------------------------------------------------------------------
+## 28 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1111/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1111/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1127
+-------------------------------------------------------------------------
+## 29 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1127/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1127/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1128
+-------------------------------------------------------------------------
+## 30 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1128/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1128/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1129
+-------------------------------------------------------------------------
+## 31 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1129/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1129/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1143
+-------------------------------------------------------------------------
+## 32 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1143/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1143/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1222
+-------------------------------------------------------------------------
+## 33 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1222/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1222/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1256
+-------------------------------------------------------------------------
+## 34 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1256/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1256/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1258
+-------------------------------------------------------------------------
+## 35 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1258/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1258/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1264
+-------------------------------------------------------------------------
+## 36 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1264/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1264/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1321
+-------------------------------------------------------------------------
+## 31 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1321/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1321/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1348
+-------------------------------------------------------------------------
+## 32 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1348/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1348/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1358
+-------------------------------------------------------------------------
+## 33 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1358/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1358/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1402
+-------------------------------------------------------------------------
+## 34 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1402/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1402/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1569
+-------------------------------------------------------------------------
+## 35 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1569/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1569/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1590
+-------------------------------------------------------------------------
+## 36 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1590/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1590/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1798
+-------------------------------------------------------------------------
+## 37 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1798/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1798/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1838
+-------------------------------------------------------------------------
+## 38 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1838/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1838/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1867
+-------------------------------------------------------------------------
+## 39 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1867/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1867/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1878
+-------------------------------------------------------------------------
+## 40 SAVE RESULTS: In human-readable format #######################
+tail: cannot open ‘tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1878/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-04-22_06_imputation/imputationProcess/SAS_500/HsInv1878/output.vcf: No such file or directory
