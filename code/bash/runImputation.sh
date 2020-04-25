@@ -265,7 +265,7 @@
         code/software/qctool/build/release/qctool_v2.0.7 -g $CURDIR/output.gen -og $CURDIR/output.vcf
 
         # GENO01=$(tail -n 1 ${INV}_${POP}_output.vcf | cut -f 10- | sed 's/\t/,/g' | awk  -F "," '{for (x=1;x<=NF;x += 3){y = x+1; z = x+2; print $x,$y,$z}}' | awk -v ORS="\t" '{if($1 > $2 && $1 > $3) print "0|0:" $1; else if($2 >$1 && $2 > $3) print "0|1:"$2; else if($3 > $1 && $3 > $2) print "1|1:" $3}')
-        GENOSI=$(tail -n 1 $CURDIR/output.vcf | cut -f 10- | sed 's/\t/,/g' | awk  -F "," '{for (x=1;x<=NF;x += 3){y = x+1; z = x+2; print $x,$y,$z}}' | awk -v ORS="\t" '{if($1 > $2 && $1 > $3) print "STD:" $1; else if($2 >$1 && $2 > $3) print "HET:"$2; else if($3 > $1 && $3 > $2) print "INV:" $3}')
+        GENOSI=$(tail -n 1 $CURDIR/output.vcf | cut -f 10- | sed 's/\t/,/g' | awk  -F "," '{for (x=1;x<=NF;x += 3){y = x+1; z = x+2; print $x,$y,$z}}' | awk -v ORS="\t" '{if($1 > $2 && $1 > $3) print "STD:" $1; else if($2 >$1 && $2 > $3) print "HET:"$2; else if($3 > $1 && $3 > $2) print "INV:" $3; else print "?:"$1}')
         # TOTEST: probabilities only
         # GENOP=$(tail -n 1 ${INV}_${POP}_output.vcf | cut -f 10- | sed 's/\t/,/g' | awk  -F "," '{for (x=1;x<=NF;x += 3){y = x+1; z = x+2; print $x,$y,$z}}' | awk -v ORS="\t" '{if($1 > $2 && $1 > $3) print $1; else if($2 >$1 && $2 > $3) print $2; else if($3 > $1 && $3 > $2) print $3}')
         # # TOTEST: genotypes only

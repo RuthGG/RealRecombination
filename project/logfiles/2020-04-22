@@ -9,7 +9,7 @@
 09:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-04-22_06_imputation/invlist_part/invlist09 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all_genotypes.csv tmp/2020-04-22_06_imputation/imputationProcess
 10:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-04-22_06_imputation/invlist_part/invlist10 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all_genotypes.csv tmp/2020-04-22_06_imputation/imputationProcess
 There is a screen on:
-	18947.imputation_10	(Detached)
+	7682.imputation_10	(Detached)
 1 Socket in /var/run/screen/S-rgomez.
 
 AFR_500
