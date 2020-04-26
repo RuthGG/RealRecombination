@@ -1,0 +1,14 @@
+## MAKE IMPUTATION SUMMARY TABLES
+Loading required package: stringr
+Loading required package: reshape2
+Loading required package: naniar
+[[1]]
+NULL
+
+[[2]]
+NULL
+
+[[3]]
+NULL
+
+Using Genotype_100 as value column: use value.var to override.

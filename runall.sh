@@ -30,24 +30,31 @@ usage()
   pca -f                              Run PCA analysis with QTL tools over the -f VCF file.
   pcaplot -f -p                       Plot PCA results.
   impute -f -x -r -m -i -c -g [-s]    Impute inversions listed in -f using the conditions in -x.
+  imputetables -i -p -t               Make summary tables after imputation.
   "
   echo "Options:
 
     -h                                Show help.
     -s <screens>                      Set a number of screens to use. 
     -a [hg19|hg38]                    Set assembly to work with.
-    -i <directory>                    Directory that contains files with test VCFs indexed.
+    -i <directory>                    Directory that contains files with test VCFs (sometimes needs index).
     -r <directory>                    Directory that contains reference genome files.
     -f <file>                         Path to file to use as input (vcf, list of inversions...).
     -p <file>                         Path to relevant population file.
     -d <dbGap ID>                     dbGap ID to download.
     -x <file>                         Path to file specifyig experimental conditions.
-    -m <directory>                    Path to directory containing ref. recombinat ion maps.
+    -m <directory>                    Path to directory containing ref. recombination maps.
     -c <file>                         Path to inversion coordinates file.
     -g <file>                         Path to inversion genotypes file.
+    -t <file>                         Path to inversion imputability file.
   "
 
 }
+
+# args[1]<-"analysis/2020-04-22_06_imputation/" # Directory with imputation results in .vcf --> -i
+# args[2]<-"data/use/avery_individuals/samples_population.txt"  # Test individuals population --> -p
+# args[3]<-"data/use/inversions_info/Inversions_imputability.txt" # Inversions imputability --> -t
+# args[4]<-"tmp/test" # output directory
 
 # PARSE OPTIONS
 # Parse options and get help 
@@ -80,6 +87,7 @@ CONFILE=""        # -x Path to file specifyig experimental conditions.
 DBGAP=""          # -d dbGap ID to download.
 INVCOORD=""       # -c Path to inversion coordinates file. 
 INVGENO=""        # -g Path to inversion genotypes file. 
+INVTAG=""         # -t Path to inversion imputability file.
 
 # Parse command optons
 case "$COMMAND" in
@@ -163,6 +171,17 @@ case "$COMMAND" in
     done
     shift $((OPTIND -1))
     ;;
+  # Make summary tables after imputation.
+   imputetables ) 
+    while getopts "i:p:t:" OPTIONS ; do
+      case "$OPTIONS" in
+        p)  POPFILE=${OPTARG} ;;
+        i)  INDIR=${OPTARG} ;;
+        t)  INVTAG=${OPTARG} ;;
+      esac
+    done
+    shift $((OPTIND -1))
+    ;;
 esac
 
 # Check that empty mandatory variables are full
@@ -189,6 +208,10 @@ elif [ "$COMMAND" == "pcaplot" ]; then
 elif [ "$COMMAND" == "impute" ]; then
   if [ -z "$FILE" ] || [ -z "$CONFILE" ] || [ -z "$REFDIR" ] || [ -z "$MAPDIR" ] || [ -z "$INDIR" ] || [ -z "$INVCOORD" ] || [ -z "$INVGENO" ] ; then 
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f, -x, -r, -m, -i, -c, -g"; usage; exit
+  fi
+elif [ "$COMMAND" == "imputetables" ]; then
+  if [ -z "$POPFILE" ] || [ -z "$INDIR" ] || [ -z "$INVTAG" ]  ; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -i -p -t"; usage; exit
   fi
 else 
   usage; exit
@@ -494,3 +517,20 @@ if  [ "$COMMAND" == "impute" ]; then
   done
 
 fi
+
+# MAKE IMPUTATION SUMMARY TABLES
+# Execute Rscript to make imputation summary tables.
+# =========================================================================== #
+STEP=$(printf "%02d" $((${STEP}+1)))
+
+if [ "$COMMAND" == "imputetables" ]; then
+
+  echo "## MAKE IMPUTATION SUMMARY TABLES"
+
+  OUTDIR="analysis/${DATE}_${STEP}_imputationTables"
+  mkdir -p $OUTDIR
+
+  Rscript code/rscript/imputeParse.R $INDIR $POPFILE $INVTAG $OUTDIR
+
+fi
+
