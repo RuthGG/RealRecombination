@@ -98,7 +98,7 @@
 
         # Get inversion genotypes 
         INV_COLUMN=$(head -1 $INVGENO | tr "\t" "\n" | cat -n | grep $INV | cut -f1 | tr -d " ")
-        cut -f1,$INV_COLUMN $INVGENO | tail -n+2 | awk '$2!="NA"'  | awk '$2!="ND"' | grep -v 'Del' |grep -v '\.' >  ${CURDIR}/genotypes_file.txt
+        cut -f1,$INV_COLUMN $INVGENO | tail -n+2 | awk '$2!="NA"'  | awk '$2!="ND"' | awk '$2!="Del"' | awk '$2!="."' >  ${CURDIR}/genotypes_file.txt
         
       # REFERENCE FILE
       # 1KGP + Inversion in this population's individuals
