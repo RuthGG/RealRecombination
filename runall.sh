@@ -31,6 +31,7 @@ usage()
   pcaplot -f -p                       Plot PCA results.
   impute -f -x -r -m -i -c -g [-s]    Impute inversions listed in -f using the conditions in -x.
   imputetables -i -p -t               Make summary tables after imputation.
+  tagsnps -f -x -i -c -g [-s]                  Check if a list of inversions has tag SNPs. 
   "
   echo "Options:
 
@@ -51,10 +52,6 @@ usage()
 
 }
 
-# args[1]<-"analysis/2020-04-22_06_imputation/" # Directory with imputation results in .vcf --> -i
-# args[2]<-"data/use/avery_individuals/samples_population.txt"  # Test individuals population --> -p
-# args[3]<-"data/use/inversions_info/Inversions_imputability.txt" # Inversions imputability --> -t
-# args[4]<-"tmp/test" # output directory
 
 # PARSE OPTIONS
 # Parse options and get help 
@@ -182,7 +179,21 @@ case "$COMMAND" in
     done
     shift $((OPTIND -1))
     ;;
-esac
+  # Check if a list of inversions has tag SNPs
+   tagsnps)
+    while getopts "f:x:i:c:g:s:" OPTIONS ; do
+      case "$OPTIONS" in
+        f)  FILE=${OPTARG} ;;
+        x)  CONFILE=${OPTARG} ;;
+        i)  INDIR=${OPTARG} ;;
+        c)  INVCOORD=${OPTARG} ;;
+        g)  INVGENO=${OPTARG} ;;
+        s)  SCREENS=${OPTARG} ;;
+      esac
+    done
+    shift $((OPTIND -1))
+    ;;
+  esac
 
 # Check that empty mandatory variables are full
 if [ "$COMMAND" == "download" ]; then
@@ -213,6 +224,10 @@ elif [ "$COMMAND" == "imputetables" ]; then
   if [ -z "$POPFILE" ] || [ -z "$INDIR" ] || [ -z "$INVTAG" ]  ; then 
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -i -p -t"; usage; exit
   fi
+elif [ "$COMMAND" == "tagsnps" ]; then
+  if [ -z "$FILE" ] || [ -z "$CONFILE" ] || [ -z "$INDIR" ] || [ -z "$INVCOORD" ] || [ -z "$INVGENO" ]  ; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -x -i -c -g"; usage; exit
+  fi
 else 
   usage; exit
 fi
@@ -220,7 +235,8 @@ fi
 # SAVE HISTORY pt 2
 # Save date and command 
 # =========================================================================== #
-DATE=$(date +%F)
+# DATE=$(date +%F)
+DATE=2020-04-27
 echo "${DATE}: $0 ${HISTORY}" >> project/history.txt
 
 # SAVE LOG pt 2
@@ -504,7 +520,7 @@ if  [ "$COMMAND" == "impute" ]; then
 
   # Make a summary file for each experimental condition
   for DIR in $(ls $TMPDIR/imputationProcess); do
-    echo $DIR
+
     head -n 3 "$TMPDIR/imputationProcess/${DIR}/${FIRST}/output_readable.vcf" > ${OUTDIR}/${DIR}_readSum.vcf
 
     for DIRINV in $(ls $TMPDIR/imputationProcess/${DIR}); do
@@ -531,6 +547,61 @@ if [ "$COMMAND" == "imputetables" ]; then
   mkdir -p $OUTDIR
 
   Rscript code/rscript/imputeParse.R $INDIR $POPFILE $INVTAG $OUTDIR
+
+fi
+
+
+# MAKE TAG SNPS CHECK
+# Execute scripts to check tag SNPs
+# =========================================================================== #
+STEP=$(printf "%02d" $((${STEP}+1)))
+
+
+if  [ "$COMMAND" == "tagsnps" ]; then
+
+  TMPDIR="tmp/${DATE}_${STEP}_tagsnps"
+  OUTDIR="analysis/${DATE}_${STEP}_tagsnps"
+  mkdir -p $TMPDIR $OUTDIR
+
+  # MAKE TAG SNPS CHECK - Register conditions in analysis results
+  # ------------------------------------------------------------------------- #
+  cp ${CONFILE} ${OUTDIR}
+  cp ${FILE} ${OUTDIR}
+
+  # MAKE TAG SNPS CHECK - Divide inversion into n lists where n is # of screens
+  # ------------------------------------------------------------------------- #
+  mkdir -p $TMPDIR/invlist_part 
+  split --number=l/${SCREENS} ${FILE} $TMPDIR/invlist_part/invlist --numeric-suffixes=1 --suffix-length=2
+
+  # MAKE TAG SNPS CHECK - Run imputation in # of screens
+  # ------------------------------------------------------------------------- #
+  mkdir -p $TMPDIR/tagsnpsProcess
+  sh code/bash/runScreens.sh ${SCREENS} tagsnp "sh code/bash/checkTagSNPs.sh $CONFILE $TMPDIR/invlist_part/invlistscreencode $INDIR $INVCOORD $INVGENO $TMPDIR/tagsnpsProcess" delete
+
+  while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
+    screen -ls 
+    sleep 60
+  done
+
+  # MAKE IMPUTATION - Once finished, make summary output files.
+  # ------------------------------------------------------------------------- #
+  mkdir -p project/logfiles/${DATE}_${STEP}_tagsnps
+
+  FIRST=$(head -n1 ${FILE})
+
+  # Make a summary file for each experimental condition
+   for DIR in $(ls $TMPDIR/tagsnpsProcess); do
+
+    head -n 1 "$TMPDIR/tagsnpsProcess/${DIR}/${FIRST}/output_plink.ld" > ${OUTDIR}/${DIR}_output_plink.ld
+
+    for DIRINV in $(ls $TMPDIR/tagsnpsProcess/${DIR}); do
+
+      cat $TMPDIR/tagsnpsProcess/${DIR}/${DIRINV}/log.out >> project/logfiles/${DATE}_${STEP}_tagsnps/log_${DIR}.txt
+      tail -n +2 "$TMPDIR/tagsnpsProcess/${DIR}/${DIRINV}/output_plink.ld" >> ${OUTDIR}/${DIR}_output_plink.ld
+
+    done 
+
+  done
 
 fi
 
