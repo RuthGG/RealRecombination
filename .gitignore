@@ -3,3 +3,4 @@ tmp/*
 !data/raw/README.md
 !data/use/README.md
 analysis/2020-04-16_mergePca/*
+*.ld
