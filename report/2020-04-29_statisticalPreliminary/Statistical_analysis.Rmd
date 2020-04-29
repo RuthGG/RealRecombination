@@ -1,0 +1,39 @@
+---
+title: "Statistical analysis"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+```{r}
+setwd("~/20200227_RealRecombination/")
+library(ggplot2)
+
+```
+
+Data was public. 
+With bedtools intersect I took all crossovers that overlapped in any way with an inversion. 
+
+```{r upload_files}
+croxinv<-read.table("results/statistical_analysis/crossovers_x_inversions.txt", sep = "\t" )
+croxinv<-croxinv[croxinv$V3 == "inversion",]
+croxinv$coordinates<-paste0(croxinv$V10,":", croxinv$V11,"-", croxinv$V12)
+croxinv<-croxinv[,c(14, 9, 13 )]
+croxinv$V9<-sub("ID=\\d+;Name=", "", croxinv$V9)
+croxinv$V9<-sub(";.*$", "", croxinv$V9)
+# split croxinv
+
+genotypes<-read.csv("individuals_imputation.csv", row.names =  1)
+```
+
+First of all, I want a table with amount of recombination events per sperm sample overlapping with an inversion
+
+```{r events_cell}
+
+
+
+```
+
+
