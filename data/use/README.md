@@ -9,6 +9,9 @@ A copy of these conditions is stored in analysis/ once they are used, so they ca
 ## inversions_info
 
 * `all_genotypes.csv` is a file with all reported genotypes for available inversions in tested individuals until now. Raw data of origin is in `data/raw/inversions_info/genotypes`
+* `all+new_genotypes.csv` if a file that was obtained by merging `data/use/inversions_info/all_genotypes.csv` and `analysis/2020-04-26_07_imputationTables/new_genotypes.csv`
 * `inversions_coordinates_hg19.csv` has coordinates for all the reported inversions until now. 
 * `inversions_imputability.txt` is a manually-created file that summarized the imputaility information that Jon provided. Raw data of origin is in `data/raw/inversions_info/jon_newinvs`
+* `2020.02.inversions_hg38.gff` is a gff with inversion coordinates (curated) in hg38
+
 

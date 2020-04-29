@@ -59,3 +59,5 @@
 2020-04-28: runall.sh tagsnps -f data/use/conditions/inversionToTag_failed.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 5
 2020-04-28: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 10
 2020-04-28: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 10
+2020-04-29: Manually added information related to inversions in hg38
+2020-04-29: Manually updated data READMEs
