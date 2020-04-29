@@ -235,8 +235,8 @@ fi
 # SAVE HISTORY pt 2
 # Save date and command 
 # =========================================================================== #
-# DATE=$(date +%F)
-DATE=2020-04-27
+DATE=$(date +%F)
+
 echo "${DATE}: $0 ${HISTORY}" >> project/history.txt
 
 # SAVE LOG pt 2

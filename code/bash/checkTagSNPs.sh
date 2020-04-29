@@ -120,7 +120,15 @@
         echo "## Create input VCF #####################################################"
 
         # Select chromosome and samples of interest. This step is kind of useless when population is "ALL"
-        VCF_FILE=$(ls $INDIR | grep "${CHR}\..*gz$")
+        # Sometimes the directory may contain an all-chromosomes file instead of by-chromosome information - check this
+        FILENUM=$(ls ${INDIR}/*.gz | wc -l)
+
+        if [ $FILENUM -gt 1 ]; then
+          VCF_FILE=$(ls $INDIR | grep "${CHR}\..*gz$")
+        else
+          VCF_FILE=$(ls $INDIR | grep "gz$")
+        fi
+
         bcftools view  --regions ${CHR_NUM} -s $(echo $SAMPLES_REF | tr " " ",")   -Ov ${INDIR}/${VCF_FILE}  -o ${CURDIR}/haplotypes.vcf
         
         # INPUT FILE - take inversion genotypes for common individuals

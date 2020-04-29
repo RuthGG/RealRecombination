@@ -1,0 +1,4 @@
+ALL
+EUR
+AFR
+EAS
