@@ -61,3 +61,4 @@
 2020-04-28: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 10
 2020-04-29: Manually added information related to inversions in hg38
 2020-04-29: Manually updated data READMEs
+2020-05-05: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -g analysis/2020-04-26_07_imputationTables/new_genotypes.csv

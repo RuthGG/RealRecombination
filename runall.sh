@@ -31,7 +31,8 @@ usage()
   pcaplot -f -p                       Plot PCA results.
   impute -f -x -r -m -i -c -g [-s]    Impute inversions listed in -f using the conditions in -x.
   imputetables -i -p -t               Make summary tables after imputation.
-  tagsnps -f -x -i -c -g [-s]                  Check if a list of inversions has tag SNPs. 
+  tagsnps -f -x -i -c -g [-s]         Check if a list of inversions has tag SNPs. 
+  crossovers -f -c -g                 Make data required in statistical analysis using crossovers in -f.
   "
   echo "Options:
 
@@ -193,6 +194,17 @@ case "$COMMAND" in
     done
     shift $((OPTIND -1))
     ;;
+    # Execute PCA
+   crossovers ) 
+    while getopts "f:c:g:" OPTIONS ; do
+      case "$OPTIONS" in
+        f)  FILE=${OPTARG} ;;
+        c)  INVCOORD=${OPTARG} ;;
+        g)  INVGENO=${OPTARG} ;;
+      esac
+    done
+    shift $((OPTIND -1))
+    ;;
   esac
 
 # Check that empty mandatory variables are full
@@ -227,6 +239,10 @@ elif [ "$COMMAND" == "imputetables" ]; then
 elif [ "$COMMAND" == "tagsnps" ]; then
   if [ -z "$FILE" ] || [ -z "$CONFILE" ] || [ -z "$INDIR" ] || [ -z "$INVCOORD" ] || [ -z "$INVGENO" ]  ; then 
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -x -i -c -g"; usage; exit
+  fi
+elif [ "$COMMAND" == "crossovers" ]; then
+  if [ -z "$FILE" ] || [ -z "$INVCOORD" ] || [ -z "$INVGENO" ]    ; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -c -g"; usage; exit
   fi
 else 
   usage; exit
@@ -554,13 +570,13 @@ fi
 # MAKE TAG SNPS CHECK
 # Execute scripts to check tag SNPs
 # =========================================================================== #
-STEP=$(printf "%02d" $((${STEP}+1)))
-
+STEP_b=$(printf '%02d' $((${STEP}+1)))
+STEP=$((${STEP}+1))
 
 if  [ "$COMMAND" == "tagsnps" ]; then
 
-  TMPDIR="tmp/${DATE}_${STEP}_tagsnps"
-  OUTDIR="analysis/${DATE}_${STEP}_tagsnps"
+  TMPDIR="tmp/${DATE}_${STEP_b}_tagsnps"
+  OUTDIR="analysis/${DATE}_${STEP_b}_tagsnps"
   mkdir -p $TMPDIR $OUTDIR
 
   # MAKE TAG SNPS CHECK - Register conditions in analysis results
@@ -583,7 +599,7 @@ if  [ "$COMMAND" == "tagsnps" ]; then
     sleep 60
   done
 
-  # MAKE IMPUTATION - Once finished, make summary output files.
+  # MAKE TAG SNPS CHECK - Once finished, make summary output files.
   # ------------------------------------------------------------------------- #
   mkdir -p project/logfiles/${DATE}_${STEP}_tagsnps
 
@@ -605,3 +621,28 @@ if  [ "$COMMAND" == "tagsnps" ]; then
 
 fi
 
+# DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS
+# Create data used in the statistical analysis of crossovers
+# =========================================================================== #
+STEP=$((${STEP}+1))
+# STEP=$(printf '%02d' ${STEP})
+
+if  [ "$COMMAND" == "crossovers" ]; then
+
+  TMPDIR="tmp/${DATE}_$(printf '%02d' ${STEP})_crossovers"
+  OUTDIR="analysis/${DATE}_$(printf '%02d' ${STEP})_crossovers"
+  mkdir -p $TMPDIR $OUTDIR
+
+  # Crossover files to bed
+  zcat $FILE |awk -v OFS="\t" '{print $3, $4, $5, $1"_"$2}' > ${TMPDIR}/allcrossovers.bed
+
+  # Coordinate files without X and Y
+  grep -v 'chrX' $INVCOORD  | grep -v 'chrY' > ${TMPDIR}/coordinates_noXY.gff
+
+  # Cross both 
+  bedtools intersect -wa -wb -loj -a ${TMPDIR}/coordinates_noXY.gff -b ${TMPDIR}/allcrossovers.bed > $TMPDIR/crossovers_x_inversions.txt
+
+  # R data generation
+  Rscript code/rscript/crossoverTables.R ${TMPDIR}/crossovers_x_inversions.txt ${INVGENO} ${OUTDIR}/croxinv.Rdata
+
+fi
