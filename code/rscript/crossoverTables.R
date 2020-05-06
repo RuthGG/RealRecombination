@@ -42,14 +42,14 @@ lapply(packages,FUN = function(x) {
 # BASIC TABLE PARSING - Inversions with crossovers
 # --------------------------------------------------------------------------- #
   croxinv<-read.table(args[1], sep = "\t" , stringsAsFactors = FALSE)
-  croxinv<-croxinv[croxinv$V3 == "inversion",]
+  croxinv<-croxinv[croxinv$V3 == "inversion" & croxinv$V10 != ".",]
   croxinv$V9<-sub("ID=\\d+;Name=", "", croxinv$V9)
   croxinv$V9<-sub(";.*$", "", croxinv$V9)
   croxinv<-cbind(croxinv, str_split_fixed(croxinv$V13, "_", 2))
   
-  croxinv<-croxinv[,c(9:12, 14:15 )]
-  colnames(croxinv)<-c("inversion", "chromosome", "start", "end", "individual", "sample")
-  croxinv<-croxinv[croxinv$chromosome != ".",]
+  croxinv<-croxinv[,c(9,1,4,5,14,15,11, 12 )]
+  colnames(croxinv)<-c("inversion", "chromosome", "bp1s", "bp2e", "individual", "sample", "start", "end")
+
   
 # BASIC TABLE PARSING - Incorporate imputation results
 # --------------------------------------------------------------------------- #

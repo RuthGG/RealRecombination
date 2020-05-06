@@ -62,3 +62,4 @@
 2020-04-29: Manually added information related to inversions in hg38
 2020-04-29: Manually updated data READMEs
 2020-05-05: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -g analysis/2020-04-26_07_imputationTables/new_genotypes.csv
+2020-05-06: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -g analysis/2020-04-26_07_imputationTables/new_genotypes.csv
