@@ -5,35 +5,188 @@ editor_options:
   chunk_output_type: console
 ---
 
-
-
 ```{r}
-setwd("~/20200227_RealRecombination/")
+setwd("../../")
+
 library(ggplot2)
+library()
 
 ```
 
 Data was public. 
-With bedtools intersect I took all crossovers that overlapped in any way with an inversion. 
+With bedtools intersect I took all crossovers that overlapped in any way with an inversion. I merged this information with the genotypes for each inversion and individual. 
 
 ```{r upload_files}
-croxinv<-read.table("results/statistical_analysis/crossovers_x_inversions.txt", sep = "\t" )
-croxinv<-croxinv[croxinv$V3 == "inversion",]
-croxinv$coordinates<-paste0(croxinv$V10,":", croxinv$V11,"-", croxinv$V12)
-croxinv<-croxinv[,c(14, 9, 13 )]
-croxinv$V9<-sub("ID=\\d+;Name=", "", croxinv$V9)
-croxinv$V9<-sub(";.*$", "", croxinv$V9)
-# split croxinv
 
-genotypes<-read.csv("individuals_imputation.csv", row.names =  1)
+load("analysis/2020-05-06_09_crossovers/croxinv.Rdata")
+crossovers_raw<-read.table("data/raw/avery_crossovers/allcrossovers_hg38.txt.gz", stringsAsFactors = FALSE, header = TRUE)
+coords<-read.table("data/use/inversions_info/2020.02.inversions_hg38.gff", stringsAsFactors = FALSE, sep = "\t")
+numofsamples<-read.table("report/2020-04-29_statisticalPreliminary/numofsamples.txt", stringsAsFactors = FALSE)
+colnames(numofsamples)<-c("donor", "samples")
+
+
+```
+
+*Which is the resolution of crossovers, compared to inversion size?*
+*Does the resolution change depending on chromosome?* --no
+*Is the resolution of inversion-overlapping different?*
+*Is the resolution in different genotypes different?*
+
+```{r resolutions}
+
+crossovers_raw$resolution<-crossovers_raw$pos.rightbound-crossovers_raw$pos.leftbound+1
+
+summary(crossovers_raw$resolution)
+ggplot(crossovers_raw)+geom_boxplot(aes(x = chr, y = log(resolution)))
+
+coords$invsize<-coords$V6-coords$V3+1
+
+summary(coords$invsize)
+ggplot(coords)+geom_boxplot(aes(x = V2, y = log(invsize)))
+
+summary(croxinv$resolution)
+ggplot(croxinv)+geom_boxplot(aes(x = chromosome, y = log(resolution)))
 ```
 
 First of all, I want a table with amount of recombination events per sperm sample overlapping with an inversion
 
 ```{r events_cell}
 
+croxinv$individual<-as.character(croxinv$individual)
+test<-data.frame(table(croxinv$individual, croxinv$inversio))
+
+
+geno<-data.frame(table(croxinv$genotype, croxinv$inversion))
+
+# Chromosome 21 test
+chromosome<-"chr11"
+test2<-crossovers_raw[crossovers_raw$chr == chromosome & crossovers_raw$pos.rightbound < 80000000,]
+invs<-coords[coords$V1 == chromosome & coords$V5 < 80000000,]
+invs
+
+
+341, 760, 275, 276
+
+geno[geno$Var2 == "HsInv0209", ]
+
+ggplot(test2)+geom_rect(aes(xmin=pos.leftbound, xmax=pos.rightbound, ymin = 0, ymax = 1), alpha = 0.002)+
+  geom_rect(data=invs, aes(xmin = V4, xmax = V5, ymin = 0.25, ymax = 0.75), fill = "red")
+  
+
+# Which is the chromosome with the most useful inversions? - chromosome 6 and chromosome 4
+touse<-croxinv[!is.na(croxinv$genotype) & croxinv$genotype != "." & !is.na(croxinv$sample),]
+table(touse$chromosome, touse$inversion)
+
+# Now I make some summary of crossovers
+crossovers_raw$buffer<-crossovers_raw$resolution/8
+crossovers_raw$central.left<-crossovers_raw$pos.leftbound+crossovers_raw$buffer
+crossovers_raw$central.right<-crossovers_raw$pos.rightbound-crossovers_raw$buffer
+
+plot<-crossovers_raw[crossovers_raw$chr == chromosome,]
+plot<-merge(plot, genotypes[genotypes$variable == "HsInv0266" & genotypes$value != ".",], by.x = "donor", by.y = "Individual")
+table(data.frame(table(plot$value, plot$donor))$Var1,data.frame(table(plot$value, plot$donor))$Freq>1 )
+chromosome<-"chr4"
+plot$ponderation<-NA
+plot[plot$value == "HET", "ponderation"]<-3/18
+plot[plot$value == "INV", "ponderation"]<-2/18
+plot[plot$value == "STD", "ponderation"]<-13/18
+
+plot$ponderation_alpha<-plot$ponderation/10
+
+
+invcoords<-touse[touse$chromosome == chromosome & !duplicated(touse$inversion), ]
+library(ggforce)
+ggplot(data=plot[plot$central.left > 185000000,])+geom_rect( aes(xmin=central.left, xmax=central.right, ymin = 0, ymax = 1, alpha = ponderation_alpha))+ 
+  scale_alpha_continuous(range=c(min(plot$ponderation_alpha), max(plot$ponderation_alpha)))+
+  geom_rect(data=invcoords[invcoords$inversion == "HsInv0266",], aes(xmin = bp1s, xmax = bp2e, ymin = 0.25, ymax = 0.75), color = "red", alpha = 0)+
+  # geom_text(data=invcoords[invcoords$inversion == "HsInv0266",], aes(x = bp1s, y = 0.8, label = inversion))+
+  # facet_zoom(xlim = c(30000000, 50000000) )+
+  # facet_zoom(xlim = c(70000000, 100000000) )+
+  # facet_zoom(xlim = c(150000000, 190000000) )
+facet_grid(value ~.)+
+  ggtitle("HsInv0266")
+
+centel<-read.table("report/2020-04-29_statisticalPreliminary/repregions_hg38.txt")
+
 
 
 ```
+
+
+
+```{r test}
+
+# 1 hacer ventanas 
+multiplyer<-10
+myinv<-"HsInv0095"
+coords<-croxinv[croxinv$inversion == myinv & !is.na(croxinv$chromosome), c("chromosome", "bp1s", "bp2e")][1,]
+buffer<-(coords$bp2e-coords$bp1s)
+windows<-seq(from = coords$bp1s-(buffer*multiplyer), to = coords$bp2e+(buffer*multiplyer), length.out=(multiplyer*2)+2)
+
+# 2 buscar los que solapan para cada ventana
+here<-data.frame(windowstart=windows[1:length(windows)-1], windowend=windows[2:length(windows)] )
+here$chromosome<-coords$chromosome
+here$HETprob<-here$STDprob<-here$INVprob<-NA
+
+for (row in rownames(here)) {
+  myrow<-here[row,]
+  tmp<-crossovers_raw[
+                      ( (crossovers_raw$pos.leftbound >= myrow$windowstart 
+                      & crossovers_raw$pos.rightbound <= myrow$windowend) |
+                        (crossovers_raw$pos.leftbound <= myrow$windowstart 
+                      & crossovers_raw$pos.rightbound >= myrow$windowend) |
+                        (crossovers_raw$pos.leftbound >= myrow$windowstart 
+                      & crossovers_raw$pos.leftbound <= myrow$windowend) |
+                        (crossovers_raw$pos.rightbound >= myrow$windowstart 
+                      & crossovers_raw$pos.rightbound <= myrow$windowend) )
+                      & crossovers_raw$chr == myrow$chromosome,]
+  counts<-data.frame(table(tmp$donor))
+  colnames(counts)<-c("donor", "crossovers")
+  counts<-merge(counts, numofsamples, all=TRUE)
+  counts[is.na(counts$crossovers),"crossovers"]<-0
+  counts<-merge(counts, genotypes[genotypes$variable == myinv,], by.x = "donor", by.y = "Individual")
+  counts<-counts[counts$value != ".",]
+  het<-sum(counts[counts$value == "HET","crossovers"])/sum(counts[counts$value == "HET","samples"])
+  std<-sum(counts[counts$value == "STD","crossovers"])/sum(counts[counts$value == "STD","samples"])
+  inv<-sum(counts[counts$value == "INV","crossovers"])/sum(counts[counts$value == "INV","samples"])
+  here[row, c("HETprob", "STDprob", "INVprob")]<-c(het, std, inv)
+}
+
+plot<-melt(here, id.vars = c("windowstart", "windowend", "chromosome"))
+plot$inversion<-NA
+plot[plot$windowstart == coords$bp1s, "inversion"]<-myinv
+
+ggplot(plot)+geom_bar(aes(x=windowstart, y = value, fill = inversion), stat = "identity")+
+  facet_grid(.~variable)+ggtitle("myinv")+
+  theme(legend.position = "none")
+
+# anova
+library(tidyverse)
+library(ggpubr)
+library(rstatix)
+
+
+  myinv<-"HsInv0095"
+  coords<-croxinv[croxinv$inversion == myinv & !is.na(croxinv$chromosome), c("chromosome", "bp1s", "bp2e")][1,]
+
+  tmp<-croxinv[croxinv$inversion == myinv,]
+
+  counts<-data.frame(table(tmp$individual))
+  colnames(counts)<-c("donor", "crossovers")
+  counts<-merge(counts, numofsamples, all=TRUE)
+  counts[is.na(counts$crossovers),"crossovers"]<-0
+  counts<-merge(counts, genotypes[genotypes$variable == myinv,], by.x = "donor", by.y = "Individual")
+  counts<-counts[counts$value != ".",]
+  
+  counts$weight<-counts$crossovers/counts$samples
+  
+  counts$genotype<-factor(counts$value, levels = c("STD", "INV", "HET"))
+
+  ggboxplot(counts, x = "genotype", y = "weight")
+
+
+
+```
+
 
 
