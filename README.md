@@ -27,12 +27,16 @@ This project should be associated with a conda environment of the same name. To 
 
 The analysis is divided in different parts, that are options in `runall.sh`. Each of them could have its own requirements:
 
-* `runall all` runs all the analyses.
 * `runall download` downloads available raw data (`data/raw`).
+* `runall dbgap` downloads data from dbgap given an ID (Crick).
 * `runall preprocess` processes raw data to use it (`data/use`).
 * `runall merge` merges test and reference data for all chromosomes in preparation to do the PCA. 
 * `runall pca` performs the pca analysis.
-<!-- * `runall pcaplot` makes the plot for the pca results. It is separated from pca to allow independent adjustments in plots.  -->
+* `runall pcaplot` makes the plot for the pca results. It is separated from pca to allow independent adjustments in plots. 
+* `runall impute` imputes a list of invesions in a list of individuals with IMPUTE2. 
+* `runall imputetables` makes summary tables for the imputation results.
+* `runall tagsnps` is to check which tag snps has an inversion given a group of individuals (usually a population).
+* `runall crossovers` merges genotype information with crossovers information for the statistical analysis. 
 
 ## A note on code comment structure
 
