@@ -1,0 +1,2960 @@
+-------------------------------------------------------------------------
+HsInv0003
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.Re8jBi) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0003/input_sorted.vcf
+	--chr 1
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0003/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0003/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0003/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0003/input_plink
+  --ld-snp HsInv0003
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0003/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0003/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0004
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.SiSP0S) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0004/input_sorted.vcf
+	--chr 1
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0004/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0004/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0004/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0004/input_plink
+  --ld-snp HsInv0004
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0004/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0004/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0006
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.H2p0Gt) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0006/input_sorted.vcf
+	--chr 1
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0006/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0006/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0006/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0006/input_plink
+  --ld-snp HsInv0006
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0006/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0006/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0014
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.RfBSzK) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0014/input_sorted.vcf
+	--chr 10
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0014/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0014/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0014/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0014/input_plink
+  --ld-snp HsInv0014
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0014/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0014/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0015
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.fKVtVh) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0015/input_sorted.vcf
+	--chr 10
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0015/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0015/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0015/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0015/input_plink
+  --ld-snp HsInv0015
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0015/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0015/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0016
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.6hzaCO) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0016/input_sorted.vcf
+	--chr 10
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0016/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0016/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0016/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0016/input_plink
+  --ld-snp HsInv0016
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0016/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0016/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0031
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.HLDsxv) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0031/input_sorted.vcf
+	--chr 16
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0031/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0031/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0031/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0031/input_plink
+  --ld-snp HsInv0031
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0031/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0031/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0040
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.t3y0SF) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0040/input_sorted.vcf
+	--chr 2
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0040/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0040/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0040/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0040/input_plink
+  --ld-snp HsInv0040
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0040/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0040/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0041
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.NIGRgM) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0041/input_sorted.vcf
+	--chr 2
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0041/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0041/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0041/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0041/input_plink
+  --ld-snp HsInv0041
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0041/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0041/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0045
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.lKOpdJ) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0045/input_sorted.vcf
+	--chr 21
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0045/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0045/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0045/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0045/input_plink
+  --ld-snp HsInv0045
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0045/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0045/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0052nd
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.dUasB9) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052nd/input_sorted.vcf
+	--chr 3
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052nd/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052nd/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052nd/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052nd/input_plink
+  --ld-snp HsInv0052nd
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052nd/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052nd/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0052si
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.fiipL5) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052si/input_sorted.vcf
+	--chr 3
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052si/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052si/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052si/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052si/input_plink
+  --ld-snp HsInv0052si
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052si/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0052si/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0055
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.P7NZrN) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0055/input_sorted.vcf
+	--chr 5
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0055/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0055/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0055/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0055/input_plink
+  --ld-snp HsInv0055
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0055/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0055/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0059
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.lqvAdU) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0059/input_sorted.vcf
+	--chr 6
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0059/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0059/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0059/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0059/input_plink
+  --ld-snp HsInv0059
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0059/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0059/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0060
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.13TEHW) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0060/input_sorted.vcf
+	--chr 6
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0060/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0060/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0060/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0060/input_plink
+  --ld-snp HsInv0060
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0060/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0060/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0063
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.4emECN) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0063/input_sorted.vcf
+	--chr 7
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0063/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0063/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0063/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0063/input_plink
+  --ld-snp HsInv0063
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0063/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0063/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0068
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.Asmplu) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0068/input_sorted.vcf
+	--chr 9
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0068/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0068/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0068/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0068/input_plink
+  --ld-snp HsInv0068
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0068/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0068/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0092
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.rGlyn5) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0092/input_sorted.vcf
+	--chr 6
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0092/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0092/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0092/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0092/input_plink
+  --ld-snp HsInv0092
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0092/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0092/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0095
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.SE42fS) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0095/input_sorted.vcf
+	--chr 4
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0095/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0095/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0095/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0095/input_plink
+  --ld-snp HsInv0095
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0095/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0095/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0097
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.w07otW) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0097/input_sorted.vcf
+	--chr 3
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0097/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0097/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0097/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0097/input_plink
+  --ld-snp HsInv0097
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0097/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0097/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0098
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.NpiIPG) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0098/input_sorted.vcf
+	--chr 3
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0098/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0098/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0098/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0098/input_plink
+  --ld-snp HsInv0098
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0098/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0098/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0102
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.ougqS8) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0102/input_sorted.vcf
+	--chr 4
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0102/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0102/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0102/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0102/input_plink
+  --ld-snp HsInv0102
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0102/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0102/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0105
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.Hgw9cd) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0105/input_sorted.vcf
+	--chr 7
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0105/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0105/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0105/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0105/input_plink
+  --ld-snp HsInv0105
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0105/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0105/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0113
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.JuCk2x) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0113/input_sorted.vcf
+	--chr 9
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0113/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0113/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0113/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0113/input_plink
+  --ld-snp HsInv0113
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0113/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0113/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0114
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.WnFrOn) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0114/input_sorted.vcf
+	--chr 9
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0114/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0114/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0114/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0114/input_plink
+  --ld-snp HsInv0114
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0114/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0114/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0124
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.BIYQGm) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0124/input_sorted.vcf
+	--chr 11
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0124/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0124/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0124/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0124/input_plink
+  --ld-snp HsInv0124
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0124/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0124/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0141
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.6C3UwX) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0141/input_sorted.vcf
+	--chr 2
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0141/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0141/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0141/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0141/input_plink
+  --ld-snp HsInv0141
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0141/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0141/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0147
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.k1hhbB) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0147/input_sorted.vcf
+	--chr 12
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0147/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0147/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0147/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0147/input_plink
+  --ld-snp HsInv0147
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0147/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0147/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0156
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.9EgqZz) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0156/input_sorted.vcf
+	--chr 2
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0156/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0156/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0156/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0156/input_plink
+  --ld-snp HsInv0156
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0156/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0156/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0163
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.bVcn1P) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0163/input_sorted.vcf
+	--chr 10
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0163/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0163/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0163/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0163/input_plink
+  --ld-snp HsInv0163
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0163/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0163/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0174
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.mtwkRG) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0174/input_sorted.vcf
+	--chr 1
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0174/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0174/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0174/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0174/input_plink
+  --ld-snp HsInv0174
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0174/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0174/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0181
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.8yvsRG) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0181/input_sorted.vcf
+	--chr 8
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0181/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0181/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0181/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0181/input_plink
+  --ld-snp HsInv0181
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0181/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0181/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0191
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.dYID42) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0191/input_sorted.vcf
+	--chr 10
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0191/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0191/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0191/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0191/input_plink
+  --ld-snp HsInv0191
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0191/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0191/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0193
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.v0Ty8s) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0193/input_sorted.vcf
+	--chr 20
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0193/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0193/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0193/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0193/input_plink
+  --ld-snp HsInv0193
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0193/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0193/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0201
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.mbxUxW) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0201/input_sorted.vcf
+	--chr 5
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0201/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0201/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0201/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0201/input_plink
+  --ld-snp HsInv0201
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0201/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0201/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0209
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.wEp7JW) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0209/input_sorted.vcf
+	--chr 11
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0209/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0209/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0209/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0209/input_plink
+  --ld-snp HsInv0209
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0209/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0209/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0212
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.ESiKuY) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0212/input_sorted.vcf
+	--chr 4
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0212/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0212/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0212/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0212/input_plink
+  --ld-snp HsInv0212
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0212/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0212/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0260
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.EYC6S1) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0260/input_sorted.vcf
+	--chr 2
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0260/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0260/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0260/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0260/input_plink
+  --ld-snp HsInv0260
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0260/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0260/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0266
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.bZXQO4) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0266/input_sorted.vcf
+	--chr 4
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0266/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0266/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0266/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0266/input_plink
+  --ld-snp HsInv0266
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0266/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0266/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0284
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.ZuSq9u) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0284/input_sorted.vcf
+	--chr 6
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0284/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0284/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0284/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0284/input_plink
+  --ld-snp HsInv0284
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0284/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0284/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0286
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.51G902) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0286/input_sorted.vcf
+	--chr 7
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0286/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0286/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0286/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0286/input_plink
+  --ld-snp HsInv0286
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0286/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0286/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0325
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.G2YZ1y) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0325/input_sorted.vcf
+	--chr 10
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0325/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0325/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0325/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0325/input_plink
+  --ld-snp HsInv0325
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0325/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0325/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0347
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.Qd1L0X) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0347/input_sorted.vcf
+	--chr 14
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0347/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0347/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0347/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0347/input_plink
+  --ld-snp HsInv0347
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0347/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0347/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0379
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.OTjFrP) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0379/input_sorted.vcf
+	--chr 19
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0379/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0379/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0379/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0379/input_plink
+  --ld-snp HsInv0379
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0379/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0379/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0442
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.BezEr7) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0442/input_sorted.vcf
+	--chr 18
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0442/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0442/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0442/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0442/input_plink
+  --ld-snp HsInv0442
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0442/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0442/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0486
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.LWDbNU) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0486/input_sorted.vcf
+	--chr 7
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0486/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0486/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0486/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0486/input_plink
+  --ld-snp HsInv0486
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0486/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0486/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0573
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.DlGptj) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0573/input_sorted.vcf
+	--chr 17
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0573/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0573/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0573/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0573/input_plink
+  --ld-snp HsInv0573
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0573/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0573/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0790
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.TIo3kc) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0790/input_sorted.vcf
+	--chr 17
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0790/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0790/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0790/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0790/input_plink
+  --ld-snp HsInv0790
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0790/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0790/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0965
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.Sqi8cD) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0965/input_sorted.vcf
+	--chr 2
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0965/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0965/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0965/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0965/input_plink
+  --ld-snp HsInv0965
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0965/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0965/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0989
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.GHVSce) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0989/input_sorted.vcf
+	--chr 10
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0989/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0989/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0989/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0989/input_plink
+  --ld-snp HsInv0989
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0989/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0989/input_plink.map.
+-------------------------------------------------------------------------
+HsInv0991
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.D8anwK) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0991/input_sorted.vcf
+	--chr 5
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0991/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0991/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0991/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0991/input_plink
+  --ld-snp HsInv0991
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0991/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv0991/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1057
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.AD9unc) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1057/input_sorted.vcf
+	--chr 6
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1057/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1057/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1057/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1057/input_plink
+  --ld-snp HsInv1057
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1057/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1057/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1066
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.YEd4l8) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1066/input_sorted.vcf
+	--chr 12
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1066/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1066/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1066/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1066/input_plink
+  --ld-snp HsInv1066
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1066/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1066/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1070
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.RlgRUh) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1070/input_sorted.vcf
+	--chr 1
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1070/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1070/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1070/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1070/input_plink
+  --ld-snp HsInv1070
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1070/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1070/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1075
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.aGrQa6) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1075/input_sorted.vcf
+	--chr 11
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1075/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1075/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1075/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1075/input_plink
+  --ld-snp HsInv1075
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1075/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1075/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1110
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.JZPkbl) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1110/input_sorted.vcf
+	--chr 21
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1110/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1110/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1110/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1110/input_plink
+  --ld-snp HsInv1110
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1110/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1110/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1127
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.duJwKe) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1127/input_sorted.vcf
+	--chr 10
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1127/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1127/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1127/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1127/input_plink
+  --ld-snp HsInv1127
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1127/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1127/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1128
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.pKYvU4) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1128/input_sorted.vcf
+	--chr 14
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1128/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1128/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1128/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1128/input_plink
+  --ld-snp HsInv1128
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1128/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1128/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1129
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.ImYvZn) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1129/input_sorted.vcf
+	--chr 4
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1129/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1129/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1129/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1129/input_plink
+  --ld-snp HsInv1129
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1129/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1129/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1143
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.NR8zRh) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1143/input_sorted.vcf
+	--chr 1
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1143/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1143/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1143/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1143/input_plink
+  --ld-snp HsInv1143
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1143/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1143/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1222
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.eDAyrC) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1222/input_sorted.vcf
+	--chr 11
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1222/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1222/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1222/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1222/input_plink
+  --ld-snp HsInv1222
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1222/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1222/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1256
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.nxyWVA) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1256/input_sorted.vcf
+	--chr 12
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1256/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1256/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1256/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1256/input_plink
+  --ld-snp HsInv1256
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1256/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1256/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1258
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.6qb8oc) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1258/input_sorted.vcf
+	--chr 12
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1258/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1258/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1258/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1258/input_plink
+  --ld-snp HsInv1258
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1258/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1258/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1264
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.kGlLJb) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1264/input_sorted.vcf
+	--chr 12
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1264/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1264/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1264/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1264/input_plink
+  --ld-snp HsInv1264
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1264/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1264/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1321
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.311s1f) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1321/input_sorted.vcf
+	--chr 14
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1321/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1321/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1321/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1321/input_plink
+  --ld-snp HsInv1321
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1321/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1321/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1348
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.mtOhDD) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1348/input_sorted.vcf
+	--chr 16
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1348/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1348/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1348/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1348/input_plink
+  --ld-snp HsInv1348
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1348/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1348/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1358
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.il035h) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1358/input_sorted.vcf
+	--chr 17
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1358/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1358/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1358/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1358/input_plink
+  --ld-snp HsInv1358
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1358/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1358/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1402
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.wZxACa) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1402/input_sorted.vcf
+	--chr 2
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1402/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1402/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1402/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1402/input_plink
+  --ld-snp HsInv1402
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1402/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1402/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1569
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.PPn9Am) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1569/input_sorted.vcf
+	--chr 5
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1569/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1569/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1569/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1569/input_plink
+  --ld-snp HsInv1569
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1569/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1569/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1590
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.Cuuj06) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1590/input_sorted.vcf
+	--chr 5
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1590/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1590/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1590/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1590/input_plink
+  --ld-snp HsInv1590
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1590/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1590/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1798
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.wdmd3W) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1798/input_sorted.vcf
+	--chr 12
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1798/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1798/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1798/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1798/input_plink
+  --ld-snp HsInv1798
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1798/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1798/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1838
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.KFIqNe) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1838/input_sorted.vcf
+	--chr 7
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1838/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1838/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1838/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1838/input_plink
+  --ld-snp HsInv1838
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1838/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1838/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1867
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.x7exs7) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1867/input_sorted.vcf
+	--chr 1
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1867/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1867/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1867/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1867/input_plink
+  --ld-snp HsInv1867
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1867/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1867/input_plink.map.
+-------------------------------------------------------------------------
+HsInv1878
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+mkdtemp(/tmp/bcftools-sort.OCdxGW) failed: No space left on device
+## 3 PLINK FORMAT: change input to Plink format #########################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1878/input_sorted.vcf
+	--chr 9
+	--out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1878/input_plink
+	--plink
+
+stat error: No such file or directory
+Error: Can't determine file type of tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1878/input_sorted.vcf
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1878/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1878/input_plink
+  --ld-snp HsInv1878
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1878/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Error: Failed to open
+tmp/2020-05-09_08_tagsnps/tagsnpsProcess/EUR/HsInv1878/input_plink.map.

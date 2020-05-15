@@ -1,0 +1,2667 @@
+01:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-13_08_tagsnps/invlist_part/invlist01 analysis/2020-04-16_mergePca/ data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes.csv tmp/2020-05-13_08_tagsnps/tagsnpsProcess
+02:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-13_08_tagsnps/invlist_part/invlist02 analysis/2020-04-16_mergePca/ data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes.csv tmp/2020-05-13_08_tagsnps/tagsnpsProcess
+03:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-13_08_tagsnps/invlist_part/invlist03 analysis/2020-04-16_mergePca/ data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes.csv tmp/2020-05-13_08_tagsnps/tagsnpsProcess
+04:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-13_08_tagsnps/invlist_part/invlist04 analysis/2020-04-16_mergePca/ data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes.csv tmp/2020-05-13_08_tagsnps/tagsnpsProcess
+05:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-13_08_tagsnps/invlist_part/invlist05 analysis/2020-04-16_mergePca/ data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes.csv tmp/2020-05-13_08_tagsnps/tagsnpsProcess
+06:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-13_08_tagsnps/invlist_part/invlist06 analysis/2020-04-16_mergePca/ data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes.csv tmp/2020-05-13_08_tagsnps/tagsnpsProcess
+07:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-13_08_tagsnps/invlist_part/invlist07 analysis/2020-04-16_mergePca/ data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes.csv tmp/2020-05-13_08_tagsnps/tagsnpsProcess
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5887.tagsnp_05	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	6039.tagsnp_07	(Detached)
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5964.tagsnp_06	(Detached)
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5814.tagsnp_04	(Detached)
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5741.tagsnp_03	(Detached)
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	5663.tagsnp_02	(Detached)
+	5652.tagsnp_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	5652.tagsnp_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	5652.tagsnp_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	5652.tagsnp_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	5652.tagsnp_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	5652.tagsnp_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	5652.tagsnp_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	5652.tagsnp_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	5652.tagsnp_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	5652.tagsnp_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+tail: cannot open ‘tmp/2020-05-13_08_tagsnps/tagsnpsProcess/ALL/HsInv1075/output_plink.ld’ for reading: No such file or directory
