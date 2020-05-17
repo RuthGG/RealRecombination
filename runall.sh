@@ -31,7 +31,7 @@ usage()
   pcaplot -f -p                       Plot PCA results.
   impute -f -x -r -m -i -c -g [-s]    Impute inversions listed in -f using the conditions in -x.
   imputetables -i -p -t               Make summary tables after imputation.
-  tagsnps -f -x -i -c -g [-s]         Check if a list of inversions has tag SNPs. 
+  tagsnps -f -x -i -c -g [-s]         Check if tag SNPs in -f are true in VCF in -i. 
   crossovers -f -c -g                 Make data required in statistical analysis using crossovers in -f.
   "
   echo "Options:
@@ -570,29 +570,41 @@ fi
 # MAKE TAG SNPS CHECK
 # Execute scripts to check tag SNPs
 # =========================================================================== #
-STEP_b=$(printf '%02d' $((${STEP}+1)))
-STEP=$((${STEP}+1))
+STEP=$(printf '%02d' $((${STEP}+1)))
+STEPB=$((${STEP}+1))
 
 if  [ "$COMMAND" == "tagsnps" ]; then
 
-  TMPDIR="tmp/${DATE}_${STEP_b}_tagsnps"
-  OUTDIR="analysis/${DATE}_${STEP_b}_tagsnps"
+  TMPDIR="tmp/${DATE}_${STEP}_tagsnps"
+  OUTDIR="analysis/${DATE}_${STEP}_tagsnps"
   mkdir -p $TMPDIR $OUTDIR
 
   # MAKE TAG SNPS CHECK - Register conditions in analysis results
   # ------------------------------------------------------------------------- #
-  cp ${CONFILE} ${OUTDIR}
-  cp ${FILE} ${OUTDIR}
+  cp ${CONFILE} ${OUTDIR} # Populations 
+  tail -n+2 ${FILE} | cut -f1   | sort | uniq > ${OUTDIR}/invlist.txt # List of inversions
+  awk -v OFS="\t" 'NR>1{print $2, $3}' ${FILE} | grep -v "chrY" | grep -v "chrX" | sed 's/^chr//g'  > ${OUTDIR}/regions.txt # SNPs to check
 
   # MAKE TAG SNPS CHECK - Divide inversion into n lists where n is # of screens
   # ------------------------------------------------------------------------- #
   mkdir -p $TMPDIR/invlist_part 
-  split --number=l/${SCREENS} ${FILE} $TMPDIR/invlist_part/invlist --numeric-suffixes=1 --suffix-length=2
+  split --number=l/${SCREENS} ${OUTDIR}/invlist.txt $TMPDIR/invlist_part/invlist --numeric-suffixes=1 --suffix-length=2
+
+  # MAKE TAG SNPS CHECK - Take only the interesting SNPs from total VCF file
+  # ------------------------------------------------------------------------- #
+  # This could be improved to take into account that indir can have one file for all chromosomes or one file per chromosome
+  VCF=$(ls $INDIR | grep "gz$")
+  bcftools view --regions-file  ${OUTDIR}/regions.txt  -Oz ${INDIR}/$VCF -o ${TMPDIR}/interestingSNP.vcf.gz
+  tabix ${TMPDIR}/interestingSNP.vcf.gz
+
+  # MAKE TAG SNPS CHECK - Copy population file
+  # ------------------------------------------------------------------------- #
+  cp ${INDIR}/*.txt ${TMPDIR}
 
   # MAKE TAG SNPS CHECK - Run imputation in # of screens
   # ------------------------------------------------------------------------- #
   mkdir -p $TMPDIR/tagsnpsProcess
-  sh code/bash/runScreens.sh ${SCREENS} tagsnp "sh code/bash/checkTagSNPs.sh $CONFILE $TMPDIR/invlist_part/invlistscreencode $INDIR $INVCOORD $INVGENO $TMPDIR/tagsnpsProcess" delete
+  sh code/bash/runScreens.sh ${SCREENS} tagsnp "sh code/bash/checkTagSNPs.sh $CONFILE $TMPDIR/invlist_part/invlistscreencode $TMPDIR $INVCOORD $INVGENO $TMPDIR/tagsnpsProcess" delete
 
   while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
     screen -ls 
@@ -603,7 +615,7 @@ if  [ "$COMMAND" == "tagsnps" ]; then
   # ------------------------------------------------------------------------- #
   mkdir -p project/logfiles/${DATE}_${STEP}_tagsnps
 
-  FIRST=$(head -n1 ${FILE})
+  FIRST=$(head -n1 ${OUTDIR}/invlist.txt)
 
   # Make a summary file for each experimental condition
    for DIR in $(ls $TMPDIR/tagsnpsProcess); do
@@ -624,8 +636,8 @@ fi
 # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS
 # Create data used in the statistical analysis of crossovers
 # =========================================================================== #
-STEP=$((${STEP}+1))
-# STEP=$(printf '%02d' ${STEP})
+STEP=$(printf '%02d' $((${STEPB}+1)))
+
 
 if  [ "$COMMAND" == "crossovers" ]; then
 

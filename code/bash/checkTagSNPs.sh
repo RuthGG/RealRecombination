@@ -145,24 +145,29 @@
         echo -e "${CHR_NUM}\t${POS}\t${INV}\tA\tT\t.\tPASS\t\tGT\t$(echo ${GENOTYPES_01} | tr ' ' '\t')" > ${CURDIR}/inversions.vcf
 
         rm ${CURDIR}/genotypes_file.txt
+
         # REFERENCE FILE - add inversion genotypes to 1000 KGP VCF
         # ------------------------------------------------------------------------- #
         echo "## Add inversion genotypes to 1000 KGP VCF ##############################"
 
         # Concatenate both files 
         cat ${CURDIR}/haplotypes.vcf ${CURDIR}/inversions.vcf > ${CURDIR}/input_unsorted.vcf
-        rm ${CURDIR}/haplotypes.vcf ${CURDIR}/inversions.vcf
+
         # Sort to put inversion in place
         bcftools sort ${CURDIR}/input_unsorted.vcf -Ov -o ${CURDIR}/input_sorted.vcf
-        rm ${CURDIR}/input_unsorted.vcf 
+
+        rm ${CURDIR}/input_unsorted.vcf ${CURDIR}/inversions.vcf ${CURDIR}/haplotypes.vcf
+
       # PLINK FORMAT
       # Change input to Plink format
       # =========================================================================== #
         STEP=$((${STEP}+1))
-        echo "## ${STEP} PLINK FORMAT: change input to Plink format #########################"
+        echo "## ${STEP} PLINK FORMAT: change imput to Plink format ###################"
+
 
         vcftools --vcf ${CURDIR}/input_sorted.vcf --plink --chr ${CHR_NUM} --out ${CURDIR}/input_plink
         rm ${CURDIR}/input_sorted.vcf
+
 		    plink --file ${CURDIR}/input_plink --r2 --ld-snp ${INV} --ld-window-kb 1000000 --ld-window 999999 --ld-window-r2 0 --noweb --out ${CURDIR}/output_plink
 		done
 	done

@@ -23,7 +23,7 @@
 	bgzip SRR10140423.fastq
 	mv SRR10140423.fastq.gz /run/user/1001/gvfs/sftp:host=crick.uab.cat,user=rgomez/home/rgomez/20200401_RealRecombination/data/raw/avery_fastq
 2020-04-14 Manually copied avery_individuals data.
-2020-04-15: runall.sh all -a hg19 -i data/raw/avery_individuals -s 5: Discarded because .strand files were wrong.
+2020-04-15: runall.sh all -a hg19 -i data/raw/avery_individuals -s 5: DISCARDED because .strand files were wrong.
 2020-04-15: runall.sh all -a hg19 -i data/raw/avery_individuals -s 10: Stopped after `download` and `preprocess` to improve `merge`. 
 2020-04-16: runall.sh merge -s 5 -r data/raw/1000genomes_hg19 -i data/use/avery_individuals: `merge` successfully finished. Ignored results because they are too heavy for git. 
 2020-04-17: Manually copied the results in analysis/2020-04-16_mergePca from Muscul to local.
@@ -62,6 +62,7 @@
 2020-04-29: Manually updated data READMEs
 2020-05-05: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -g analysis/2020-04-26_07_imputationTables/new_genotypes.csv
 2020-05-06: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -g analysis/2020-04-26_07_imputationTables/new_genotypes.csv
-2020-05-11: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 3: SAS population
-2020-05-12: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 5: other populations
-2020-05-13: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 7: ALL population
+2020-05-11: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 3: SAS population. DISCARDED because there were evident errors in such big files.
+2020-05-12: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 5: other populations. DISCARDED because there were evident errors in such big files.
+2020-05-13: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 7: ALL population. DISCARDED because there were evident errors in such big files.
+2020-05-17: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 10
