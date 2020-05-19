@@ -1,0 +1,151 @@
+---
+title: "Tag SNPs check"
+author: "Ruth Gómez Graciani"
+date: "19/05/2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+
+El objetivo de esta parte del análisis es proporcionar otra capa de información que valide la fiabilidad de la imputación mediante IMPUTE2. Hasta ahora, a la hora de hacer análisis estadísticos preliminares, se filtrado los resultados de IMPUTE2 según su uniformidad, calidad e imputabilidad: solo aquellos genotipos de inversiones reportadas como imputables o con tag SNPs y que tienen buena uniformidad y una calidad >80% en al menos la imputación usando su propia población eran tomados por buenos.
+
+Sin embargo, algunos de los tag SNPs podrían no estar presentes en las nuevas muestras (tal como hemos visto para la inversión 58) o no corresponderse con los genotipos que se les asignan, así que he mirado con plink el desequilibrio de ligamiento (LD) entre las inversiones y los SNPs con los que supuestamente tienen >60% LD, utilizando los 20 individuos de Bell et al. 2019 junto con los de los de 1000 genomas. Esto se ha hecho tanto en conjunto como separando por poblaciones (AFR, EAS y EUR, para SAS no había datos anteriores con los que comparar). Sólo se han comprobado mediante este método los genotipos buenos según los criterios del párrafo anterior, ya que son los que podrían verse afectados por estos resultados, pero el procedimiento está automatizado y se puede repetir el para otros grupos de genotipos.
+
+ > Primero probé de calcular el LD de las inversiones con cualquier SNP de sus correspondientes cromosomas, pero salían errores, eran archivos pesados y por tanto lentos de manejar, y estaba perdiendo mucho tiempo con esto.
+
+A continuación se han comparado estos nuevos resultados (disponibles en analysis/2020-05-17_08_tagsnps) con el anterior (data/raw/inversions_info/TagVs_INVs_v4.7), y se han clasificado las inversiones según lo que ha pasado al incorporar estos nuevos 20 individuos. 
+
+```{r joinTables, include=FALSE}
+
+setwd("../20200401_RealRecombination/")
+
+EUR<-read.table("analysis/2020-05-17_08_tagsnps/EUR_output_plink.ld", header = TRUE)
+colnames(EUR)[colnames(EUR)==  "R2"]<-"EUR"
+
+EAS<-read.table("analysis/2020-05-17_08_tagsnps/EAS_output_plink.ld", header = TRUE)
+colnames(EAS)[colnames(EAS)==  "R2"]<-"EAS"
+
+SAS<-read.table("analysis/2020-05-17_08_tagsnps/SAS_output_plink.ld", header = TRUE)
+colnames(SAS)[colnames(SAS)==  "R2"]<-"SAS"
+
+AFR<-read.table("analysis/2020-05-17_08_tagsnps/AFR_output_plink.ld", header = TRUE)
+colnames(AFR)[colnames(AFR)==  "R2"]<-"AFR"
+
+ALL<-read.table("analysis/2020-05-17_08_tagsnps/ALL_output_plink.ld", header = TRUE)
+colnames(ALL)[colnames(ALL)==  "R2"]<-"ALL"
+
+test<-merge(merge(merge(merge(EUR, EAS, all=TRUE), AFR, all=TRUE), SAS, all=TRUE), ALL, all=TRUE)
+test<-test[,c("SNP_A","CHR_A", "BP_B", "SNP_B", "ALL", "EUR", "AFR", "EAS", "SAS" )]
+test$CHR_A<-paste0("chr", test$CHR_A)
+colnames(test)<-c("Inv", "chr", "Pos", "SNP", "GLB", "EUR", "AFR", "EAS", "SAS" )
+
+test_molten<-reshape2::melt(test, id.vars=c("Inv", "chr", "Pos", "SNP"))
+colnames(test_molten)[colnames(test_molten)== "value"]<-"value_new"
+
+tags<-read.table("data/raw/inversions_info/TagVs_INVs_v4.7",header=TRUE)
+tags<-tags[,c("Inv", "chr", "Pos", "SNP", "GLB", "EUR", "AFR", "EAS" )]
+tags_molten<-reshape2::melt(tags, id.vars=c("Inv", "chr", "Pos", "SNP"))
+tags_molten[tags_molten$value == "NP", "value"]<-NA
+tags_molten[tags_molten$value == "<0.6" & !is.na(tags_molten$value), "value"]<-"0.599"
+tags_molten$value<-as.numeric(tags_molten$value)
+
+compare<-merge(tags_molten, test_molten, all.x=TRUE)
+
+```
+
+Para esta clasificación es necesario establecer cual es el LD mínimo que debe tener un tag SNP con la inversión (límite a), y el porcentaje que concedemos de intervalo de confianza a cada lado para considerar que el resultado nuevo y el anterior son equivalentes (límite b).
+
+```{r setLimits, include=FALSE}
+a<-0.8
+b<-0.05
+```
+
+Una vez establecidos ambos límites, para cada población e inversión se filtran los SNPs del archivo original con LD>= a y se clasifican según el resultado como:
+
+* Iguales: los valores de ambos archivos son exactamente los mismos.
+* Similares: el nuevo valor es >= a y equivalente al valor original ± b.
+* Cambiados: el nuevo valor es >= a pero no entra dentro del intervalo de confianza concedido.
+* Perdidos: el nuevo valor es < a.
+* NA: no hay nuevo valor.
+
+Además, se hace una búsqueda adicional para establecer otra categoría de Ganados, en la que el valor original era < a y el nuevo valor es >= a.
+
+```{r classifyComparison, include=FALSE}
+
+compare$result<-NA
+compare$tag<-0
+compare$value_new<-round(compare$value_new,3)
+compare<-compare[!is.na(compare$value),]
+compare[compare$value>=a,"tag"]<-1
+
+
+compare[compare$tag ==1 & !is.na(compare$value_new)  &
+        (compare$value+b >= compare$value_new & compare$value-b <= compare$value_new),"result"]<-"similar"
+
+compare[compare$tag ==1 & !is.na(compare$value_new)  &
+        (compare$value == compare$value_new),"result"]<-"equal"
+
+compare[compare$tag ==1 & !is.na(compare$value_new)  & 
+        is.na(compare$result),"result"]<-"changed"
+
+compare[compare$tag ==1 & !is.na(compare$value_new)  & 
+        compare$value_new<a,"result"]<-"lost"
+
+compare[compare$tag ==1 & is.na(compare$value_new) ,"result"]<-"NA"
+
+compare[compare$tag ==0 & !is.na(compare$value_new) &
+          compare$value_new>=a,"result"]<-"new"
+
+
+
+```
+
+A la hora de utilizar esta información, lo más sencillo sería decidir cuáles de estas categorías validan la imputación y cuáles la ponen en duda, dependiendo de lo estricto que se quiera ser. Por ejemplo, se podría considerar que aquellas inversiones donde >90% de los SNPs considerados entran en la categoría de Iguales, Ganados y Similares se han imputado con suficiente fiabilidad. Nótese que se toma como valor total aquellos SNPs que originalmente tenían un LD >= a y por tanto si además de salir todos iguales hay alguno ganado, el valor que mide su fiabilidad sería superior al 100%.
+
+
+```{r setup, include=FALSE}
+
+summary<-data.frame(expand.grid( unique(compare$Inv), unique(compare$variable)))
+colnames(summary)<-c("Inv", "Pop")
+summary$Good<-summary$Bad<-summary$Missing<-summary$Total<-NA
+
+for (i in c(1:nrow(summary))){
+  inv<-summary[i,"Inv"]
+  pop<-summary[i,"Pop"]
+
+  tmp<-compare[compare$Inv == inv & compare$variable == pop,]  
+  summary[i,"Total"]<-sum(tmp$tag)
+  summary[i,"Good"]<-nrow(tmp[tmp$result %in% c("equal", "similar", "changed", "new"), ])
+  summary[i,"Bad"]<-nrow(tmp[tmp$result %in% c("lost"), ])
+  summary[i,"Missing"]<-nrow(tmp[tmp$result %in% c("NA"),] )
+  summary[i, "check"]<-sum(summary[i,"Good"],summary[i,"Bad"], summary[i,"Missing"])
+}
+
+summary<-summary[(summary$Total != 0) | (summary$Total == 0 & summary$check > 0),]
+summary$good_p<-summary$Good/summary$Total
+summary[summary$Total != summary$check & summary$Total == 0, "good_p"]<-1
+summary$bad_p<-summary$Bad/summary$Total
+summary$miss_p<-summary$Missing/summary$Total
+
+# Guardar la tabla: 
+write.csv(summary[, c("Inv", "Pop", "good_p", "bad_p", "miss_p", "max")], "report/2020-05-19_tagSNPsCheck_preliminary/tagSNP_summaryTable.csv")
+```
+
+Esta serie de clasificaciones y filtros nos permite saber cómo de fiable es la información sobre la imputabilidad de las inversiones. En la siguiente figura se puede ver cómo los tagSNPs globales y europeos han ido peor que los africanos y asiáticos. 
+
+```{r setup, include=FALSE}
+
+summary$max<-colnames(summary[,c("good_p", "bad_p", "miss_p")])[max.col(summary[,c("good_p", "bad_p", "miss_p")],ties.method="first")]
+
+plot<-ggplot(summary)+geom_bar(aes(max))+facet_grid(Pop~.)
+
+plot
+
+png("report/2020-05-19_tagSNPsCheck_preliminary/tagSNP_summaryPlot.png")
+plot
+dev.off()
+
+```
+
+Esto se debe principalmente al tamaño de nuestras muestras (hay 12 individuos europeos vs. 2 o 3 africanos y 3 asiáticos del este) y a problemas de coverage. Cuanto mayor es el tamaño de muestra, mayor es la probabilidad de que alguno de los individuos no tenga presente el SNP que se está examinando o presente algún cambio respecto a los 1000 genomas. Seguramente estos resultados pueden mejorarse revisando la gestión que hace `plink` de los SNPs que no encuentra en algún individuo, pero ya de entrada nos dan una pista de qué inversiones es muy recomendable revisar cuidadosamente en otros pasos del análisis. 
