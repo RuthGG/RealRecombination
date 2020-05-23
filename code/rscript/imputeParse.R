@@ -12,9 +12,9 @@
 args = commandArgs(trailingOnly=TRUE)
 
 # # Test if there is at least one argument: if not, return an error
-# if (length(args)<3) {
-#   stop("One input file, one population file for the references and one output file must be provided.", call.=FALSE)
-# }
+if (length(args)<4) {
+  stop("Not enough input files.", call.=FALSE)
+}
 
 # Example
 # args[1]<-"analysis/2020-04-22_06_imputation/" # Directory with imputation results in .vcf
