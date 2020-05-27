@@ -1,0 +1,6 @@
+runall.sh: line 574: 08: value too great for base (error token is "08")
+01:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-22_08_tagsnps/invlist_part/invlist01 tmp/2020-05-22_08_tagsnps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes.csv tmp/2020-05-22_08_tagsnps/tagsnpsProcess
+There is a screen on:
+	26734.tagsnp_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+

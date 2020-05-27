@@ -160,7 +160,7 @@
         echo "## Take inversion genotypes for common individuals ######################"
 
         # Genotypes in STD|INV
-        GENOTYPES_SI=$(for SAMPLE in $SAMPLES_REF; do grep $SAMPLE ${CURDIR}/genotypes_file.txt | cut -f2; done)
+        GENOTYPES_SI=$(for SAMPLE in $SAMPLES_REF; do grep "${SAMPLE}\s" ${CURDIR}/genotypes_file.txt | cut -f2; done)
 
         # Genotypes in 0|1
         GENOTYPES_01=$(echo $GENOTYPES_SI | sed 's/STD/0\|0/gI' | sed 's/INV/1\|1/gI'| sed 's/HET/0\|1/gI')

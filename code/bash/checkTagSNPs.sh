@@ -87,6 +87,7 @@
 
         # Get inversion genotypes 
         INV_COLUMN=$(head -1 $INVGENO | tr "\t" "\n" | cat -n | grep $INV | cut -f1 | tr -d " ")
+        cut -f1,$INV_COLUMN $INVGENO | tail -n+2  >  ${CURDIR}/genotypes_file_part.txt
         cut -f1,$INV_COLUMN $INVGENO | tail -n+2 | awk '$2!="NA"'  | awk '$2!="ND"' | awk '$2!="Del"' | awk '$2!="."'  >  ${CURDIR}/genotypes_file.txt
        
       # INPUT FILE
@@ -114,7 +115,7 @@
       
       	# Combine
         SAMPLES_REF=$(echo $SAMPLES_INV $SAMPLES_IN | tr " " "\n" | sort | uniq -d)
-
+        
         # INPUT FILE - create input VCF
         # ------------------------------------------------------------------------- #
         echo "## Create input VCF #####################################################"
@@ -136,15 +137,15 @@
         echo "## Take inversion genotypes for common individuals ######################"
 
         # Genotypes in STD|INV
-        GENOTYPES_SI=$(for SAMPLE in $SAMPLES_REF; do grep $SAMPLE ${CURDIR}/genotypes_file.txt | cut -f2; done)
+        GENOTYPES_SI=$(for SAMPLE in $SAMPLES_REF; do grep "${SAMPLE}\s" ${CURDIR}/genotypes_file.txt | cut -f2; done)
 
         # Genotypes in 0|1
         GENOTYPES_01=$(echo $GENOTYPES_SI | sed 's/STD/0\|0/gI' | sed 's/INV/1\|1/gI'| sed 's/HET/0\|1/gI')
 
         # Create VCF line
         echo -e "${CHR_NUM}\t${POS}\t${INV}\tA\tT\t.\tPASS\t\tGT\t$(echo ${GENOTYPES_01} | tr ' ' '\t')" > ${CURDIR}/inversions.vcf
-
-        rm ${CURDIR}/genotypes_file.txt
+        echo $SAMPLES_REF "\n" $GENOTYPES_SI "\n" $GENOTYPES_01 > ${CURDIR}/TEST3.txt 
+        # rm ${CURDIR}/genotypes_file.txt
 
         # REFERENCE FILE - add inversion genotypes to 1000 KGP VCF
         # ------------------------------------------------------------------------- #
@@ -156,7 +157,7 @@
         # Sort to put inversion in place
         bcftools sort ${CURDIR}/input_unsorted.vcf -Ov -o ${CURDIR}/input_sorted.vcf
 
-        rm ${CURDIR}/input_unsorted.vcf ${CURDIR}/inversions.vcf ${CURDIR}/haplotypes.vcf
+        # rm ${CURDIR}/input_unsorted.vcf ${CURDIR}/inversions.vcf ${CURDIR}/haplotypes.vcf
 
       # PLINK FORMAT
       # Change input to Plink format
@@ -166,7 +167,7 @@
 
 
         vcftools --vcf ${CURDIR}/input_sorted.vcf --plink --chr ${CHR_NUM} --out ${CURDIR}/input_plink
-        rm ${CURDIR}/input_sorted.vcf
+        # rm ${CURDIR}/input_sorted.vcf
 
 		    plink --file ${CURDIR}/input_plink --r2 --ld-snp ${INV} --ld-window-kb 1000000 --ld-window 999999 --ld-window-r2 0 --noweb --out ${CURDIR}/output_plink
 		done

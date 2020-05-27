@@ -20,19 +20,19 @@ A continuación se han comparado estos nuevos resultados (disponibles en analysi
 
 setwd("../20200401_RealRecombination/")
 
-EUR<-read.table("analysis/2020-05-17_08_tagsnps/EUR_output_plink.ld", header = TRUE)
+EUR<-read.table("analysis/2020-05-23_08_tagsnps/EUR_output_plink.ld", header = TRUE)
 colnames(EUR)[colnames(EUR)==  "R2"]<-"EUR"
 
-EAS<-read.table("analysis/2020-05-17_08_tagsnps/EAS_output_plink.ld", header = TRUE)
+EAS<-read.table("analysis/2020-05-23_08_tagsnps/EAS_output_plink.ld", header = TRUE)
 colnames(EAS)[colnames(EAS)==  "R2"]<-"EAS"
 
-SAS<-read.table("analysis/2020-05-17_08_tagsnps/SAS_output_plink.ld", header = TRUE)
+SAS<-read.table("analysis/2020-05-23_08_tagsnps/SAS_output_plink.ld", header = TRUE)
 colnames(SAS)[colnames(SAS)==  "R2"]<-"SAS"
 
-AFR<-read.table("analysis/2020-05-17_08_tagsnps/AFR_output_plink.ld", header = TRUE)
+AFR<-read.table("analysis/2020-05-23_08_tagsnps/AFR_output_plink.ld", header = TRUE)
 colnames(AFR)[colnames(AFR)==  "R2"]<-"AFR"
 
-ALL<-read.table("analysis/2020-05-17_08_tagsnps/ALL_output_plink.ld", header = TRUE)
+ALL<-read.table("analysis/2020-05-23_08_tagsnps/ALL_output_plink.ld", header = TRUE)
 colnames(ALL)[colnames(ALL)==  "R2"]<-"ALL"
 
 test<-merge(merge(merge(merge(EUR, EAS, all=TRUE), AFR, all=TRUE), SAS, all=TRUE), ALL, all=TRUE)
@@ -128,8 +128,10 @@ summary[summary$Total != summary$check & summary$Total == 0, "good_p"]<-1
 summary$bad_p<-summary$Bad/summary$Total
 summary$miss_p<-summary$Missing/summary$Total
 
+summary$max<-colnames(summary[,c("good_p", "bad_p", "miss_p")])[max.col(summary[,c("good_p", "bad_p", "miss_p")],ties.method="first")]
+
 # Guardar la tabla: 
-write.csv(summary[, c("Inv", "Pop", "good_p", "bad_p", "miss_p", "max")], "report/2020-05-19_tagSNPsCheck_preliminary/tagSNP_summaryTable.csv")
+write.csv(summary[, c("Inv","Pop","Total","Missing","Bad","Good","good_p","bad_p","miss_p" , "max")], "report/2020-05-19_tagSNPsCheck_preliminary/tagSNP_summaryTable.csv")
 ```
 
 Esta serie de clasificaciones y filtros nos permite saber cómo de fiable es la información sobre la imputabilidad de las inversiones. En la siguiente figura se puede ver cómo los tagSNPs globales y europeos han ido peor que los africanos y asiáticos. 

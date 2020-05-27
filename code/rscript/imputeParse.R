@@ -59,7 +59,7 @@ lapply(packages,FUN = function(x) {
   
     vcf<-table[,c(3,10:length(table))]
     
-    vcf_melted<-melt(vcf, id.vars = "ID")
+    vcf_melted<-reshape2::melt(vcf, id.vars = "ID")
     
     vcf_melted$Inversion<-str_split_fixed(vcf_melted$ID, ";", 2)[,1]
     vcf_melted<-cbind(vcf_melted[,c("Inversion", "variable")], str_split_fixed(vcf_melted$value, ":", 2), stringsAsFactors=FALSE)
@@ -154,7 +154,7 @@ lapply(packages,FUN = function(x) {
 # --------------------------------------------------------------------------- #   
 
   sheet1<-all_3c[order(all_3c$GLB, all_3c$Individual),c("Inversion","Individual","Population","Genotype_con","Probability_con","Genotype_100","Probability_100","Genotype_250","Probability_250","Genotype_500","Probability_500","GLB","AFR","EUR","Uniformity","Quality")]  
-  write.csv(sheet1, paste0(args[4],"/imputationResults.csv"))
+  write.csv(sheet1, paste0(args[4],"/imputationResults.csv"), row.names = FALSE)
 
 # OUTPUT SPREADSHEET - Sheet 2: Summary by inversion
 # --------------------------------------------------------------------------- #   
@@ -224,7 +224,7 @@ lapply(packages,FUN = function(x) {
   }
   
   sheet2<-summarize(all_3c)
-  write.csv(sheet2,   paste0(args[4],"/summaryByInversion.csv")) 
+  write.csv(sheet2,   paste0(args[4],"/summaryByInversion.csv"), row.names = FALSE) 
 
 # OUTPUT GENOTYPES FILE
 # Automatically selected genotypes that can be considered good quality
@@ -253,9 +253,19 @@ lapply(packages,FUN = function(x) {
     part[is.na(part$accepted) & part$Uniformity == "good" & part$Quality == "alert" & 
            part$Probability_con > 0.8  &  !is.na(part$Probability_con ), "accepted" ]<-"yes"
     
+    # Accepted case 3: FOR LESS STRICT FILTERING - all with good uniformity
+    part[is.na(part$accepted) & part$Uniformity == "good" , "accepted" ]<-"yes"
+    
+    # Accepted case 4: FOR LESS STRICT FILTERING - bad uniformity but good probability in population-specific
+    part[is.na(part$accepted) & part$Uniformity != "good" & 
+           part$Probability_con > 0.8  & !is.na(part$Probability_con), "accepted"]<-"pop"
+    
     # Transform to genotypes table
-    p<-part[!is.na(part$accepted),c("Inversion", "Individual", "Genotype_100")]
-    w<-dcast(p, Individual ~ Inversion)
+    p1<-part[part$accepted %in% c("yes"),c("Inversion", "Individual", "Genotype_100")]
+    p2<-part[part$accepted %in% c("pop"),c("Inversion", "Individual", "Genotype_con")]
+    colnames(p1)<-colnames(p2)
+    p<-rbind(p1,p2 )
+    w<-reshape2::dcast(p, Individual ~ Inversion)
     
     return(w)
   }

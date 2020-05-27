@@ -1,0 +1,22 @@
+runall.sh: line 574: 08: value too great for base (error token is "08")
+01:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-23_08_tagsnps/invlist_part/invlist01 tmp/2020-05-23_08_tagsnps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes_lessStrict.csv tmp/2020-05-23_08_tagsnps/tagsnpsProcess
+02:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-23_08_tagsnps/invlist_part/invlist02 tmp/2020-05-23_08_tagsnps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes_lessStrict.csv tmp/2020-05-23_08_tagsnps/tagsnpsProcess
+03:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-23_08_tagsnps/invlist_part/invlist03 tmp/2020-05-23_08_tagsnps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes_lessStrict.csv tmp/2020-05-23_08_tagsnps/tagsnpsProcess
+04:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-23_08_tagsnps/invlist_part/invlist04 tmp/2020-05-23_08_tagsnps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes_lessStrict.csv tmp/2020-05-23_08_tagsnps/tagsnpsProcess
+05:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-23_08_tagsnps/invlist_part/invlist05 tmp/2020-05-23_08_tagsnps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes_lessStrict.csv tmp/2020-05-23_08_tagsnps/tagsnpsProcess
+06:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-23_08_tagsnps/invlist_part/invlist06 tmp/2020-05-23_08_tagsnps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes_lessStrict.csv tmp/2020-05-23_08_tagsnps/tagsnpsProcess
+07:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-23_08_tagsnps/invlist_part/invlist07 tmp/2020-05-23_08_tagsnps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes_lessStrict.csv tmp/2020-05-23_08_tagsnps/tagsnpsProcess
+08:sh code/bash/checkTagSNPs.sh data/use/conditions/populationToTag.txt tmp/2020-05-23_08_tagsnps/invlist_part/invlist08 tmp/2020-05-23_08_tagsnps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all+new_genotypes_lessStrict.csv tmp/2020-05-23_08_tagsnps/tagsnpsProcess
+There are screens on:
+	6262.tagsnp_08	(Detached)
+	2428.tagsnp_07	(Detached)
+	30790.tagsnp_06	(Detached)
+	27463.tagsnp_05	(Detached)
+	24546.tagsnp_04	(Detached)
+	23331.tagsnp_03	(Detached)
+	22411.tagsnp_02	(Detached)
+	22398.tagsnp_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+tail: cannot open ‘tmp/2020-05-23_08_tagsnps/tagsnpsProcess/ALL/HsInv0389/output_plink.ld’ for reading: No such file or directory
+tail: cannot open ‘tmp/2020-05-23_08_tagsnps/tagsnpsProcess/EAS/HsInv0389/output_plink.ld’ for reading: No such file or directory

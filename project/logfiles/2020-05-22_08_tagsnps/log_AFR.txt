@@ -1,0 +1,776 @@
+-------------------------------------------------------------------------
+HsInv0340
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.pJu4oh
+Merging 1 temporary files
+Cleaning
+Done
+## 3 PLINK FORMAT: change imput to Plink format ###################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_sorted.vcf
+	--chr 13
+	--out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+	--plink
+
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=culprit,Number=1,Type=String,Description="The annotation which was the worst performing in the Gaussian mixture model, likely the reason why the variant was filtered out">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=SVLEN,Number=.,Type=Integer,Description="SV length. It is only calculated for structural variation MEIs. For other types of SVs; one may calculate the SV length by INFO:END-START+1, or by finding the difference between lengthes of REF and ALT alleles">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+After filtering, kept 128 out of 128 Individuals
+Writing PLINK PED and MAP files ... 
+Done.
+After filtering, kept 67 out of a possible 67 Sites
+Run Time = 0.00 seconds
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+  --ld-snp HsInv0340
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Scanning .ped file... 0%1%2%3%3%4%5%6%7%7%8%9%10%10%11%12%13%14%14%15%16%17%17%18%19%20%21%21%22%23%24%25%25%26%27%28%28%29%30%31%32%32%33%34%35%35%36%37%38%39%39%40%41%42%42%43%44%45%46%46%47%48%49%50%50%51%52%53%53%54%55%56%57%57%58%59%60%60%61%62%63%64%64%65%66%67%67%68%69%70%71%71%72%73%74%75%75%76%77%78%78%79%80%81%82%82%83%84%85%85%86%87%88%89%89%90%91%92%92%93%94%95%96%96%97%98%99%100%.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (67 variants, 128 people).
+0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%--file:
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bed
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bim
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.fam
+written.
+67 variants loaded from .bim file.
+128 people (0 males, 0 females, 128 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.nosex .
+Using up to 15 threads (change this with --threads).
+Before main variant filters, 128 founders and 0 nonfounders present.
+Calculating allele frequencies... 0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99% done.
+67 variants and 128 people pass filters and QC.
+Note: No phenotypes present.
+--r2 to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.ld
+... 0% [processing]writing]             done.
+-------------------------------------------------------------------------
+HsInv0340
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.ive1aw
+Merging 1 temporary files
+Cleaning
+Done
+## 3 PLINK FORMAT: change imput to Plink format ###################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_sorted.vcf
+	--chr 13
+	--out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+	--plink
+
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=culprit,Number=1,Type=String,Description="The annotation which was the worst performing in the Gaussian mixture model, likely the reason why the variant was filtered out">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=SVLEN,Number=.,Type=Integer,Description="SV length. It is only calculated for structural variation MEIs. For other types of SVs; one may calculate the SV length by INFO:END-START+1, or by finding the difference between lengthes of REF and ALT alleles">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+After filtering, kept 128 out of 128 Individuals
+Writing PLINK PED and MAP files ... 
+Done.
+After filtering, kept 67 out of a possible 67 Sites
+Run Time = 0.00 seconds
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+  --ld-snp HsInv0340
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Scanning .ped file... 0%1%2%3%3%4%5%6%7%7%8%9%10%10%11%12%13%14%14%15%16%17%17%18%19%20%21%21%22%23%24%25%25%26%27%28%28%29%30%31%32%32%33%34%35%35%36%37%38%39%39%40%41%42%42%43%44%45%46%46%47%48%49%50%50%51%52%53%53%54%55%56%57%57%58%59%60%60%61%62%63%64%64%65%66%67%67%68%69%70%71%71%72%73%74%75%75%76%77%78%78%79%80%81%82%82%83%84%85%85%86%87%88%89%89%90%91%92%92%93%94%95%96%96%97%98%99%100%.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (67 variants, 128 people).
+0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%--file:
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bed
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bim
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.fam
+written.
+67 variants loaded from .bim file.
+128 people (0 males, 0 females, 128 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.nosex .
+Using up to 15 threads (change this with --threads).
+Before main variant filters, 128 founders and 0 nonfounders present.
+Calculating allele frequencies... 0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99% done.
+67 variants and 128 people pass filters and QC.
+Note: No phenotypes present.
+--r2 to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.ld
+... 0% [processing]writing]             done.
+-------------------------------------------------------------------------
+HsInv0340
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.UEkiVF
+Merging 1 temporary files
+Cleaning
+Done
+## 3 PLINK FORMAT: change imput to Plink format ###################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_sorted.vcf
+	--chr 13
+	--out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+	--plink
+
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=culprit,Number=1,Type=String,Description="The annotation which was the worst performing in the Gaussian mixture model, likely the reason why the variant was filtered out">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=SVLEN,Number=.,Type=Integer,Description="SV length. It is only calculated for structural variation MEIs. For other types of SVs; one may calculate the SV length by INFO:END-START+1, or by finding the difference between lengthes of REF and ALT alleles">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+After filtering, kept 128 out of 128 Individuals
+Writing PLINK PED and MAP files ... 
+Done.
+After filtering, kept 67 out of a possible 67 Sites
+Run Time = 0.00 seconds
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+  --ld-snp HsInv0340
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Scanning .ped file... 0%1%2%3%3%4%5%6%7%7%8%9%10%10%11%12%13%14%14%15%16%17%17%18%19%20%21%21%22%23%24%25%25%26%27%28%28%29%30%31%32%32%33%34%35%35%36%37%38%39%39%40%41%42%42%43%44%45%46%46%47%48%49%50%50%51%52%53%53%54%55%56%57%57%58%59%60%60%61%62%63%64%64%65%66%67%67%68%69%70%71%71%72%73%74%75%75%76%77%78%78%79%80%81%82%82%83%84%85%85%86%87%88%89%89%90%91%92%92%93%94%95%96%96%97%98%99%100%.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (67 variants, 128 people).
+0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%--file:
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bed
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bim
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.fam
+written.
+67 variants loaded from .bim file.
+128 people (0 males, 0 females, 128 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.nosex .
+Using up to 15 threads (change this with --threads).
+Before main variant filters, 128 founders and 0 nonfounders present.
+Calculating allele frequencies... 0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99% done.
+67 variants and 128 people pass filters and QC.
+Note: No phenotypes present.
+--r2 to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.ld
+... 0% [processing]writing]             done.
+-------------------------------------------------------------------------
+HsInv0340
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.csyTYX
+Merging 1 temporary files
+Cleaning
+Done
+## 3 PLINK FORMAT: change imput to Plink format ###################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_sorted.vcf
+	--chr 13
+	--out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+	--plink
+
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=culprit,Number=1,Type=String,Description="The annotation which was the worst performing in the Gaussian mixture model, likely the reason why the variant was filtered out">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=SVLEN,Number=.,Type=Integer,Description="SV length. It is only calculated for structural variation MEIs. For other types of SVs; one may calculate the SV length by INFO:END-START+1, or by finding the difference between lengthes of REF and ALT alleles">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+After filtering, kept 128 out of 128 Individuals
+Writing PLINK PED and MAP files ... 
+Done.
+After filtering, kept 67 out of a possible 67 Sites
+Run Time = 1.00 seconds
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+  --ld-snp HsInv0340
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Scanning .ped file... 0%1%2%3%3%4%5%6%7%7%8%9%10%10%11%12%13%14%14%15%16%17%17%18%19%20%21%21%22%23%24%25%25%26%27%28%28%29%30%31%32%32%33%34%35%35%36%37%38%39%39%40%41%42%42%43%44%45%46%46%47%48%49%50%50%51%52%53%53%54%55%56%57%57%58%59%60%60%61%62%63%64%64%65%66%67%67%68%69%70%71%71%72%73%74%75%75%76%77%78%78%79%80%81%82%82%83%84%85%85%86%87%88%89%89%90%91%92%92%93%94%95%96%96%97%98%99%100%.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (67 variants, 128 people).
+0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%--file:
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bed
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bim
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.fam
+written.
+67 variants loaded from .bim file.
+128 people (0 males, 0 females, 128 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.nosex .
+Using up to 15 threads (change this with --threads).
+Before main variant filters, 128 founders and 0 nonfounders present.
+Calculating allele frequencies... 0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99% done.
+67 variants and 128 people pass filters and QC.
+Note: No phenotypes present.
+--r2 to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.ld
+... 0% [processing]writing]             done.
+-------------------------------------------------------------------------
+HsInv0340
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.05s8Z4
+Merging 1 temporary files
+Cleaning
+Done
+## 3 PLINK FORMAT: change imput to Plink format ###################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_sorted.vcf
+	--chr 13
+	--out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+	--plink
+
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=culprit,Number=1,Type=String,Description="The annotation which was the worst performing in the Gaussian mixture model, likely the reason why the variant was filtered out">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=SVLEN,Number=.,Type=Integer,Description="SV length. It is only calculated for structural variation MEIs. For other types of SVs; one may calculate the SV length by INFO:END-START+1, or by finding the difference between lengthes of REF and ALT alleles">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+After filtering, kept 128 out of 128 Individuals
+Writing PLINK PED and MAP files ... 
+Done.
+After filtering, kept 67 out of a possible 67 Sites
+Run Time = 0.00 seconds
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+  --ld-snp HsInv0340
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Scanning .ped file... 0%1%2%3%3%4%5%6%7%7%8%9%10%10%11%12%13%14%14%15%16%17%17%18%19%20%21%21%22%23%24%25%25%26%27%28%28%29%30%31%32%32%33%34%35%35%36%37%38%39%39%40%41%42%42%43%44%45%46%46%47%48%49%50%50%51%52%53%53%54%55%56%57%57%58%59%60%60%61%62%63%64%64%65%66%67%67%68%69%70%71%71%72%73%74%75%75%76%77%78%78%79%80%81%82%82%83%84%85%85%86%87%88%89%89%90%91%92%92%93%94%95%96%96%97%98%99%100%.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (67 variants, 128 people).
+0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%--file:
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bed
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bim
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.fam
+written.
+67 variants loaded from .bim file.
+128 people (0 males, 0 females, 128 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.nosex .
+Using up to 15 threads (change this with --threads).
+Before main variant filters, 128 founders and 0 nonfounders present.
+Calculating allele frequencies... 0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99% done.
+67 variants and 128 people pass filters and QC.
+Note: No phenotypes present.
+--r2 to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.ld
+... 0% [processing]writing]             done.
+-------------------------------------------------------------------------
+HsInv0340
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.CDA0x2
+Merging 1 temporary files
+Cleaning
+Done
+## 3 PLINK FORMAT: change imput to Plink format ###################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_sorted.vcf
+	--chr 13
+	--out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+	--plink
+
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=culprit,Number=1,Type=String,Description="The annotation which was the worst performing in the Gaussian mixture model, likely the reason why the variant was filtered out">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=SVLEN,Number=.,Type=Integer,Description="SV length. It is only calculated for structural variation MEIs. For other types of SVs; one may calculate the SV length by INFO:END-START+1, or by finding the difference between lengthes of REF and ALT alleles">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+After filtering, kept 128 out of 128 Individuals
+Writing PLINK PED and MAP files ... 
+Done.
+After filtering, kept 67 out of a possible 67 Sites
+Run Time = 0.00 seconds
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+  --ld-snp HsInv0340
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Scanning .ped file... 0%1%2%3%3%4%5%6%7%7%8%9%10%10%11%12%13%14%14%15%16%17%17%18%19%20%21%21%22%23%24%25%25%26%27%28%28%29%30%31%32%32%33%34%35%35%36%37%38%39%39%40%41%42%42%43%44%45%46%46%47%48%49%50%50%51%52%53%53%54%55%56%57%57%58%59%60%60%61%62%63%64%64%65%66%67%67%68%69%70%71%71%72%73%74%75%75%76%77%78%78%79%80%81%82%82%83%84%85%85%86%87%88%89%89%90%91%92%92%93%94%95%96%96%97%98%99%100%.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (67 variants, 128 people).
+0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%--file:
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bed
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bim
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.fam
+written.
+67 variants loaded from .bim file.
+128 people (0 males, 0 females, 128 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.nosex .
+Using up to 15 threads (change this with --threads).
+Before main variant filters, 128 founders and 0 nonfounders present.
+Calculating allele frequencies... 0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99% done.
+67 variants and 128 people pass filters and QC.
+Note: No phenotypes present.
+--r2 to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.ld
+... 0% [processing]writing]             done.
+-------------------------------------------------------------------------
+HsInv0340
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.wFzhe9
+Merging 1 temporary files
+Cleaning
+Done
+## 3 PLINK FORMAT: change imput to Plink format ###################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_sorted.vcf
+	--chr 13
+	--out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+	--plink
+
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=culprit,Number=1,Type=String,Description="The annotation which was the worst performing in the Gaussian mixture model, likely the reason why the variant was filtered out">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=SVLEN,Number=.,Type=Integer,Description="SV length. It is only calculated for structural variation MEIs. For other types of SVs; one may calculate the SV length by INFO:END-START+1, or by finding the difference between lengthes of REF and ALT alleles">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+After filtering, kept 128 out of 128 Individuals
+Writing PLINK PED and MAP files ... 
+Done.
+After filtering, kept 67 out of a possible 67 Sites
+Run Time = 0.00 seconds
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+  --ld-snp HsInv0340
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Scanning .ped file... 0%1%2%3%3%4%5%6%7%7%8%9%10%10%11%12%13%14%14%15%16%17%17%18%19%20%21%21%22%23%24%25%25%26%27%28%28%29%30%31%32%32%33%34%35%35%36%37%38%39%39%40%41%42%42%43%44%45%46%46%47%48%49%50%50%51%52%53%53%54%55%56%57%57%58%59%60%60%61%62%63%64%64%65%66%67%67%68%69%70%71%71%72%73%74%75%75%76%77%78%78%79%80%81%82%82%83%84%85%85%86%87%88%89%89%90%91%92%92%93%94%95%96%96%97%98%99%100%.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (67 variants, 128 people).
+0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%--file:
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bed
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bim
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.fam
+written.
+67 variants loaded from .bim file.
+128 people (0 males, 0 females, 128 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.nosex .
+Using up to 15 threads (change this with --threads).
+Before main variant filters, 128 founders and 0 nonfounders present.
+Calculating allele frequencies... 0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99% done.
+67 variants and 128 people pass filters and QC.
+Note: No phenotypes present.
+--r2 to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.ld
+... 0% [processing]writing]             done.
+-------------------------------------------------------------------------
+HsInv0340
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ############
+## 2 INPUT FILE: individuals (samples), in population of interest #######
+## Common individuals (samples), in population of interest ##############
+## Create input VCF #####################################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.JQT33o
+Merging 1 temporary files
+Cleaning
+Done
+## 3 PLINK FORMAT: change imput to Plink format ###################
+
+VCFtools - 0.1.16
+(C) Adam Auton and Anthony Marcketta 2009
+
+Parameters as interpreted:
+	--vcf tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_sorted.vcf
+	--chr 13
+	--out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+	--plink
+
+Warning: Expected at least 2 parts in FORMAT entry: ID=PGT,Number=1,Type=String,Description="Physical phasing haplotype information, describing how the alternate alleles are phased in relation to one another">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PID,Number=1,Type=String,Description="Physical phasing ID information, where each unique ID within a given sample (but not across samples) connects records within a phasing group">
+Warning: Expected at least 2 parts in FORMAT entry: ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+Warning: Expected at least 2 parts in FORMAT entry: ID=RGQ,Number=1,Type=Integer,Description="Unconditional reference genotype confidence, encoded as a phred quality -10*log10 p(genotype call is wrong)">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=AF,Number=A,Type=Float,Description="Allele Frequency, for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAC,Number=A,Type=Integer,Description="Maximum likelihood expectation (MLE) for the allele counts (not necessarily the same as the AC), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=MLEAF,Number=A,Type=Float,Description="Maximum likelihood expectation (MLE) for the allele frequency (not necessarily the same as the AF), for each ALT allele, in the same order as listed">
+Warning: Expected at least 2 parts in INFO entry: ID=culprit,Number=1,Type=String,Description="The annotation which was the worst performing in the Gaussian mixture model, likely the reason why the variant was filtered out">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=MEINFO,Number=4,Type=String,Description="Mobile element info of the form NAME,START,END<POLARITY; If there is only 5' OR 3' support for this call, will be NULL NULL for START and END">
+Warning: Expected at least 2 parts in INFO entry: ID=SVLEN,Number=.,Type=Integer,Description="SV length. It is only calculated for structural variation MEIs. For other types of SVs; one may calculate the SV length by INFO:END-START+1, or by finding the difference between lengthes of REF and ALT alleles">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=TSD,Number=1,Type=String,Description="Precise Target Site Duplication for bases, if unknown, value will be NULL">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EAS_AF,Number=A,Type=Float,Description="Allele frequency in the EAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=EUR_AF,Number=A,Type=Float,Description="Allele frequency in the EUR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AFR_AF,Number=A,Type=Float,Description="Allele frequency in the AFR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AMR_AF,Number=A,Type=Float,Description="Allele frequency in the AMR populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=SAS_AF,Number=A,Type=Float,Description="Allele frequency in the SAS populations calculated from AC and AN, in the range (0,1)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+Warning: Expected at least 2 parts in INFO entry: ID=AA,Number=1,Type=String,Description="Ancestral Allele. Format: AA|REF|ALT|IndelType. AA: Ancestral allele, REF:Reference Allele, ALT:Alternate Allele, IndelType:Type of Indel (REF, ALT and IndelType are only defined for indels)">
+After filtering, kept 128 out of 128 Individuals
+Writing PLINK PED and MAP files ... 
+Done.
+After filtering, kept 67 out of a possible 67 Sites
+Run Time = 0.00 seconds
+PLINK v1.90b6.12 64-bit (28 Oct 2019)          www.cog-genomics.org/plink/1.9/
+(C) 2005-2019 Shaun Purcell, Christopher Chang   GNU General Public License v3
+Logging to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.log.
+Options in effect:
+  --file tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/input_plink
+  --ld-snp HsInv0340
+  --ld-window 999999
+  --ld-window-kb 1000000
+  --ld-window-r2 0
+  --noweb
+  --out tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink
+  --r2
+
+Note: --noweb has no effect since no web check is implemented yet.
+96456 MB RAM detected; reserving 48228 MB for main workspace.
+Scanning .ped file... 0%1%2%3%3%4%5%6%7%7%8%9%10%10%11%12%13%14%14%15%16%17%17%18%19%20%21%21%22%23%24%25%25%26%27%28%28%29%30%31%32%32%33%34%35%35%36%37%38%39%39%40%41%42%42%43%44%45%46%46%47%48%49%50%50%51%52%53%53%54%55%56%57%57%58%59%60%60%61%62%63%64%64%65%66%67%67%68%69%70%71%71%72%73%74%75%75%76%77%78%78%79%80%81%82%82%83%84%85%85%86%87%88%89%89%90%91%92%92%93%94%95%96%96%97%98%99%100%.ped scan complete (for binary autoconversion).
+Performing single-pass .bed write (67 variants, 128 people).
+0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%--file:
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bed
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.bim
++
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink-temporary.fam
+written.
+67 variants loaded from .bim file.
+128 people (0 males, 0 females, 128 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.nosex .
+Using up to 15 threads (change this with --threads).
+Before main variant filters, 128 founders and 0 nonfounders present.
+Calculating allele frequencies... 0%1%2%3%4%5%6%7%8%9%10%11%12%13%14%15%16%17%18%19%20%21%22%23%24%25%26%27%28%29%30%31%32%33%34%35%36%37%38%39%40%41%42%43%44%45%46%47%48%49%50%51%52%53%54%55%56%57%58%59%60%61%62%63%64%65%66%67%68%69%70%71%72%73%74%75%76%77%78%79%80%81%82%83%84%85%86%87%88%89%90%91%92%93%94%95%96%97%98%99% done.
+67 variants and 128 people pass filters and QC.
+Note: No phenotypes present.
+--r2 to tmp/2020-05-22_08_tagsnps/tagsnpsProcess/AFR/HsInv0340/output_plink.ld
+... 0% [processing]writing]             done.
