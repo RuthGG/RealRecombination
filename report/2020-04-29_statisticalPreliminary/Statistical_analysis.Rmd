@@ -59,18 +59,24 @@ test<-data.frame(table(croxinv$individual, croxinv$inversio))
 geno<-data.frame(table(croxinv$genotype, croxinv$inversion))
 
 # Chromosome 21 test
-chromosome<-"chr11"
-test2<-crossovers_raw[crossovers_raw$chr == chromosome & crossovers_raw$pos.rightbound < 80000000,]
-invs<-coords[coords$V1 == chromosome & coords$V5 < 80000000,]
-invs
+chromosome<-"chr15"
+test2<-crossovers_raw[crossovers_raw$chr == chromosome ,]
+invs<-coords[coords$V1 == chromosome ,]
+# invs
+centel<-read.table("report/2020-04-29_statisticalPreliminary/repregions_hg38.txt")
 
+invcoords<-croxinv[croxinv$chromosome == chromosome  & !duplicated(croxinv$inversion), ]
+invcoords<-invcoords[!is.na(invcoords$inversion),]
+invcoords$center<-invcoords$bp1s+(invcoords$bp2e-invcoords$bp1s)/2
 
-341, 760, 275, 276
-
-geno[geno$Var2 == "HsInv0209", ]
+library(ggforce)
 
 ggplot(test2)+geom_rect(aes(xmin=pos.leftbound, xmax=pos.rightbound, ymin = 0, ymax = 1), alpha = 0.002)+
-  geom_rect(data=invs, aes(xmin = V4, xmax = V5, ymin = 0.25, ymax = 0.75), fill = "red")
+  geom_rect(data=invcoords, aes(xmin = bp1s, xmax = bp2e, ymin = 0.25, ymax = 0.75), fill = "red", color = "red", alpha = 0.5)+
+  geom_text(data=invcoords, aes(x = center, y = 0.8, label = inversion), angle = 90)+
+  geom_rect(data=centel[centel$V1 == chromosome,], aes(xmin = V2, xmax = V3, ymin=0, ymax = 1), fill = "yellow", alpha = 0.3)+ggtitle(chromosome)+
+  facet_zoom(xlim = c(6e7, 8e7) )
+  
   
 
 # Which is the chromosome with the most useful inversions? - chromosome 6 and chromosome 4
@@ -78,7 +84,7 @@ touse<-croxinv[!is.na(croxinv$genotype) & croxinv$genotype != "." & !is.na(croxi
 table(touse$chromosome, touse$inversion)
 
 # Now I make some summary of crossovers
-crossovers_raw$buffer<-crossovers_raw$resolution/8
+crossovers_raw$buffer<-crossovers_raw$resolution
 crossovers_raw$central.left<-crossovers_raw$pos.leftbound+crossovers_raw$buffer
 crossovers_raw$central.right<-crossovers_raw$pos.rightbound-crossovers_raw$buffer
 
@@ -106,7 +112,6 @@ ggplot(data=plot[plot$central.left > 185000000,])+geom_rect( aes(xmin=central.le
 facet_grid(value ~.)+
   ggtitle("HsInv0266")
 
-centel<-read.table("report/2020-04-29_statisticalPreliminary/repregions_hg38.txt")
 
 
 
@@ -165,8 +170,7 @@ library(tidyverse)
 library(ggpubr)
 library(rstatix)
 
-
-  myinv<-"HsInv0095"
+  myinv<-"HsInv0045"
   coords<-croxinv[croxinv$inversion == myinv & !is.na(croxinv$chromosome), c("chromosome", "bp1s", "bp2e")][1,]
 
   tmp<-croxinv[croxinv$inversion == myinv,]
@@ -175,14 +179,48 @@ library(rstatix)
   colnames(counts)<-c("donor", "crossovers")
   counts<-merge(counts, numofsamples, all=TRUE)
   counts[is.na(counts$crossovers),"crossovers"]<-0
-  counts<-merge(counts, genotypes[genotypes$variable == myinv,], by.x = "donor", by.y = "Individual")
-  counts<-counts[counts$value != ".",]
+  counts<-merge(counts, tmp[!duplicated(tmp$individual), c("individual","genotype")], by.x = "donor", by.y = "individual")
+  counts<-counts[counts$genotype != ".",]
   
   counts$weight<-counts$crossovers/counts$samples
   
-  counts$genotype<-factor(counts$value, levels = c("STD", "INV", "HET"))
+  counts$genotype<-factor(counts$genotype, levels = c("STD", "INV", "HET"))
 
-  ggboxplot(counts, x = "genotype", y = "weight")
+  ggboxplot(counts, x = "genotype", y = "weight", title = myinv)
+
+  # Outliers
+  
+  counts %>% 
+  group_by(genotype) %>%
+  identify_outliers(weight)
+
+  # Normality assumptions
+  # Build the linear model
+model  <- lm(weight ~ genotype, data = counts)
+# Create a QQ plot of residuals
+ggqqplot(residuals(model))
+
+# global shapiro test
+shapiro_test(residuals(model))
+
+# groups shapiro test
+counts %>%
+  group_by(genotype) %>%
+  shapiro_test(weight) # no sale..
+
+# groups qqplot
+ggqqplot(counts, "weight", facet.by = "genotype")
+
+
+# homogeneity of variance
+plot(model, 1)
+
+counts %>% levene_test(weight ~ genotype)
+
+# anova
+
+res.aov <- counts %>% anova_test(weight ~ genotype)
+res.aov
 
 
 
