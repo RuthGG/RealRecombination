@@ -59,7 +59,7 @@ test<-data.frame(table(croxinv$individual, croxinv$inversio))
 geno<-data.frame(table(croxinv$genotype, croxinv$inversion))
 
 # Chromosome 21 test
-chromosome<-"chr15"
+chromosome<-"chr13"
 test2<-crossovers_raw[crossovers_raw$chr == chromosome ,]
 invs<-coords[coords$V1 == chromosome ,]
 # invs
@@ -71,13 +71,78 @@ invcoords$center<-invcoords$bp1s+(invcoords$bp2e-invcoords$bp1s)/2
 
 library(ggforce)
 
-ggplot(test2)+geom_rect(aes(xmin=pos.leftbound, xmax=pos.rightbound, ymin = 0, ymax = 1), alpha = 0.002)+
-  geom_rect(data=invcoords, aes(xmin = bp1s, xmax = bp2e, ymin = 0.25, ymax = 0.75), fill = "red", color = "red", alpha = 0.5)+
-  geom_text(data=invcoords, aes(x = center, y = 0.8, label = inversion), angle = 90)+
-  geom_rect(data=centel[centel$V1 == chromosome,], aes(xmin = V2, xmax = V3, ymin=0, ymax = 1), fill = "yellow", alpha = 0.3)+ggtitle(chromosome)+
-  facet_zoom(xlim = c(6e7, 8e7) )
+a<-ggplot(test2)+geom_rect(aes(xmin=pos.leftbound, xmax=pos.rightbound, ymin = 0, ymax = 1), alpha = 0.002)+
+  # geom_rect(data=invcoords, aes(xmin = bp1s, xmax = bp2e, ymin = 0.25, ymax = 0.75), fill = "red", color = "red", alpha = 0.5)+
+  # geom_text(data=invcoords, aes(x = center, y = 0.8, label = inversion), angle = 90)+
+  geom_rect(data=centel[centel$V1 == chromosome,], aes(xmin = V2, xmax = V3, ymin=0, ymax = 1), fill = "yellow", alpha = 0.3)+ggtitle(paste0(chromosome,", ",windowsize/1000, " kb window size"))+
+  facet_zoom(xlim = c(8e7, 9e7) )
+
+b<-ggplot(res)+geom_rect(aes(xmin=start, xmax=end,ymin=0,ymax=1, alpha=winsum))+theme(legend.position = "none")
+
+png(paste0(chromosome,windowsize/1000,"kb.png"))
+ggarrange(a,b, ncol=1)
+dev.off()
+
+test2$center<-test2$pos.leftbound+((test2$pos.rightbound-test2$pos.leftbound)/2)
+test2$value<-1
+
+windowsize<-100000
+res<-data.frame(start=seq(8e7, 9e7, windowsize))
+res$end<-res$start+windowsize
+res$start<-res$start+1
+res$winsum<-0
+
+
+for (i in rownames(res)) {
   
+  s<-res[i, "start"]
+  e<-res[i, "end"]
   
+  tmp<-test2[ (test2$pos.rightbound >= s & test2$pos.rightbound <=e)|
+                (test2$pos.leftbound >= s & test2$pos.leftbound <=e)|
+                (test2$pos.leftbound <= s & test2$pos.rightbound >=e) , ]
+
+  tmp$fract.overlap<-0
+  tmp$fract.overlap<-apply(tmp, 1, FUN = function(x){
+        sum(seq(x["pos.leftbound"], x["pos.rightbound"],1) %in% seq(s,e,1))
+      }
+    )
+  
+  tmp$perc<-tmp$fract.overlap/tmp$resolution
+
+  res[i,"winsum"]<-sum(tmp$perc)
+  
+}
+
+tmp<-test2[ (test2$pos.rightbound >= s & test2$pos.rightbound <=e)|(test2$pos.leftbound >= s & test2$pos.leftbound <=e)| (test2$pos.leftbound <= s & test2$pos.rightbound >=e) , ]
+
+tmp$fract.overlap<-0
+
+x<-tmp[1,]
+
+tmp$fract.overlap<-apply(tmp, 1, FUN = function(x){
+        sum(seq(x["pos.leftbound"], x["pos.rightbound"],1) %in% seq(s,e,1))
+      }
+      )
+tmp$perc<-tmp$fract.overlap/tmp$resolution
+sum(tmp$perc)
+
+res<-data.frame(donor=unique(tmp$donor))
+res$start<-s
+res$end<-e
+res$window<-0
+
+for( i in unique(res$donor)){
+  res[ res$donor == i , "window"] <- sum(tmp[tmp$donor == i, "perc"])
+}
+
+res<-merge(res, numofsamples)
+
+res$fraction<-res$window/res$samples
+
+
+ggplot(test2)+geom_point(aes(x=pos.leftbound, y = cumsum(value), color = resolution ))
+
 
 # Which is the chromosome with the most useful inversions? - chromosome 6 and chromosome 4
 touse<-croxinv[!is.na(croxinv$genotype) & croxinv$genotype != "." & !is.na(croxinv$sample),]
