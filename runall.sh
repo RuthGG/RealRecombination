@@ -32,7 +32,7 @@ usage()
   impute -f -x -r -m -i -c -g [-s]    Impute inversions listed in -f using the conditions in -x.
   imputetables -i -p -t               Make summary tables after imputation.
   tagsnps -f -x -i -c -g [-s]         Check if tag SNPs in -f are true in VCF in -i. 
-  crossovers -f -c -g                 Make data required in statistical analysis using crossovers in -f.
+  crossovers -f -c -r -x              Summarize crossovers in -f (gapfile in -r and windows in -x).
   "
   echo "Options:
 
@@ -196,11 +196,12 @@ case "$COMMAND" in
     ;;
     # Execute PCA
    crossovers ) 
-    while getopts "f:c:g:" OPTIONS ; do
+    while getopts "f:c:r:x:" OPTIONS ; do
       case "$OPTIONS" in
         f)  FILE=${OPTARG} ;;
         c)  INVCOORD=${OPTARG} ;;
-        g)  INVGENO=${OPTARG} ;;
+        r)  REFDIR=${OPTARG} ;;
+        x)  CONFILE=${OPTARG} ;;
       esac
     done
     shift $((OPTIND -1))
@@ -241,8 +242,8 @@ elif [ "$COMMAND" == "tagsnps" ]; then
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -x -i -c -g"; usage; exit
   fi
 elif [ "$COMMAND" == "crossovers" ]; then
-  if [ -z "$FILE" ] || [ -z "$INVCOORD" ] || [ -z "$INVGENO" ]    ; then 
-    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -c -g"; usage; exit
+  if [ -z "$FILE" ] || [ -z "$INVCOORD" ] || [ -z "$REFDIR" ] || [ -z "$CONFILE" ]  ; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -c -r -x"; usage; exit
   fi
 else 
   usage; exit
@@ -570,8 +571,9 @@ fi
 # MAKE TAG SNPS CHECK
 # Execute scripts to check tag SNPs
 # =========================================================================== #
-STEP=$(printf '%02d' $((${STEP}+1)))
 STEPB=$((${STEP}+1))
+STEP=$(printf '%02d' $((${STEP}+1)))
+
 
 if  [ "$COMMAND" == "tagsnps" ]; then
 
@@ -641,20 +643,61 @@ STEP=$(printf '%02d' $((${STEPB}+1)))
 
 if  [ "$COMMAND" == "crossovers" ]; then
 
-  TMPDIR="tmp/${DATE}_$(printf '%02d' ${STEP})_crossovers"
-  OUTDIR="analysis/${DATE}_$(printf '%02d' ${STEP})_crossovers"
+  TMPDIR="tmp/${DATE}_${STEP}_crossovers"
+  OUTDIR="analysis/${DATE}_${STEP}_crossovers"
   mkdir -p $TMPDIR $OUTDIR
+
+  # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Register conditions in analysis results
+  # ------------------------------------------------------------------------- #
+  cp ${CONFILE} ${OUTDIR} # Windows
+  
+  # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Crossovers in windows
+  # ------------------------------------------------------------------------- #
 
   # Crossover files to bed
   zcat $FILE |awk -v OFS="\t" '{print $3, $4, $5, $1"_"$2}' > ${TMPDIR}/allcrossovers.bed
 
-  # Coordinate files without X and Y
+  # Window size
+  WINSIZE=$(cat ${CONFILE})
+
+  # Make list of chromosome lengths
+   awk '$2 == 0 {a[$1]=$3}; $4 == "telomere" && $2 !=0 {print $1,a[$1] , $2}' ${REFDIR}/gap.txt > ${TMPDIR}/cromlength.txt
+
+  # Makes bedfile with windows list
+  echo -e "chr\tpos.leftbound\tpos.rightbound" > ${TMPDIR}/windows.bed 
+  while IFS= read -r line;  do 
+    CHROM=$(echo $line |  cut -f1 -d" ")
+    START=$(echo $line |  cut -f2 -d" ")
+    END=$(echo $line | cut -f3 -d" ")
+    WINDOWS=$(seq $START $WINSIZE $END)
+
+    FIRST=0
+
+    for WIN in $WINDOWS; do
+
+      if [ ${FIRST} != 0 ] ; then
+        echo -e "${CHROM}\t${FIRST}\t${WIN}" >> ${TMPDIR}/windows.bed 
+      fi
+      # FIRST=$((${WIN}+1))
+      FIRST=$((${WIN}))
+
+    done
+
+  done < ${TMPDIR}/cromlength.txt
+
+  # Intersect windows with crossovers
+  bedtools intersect -wao  -a ${TMPDIR}/windows.bed  -b ${TMPDIR}/allcrossovers.bed > ${TMPDIR}/comparison.txt
+
+  # Make weights
+  awk '$8 == 0{$5=1; $6=2} ;{print $0, $8/($6-$5)}' ${TMPDIR}/comparison.txt > ${OUTDIR}/windows_x_crossovers_weighted.txt
+
+  # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Windows with inversions
+  # ------------------------------------------------------------------------- #
+  
+  # Inversion coordinate files without X and Y
   grep -v 'chrX' $INVCOORD  | grep -v 'chrY' > ${TMPDIR}/coordinates_noXY.gff
 
-  # Cross both 
-  bedtools intersect -wa -wb -loj -a ${TMPDIR}/coordinates_noXY.gff -b ${TMPDIR}/allcrossovers.bed > $TMPDIR/crossovers_x_inversions.txt
-
-  # R data generation
-  Rscript code/rscript/crossoverTables.R ${TMPDIR}/crossovers_x_inversions.txt ${INVGENO} ${OUTDIR}/croxinv.Rdata
+  # Intersect windows with inversions
+  bedtools intersect -wa -wb -loj -a ${TMPDIR}/coordinates_noXY.gff -b ${TMPDIR}/windows.bed  > ${OUTDIR}/windows_x_inversions.txt
 
 fi

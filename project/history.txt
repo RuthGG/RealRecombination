@@ -65,8 +65,8 @@
 2020-05-11: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 3: SAS population. DISCARDED because there were evident errors in such big files.
 2020-05-12: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 5: other populations. DISCARDED because there were evident errors in such big files.
 2020-05-13: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 7: ALL population. DISCARDED because there were evident errors in such big files.
-2020-05-17: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 10
-2020-05-23: runall.sh imputetables -i analysis/2020-04-22_06_imputation/ -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
+2020-05-17: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 10: DISCARDED because there was an error in the data that made almos all SNPs missing.
+2020-05-23: runall.sh imputetables -i analysis/2020-04-22_06_imputation/ -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt. This applied less strict filters to imputation results.
 2020-05-23: I did a summary genotype file with R:
 	R 
 			one<-read.table("data/use/inversions_info/all_genotypes.csv", sep = "\t", header = TRUE)
@@ -76,3 +76,5 @@
 			write.table(genotypes,   "data/use/inversions_info/all+new_genotypes_lessStrict.csv", quote = FALSE, sep = "\t", na = ".", row.names = FALSE, col.names = TRUE) 
 2020-05-23: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes_lessStrict.csv -s 8
 2020-05-23: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/
+2020-05-29: Manually copied data/use/assembly_hg38/gap.txt
+2020-05-29: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt
