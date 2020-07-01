@@ -1,17 +1,126 @@
 ---
-title: "Statistical analysis"
+title: "Anàlisi estadístic"
 output: html_notebook
 editor_options: 
   chunk_output_type: console
 ---
 
-```{r}
+```{r setLibraries}
+
 setwd("../../")
 
 library(ggplot2)
-library()
 
 ```
+
+
+# Objectius i preguntes
+
+L'objectiu general d'aquesta part és detectar diferències en el panorama de recombinació meiòtica en individus i/o regions que no presenten una inversió especte els que sí, controlant o tenint en compte diferents propietats intrínseques de les diferents inversions.
+
+Les preguntes que podriem intentar contestar serien les següents:
+
+* Les inversions tenen tendència a caure en zones d'alta o baixa recombinació? Aquesta pregunta ja la vam intentar contestar amb les dades de recombinació.
+* Com afecta cada genotip de la inversió a les taxes de recombinació?
+* Si comparem les taxes de recombinació històrica i real al voltant de la inversió, redueixen la recombinació històrica les inversions? En quina proporció?
+* Està algun dels efectes mencionats relacionat amb propietats de les inversinons com mida o mètode de generació?
+
+# Origen de les dades
+
+Els individus de prova i els events de recombinació provenen de Bell et al. 2019. Les coordenades de les inversions de InvFEST v. hg38.
+
+Tot i que la resolució dels events de recombinació no és la que esperàvem, la gran quantitat de cèl·lules analitzades per individu en alguns casos permet veure patrons en el nombre d'entrecreuaments que podrien estar tenint lloc a una resolució una mica millor de la que tindrem a priori (diapositiva 2, apartat Dades de recombinació).
+
+# Anlisi descriptiu
+
+```{r upload_files}
+
+# This should be revised!! which merges do I want to be "all"??
+
+# Crossover maps
+
+  # Upload
+  crossover_maps<-read.table("analysis/2020-05-29_09_crossovers/windows_x_crossovers_weighted.txt")
+  colnames(crossover_maps)<-c("chr_w", "start_w", "end_w", "chr_e", "start_e", "end_e", "ind", "overlap", "score")
+
+  # Summarize
+  crossover_maps$ind<-sub("_.*$","", crossover_maps$ind)
+  crossover_summary<-aggregate(score ~ chr_w+start_w+end_w+ind, data=crossover_maps, FUN=sum)
+  
+# Inversions overlapping with crossovers
+  
+  # Upload
+  crossover_invbreak<-read.table("analysis/2020-05-29_09_crossovers/windows_x_inversions.txt", sep = "\t")
+  colnames(crossover_invbreak)<-c("chr_i", "source", "type", "start_i", "end_i", "a", "b", "c", "info", "chr_w","start_w", "end_w" )
+  
+  # Extract inversions name
+  crossover_inv<-crossover_invbreak[crossover_invbreak$type == "inversion",c("chr_i", "start_i", "end_i", "info", "chr_w","start_w", "end_w" )]
+   crossover_inv$info<-sub("^ID=\\d+;Name=" , "", crossover_inv$info)
+   crossover_inv$info<-sub(";.*$" , "", crossover_inv$info)
+   
+  # Get score for windows overlapping with inversions
+   invscores<-merge(crossover_inv, crossover_summary)
+   
+# Control by number of samples  
+  numofsamples<-read.table("report/2020-04-29_statisticalPreliminary/numofsamples.txt", stringsAsFactors = FALSE)
+  colnames(numofsamples)<-c("ind", "samples")
+
+  # Merge with invscores
+  invscores<-merge(invscores, numofsamples)
+  
+  # Correction
+  invscores$score_weighted<-invscores$score/invscores$samples
+
+# Get individuals population
+  popinfo<-read.table("data/use/avery_individuals/samples_population.txt", header = TRUE)
+  
+  # Get individual names
+  popinfo$sample<-sub("^\\d+\\.","",popinfo$sample)
+  popinfo$sample<-sub("nc", "NC", popinfo$sample, ignore.case = FALSE)
+  
+  # Merge
+  invscores<-merge(invscores, popinfo[,c("sample", "super_pop")], by.x = "ind", by.y = "sample")
+    
+# Get individuals genotypes
+  genotypes<-read.table("analysis/2020-05-23_07_imputationTables/new_genotypes.csv", header=TRUE)
+  
+  # Get individual names
+  genotypes$Individual<-sub("^\\d+\\.","",genotypes$Individual)
+  genotypes$Individual<-sub("nc", "NC", genotypes$Individual, ignore.case = FALSE)
+  
+  # Melt
+  genotypes<-reshape2::melt(genotypes, id.vars="Individual" )
+  colnames(genotypes)<-c("ind", "info", "genotype")
+  
+  # Merge
+  invscores<-merge(invscores, genotypes)
+  
+# Cleanup
+  rm(crossover_maps, crossover_inv, numofsamples, popinfo, genotypes)
+```
+
+ Fer gràfics de densitat per cada inversió ens sería útil per saber de forma descriptiva com es distribueixen els events de recombinació al voltant de les inversions. A més es separarien per genotips quan sigui possible, per tenir una primera visualització de l'efecte del genotip de la inversió sobre les taxes de recombinació locals.
+
+```{r desnityPlots}
+
+invscores$samplesize<-1
+plotable<-aggregate(score_weighted ~ chr_w+start_w+end_w+genotype+info+start_i+end_i, data=invscores, FUN=mean)
+plotable_v2<-aggregate(samplesize ~ chr_w+start_w+end_w+genotype+info+start_i+end_i, data=invscores, FUN=sum)
+
+plotable<-merge(plotable, plotable_v2)
+
+ggplot(plotable[plotable$genotype != ".",])+geom_rect(aes(xmin=start_w, xmax = end_w, ymin=log(0), ymax = log(score_weighted), fill = samplesize))+
+  geom_vline(aes(xintercept=start_i), color = "red")+geom_vline(aes(xintercept=end_i), color = "red")+
+  facet_grid(genotype~info, scales = "free")
+
+```
+
+Analitzar totes les inversions alhora és complicat perquè és un grup molt heterogeni, pero sí que es podria analitzar la relació entre els resultats obtinguts i diferents propietats de la inversió, per exemple, la correlació de la diferència entre taxes de recombinació de diferents genotips amb la mida de la inversió o amb si són NH/NAHR.
+
+
+# Anlisi estadstic
+
+
 
 Data was public. 
 With bedtools intersect I took all crossovers that overlapped in any way with an inversion. I merged this information with the genotypes for each inversion and individual. 
@@ -292,4 +401,13 @@ res.aov
 ```
 
 
+# Gene conversion test
 
+```{r}
+
+test<-read.table("data/raw/avery_crossovers/allcrossovers_hg38.txt.gz", sep ="\t", header = TRUE)
+
+test$size<-test$pos.rightbound-test$pos.leftbound
+
+summary(test$size<500)
+```
