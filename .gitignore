@@ -4,3 +4,4 @@ tmp/*
 !data/use/README.md
 analysis/2020-04-16_mergePca/*
 *.ld
+analysis/*/windows_x_crossovers_weighted.txt
