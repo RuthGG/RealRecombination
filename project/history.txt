@@ -78,3 +78,10 @@
 2020-05-23: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/
 2020-05-29: Manually copied data/use/assembly_hg38/gap.txt
 2020-05-29: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt
+2020-06-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt
+2020-06-30: manually changed the name to 2020-06-30_09_crossovers_fixed
+2020-06-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt
+2020-06-30: manually changed the name to 2020-06-30_09_crossovers_proportional
+2020-07-01: awk '$2 == 0 {a[$1]=$3}; $4 == "telomere" && $2 !=0 {print $1,a[$1] , $2}' data/use/assembly_hg38/gap.txt | grep -v "chrX" | grep -v "chrY" | awk -v OFS="\t" '{}{print $1,"InvFEST", "inversion",$2, $3, ".",".",".",$1 }' > data/use/assembly_hg38/cromlength.txt
+2020-07-01: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt
+2020-07-01: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt

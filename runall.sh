@@ -657,11 +657,16 @@ if  [ "$COMMAND" == "crossovers" ]; then
   # Crossover files to bed
   zcat $FILE |awk -v OFS="\t" '{print $3, $4, $5, $1"_"$2}' > ${TMPDIR}/allcrossovers.bed
 
-  # Window size
-  WINSIZE=$(cat ${CONFILE})
-
+  # Window size and confidence interval
+  WINSIZE=$(head -n 1 ${CONFILE})
+  INTERVAL=$(sed '2q;d' ${CONFILE})
+  echo $INTERVAL
   # Make list of chromosome lengths
-   awk '$2 == 0 {a[$1]=$3}; $4 == "telomere" && $2 !=0 {print $1,a[$1] , $2}' ${REFDIR}/gap.txt > ${TMPDIR}/cromlength.txt
+  # awk '$2 == 0 {a[$1]=$3}; $4 == "telomere" && $2 !=0 {print $1,a[$1] , $2}' ${REFDIR}/gap.txt > ${TMPDIR}/cromlength.txt
+
+  # Make list of inversion positions and lengths
+  grep -v 'chrX' $INVCOORD  | grep -v 'chrY' | grep 'inversion' | awk -v OFS="\t" '{sub(/ID.*Name=/, "", $9);sub(/;.*/, "", $9)}{print $1, $4, $5, $9}' > ${OUTDIR}/invcoord_noXY.bed
+
 
   # Makes bedfile with windows list
   echo -e "chr\tpos.leftbound\tpos.rightbound" > ${TMPDIR}/windows.bed 
@@ -669,6 +674,21 @@ if  [ "$COMMAND" == "crossovers" ]; then
     CHROM=$(echo $line |  cut -f1 -d" ")
     START=$(echo $line |  cut -f2 -d" ")
     END=$(echo $line | cut -f3 -d" ")
+    ID=$(echo $line | cut -f4 -d" ")
+
+    # Now we add the confidence interval, it can be fixed or proportional
+
+    if [[ $INTERVAL == *"%"* ]]; then
+      INTERVAL=$(echo "${INTERVAL//%}")
+      SIZE=$((($END-$START+1)*${INTERVAL}/100))
+    else
+      SIZE=$INTERVAL
+    fi
+
+
+    START=$(($START-$SIZE))
+    END=$(($END+$SIZE))
+
     WINDOWS=$(seq $START $WINSIZE $END)
 
     FIRST=0
@@ -676,28 +696,28 @@ if  [ "$COMMAND" == "crossovers" ]; then
     for WIN in $WINDOWS; do
 
       if [ ${FIRST} != 0 ] ; then
-        echo -e "${CHROM}\t${FIRST}\t${WIN}" >> ${TMPDIR}/windows.bed 
+        echo -e "${CHROM}\t${FIRST}\t${WIN}\t${ID}" >> ${TMPDIR}/windows.bed 
       fi
       # FIRST=$((${WIN}+1))
       FIRST=$((${WIN}))
 
     done
 
-  done < ${TMPDIR}/cromlength.txt
+  done < ${OUTDIR}/invcoord_noXY.bed
 
   # Intersect windows with crossovers
   bedtools intersect -wao  -a ${TMPDIR}/windows.bed  -b ${TMPDIR}/allcrossovers.bed > ${TMPDIR}/comparison.txt
 
   # Make weights
-  awk '$8 == 0{$5=1; $6=2} ;{print $0, $8/($6-$5)}' ${TMPDIR}/comparison.txt > ${OUTDIR}/windows_x_crossovers_weighted.txt
+  awk '$9 == 0{$6=1; $7=2} ;{print $0, $9/($7-$6)}' ${TMPDIR}/comparison.txt > ${OUTDIR}/windows_x_crossovers_weighted.txt
 
   # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Windows with inversions
   # ------------------------------------------------------------------------- #
   
   # Inversion coordinate files without X and Y
-  grep -v 'chrX' $INVCOORD  | grep -v 'chrY' > ${TMPDIR}/coordinates_noXY.gff
+  # grep -v 'chrX' $INVCOORD  | grep -v 'chrY' > ${TMPDIR}/coordinates_noXY.gff
 
   # Intersect windows with inversions
-  bedtools intersect -wa -wb -loj -a ${TMPDIR}/coordinates_noXY.gff -b ${TMPDIR}/windows.bed  > ${OUTDIR}/windows_x_inversions.txt
+  # bedtools intersect -wa -wb -loj -a ${TMPDIR}/coordinates_noXY.gff -b ${TMPDIR}/windows.bed  > ${OUTDIR}/windows_x_inversions.txt
 
 fi
