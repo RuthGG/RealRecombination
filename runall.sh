@@ -32,7 +32,7 @@ usage()
   impute -f -x -r -m -i -c -g [-s]    Impute inversions listed in -f using the conditions in -x.
   imputetables -i -p -t               Make summary tables after imputation.
   tagsnps -f -x -i -c -g [-s]         Check if tag SNPs in -f are true in VCF in -i. 
-  crossovers -f -c -r -x              Summarize crossovers in -f (gapfile in -r and windows in -x).
+  crossovers -f -c -x -n              Make recombination rates for given regions (win. size and CI in -x).
   "
   echo "Options:
 
@@ -41,7 +41,7 @@ usage()
     -a [hg19|hg38]                    Set assembly to work with.
     -i <directory>                    Directory that contains files with test VCFs (sometimes needs index).
     -r <directory>                    Directory that contains reference genome files.
-    -f <file>                         Path to file to use as input (vcf, list of inversions...).
+    -f <file>                         Path to file to use as input (vcf, inversion list, crossover list...).
     -p <file>                         Path to relevant population file.
     -d <dbGap ID>                     dbGap ID to download.
     -x <file>                         Path to file specifyig experimental conditions.
@@ -49,6 +49,7 @@ usage()
     -c <file>                         Path to inversion coordinates file.
     -g <file>                         Path to inversion genotypes file.
     -t <file>                         Path to inversion imputability file.
+    -n <file>                         Path to individual sample size list..
   "
 
 }
@@ -86,6 +87,7 @@ DBGAP=""          # -d dbGap ID to download.
 INVCOORD=""       # -c Path to inversion coordinates file. 
 INVGENO=""        # -g Path to inversion genotypes file. 
 INVTAG=""         # -t Path to inversion imputability file.
+CELLS=""           # -n Path to individual sample size list.
 
 # Parse command optons
 case "$COMMAND" in
@@ -196,11 +198,11 @@ case "$COMMAND" in
     ;;
     # Execute PCA
    crossovers ) 
-    while getopts "f:c:r:x:" OPTIONS ; do
+    while getopts "f:c:n:x:" OPTIONS ; do
       case "$OPTIONS" in
         f)  FILE=${OPTARG} ;;
         c)  INVCOORD=${OPTARG} ;;
-        r)  REFDIR=${OPTARG} ;;
+        n)  CELLS=${OPTARG} ;;
         x)  CONFILE=${OPTARG} ;;
       esac
     done
@@ -242,8 +244,8 @@ elif [ "$COMMAND" == "tagsnps" ]; then
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -x -i -c -g"; usage; exit
   fi
 elif [ "$COMMAND" == "crossovers" ]; then
-  if [ -z "$FILE" ] || [ -z "$INVCOORD" ] || [ -z "$REFDIR" ] || [ -z "$CONFILE" ]  ; then 
-    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -c -r -x"; usage; exit
+  if [ -z "$FILE" ] || [ -z "$INVCOORD" ] || [ -z "$CONFILE" ] || [ -z "$CELLS" ] ; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -c -x -n"; usage; exit
   fi
 else 
   usage; exit
@@ -660,24 +662,20 @@ if  [ "$COMMAND" == "crossovers" ]; then
   # Window size and confidence interval
   WINSIZE=$(head -n 1 ${CONFILE})
   INTERVAL=$(sed '2q;d' ${CONFILE})
-  echo $INTERVAL
-  # Make list of chromosome lengths
-  # awk '$2 == 0 {a[$1]=$3}; $4 == "telomere" && $2 !=0 {print $1,a[$1] , $2}' ${REFDIR}/gap.txt > ${TMPDIR}/cromlength.txt
-
+  
   # Make list of inversion positions and lengths
   grep -v 'chrX' $INVCOORD  | grep -v 'chrY' | grep 'inversion' | awk -v OFS="\t" '{sub(/ID.*Name=/, "", $9);sub(/;.*/, "", $9)}{print $1, $4, $5, $9}' > ${OUTDIR}/invcoord_noXY.bed
 
+  # Makes bedfile with windows/regions list
+  echo -e "chr\tpos.leftbound\tpos.rightbound\tID" > ${TMPDIR}/windows.bed 
 
-  # Makes bedfile with windows list
-  echo -e "chr\tpos.leftbound\tpos.rightbound" > ${TMPDIR}/windows.bed 
   while IFS= read -r line;  do 
     CHROM=$(echo $line |  cut -f1 -d" ")
     START=$(echo $line |  cut -f2 -d" ")
     END=$(echo $line | cut -f3 -d" ")
     ID=$(echo $line | cut -f4 -d" ")
 
-    # Now we add the confidence interval, it can be fixed or proportional
-
+    # Confidence interval (SIZE) can be fixed or proportional
     if [[ $INTERVAL == *"%"* ]]; then
       INTERVAL=$(echo "${INTERVAL//%}")
       SIZE=$((($END-$START+1)*${INTERVAL}/100))
@@ -685,39 +683,48 @@ if  [ "$COMMAND" == "crossovers" ]; then
       SIZE=$INTERVAL
     fi
 
+    # If we don't want any windows, window size must be 0
+    if [ ${WINSIZE} -eq 0 ] ; then
 
-    START=$(($START-$SIZE))
-    END=$(($END+$SIZE))
+      LEFT=$(($START-$SIZE))
+      RIGHT=$(($END+$SIZE))
+     
+      echo -e "${CHROM}\t${LEFT}\t${START}\t${ID}_left" >> ${TMPDIR}/windows.bed  
+      echo -e "${CHROM}\t${START}\t${END}\t${ID}_in" >> ${TMPDIR}/windows.bed  
+      echo -e "${CHROM}\t${END}\t${RIGHT}\t${ID}_right" >> ${TMPDIR}/windows.bed  
+        
+    else 
+    # If we want windows, no left and right will be specified, to allow future code to apply any criterium as desired. 
 
-    WINDOWS=$(seq $START $WINSIZE $END)
+      START=$(($START-$SIZE))
+      END=$(($END+$SIZE))
 
-    FIRST=0
+      WINDOWS=$(seq $START $WINSIZE $END)
 
-    for WIN in $WINDOWS; do
+      FIRST=0
 
-      if [ ${FIRST} != 0 ] ; then
-        echo -e "${CHROM}\t${FIRST}\t${WIN}\t${ID}" >> ${TMPDIR}/windows.bed 
-      fi
-      # FIRST=$((${WIN}+1))
-      FIRST=$((${WIN}))
+      for WIN in $WINDOWS; do
 
-    done
+        if [ ${FIRST} != 0 ] ; then
+          echo -e "${CHROM}\t${FIRST}\t${WIN}\t${ID}" >> ${TMPDIR}/windows.bed 
+        fi
 
+        FIRST=$((${WIN}))
+
+      done
+
+    fi
+
+    
   done < ${OUTDIR}/invcoord_noXY.bed
 
   # Intersect windows with crossovers
-  bedtools intersect -wao  -a ${TMPDIR}/windows.bed  -b ${TMPDIR}/allcrossovers.bed > ${TMPDIR}/comparison.txt
+  bedtools intersect -wao -a ${TMPDIR}/windows.bed  -b ${TMPDIR}/allcrossovers.bed > ${TMPDIR}/comparison.txt
 
   # Make weights
-  awk '$9 == 0{$6=1; $7=2} ;{print $0, $9/($7-$6)}' ${TMPDIR}/comparison.txt > ${OUTDIR}/windows_x_crossovers_weighted.txt
+  awk '$9 == 0{$6=1; $7=2} ;{print $0, $9/($7-$6)}' ${TMPDIR}/comparison.txt > ${TMPDIR}/windows_x_crossovers_weighted.txt
 
-  # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Windows with inversions
-  # ------------------------------------------------------------------------- #
-  
-  # Inversion coordinate files without X and Y
-  # grep -v 'chrX' $INVCOORD  | grep -v 'chrY' > ${TMPDIR}/coordinates_noXY.gff
-
-  # Intersect windows with inversions
-  # bedtools intersect -wa -wb -loj -a ${TMPDIR}/coordinates_noXY.gff -b ${TMPDIR}/windows.bed  > ${OUTDIR}/windows_x_inversions.txt
+  # Parse table
+   Rscript code/rscript/crossoverTables.R ${TMPDIR}/windows_x_crossovers_weighted.txt $CELLS ${OUTDIR}/crossoverResult.Rdata
 
 fi

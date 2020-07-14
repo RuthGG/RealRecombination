@@ -30,7 +30,7 @@
 2020-04-17: Manually copied the file with population information from 1000k genomes to data/raw/1000genomes_hg19/integrated_call_samples_v3.20130502.ALL.panel
 2020-04-18: runall.sh pca -f analysis/2020-04-16_mergePca/final_vcf.vcf.gz
 2020-04-20: breakseq test worked wonderfully. I'll download the rest of the files. The list is in data/raw/avery_SRA_accessionlist/accession_list.txt but I won't make it automatic due to space issues. I'll put a runall option to do all the downloading and saving into crick.
-2020-04-20: runall.sh dbgap -d SRR10140453: Didn't work because license was obsolete D:
+2020-04-20: runall.sh dbgap -d SRR10140453: Didn't work because license was obsolete 
 2020-04-20: runall.sh pcaplot -f analysis/2020-04-18_04_runPca/pcaResult.Rdata -p data/raw/1000genomes_hg19/integrated_call_samples_v3.20130502.ALL.panel
 2020-04-21: Manually added previous reports.
 2020-04-21: Created or moved parameter and imput files for imputation:
@@ -60,8 +60,8 @@
 2020-04-28: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 10. DISCARDED to have the same format in all of them.
 2020-04-29: Manually added information related to inversions in hg38
 2020-04-29: Manually updated data READMEs
-2020-05-05: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -g analysis/2020-04-26_07_imputationTables/new_genotypes.csv
-2020-05-06: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -g analysis/2020-04-26_07_imputationTables/new_genotypes.csv
+2020-05-05: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -g analysis/2020-04-26_07_imputationTables/new_genotypes.csv. DISCARDED - see 2020-07-07
+2020-05-06: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -g analysis/2020-04-26_07_imputationTables/new_genotypes.csv. DISCARDED - see 2020-07-07
 2020-05-11: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 3: SAS population. DISCARDED because there were evident errors in such big files.
 2020-05-12: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 5: other populations. DISCARDED because there were evident errors in such big files.
 2020-05-13: runall.sh tagsnps -f data/use/conditions/inversionToTag.txt -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes.csv -s 7: ALL population. DISCARDED because there were evident errors in such big files.
@@ -77,11 +77,17 @@
 2020-05-23: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all+new_genotypes_lessStrict.csv -s 8
 2020-05-23: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i analysis/2020-04-16_mergePca/ -c data/use/inversions_info/
 2020-05-29: Manually copied data/use/assembly_hg38/gap.txt
-2020-05-29: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt
-2020-06-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt
-2020-06-30: manually changed the name to 2020-06-30_09_crossovers_fixed
-2020-06-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt
-2020-06-30: manually changed the name to 2020-06-30_09_crossovers_proportional
+2020-05-29: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt. DISCARDED - see 2020-07-07
+2020-06-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt. DISCARDED - see 2020-07-07
+2020-06-30: manually changed the name to 2020-06-30_09_crossovers_fixed. DISCARDED - see 2020-07-07
+2020-06-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt. DISCARDED - see 2020-07-07
+2020-06-30: manually changed the name to 2020-06-30_09_crossovers_proportional. DISCARDED - see 2020-07-07
 2020-07-01: awk '$2 == 0 {a[$1]=$3}; $4 == "telomere" && $2 !=0 {print $1,a[$1] , $2}' data/use/assembly_hg38/gap.txt | grep -v "chrX" | grep -v "chrY" | awk -v OFS="\t" '{}{print $1,"InvFEST", "inversion",$2, $3, ".",".",".",$1 }' > data/use/assembly_hg38/cromlength.txt
-2020-07-01: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt
-2020-07-01: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt
+2020-07-01: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt. DISCARDED - see 2020-07-07
+2020-07-01: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -r data/use/assembly_hg38/ -x data/use/conditions/winsize.txt. DISCARDED - see 2020-07-07
+2020-07-07: Discarded all previous crossover tests because I want brand new ones. 
+2020-07-14: data/use/avery_crossovers/numOfCells.txt was manually created. Columns: individual \t numberofcells
+2020-07-14: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt. Manually changed to 2020-07-14_09_crossovers_inv10kb
+2020-07-14: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.02.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt. Manually changed to 2020-07-14_09_crossovers_inv50kb
+2020-07-14: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt. Manually changed to 2020-07-14_09_crossovers_generalMap
+2020-07-14: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt. Manually changed to 2020-07-14_09_crossovers_byChromosome

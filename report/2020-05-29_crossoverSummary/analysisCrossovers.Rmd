@@ -13,6 +13,86 @@ opts_knit$set(root.dir = "~/20200401_RealRecombination/")
 
 ```
 
+```{r makeRecrates, include=FALSE}
+
+weightMap<-read.table("analysis/2020-07-08_09_crossovers_generalMap/windows_x_crossovers_weighted.txt")
+
+
+makeMap<-function(weightMap){
+  
+  # Make readable names
+  colnames(weightMap)<-c("chr_w", "start_w", "end_w", "inv","chr_e", "start_e", "end_e", "ind", "overlap", "score")
+  
+  # Sum scores for each window, individual and inversion
+  weightMap$ind<-sub("_.*$","", weightMap$ind)
+  recMap<-aggregate(score ~ chr_w+start_w+end_w+ind+inv, data=weightMap, FUN=sum)
+  
+   # Control by number of samples  
+  numofsamples<-read.table("report/2020-04-29_statisticalPreliminary/numofsamples.txt", stringsAsFactors = FALSE)
+  colnames(numofsamples)<-c("ind", "samples")
+  recMap<-merge(recMap, numofsamples)
+  recMap$win_centiMorgans<-(recMap$score/recMap$samples)*100
+  
+  recMap<-recMap[order(recMap$end_w),]
+  
+  recMap.cumsum<-data.frame()
+  
+  for (i in unique(recMap$ind)) {
+    tmp.i<-recMap[recMap$ind == i,]
+    
+    for (c in unique(as.character(tmp.i$inv))) {
+      tmp.ic<-tmp.i[tmp.i$inv == c,]
+      tmp.ic<-tmp.ic[order(tmp.ic$end_w),]
+      tmp.ic$scorecum<-cumsum(tmp.ic$score)
+      
+      recMap.cumsum<-rbind(recMap.cumsum, tmp.ic)
+      
+      
+    }
+
+    
+  }
+  
+  recMap.cumsum$centiMorgans<-(recMap.cumsum$scorecum/recMap.cumsum$samples)*100
+  
+  return(recMap.cumsum)
+}
+
+```
+
+# El nostre mètode causa esbiaixos?
+
+## Text
+## Take samples as in paper in recombination rate
+## Take samples by our method in recombination rate
+## See differences in numbers: mean, typical deviation
+## See differences in images: chromosome 1 example
+
+# Hi ha diferncies en la taxa de recombinació dins vs. fora de les inversions?
+
+## Text
+## Sample with fixed distance: 10kb CI and 50kb CI
+## Mak€ r€combination rat€ for both
+## Difference in images: log scale, note number of samples per inv and genotype
+### Option 1: fold differences between three genotypes
+### Option 2: fold differences between homozygous and heterozygous
+### Option 3: context by windows (in the future)
+## Difference in numbers: mean
+
+# Cauen les inversions en zones de baixa recombinació?
+
+## Text
+## A - For each inversion: inv+CI 10 and 50 mean recrate
+## B - Mean individual recrate
+## C - Mean recrate per individual and chromosome
+## Compare (join) A-B and A-C in folds
+## Difference in images: log scale, amount of invs+inds for each group
+### Option 1: only homo, separated by genotype
+### Option 2: al homos
+
+
+# ----------------------------------------------------------------#
+
 # Introducció
 
 La resolució dels events de recombinació que es proporcionen a Bell et al. 2020 és, de mitjana, unes 400 kb. Això és degut al baix coverage que han fet servir per cada cèl·lula individual. No obstant, si aquests events de recombinació es representen en una figura en la seva posició real en el cromosoma, un a sobre l'altre amb una transparència alta, es pot veure que es generen uns patrons d'una resolució més fina, a causa de la densitat de solapament entre multiples fragments.
@@ -28,6 +108,18 @@ Reproduirem els resultats de Bell et al. 2020 i la seva comparació amb altres m
 Per elaborar els nostres mapes de recombinació, es proporciona al programa un arxiu gff amb les coordenades de les inversions que volem estudiar, una mida de finestra i un interval de confiança que es vulgui aplicar. Llavors, per a cada inversió+interval de confiança es fan les finestres de la mida especificada i es mira amb quins events de recombinació solapen. El programa llavors calcula quin percentatge de l'event de recombinació solapa amb la finestra en qüestió. 
 
 He fet això per un grup d'inversions de prova, afegint 10kb d'interval de confiança i també afegint la mida de la inversió adalt i abaix. Com a proxy dels mapes de Bell et al. 2020, he introduit els cromosomes com si fossin les inversions i he especificat una mida de finestra de 500kb, sense interval de confiança, i aixo ho comparare amb el mateix pero mides de finestra de 10kb. 
+
+
+# ----
+Per aquest estudi necessito 4 mesures:
+
+* Mapa de recombinació fet tal i com s'especifica en el paper
+* Mapa de recombinaci fet amb el nostre mètode i 10kb de mida
+* Càlcul de la taxa de recombinacio amb marges fixos de 10kb, finestres 10 kb, centrades en la inversio 
++ Calcul de la taxa de recombinacio amb marges fixos de 50kb, finestres 10 kb, centrades en la inversio
+
+(((( es necessari fer finestres? el Mario va dir que si pero jo crec que nomes afegeix esbiaixos... a no ser que vulgui apilar les finestres com es feia amb les taxes de mutacio, per fer dins vs fora))))
+
 
 ```{r dataload}
 papermap<-read.table("analysis/2020-07-01_09_crossovers_500/windows_x_crossovers_weighted.txt")
@@ -178,11 +270,11 @@ plot1<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = inside ), )+geom_point(aes(
 
 plot2<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = inside ), )+geom_point(aes(x=inv, y = inside, group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+facet_grid(genotype~.)+ggtitle("mean cM values - per genotype - proportional confidence interval - 10kb windows ")+ylab("mean centiMorgans")+theme(axis.text = element_text(angle=90))
 
-plot3<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = correction ), )+geom_point(aes(x=inv, y = correction, group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+ggtitle("inside/outside - global - proportional confidence interval - 10kb windows ")+ylab("mean cM inside / mean cM outside")+theme(axis.text = element_text(angle=90))
+plot3<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = log(correction) ), )+geom_point(aes(x=inv, y = log(correction), group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+ggtitle("inside/outside - global - proportional confidence interval - 10kb windows ")+ylab("mean cM inside / mean cM outside")+theme(axis.text = element_text(angle=90))
 
-plot4<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = correction ), )+geom_point(aes(x=inv, y = correction, group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+facet_grid(genotype~.)+ggtitle("inside/outside - per genotype - proportional confidence interval - 10kb windows ")+ylab("mean cM inside / mean cM outside")+theme(axis.text = element_text(angle=90))
+plot4<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = log(correction) ), )+geom_point(aes(x=inv, y = log(correction), group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+facet_grid(.~genotype)+ggtitle("inside/outside - per genotype - proportional confidence interval - 10kb windows ")+ylab("mean cM inside / mean cM outside")+theme(axis.text = element_text(angle=90))
 
-ggarrange(plot1, plot3, plot2, plot4, ncol=2, nrow=2, common.legend = TRUE, legend="bottom")
+ggarrange( plot3,  plot4, ncol=2, common.legend = TRUE, legend="bottom")
 ggarrange(paperplot, newplot, nrow=1, common.legend = TRUE, legend="right")
 
 ```
