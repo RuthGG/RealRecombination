@@ -2,176 +2,109 @@
 title: "Recombination maps analysis"
 author: "Ruth Gómez Graciani"
 date: "7/1/2020"
-output: pdf_document
-editor_options: 
+output:
+  html_document:
+    df_print: paged
+    fig_width: 12
+    fig_height: 6
+editor_options:
   chunk_output_type: console
+
 ---
 
 ```{r setup, include=FALSE}
 require("knitr")
-opts_knit$set(root.dir = "~/20200401_RealRecombination/")
+require("tidyr")
+require("ggforce")
+require("stringr")
+opts_knit$set(root.dir = "/run/user/1001/gvfs/sftp:host=158.109.38.201,user=rgomez/home/rgomez/20200401_RealRecombination")
 
 ```
 
-```{r makeRecrates, include=FALSE}
-
-weightMap<-read.table("analysis/2020-07-08_09_crossovers_generalMap/windows_x_crossovers_weighted.txt")
-
-
-makeMap<-function(weightMap){
-  
-  # Make readable names
-  colnames(weightMap)<-c("chr_w", "start_w", "end_w", "inv","chr_e", "start_e", "end_e", "ind", "overlap", "score")
-  
-  # Sum scores for each window, individual and inversion
-  weightMap$ind<-sub("_.*$","", weightMap$ind)
-  recMap<-aggregate(score ~ chr_w+start_w+end_w+ind+inv, data=weightMap, FUN=sum)
-  
-   # Control by number of samples  
-  numofsamples<-read.table("report/2020-04-29_statisticalPreliminary/numofsamples.txt", stringsAsFactors = FALSE)
-  colnames(numofsamples)<-c("ind", "samples")
-  recMap<-merge(recMap, numofsamples)
-  recMap$win_centiMorgans<-(recMap$score/recMap$samples)*100
-  
-  recMap<-recMap[order(recMap$end_w),]
-  
-  recMap.cumsum<-data.frame()
-  
-  for (i in unique(recMap$ind)) {
-    tmp.i<-recMap[recMap$ind == i,]
-    
-    for (c in unique(as.character(tmp.i$inv))) {
-      tmp.ic<-tmp.i[tmp.i$inv == c,]
-      tmp.ic<-tmp.ic[order(tmp.ic$end_w),]
-      tmp.ic$scorecum<-cumsum(tmp.ic$score)
-      
-      recMap.cumsum<-rbind(recMap.cumsum, tmp.ic)
-      
-      
-    }
-
-    
-  }
-  
-  recMap.cumsum$centiMorgans<-(recMap.cumsum$scorecum/recMap.cumsum$samples)*100
-  
-  return(recMap.cumsum)
-}
-
-```
 
 # El nostre mètode causa esbiaixos?
 
 ## Text
 ## Take samples as in paper in recombination rate
+
+```{r papermap}
+
+load("analysis/2020-07-15_09_crossovers/crossoverResult.Rdata")
+recMap.original<-recMap
+rm(recMap)
+  
+```
+
 ## Take samples by our method in recombination rate
+
+```{r}
+
+load("analysis/2020-07-14_09_crossovers_generalMap/crossoverResult.Rdata")
+recMap.general<-recMap
+rm(recMap)
+
+
+``` 
+
 ## See differences in numbers: mean, typical deviation
+
+```{r}
+
+# Example in chromosome 1
+chr<-"chr1"
+recMap.gc<-recMap.general[recMap.general$chr_w == chr,]
+recMap.oc<-recMap.original[recMap.original$chr_w == chr,]
+
+```
+
 ## See differences in images: chromosome 1 example
+
+```{r}
+
+toplot.gc<-recMap.gc[recMap.gc$ind == "NC1",]
+toplot.oc<-recMap.oc[recMap.oc$ind == "NC1",]
+
+toplot.gc$cmmbt<- toplot.gc$cM.Mb *(1000000/10000)
+toplot.oc$cmmbt<-toplot.oc$cM.Mb * (1000000/500000)
+
+
+
+plot1<-ggplot()+geom_line(data=toplot.oc, aes(x=end_w, y = cmmbt, group = ind), color="red")+
+         geom_line(data=toplot.gc, aes(x=end_w, y = cmmbt, group = ind), color="blue", alpha = 0.1)+
+        facet_zoom(xlim = c(7e7, 9e7),ylim=c(0,0.1) )
+plot1
+```
 
 # Hi ha diferncies en la taxa de recombinació dins vs. fora de les inversions?
 
 ## Text
 ## Sample with fixed distance: 10kb CI and 50kb CI
-## Mak€ r€combination rat€ for both
-## Difference in images: log scale, note number of samples per inv and genotype
-### Option 1: fold differences between three genotypes
-### Option 2: fold differences between homozygous and heterozygous
-### Option 3: context by windows (in the future)
-## Difference in numbers: mean
 
-# Cauen les inversions en zones de baixa recombinació?
+```{r}
 
-## Text
-## A - For each inversion: inv+CI 10 and 50 mean recrate
-## B - Mean individual recrate
-## C - Mean recrate per individual and chromosome
-## Compare (join) A-B and A-C in folds
-## Difference in images: log scale, amount of invs+inds for each group
-### Option 1: only homo, separated by genotype
-### Option 2: al homos
+load("analysis/2020-07-14_09_crossovers_inv10kb/crossoverResult.Rdata")
+recMap.10<-recMap
+
+recMap.10$winsize<-recMap.10$end_w-recMap.10$start_w
+recMap.10$cM.Mb_w<-recMap.10$cM.Mb * (1000000/recMap.10$winsize)
 
 
-# ----------------------------------------------------------------#
+# load("analysis/2020-07-14_09_crossovers_inv50kb/crossoverResult.Rdata")
+# recMap.50<-recMap
+# rm(recMap)
+# recMap.50$winsize<-recMap.50$end_w-recMap.50$start_w
+# recMap.50$cM.Mb_w<-recMap.50$cM.Mb * (1000000/recMap.50$winsize)
 
-# Introducció
+# Split names
+recMap.10<-cbind(recMap.10,str_split_fixed(recMap.10$inv, "_", 2))
 
-La resolució dels events de recombinació que es proporcionen a Bell et al. 2020 és, de mitjana, unes 400 kb. Això és degut al baix coverage que han fet servir per cada cèl·lula individual. No obstant, si aquests events de recombinació es representen en una figura en la seva posició real en el cromosoma, un a sobre l'altre amb una transparència alta, es pot veure que es generen uns patrons d'una resolució més fina, a causa de la densitat de solapament entre multiples fragments.
+# Make means
+recMap.10$position<-NA
+recMap.10[recMap.10$`2` == "in", "position"]<-"in"
+recMap.10[recMap.10$`2` %in% c("right", "left"), "position"]<-"out"
 
-En aquesta part de l'anàlisi volem transformar aquests patrons que hem observat en una mesura quantitativa de la taxa de recombinació de cada individu. En el article original, fan finestres de 500kb i compten quants events han tingut lloc abans de cada límit de finestra. Aquesta quantitat, dividida pel nombre de cèl·lules estudiades per cada idividu i multiplicada per 100 els hi dona la posició física en cM de cada un dels punts, que es pot convertir després a taxa de recombinació. 
+recMap.10<-aggregate(cM.Mb_w ~ ind+`1`+position+chr_w, data=recMap.10, FUN=mean)
 
-En el nostre cas volem fer el mateix pero amb finestres molt més petites i per tant hem pensat en fer el recompte no dels events que han tingut lloc abans de cada límit de finestra, sino la fracció d'events que solapen amb cada finestra.
-
-Reproduirem els resultats de Bell et al. 2020 i la seva comparació amb altres mapes de recombinació i hi afegirem els nostres propis mapes per detectar possibles esbiaixos que haguem de tenir en compte. 
-
-# Generació dels mapes de recombinació
-
-Per elaborar els nostres mapes de recombinació, es proporciona al programa un arxiu gff amb les coordenades de les inversions que volem estudiar, una mida de finestra i un interval de confiança que es vulgui aplicar. Llavors, per a cada inversió+interval de confiança es fan les finestres de la mida especificada i es mira amb quins events de recombinació solapen. El programa llavors calcula quin percentatge de l'event de recombinació solapa amb la finestra en qüestió. 
-
-He fet això per un grup d'inversions de prova, afegint 10kb d'interval de confiança i també afegint la mida de la inversió adalt i abaix. Com a proxy dels mapes de Bell et al. 2020, he introduit els cromosomes com si fossin les inversions i he especificat una mida de finestra de 500kb, sense interval de confiança, i aixo ho comparare amb el mateix pero mides de finestra de 10kb. 
-
-
-# ----
-Per aquest estudi necessito 4 mesures:
-
-* Mapa de recombinació fet tal i com s'especifica en el paper
-* Mapa de recombinaci fet amb el nostre mètode i 10kb de mida
-* Càlcul de la taxa de recombinacio amb marges fixos de 10kb, finestres 10 kb, centrades en la inversio 
-+ Calcul de la taxa de recombinacio amb marges fixos de 50kb, finestres 10 kb, centrades en la inversio
-
-(((( es necessari fer finestres? el Mario va dir que si pero jo crec que nomes afegeix esbiaixos... a no ser que vulgui apilar les finestres com es feia amb les taxes de mutacio, per fer dins vs fora))))
-
-
-```{r dataload}
-papermap<-read.table("analysis/2020-07-01_09_crossovers_500/windows_x_crossovers_weighted.txt")
-newmap<-read.table("analysis/2020-07-01_09_crossovers_10/windows_x_crossovers_weighted.txt")
-
-```
-
-```{r functions}
-
-makeMap<-function(weightMap){
-  
-  # Make readable names
-  colnames(weightMap)<-c("chr_w", "start_w", "end_w", "inv","chr_e", "start_e", "end_e", "ind", "overlap", "score")
-  
-  # Sum scores for each window, individual and inversion
-  weightMap$ind<-sub("_.*$","", weightMap$ind)
-  recMap<-aggregate(score ~ chr_w+start_w+end_w+ind+inv, data=weightMap, FUN=sum)
-  
-   # Control by number of samples  
-  numofsamples<-read.table("report/2020-04-29_statisticalPreliminary/numofsamples.txt", stringsAsFactors = FALSE)
-  colnames(numofsamples)<-c("ind", "samples")
-  recMap<-merge(recMap, numofsamples)
-  recMap$win_centiMorgans<-(recMap$score/recMap$samples)*100
-  
-  recMap<-recMap[order(recMap$end_w),]
-  
-  recMap.cumsum<-data.frame()
-  
-  for (i in unique(recMap$ind)) {
-    tmp.i<-recMap[recMap$ind == i,]
-    
-    for (c in unique(as.character(tmp.i$inv))) {
-      tmp.ic<-tmp.i[tmp.i$inv == c,]
-      tmp.ic<-tmp.ic[order(tmp.ic$end_w),]
-      tmp.ic$scorecum<-cumsum(tmp.ic$score)
-      
-      recMap.cumsum<-rbind(recMap.cumsum, tmp.ic)
-      
-      
-    }
-
-    
-  }
-  
-  recMap.cumsum$centiMorgans<-(recMap.cumsum$scorecum/recMap.cumsum$samples)*100
-  
-  return(recMap.cumsum)
-}
-
-```
-
-```{r makeMaps}
 
 # Set donor colors
 crossoverbed<-read.table("report/2020-05-29_crossoverSummary/allcrossovers.bed", header=TRUE)
@@ -182,72 +115,7 @@ counts.sum<-aggregate(counter ~ X1+X2, data=counts, FUN=sum)
 counts.mean<-aggregate(counter ~ X1, data=counts.sum, FUN=mean)
 
 colnames(counts.mean)<-c("ind", "mean.rec.per.cell")
-
-# He fet una prova amb la metodologia original i els sencers son iguals, +- decimals
-# Make map in centimorgans (paper)
-paper.recmap<-makeMap(papermap)
-
-plotable<-paper.recmap[ paper.recmap$inv == "chr1",]
-plotable<-merge(plotable, counts.mean)
-
-paperplot<-ggplot(plotable[order(plotable$end_w),], aes(x=end_w, y = centiMorgans, group=ind, color = mean.rec.per.cell))+geom_line()+scale_color_gradient(low = "#1f2896", high = "#d26459")+ggtitle("Cumulative genetic distance - chr1 - 500kb bins")
-
-# Make map in centimorgans (new)
-new.recmap<-makeMap(newmap)
-
-plotable<-new.recmap[ new.recmap$inv == "chr1",]
-plotable<-merge(plotable, counts.mean)
-
-newplot<-ggplot(plotable[order(plotable$end_w),], aes(x=end_w, y = centiMorgans, group=ind, color = mean.rec.per.cell))+geom_line()+scale_color_gradient(low = "#1f2896", high = "#d26459")+ggtitle("Cumulative genetic distance - chr1 - 10kb bins")
-
-
-grid.arrange(paperplot, newplot, nrow=1)
-```
-
-
-# Comparació entre mapes
-
-El deixo epr més endavant perque ja esta fet en el paper original. 
-
-
-# Recombinació en inversions
-fixmap<-read.table("analysis/2020-06-30_09_crossovers_fixed/windows_x_crossovers_weighted.txt")
-propmap<-read.table("analysis/2020-06-30_09_crossovers_proportional/windows_x_crossovers_weighted.txt")
-
-```{r}
-
-fixmap<-read.table("analysis/2020-06-30_09_crossovers_fixed/windows_x_crossovers_weighted.txt")
-propmap<-read.table("analysis/2020-06-30_09_crossovers_proportional/windows_x_crossovers_weighted.txt")
-
-
-fix.recmap<-makeMap(fixmap)
-prop.recmap<-makeMap(propmap)
-
-invcoord<-read.table("report/2020-05-29_crossoverSummary/invcoord_noXY.gff")
-
-fix.recmap$position<-"outside"
-prop.recmap$position<-"outside"
-
-for(i in rownames(invcoord)){
- 
- fix.recmap[ fix.recmap$chr_w ==  invcoord[i, "V1"] & fix.recmap$inv == invcoord[i, "V4"] & fix.recmap$start_w >=invcoord[i, "V2"] & fix.recmap$end_w <=invcoord[i, "V3"] , "position"]<-"inside"
- 
-  prop.recmap[ prop.recmap$chr_w ==  invcoord[i, "V1"] & prop.recmap$inv == invcoord[i, "V4"] & prop.recmap$start_w >=invcoord[i, "V2"] & prop.recmap$end_w <=invcoord[i, "V3"] , "position"]<-"inside"
-
-}
-
-
-quantities.fix<-aggregate(win_centiMorgans ~ ind+inv+position, data=fix.recmap, FUN=mean)
-quantities.prop<-aggregate(win_centiMorgans ~ ind+inv+position, data=prop.recmap, FUN=mean)
-
-quantities.fix_wide<-reshape2::dcast(quantities.fix, ind+inv ~ position, value.var="win_centiMorgans")
-quantities.prop_wide<-reshape2::dcast(quantities.prop, ind+inv ~ position, value.var="win_centiMorgans")
-
-quantities.fix_wide$correction<-quantities.fix_wide$inside/quantities.fix_wide$outside
-quantities.prop_wide$correction<-quantities.prop_wide$inside/quantities.prop_wide$outside
-
-quantities<-merge(quantities.prop_wide, counts.mean, by = "ind")
-
+rm(crossoverbed, counts, counts.sum)
 
 
 # Filter by genotyped inversion
@@ -262,21 +130,337 @@ quantities<-merge(quantities.prop_wide, counts.mean, by = "ind")
   genotypes<-reshape2::melt(genotypes, id.vars="Individual" )
   colnames(genotypes)<-c("ind", "info", "genotype")
   
-  
-plotable<-quantities[quantities$inv %in% genotypes$info,]
-plotable<-merge(plotable, genotypes, by.x=c("ind", "inv"),by.y = c("ind", "info") )
+# Merge new info
+  recMap.10<-merge(recMap.10, counts.mean)
+  rm(counts.mean)
+  recMap.10<-merge(recMap.10, genotypes[genotypes$genotype != ".",], by.x = c("ind","1"), by.y = c("ind", "info"))
+  rm(genotypes)
+``` 
 
-plot1<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = inside ), )+geom_point(aes(x=inv, y = inside, group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+ggtitle("mean cM values - global - proportional confidence interval - 10kb windows ")+ylab("mean centiMorgans")+theme(axis.text = element_text(angle=90))
+## Difference in images: log scale, note number of samples per inv and genotype
 
-plot2<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = inside ), )+geom_point(aes(x=inv, y = inside, group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+facet_grid(genotype~.)+ggtitle("mean cM values - per genotype - proportional confidence interval - 10kb windows ")+ylab("mean centiMorgans")+theme(axis.text = element_text(angle=90))
+### Option 1: fold differences between three genotypes
 
-plot3<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = log(correction) ), )+geom_point(aes(x=inv, y = log(correction), group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+ggtitle("inside/outside - global - proportional confidence interval - 10kb windows ")+ylab("mean cM inside / mean cM outside")+theme(axis.text = element_text(angle=90))
+```{r}
 
-plot4<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = log(correction) ), )+geom_point(aes(x=inv, y = log(correction), group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+facet_grid(.~genotype)+ggtitle("inside/outside - per genotype - proportional confidence interval - 10kb windows ")+ylab("mean cM inside / mean cM outside")+theme(axis.text = element_text(angle=90))
 
-ggarrange( plot3,  plot4, ncol=2, common.legend = TRUE, legend="bottom")
-ggarrange(paperplot, newplot, nrow=1, common.legend = TRUE, legend="right")
+# Make percentages
+recMap.10<-reshape2::dcast(recMap.10, ind+`1`+mean.rec.per.cell+genotype+chr_w ~ position, value.var="cM.Mb_w")
+recMap.10$fold.diff<- recMap.10[,"in"] /recMap.10$out
+recMap.10[recMap.10[,"in"] == 0 & recMap.10$out == 0, "fold.diff"] <- 1
 
-```
+plot2<-ggplot(recMap.10)+geom_boxplot(aes(x= `1`, y = fold.diff ))+
+  geom_point(aes(x=`1`, y = fold.diff, group = ind, color = mean.rec.per.cell))+
+  scale_color_gradient(low = "#1f2896", high = "#d26459")+
+  facet_grid(.~genotype)+
+  ggtitle("Recombination rate inside/outside per genotype - fixed 10kb confidence interval")+
+  ylab("cM/Mb")+
+  theme(axis.text.x = element_text(angle=45,  vjust=0.9, hjust = 0.9))+
+  scale_y_log1()
+plot2
+
+``` 
+
+### Option 2: fold differences between homozygous and heterozygous
+
+
+```{r}
+
+
+# Make tags
+recMap.10$zygosity<-"HOMO"
+recMap.10[recMap.10$genotype == "HET", "zygosity"]<-"HET"
+
+plot3<-ggplot(recMap.10)+geom_boxplot(aes(x= `1`, y = fold.diff ))+
+  geom_point(aes(x=`1`, y = fold.diff, group = ind, color = mean.rec.per.cell))+
+  scale_color_gradient(low = "#1f2896", high = "#d26459")+
+  facet_grid(.~zygosity)+
+  ggtitle("Recombination rate inside/outside per homo/heterozygous - fixed 10kb confidence interval")+
+  ylab("cM/Mb")+
+  theme(axis.text.x = element_text(angle=45,  vjust=0.9, hjust = 0.9))+
+  scale_y_log10()
+plot3
+
+``` 
+
+### Option 3: context by windows (in the future)
+## Difference in numbers: mean
+
+
+
+# Cauen les inversions en zones de baixa recombinació?
+
+## Text
+## A - For each inversion: inv+CI 10 and 50 mean recrate
+
+```{r}
+
+
+#none - recmap.10 $ outside mean
+
+``` 
+
+## B - Mean recrate per individual and chromosome
+
+```{r}
+
+load("analysis/2020-07-14_09_crossovers_byChromosome/crossoverResult.Rdata")
+recMap.chr<-recMap
+rm(recMap)
+
+recMap.chr$winsize<-recMap.chr$end_w-recMap.chr$start_w
+recMap.chr$cM.Mb_w<-recMap.chr$cM.Mb * (1000000/recMap.chr$winsize)
+recMap.chr<-cbind(recMap.chr,str_split_fixed(recMap.chr$inv, "_", 2))
+
+recMap.chr<-recMap.chr[recMap.chr$`2` == "in",]
+
+
+``` 
+## C - Mean individual recrate
+
+```{r}
+
+recMap.ind<-aggregate(cM.Mb_w  ~ ind , recMap.chr, mean)
+
+``` 
+
+## Compare (join) A-B and A-C in folds
+
+```{r}
+
+recMap.10.c<-merge(recMap.10, recMap.chr[,c("cM.Mb_w","chr_w", "ind")])
+recMap.10.ci<-merge(recMap.10.c, recMap.ind , by="ind")
+
+recMap.10.ci$rate.chr<- recMap.10.ci[,"in"] / recMap.10.ci$cM.Mb_w.x
+recMap.10.ci$rate.ind<- recMap.10.ci$out / recMap.10.ci$cM.Mb_w.y
+
+
+
+``` 
+
+## Difference in images: log scale, amount of invs+inds for each group
+
+Previously, the following options were proposed:
+
+* Option 1: only homo, separated by genotype
+* Option 2: al homos
+
+But taking into account only the outside region, all samples can be considered
+
+```{r}
+
+plot4<-ggplot(recMap.10.ci)+geom_boxplot(aes(x= `1`, y = rate.chr ))+
+  geom_point(aes(x=`1`, y = rate.chr, group = ind, color = mean.rec.per.cell))+
+  scale_color_gradient(low = "#1f2896", high = "#d26459")+
+  ggtitle("Recombination rate outside/chromosome mean - fixed 10kb confidence interval")+
+  ylab("cM/Mb")+
+  theme(axis.text.x = element_text(angle=45,  vjust=0.9, hjust = 0.9))+
+  scale_y_log10()+
+  facet_grid(. ~ zygosity )
+plot4
+
+plot4<-ggplot(recMap.10.ci)+geom_boxplot(aes(x= `1`, y = rate.ind ))+
+  geom_point(aes(x=`1`, y = rate.ind, group = ind, color = mean.rec.per.cell))+
+  scale_color_gradient(low = "#1f2896", high = "#d26459")+
+  ggtitle("Recombination rate outside/individual mean - fixed 10kb confidence interval")+
+  ylab("cM/Mb")+
+  theme(axis.text.x = element_text(angle=45,  vjust=0.9, hjust = 0.9))+
+  scale_y_log10()
+
+plot4
+
+``` 
+
+
+
+
+
+<!-- # ----------------------------------------------------------------# -->
+
+<!-- # Introducció -->
+
+<!-- La resolució dels events de recombinació que es proporcionen a Bell et al. 2020 és, de mitjana, unes 400 kb. Això és degut al baix coverage que han fet servir per cada cèl·lula individual. No obstant, si aquests events de recombinació es representen en una figura en la seva posició real en el cromosoma, un a sobre l'altre amb una transparència alta, es pot veure que es generen uns patrons d'una resolució més fina, a causa de la densitat de solapament entre multiples fragments. -->
+
+<!-- En aquesta part de l'anàlisi volem transformar aquests patrons que hem observat en una mesura quantitativa de la taxa de recombinació de cada individu. En el article original, fan finestres de 500kb i compten quants events han tingut lloc abans de cada límit de finestra. Aquesta quantitat, dividida pel nombre de cèl·lules estudiades per cada idividu i multiplicada per 100 els hi dona la posició física en cM de cada un dels punts, que es pot convertir després a taxa de recombinació.  -->
+
+<!-- En el nostre cas volem fer el mateix pero amb finestres molt més petites i per tant hem pensat en fer el recompte no dels events que han tingut lloc abans de cada límit de finestra, sino la fracció d'events que solapen amb cada finestra. -->
+
+<!-- Reproduirem els resultats de Bell et al. 2020 i la seva comparació amb altres mapes de recombinació i hi afegirem els nostres propis mapes per detectar possibles esbiaixos que haguem de tenir en compte.  -->
+
+<!-- # Generació dels mapes de recombinació -->
+
+<!-- Per elaborar els nostres mapes de recombinació, es proporciona al programa un arxiu gff amb les coordenades de les inversions que volem estudiar, una mida de finestra i un interval de confiança que es vulgui aplicar. Llavors, per a cada inversió+interval de confiança es fan les finestres de la mida especificada i es mira amb quins events de recombinació solapen. El programa llavors calcula quin percentatge de l'event de recombinació solapa amb la finestra en qüestió.  -->
+
+<!-- He fet això per un grup d'inversions de prova, afegint 10kb d'interval de confiança i també afegint la mida de la inversió adalt i abaix. Com a proxy dels mapes de Bell et al. 2020, he introduit els cromosomes com si fossin les inversions i he especificat una mida de finestra de 500kb, sense interval de confiança, i aixo ho comparare amb el mateix pero mides de finestra de 10kb.  -->
+
+
+<!-- # ---- -->
+<!-- Per aquest estudi necessito 4 mesures: -->
+
+<!-- * Mapa de recombinació fet tal i com s'especifica en el paper -->
+<!-- * Mapa de recombinaci fet amb el nostre mètode i 10kb de mida -->
+<!-- * Càlcul de la taxa de recombinacio amb marges fixos de 10kb, finestres 10 kb, centrades en la inversio  -->
+<!-- + Calcul de la taxa de recombinacio amb marges fixos de 50kb, finestres 10 kb, centrades en la inversio -->
+
+<!-- (((( es necessari fer finestres? el Mario va dir que si pero jo crec que nomes afegeix esbiaixos... a no ser que vulgui apilar les finestres com es feia amb les taxes de mutacio, per fer dins vs fora)))) -->
+
+
+<!-- ```{r dataload} -->
+<!-- papermap<-read.table("analysis/2020-07-01_09_crossovers_500/windows_x_crossovers_weighted.txt") -->
+<!-- newmap<-read.table("analysis/2020-07-01_09_crossovers_10/windows_x_crossovers_weighted.txt") -->
+
+<!-- ``` -->
+
+<!-- ```{r functions} -->
+
+<!-- makeMap<-function(weightMap){ -->
+
+<!--   # Make readable names -->
+<!--   colnames(weightMap)<-c("chr_w", "start_w", "end_w", "inv","chr_e", "start_e", "end_e", "ind", "overlap", "score") -->
+
+<!--   # Sum scores for each window, individual and inversion -->
+<!--   weightMap$ind<-sub("_.*$","", weightMap$ind) -->
+<!--   recMap<-aggregate(score ~ chr_w+start_w+end_w+ind+inv, data=weightMap, FUN=sum) -->
+
+<!--    # Control by number of samples   -->
+<!--   numofsamples<-read.table("report/2020-04-29_statisticalPreliminary/numofsamples.txt", stringsAsFactors = FALSE) -->
+<!--   colnames(numofsamples)<-c("ind", "samples") -->
+<!--   recMap<-merge(recMap, numofsamples) -->
+<!--   recMap$win_centiMorgans<-(recMap$score/recMap$samples)*100 -->
+
+<!--   recMap<-recMap[order(recMap$end_w),] -->
+
+<!--   recMap.cumsum<-data.frame() -->
+
+<!--   for (i in unique(recMap$ind)) { -->
+<!--     tmp.i<-recMap[recMap$ind == i,] -->
+
+<!--     for (c in unique(as.character(tmp.i$inv))) { -->
+<!--       tmp.ic<-tmp.i[tmp.i$inv == c,] -->
+<!--       tmp.ic<-tmp.ic[order(tmp.ic$end_w),] -->
+<!--       tmp.ic$scorecum<-cumsum(tmp.ic$score) -->
+
+<!--       recMap.cumsum<-rbind(recMap.cumsum, tmp.ic) -->
+
+
+<!--     } -->
+
+
+<!--   } -->
+
+<!--   recMap.cumsum$centiMorgans<-(recMap.cumsum$scorecum/recMap.cumsum$samples)*100 -->
+
+<!--   return(recMap.cumsum) -->
+<!-- } -->
+
+<!-- ``` -->
+
+<!-- ```{r makeMaps} -->
+
+<!-- # Set donor colors -->
+<!-- crossoverbed<-read.table("report/2020-05-29_crossoverSummary/allcrossovers.bed", header=TRUE) -->
+<!-- counts<-data.frame(str_split_fixed(crossoverbed$donor_cell, "_", 2)) -->
+<!-- counts$counter<-1 -->
+
+<!-- counts.sum<-aggregate(counter ~ X1+X2, data=counts, FUN=sum) -->
+<!-- counts.mean<-aggregate(counter ~ X1, data=counts.sum, FUN=mean) -->
+
+<!-- colnames(counts.mean)<-c("ind", "mean.rec.per.cell") -->
+<!-- rm(crossoverbed) -->
+<!-- # He fet una prova amb la metodologia original i els sencers son iguals, +- decimals -->
+<!-- # Make map in centimorgans (paper) -->
+<!-- paper.recmap<-makeMap(papermap) -->
+
+<!-- plotable<-paper.recmap[ paper.recmap$inv == "chr1",] -->
+<!-- plotable<-merge(plotable, counts.mean) -->
+
+<!-- paperplot<-ggplot(plotable[order(plotable$end_w),], aes(x=end_w, y = centiMorgans, group=ind, color = mean.rec.per.cell))+geom_line()+scale_color_gradient(low = "#1f2896", high = "#d26459")+ggtitle("Cumulative genetic distance - chr1 - 500kb bins") -->
+
+<!-- # Make map in centimorgans (new) -->
+<!-- new.recmap<-makeMap(newmap) -->
+
+<!-- plotable<-new.recmap[ new.recmap$inv == "chr1",] -->
+<!-- plotable<-merge(plotable, counts.mean) -->
+
+<!-- newplot<-ggplot(plotable[order(plotable$end_w),], aes(x=end_w, y = centiMorgans, group=ind, color = mean.rec.per.cell))+geom_line()+scale_color_gradient(low = "#1f2896", high = "#d26459")+ggtitle("Cumulative genetic distance - chr1 - 10kb bins") -->
+
+
+<!-- grid.arrange(paperplot, newplot, nrow=1) -->
+<!-- ``` -->
+
+
+<!-- # Comparació entre mapes -->
+
+<!-- El deixo epr més endavant perque ja esta fet en el paper original.  -->
+
+
+<!-- # Recombinació en inversions -->
+<!-- fixmap<-read.table("analysis/2020-06-30_09_crossovers_fixed/windows_x_crossovers_weighted.txt") -->
+<!-- propmap<-read.table("analysis/2020-06-30_09_crossovers_proportional/windows_x_crossovers_weighted.txt") -->
+
+<!-- ```{r} -->
+
+<!-- fixmap<-read.table("analysis/2020-06-30_09_crossovers_fixed/windows_x_crossovers_weighted.txt") -->
+<!-- propmap<-read.table("analysis/2020-06-30_09_crossovers_proportional/windows_x_crossovers_weighted.txt") -->
+
+
+<!-- fix.recmap<-makeMap(fixmap) -->
+<!-- prop.recmap<-makeMap(propmap) -->
+
+<!-- invcoord<-read.table("report/2020-05-29_crossoverSummary/invcoord_noXY.gff") -->
+
+<!-- fix.recmap$position<-"outside" -->
+<!-- prop.recmap$position<-"outside" -->
+
+<!-- for(i in rownames(invcoord)){ -->
+
+<!--  fix.recmap[ fix.recmap$chr_w ==  invcoord[i, "V1"] & fix.recmap$inv == invcoord[i, "V4"] & fix.recmap$start_w >=invcoord[i, "V2"] & fix.recmap$end_w <=invcoord[i, "V3"] , "position"]<-"inside" -->
+
+<!--   prop.recmap[ prop.recmap$chr_w ==  invcoord[i, "V1"] & prop.recmap$inv == invcoord[i, "V4"] & prop.recmap$start_w >=invcoord[i, "V2"] & prop.recmap$end_w <=invcoord[i, "V3"] , "position"]<-"inside" -->
+
+<!-- } -->
+
+
+<!-- quantities.fix<-aggregate(win_centiMorgans ~ ind+inv+position, data=fix.recmap, FUN=mean) -->
+<!-- quantities.prop<-aggregate(win_centiMorgans ~ ind+inv+position, data=prop.recmap, FUN=mean) -->
+
+<!-- quantities.fix_wide<-reshape2::dcast(quantities.fix, ind+inv ~ position, value.var="win_centiMorgans") -->
+<!-- quantities.prop_wide<-reshape2::dcast(quantities.prop, ind+inv ~ position, value.var="win_centiMorgans") -->
+
+<!-- quantities.fix_wide$correction<-quantities.fix_wide$inside/quantities.fix_wide$outside -->
+<!-- quantities.prop_wide$correction<-quantities.prop_wide$inside/quantities.prop_wide$outside -->
+
+<!-- quantities<-merge(quantities.prop_wide, counts.mean, by = "ind") -->
+
+
+
+<!-- # Filter by genotyped inversion -->
+<!-- # Get individuals genotypes -->
+<!--   genotypes<-read.table("analysis/2020-05-23_07_imputationTables/new_genotypes.csv", header=TRUE) -->
+
+<!--   # Get individual names -->
+<!--   genotypes$Individual<-sub("^\\d+\\.","",genotypes$Individual) -->
+<!--   genotypes$Individual<-sub("nc", "NC", genotypes$Individual, ignore.case = FALSE) -->
+
+<!--   # Melt -->
+<!--   genotypes<-reshape2::melt(genotypes, id.vars="Individual" ) -->
+<!--   colnames(genotypes)<-c("ind", "info", "genotype") -->
+
+
+<!-- plotable<-quantities[quantities$inv %in% genotypes$info,] -->
+<!-- plotable<-merge(plotable, genotypes, by.x=c("ind", "inv"),by.y = c("ind", "info") ) -->
+
+<!-- plot1<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = inside ), )+geom_point(aes(x=inv, y = inside, group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+ggtitle("mean cM values - global - proportional confidence interval - 10kb windows ")+ylab("mean centiMorgans")+theme(axis.text = element_text(angle=90)) -->
+
+<!-- plot2<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = inside ), )+geom_point(aes(x=inv, y = inside, group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+facet_grid(genotype~.)+ggtitle("mean cM values - per genotype - proportional confidence interval - 10kb windows ")+ylab("mean centiMorgans")+theme(axis.text = element_text(angle=90)) -->
+
+<!-- plot3<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = log(correction) ), )+geom_point(aes(x=inv, y = log(correction), group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+ggtitle("inside/outside - global - proportional confidence interval - 10kb windows ")+ylab("mean cM inside / mean cM outside")+theme(axis.text = element_text(angle=90)) -->
+
+<!-- plot4<-ggplot(plotable)+geom_boxplot(aes(x= inv, y = log(correction) ), )+geom_point(aes(x=inv, y = log(correction), group = ind, color = mean.rec.per.cell))+scale_color_gradient(low = "#1f2896", high = "#d26459")+facet_grid(.~genotype)+ggtitle("inside/outside - per genotype - proportional confidence interval - 10kb windows ")+ylab("mean cM inside / mean cM outside")+theme(axis.text = element_text(angle=90)) -->
+
+<!-- ggarrange( plot3,  plot4, ncol=2, common.legend = TRUE, legend="bottom") -->
+<!-- ggarrange(paperplot, newplot, nrow=1, common.legend = TRUE, legend="right") -->
+
+<!-- ``` -->
 
 
