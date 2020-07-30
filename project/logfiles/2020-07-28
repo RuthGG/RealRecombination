@@ -1,0 +1,5 @@
+awk: cmd. line:1: (FILENAME=tmp/2020-07-28_09_crossovers/comparison.txt FNR=140014) fatal: division by zero attempted
+Loading required package: tidyr
+[[1]]
+NULL
+

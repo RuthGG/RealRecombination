@@ -17,7 +17,7 @@ if (length(args)<3) {
 }
 
 # Example
-# args[1]<-"analysis/2020-07-08_09_crossovers_inv10kb/windows_x_crossovers_weighted.txt" # Directory with crossover results
+# args[1]<-"tmp/2020-07-29_09_crossovers/windows_x_crossovers_weighted.txt" # Directory with crossover results
 # args[2]<-"report/2020-04-29_statisticalPreliminary/numofsamples.txt"  # Number of cells per sample
 # args[3]<-"analysis/2020-07-08_09_crossovers_inv10kb/recMap.Rdata" # Exit file
 
@@ -74,6 +74,11 @@ lapply(packages,FUN = function(x) {
   
   # Make rate (recombination rate)
   recMap$cM.Mb<-(1-exp((-2*recMap$cM)/100))/2
+  
+  # Adjust rate
+  recMap$winsize<-recMap$end_w-recMap$start_w
+  recMap$cM.Mb<- recMap$cM.Mb*(1000000/recMap$winsize)
+   
   
 
 # STORE TABLE

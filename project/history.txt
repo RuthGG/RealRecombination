@@ -93,3 +93,35 @@
 2020-07-14: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt. Manually changed to 2020-07-14_09_crossovers_byChromosome
 2020-07-14: Manually copied data/use/avery_crossovers/allcrossovers.bed that contains crossovers simplified, and also saved as an Rdata file.
 2020-07-15: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+2020-07-29: zcat data/raw/avery_crossovers/allcrossovers_hg38.txt.gz | awk -v OFS="\t" -v CONVFMT="%.0f" 'NR>1{number=int(($4+$5)/2); $4 = number; $5 = number+1}{print}' | gzip > data/use/avery_crossovers/allcrossovers_hg38_midpoint.txt.gz
+2020-07-29:  Paper-like recombination maps of different sizes - this means, with 1 point recombination events. 
+
+		printf "500000\n0" >  data/use/conditions/winsizeCrossovers.txt
+		bash runall.sh crossovers -f data/use/avery_crossovers/allcrossovers_hg38_midpoint.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+		mv analysis/2020-07-29_09_crossovers analysis/2020-07-29_09_crossovers_paperMap500
+		printf "100000\n0" > data/use/conditions/winsizeCrossovers.txt
+		bash runall.sh crossovers -f data/use/avery_crossovers/allcrossovers_hg38_midpoint.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+		mv analysis/2020-07-29_09_crossovers analysis/2020-07-29_09_crossovers_paperMap100
+		printf "10000\n0" > data/use/conditions/winsizeCrossovers.txt
+		bash runall.sh crossovers -f data/use/avery_crossovers/allcrossovers_hg38_midpoint.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+		mv analysis/2020-07-29_09_crossovers analysis/2020-07-29_09_crossovers_paperMap10
+
+2020-07-29:  Proportional recombination maps of different sizes
+		
+		printf "500000\n0" >  data/use/conditions/winsizeCrossovers.txt
+		bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+		mv analysis/2020-07-29_09_crossovers analysis/2020-07-29_09_crossovers_newMap500
+		printf "100000\n0" > data/use/conditions/winsizeCrossovers.txt
+		bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+		mv analysis/2020-07-29_09_crossovers analysis/2020-07-29_09_crossovers_newMap100
+		printf "10000\n0" > data/use/conditions/winsizeCrossovers.txt
+		bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+		mv analysis/2020-07-29_09_crossovers analysis/2020-07-29_09_crossovers_newMap10
+2020-07-30: Manually created data/use/inversions_info/2020.07.inversions_hg38 (.csv and.gff)
+2020-07-30: Manually created data/use/inversions_info/2020.07.biginversions_hg38.gff to make a detailed study. 
+2020-07-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.biginversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+2020-07-30: Manually changed 2020-07-30_09_crossovers to 2020-07-30_09_crossovers_biginversions
+2020-07-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+2020-07-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+2020-07-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+2020-07-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt

@@ -5,3 +5,4 @@ tmp/*
 analysis/2020-04-16_mergePca/*
 *.ld
 analysis/*/windows_x_crossovers_weighted.txt
+report/2020-05-29_crossoverSummary/deliver/images/recMap.all.RData

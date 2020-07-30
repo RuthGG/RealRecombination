@@ -689,9 +689,22 @@ if  [ "$COMMAND" == "crossovers" ]; then
       LEFT=$(($START-$SIZE))
       RIGHT=$(($END+$SIZE))
      
-      echo -e "${CHROM}\t${LEFT}\t${START}\t${ID}_left" >> ${TMPDIR}/windows.bed  
+        ##### TEMPORARY MODIFICATION!!!! ######
+        # I want to explude 20kb on each side of inv
+        # # # # #
+
+      START_B=$((${START}-20000))
+      END_B=$((${END}+20000))
+
+
+
+      # echo -e "${CHROM}\t${LEFT}\t${START}\t${ID}_left" >> ${TMPDIR}/windows.bed  
+      # echo -e "${CHROM}\t${START}\t${END}\t${ID}_in" >> ${TMPDIR}/windows.bed  
+      # echo -e "${CHROM}\t${END}\t${RIGHT}\t${ID}_right" >> ${TMPDIR}/windows.bed  
+      echo -e "${CHROM}\t${LEFT}\t${START_B}\t${ID}_left" >> ${TMPDIR}/windows.bed  
       echo -e "${CHROM}\t${START}\t${END}\t${ID}_in" >> ${TMPDIR}/windows.bed  
-      echo -e "${CHROM}\t${END}\t${RIGHT}\t${ID}_right" >> ${TMPDIR}/windows.bed  
+      echo -e "${CHROM}\t${END_B}\t${RIGHT}\t${ID}_right" >> ${TMPDIR}/windows.bed  
+
         
     else 
     # If we want windows, no left and right will be specified, to allow future code to apply any criterium as desired. 
@@ -722,7 +735,7 @@ if  [ "$COMMAND" == "crossovers" ]; then
   bedtools intersect -wao -a ${TMPDIR}/windows.bed  -b ${TMPDIR}/allcrossovers.bed > ${TMPDIR}/comparison.txt
 
   # Make weights
-  awk '$9 == 0{$6=1; $7=2} ;{print $0, $9/($7-$6)}' ${TMPDIR}/comparison.txt > ${TMPDIR}/windows_x_crossovers_weighted.txt
+  awk -v OFS="\t" '$9 == 0{$6=1; $7=2} ;{print $0, $9/($7-$6)}' ${TMPDIR}/comparison.txt > ${TMPDIR}/windows_x_crossovers_weighted.txt
 
   # Parse table
    Rscript code/rscript/crossoverTables.R ${TMPDIR}/windows_x_crossovers_weighted.txt $CELLS ${OUTDIR}/crossoverResult.Rdata
