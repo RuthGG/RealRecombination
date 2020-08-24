@@ -135,4 +135,18 @@
 
 2020-08-24: Manually created data/use/inversions_info/2020.08.inversions_hg38.gff
 2020-08-24: Manually created data/use/inversions_info/2020.08.inversions_hg38_G1.gff (up to 5kb), data/use/inversions_info/2020.08.inversions_hg38_G2.gff (5-50kb), data/use/inversions_info/2020.08.inversions_hg38_G3.gff (more than 50kb)
-   
+2020-08-24: Samples for inversions analysis, in three groups
+
+	printf "50000\n50000" >  data/use/conditions/winsizeCrossovers.txt
+	bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.08.inversions_hg38_G1.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -w out
+	mv analysis/2020-08-24_09_crossovers analysis/2020-08-24_09_crossovers_invsG1
+	cp project/logfiles/2020-08-24 analysis/2020-08-24_09_crossovers_invsG1
+	printf "50000\n100000" >  data/use/conditions/winsizeCrossovers.txt
+	bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.08.inversions_hg38_G2.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -w out
+	mv analysis/2020-08-24_09_crossovers analysis/2020-08-24_09_crossovers_invsG2
+	cp project/logfiles/2020-08-24 analysis/2020-08-24_09_crossovers_invsG2
+	printf "50000\n1000000" >  data/use/conditions/winsizeCrossovers.txt
+	bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.08.inversions_hg38_G3.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -w out
+	mv analysis/2020-08-24_09_crossovers analysis/2020-08-24_09_crossovers_invsG3
+	cp project/logfiles/2020-08-24 analysis/2020-08-24_09_crossovers_invsG3
+  
