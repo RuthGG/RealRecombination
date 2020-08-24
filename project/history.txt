@@ -117,11 +117,22 @@
 		printf "10000\n0" > data/use/conditions/winsizeCrossovers.txt
 		bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
 		mv analysis/2020-07-29_09_crossovers analysis/2020-07-29_09_crossovers_newMap10
-2020-07-30: Manually created data/use/inversions_info/2020.07.inversions_hg38 (.csv and.gff)
+
+2020-07-30: Manually created data/use/inversions_info/2020.07.inversions_hg38 (.csv and.gff): awk -v OFS="\t" '{print "chr"$1, "InvFEST", "inversion", $3, $6, ".", ".", ".", "ID=1;Name="$2";Estimated size ="$8" bp"}' data/use/inversions_info/2020.07.inversions_hg38.csv > data/use/inversions_info/2020.07.inversions_hg38.gff
 2020-07-30: Manually created data/use/inversions_info/2020.07.biginversions_hg38.gff to make a detailed study. 
 2020-07-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.biginversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
 2020-07-30: Manually changed 2020-07-30_09_crossovers to 2020-07-30_09_crossovers_biginversions
 2020-07-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
-2020-07-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
-2020-07-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
-2020-07-30: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+2020-07-30: Manually changed 2020-07-30_09_crossovers to 2020-07-30_09_crossovers_inversions
+2020-08-24: New proportional recombination maps of different sizes
+		
+		printf "50000\n0" > data/use/conditions/winsizeCrossovers.txt
+		bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+		mv analysis/2020-08-24_09_crossovers analysis/2020-08-24_09_crossovers_newMap50
+		printf "20000\n0" > data/use/conditions/winsizeCrossovers.txt
+		bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/assembly_hg38/cromlength.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt
+		mv analysis/2020-08-24_09_crossovers analysis/2020-08-24_09_crossovers_newMap20
+
+2020-08-24: Manually created data/use/inversions_info/2020.08.inversions_hg38.gff
+2020-08-24: Manually created data/use/inversions_info/2020.08.inversions_hg38_G1.gff (up to 5kb), data/use/inversions_info/2020.08.inversions_hg38_G2.gff (5-50kb), data/use/inversions_info/2020.08.inversions_hg38_G3.gff (more than 50kb)
+   
