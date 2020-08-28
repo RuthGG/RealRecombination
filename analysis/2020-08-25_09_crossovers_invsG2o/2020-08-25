@@ -1,0 +1,6 @@
+Error: Invalid record in file tmp/2020-08-25_09_crossovers/windows.bed. Record is 
+chr11	-208164	-158164	HsInv0124_left
+Loading required package: tidyr
+[[1]]
+NULL
+

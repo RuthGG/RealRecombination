@@ -67,7 +67,7 @@ lapply(packages,FUN = function(x) {
   # --------------------------------------------------------------------------- #
   
   # Control by number of samples  
-  recMap<-merge(weightMap.com, numofsamples)
+  recMap<-merge(weightMap.com, numofsamples, all.x = TRUE)
   
   # Make centiMorgans (genetic distance)
   recMap$cM<-(recMap$score/recMap$samples)*100

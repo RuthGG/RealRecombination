@@ -705,6 +705,17 @@ if  [ "$COMMAND" == "crossovers" ]; then
       BL=$(grep $ID $INVCOORD | grep "buffer1"| cut -f4)
       BR=$(grep $ID $INVCOORD | grep "buffer2"| cut -f5)
 
+      # Make buffer region be at least 20kb
+      DIFFL=$(($START-$BL))
+      DIFFR=$(($BR-$END))
+
+      if [ ${DIFFL} -lt 20000 ] ; then
+        BL=$(($START-20000))
+      fi
+      if [ ${DIFFR} -lt 20000 ] ; then
+        BR=$(($END+20000))
+      fi
+
       # Apply confidence interval + buffer
       LEFT=$(($BL-$SIZE))
       RIGHT=$(($BR+$SIZE))
