@@ -1,0 +1,10 @@
+
+2020-06-23T13:09:28 prefetch.2.10.4: 1) Downloading 'SRR10140424'...
+2020-06-23T13:09:28 prefetch.2.10.4:  Downloading via https...
+2020-06-23T14:48:06 prefetch.2.10.4:  https download succeed
+2020-06-23T14:48:06 prefetch.2.10.4: 1) 'SRR10140424' was downloaded successfully
+Read 489245967 spots for SRR10140424.sra
+Written 489245967 spots for SRR10140424.sra
+[E::bgzf_flush] File write failed (wrong size)
+Could not write 65536 bytes: Error 4
+awk: (FILENAME=../../../project/dbGapDataStatus.txt FNR=50) warning: error writing standard output (No space left on device)

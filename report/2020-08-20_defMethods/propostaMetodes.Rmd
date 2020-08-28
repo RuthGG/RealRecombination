@@ -53,7 +53,9 @@ outdir<-"report/2020-08-20_defMethods/"
 
 # Test de qualitat per l'ajustament de la resolució
 
-> En aquest apartat i en endavant, s'anomenarà "event de recombinació" als rangs proporcionats en el paper de Bell et al. 2020, que son de mitjana de 400kb de llarg, i "entrecreuament" a la posició dins de l'event de recombinació on realment hi hauria hagut l'entrecreuament
+> "Event de recombinació": rang proporcionat en el paper de Bell et al. 2020 (~400kb de llarg).
+
+> "Entrecreuament": posició dins de l'event de recombinació on hi hauria hagut l'entrecreuament.
 
 En el paper original es considera que els entrecreuaments han tingut lloc al centre dels events de recombinació. Aquesta situacio, en especial tenint en compte la mida dels events de recombinació donats, és poc realista. Per això nostraltres provarem de calcular la taxa de recombinacio en cada una de les finestres sumant el valor de les parts proporcionals dels events de recombinacio que hi solapen, de forma que es dona mes credibilitat als events de recombinacio d'alta resolucio. Aixo ens permetria, a mes, tenir mapes elaborats amb finestres mes petites sense que el valor de moltes d'aquestes finestres sigui 0 tot i que solapin amb events de recombinacio i per tant existia la possibilitat de que s'hagues efectuat un entrecreuament dins els limits de la finestra en qüestió.
 
@@ -62,7 +64,7 @@ En el paper original es considera que els entrecreuaments han tingut lloc al cen
 ```{r XrecMap, echo = FALSE, eval=FALSE}
 
 ## Take samples as in paper in recombination rate
-setwd("~/20200401_RealRecombination/")
+# setwd("~/20200401_RealRecombination/")
 
 load("analysis/2020-08-24_09_crossovers_paperMap50/crossoverResult.Rdata")
 recMap.p<-data.frame(recMap)
@@ -98,6 +100,7 @@ rm(recMap.n, recMap.p)
 
 # Save
 save(recMap, file = paste0(outdir,"Rdata/recMap.Rdata"))
+
 ``` 
 
 ```{r DrecMap, echo = FALSE}
@@ -140,10 +143,16 @@ for (round in c(500000,100000 ,50000,20000)) {
   
 ```
 
-![](images/correlRecMapQualityTest_500.png){ width=45% } ![](images/correlRecMapQualityTest_100.png){ width=45% }
-![](images/correlRecMapQualityTest_50.png){ width=45% } ![](images/correlRecMapQualityTest_20.png){ width=45% }
 
-**Figura 1. Correlacio entre mapes de recombinacio calculats amb diferents metodologies.** _Per comprovar l'efecte del sistema de mesura, s'ha calculat la correlacio entre les taxes de recombinacio del mapa calculat com el paper i del mapa calculat mitjançant el metode nou, per mides de finestra de a)500kb, b)100kb, c)50kb, d)20kb. _
+```{r, echo=FALSE,out.width="45%", fig.cap="Correlació entre mapes de recombinacio calculats amb diferents metodologies. Per comprovar l'efecte del sistema de mesura, s'ha calculat la correlacio entre les taxes de recombinacio del mapa calculat mitjançant el metode nou (eix de les x) i del mapa calculat com el paper original (eix de les y), per mides de finestra de A=500kb, B=100kb, C=50kb, D=20kb.", fig.show='hold',fig.align='center'}
+
+
+
+knitr::include_graphics(c("images/correlRecMapQualityTest_500.png","images/correlRecMapQualityTest_100.png","images/correlRecMapQualityTest_50.png","images/correlRecMapQualityTest_20.png"))
+
+
+``` 
+
 
 Aquest efecte a nivell local sobre les taxes de recombinació és esperable i desitjable, ja que el que vol dir que les nostres mesures estan modulant falsos pics alhora que augmenta la resolució del mapa. En cas que realment estigui funcionant correctament, aquesta modulació local no afectarà a la mitjana de les finestres, és a dir, que el valor de les finestres de 500kb hauria de ser molt semblant a la mitjana de les finestres de 100, 50 o 20 kb que hi solapen. Tal com es pot veure a la Figura 2, això s'acompleix, i hi ha una correlació perfecta entre les mitjanes d'una opció i els valors de l'altra, per tant, podem concloure que alterar la mida de finestre per augmentar la resolucio no introdueix esbiaixos importants.
 
@@ -192,9 +201,18 @@ function.meansRecMapQualityTest(100000, 500000, recMap)
 
 ```
 
-![](images/meansRecMapQualityTest_100.to.500.png){ width=45% }![](images/meansRecMapQualityTest_50.to.500.png){ width=45% }![](images/meansRecMapQualityTest_20.to.500.png){ width=45% }
 
-**Figura 2. Correlacio entre mapes de recombinacio calculats a partir de diferents mides de finestra.** _Per comprovar l'efecte del sistema de mesura,2s'ha calculat la correlacio entre els diferents mapes calculats mitjançant el metode nou. Per cada finestra de 500kb, s'ha calculat la taxa de recombinacio mitjana de les finestres de a)100kb, b)50kb, c)20kb que hi solapen._
+
+```{r, echo=FALSE,out.width="45%", fig.cap="Correlacio entre mapes de recombinacio calculats a partir de diferents mides de finestra. Per comprovar l'efecte del sistema de mesura, s'ha calculat la correlacio entre els diferents mapes calculats mitjançant el metode nou. Per cada finestra de 500kb (eix de les x), s'ha calculat la taxa de recombinacio mitjana de les finestres de  A=100kb, B=50kb, C=20kb que hi solapen.", fig.show='hold',fig.align='center'}
+
+
+
+knitr::include_graphics(c("images/meansRecMapQualityTest_100.to.500.png","images/meansRecMapQualityTest_50.to.500.png","images/meansRecMapQualityTest_20.to.500.png"))
+
+
+``` 
+
+\newpage
 
 # Mostreig de les dades de recombinació
 
@@ -293,8 +311,7 @@ Les dades de coverage local també serien útils a l'hora de diferenciar si en u
 
 Aquest seria el nombre de dades (cada una representant una inversio en un individu concret) que es perdrien en cas d'aplicar els filtres. De moment les proves i els anàlisis s'han fet amb totes les dades, a l'espera de decidir que fem en cada cas.
 
-**Taula 1. Filtratge de dades.** _Cada columna és un grup d'inversions segons la seva mida: G1 fins a 5kb, G2 de 5 a 50kb i G3 més de 50kb. La fila Excluded es aquella on totes les finestres per una inversio en un individu concret tenen exactament la mateixa taxa de recombinacio i per tant no podem diferenciar entre diferents regions. Aixo afectaria nomes a aquells analisis on es comparin diferents tipus de finestra dins de la mateixa inversio. La fila Recombination Rate 0 (RR0) es aquella on la taxa de recombinacio ha estat 0 en totes les finestres associades a la inversio i els seus voltants. El total es la suma de les dues files._
-
+Taula 1. Filtratge de dades. Cada columna és un grup d'inversions segons la seva mida: G1 fins a 5kb, G2 de 5 a 50kb i G3 més de 50kb. La fila Excluded es aquella on totes les finestres per una inversio en un individu concret tenen exactament la mateixa taxa de recombinacio i per tant no podem diferenciar entre diferents regions. Aixo afectaria nomes a aquells analisis on es comparin diferents tipus de finestra dins de la mateixa inversio. La fila Recombination Rate 0 (RR0) es aquella on la taxa de recombinacio ha estat 0 en totes les finestres associades a la inversio i els seus voltants. El total es la suma de les dues files.
 ```{r DfilterInvs,  echo = FALSE}
 # Summarize score in all the inversion region with mean and variance
   tmp.agg.variance<-aggregate(score ~ ind+inv+group, data = recRate.allwins, FUN = var )
@@ -316,11 +333,9 @@ Aquest seria el nombre de dades (cada una representant una inversio en un indivi
 
 ## Normalització del mostreig
 
-Per poder comparar entre idividus i inversions, es va dir de normalitzar les taxes de recombinacio en funcio de l'individu i/o el cromosoma, en funcio del que es volgues fer. 
+Per poder comparar entre idividus i inversions, es va dir de normalitzar les taxes de recombinacio en funcio de l'individu i/o el cromosoma, en funcio del que es volgues fer. He fet servir el mapa de recombinació elaborat amb el nostre metode i amb finestres de 500kb com a referència per calcular les mitjanes que necessitem, ja que es la opcio computacionalment menys pesada i com ja hem demostrat abans, la mitjana sortiria la mateixa independentment de la mida de finestra triada per aquesta tasca.
 
-He fet servir el mapa de recombinació elaborat amb el nostre metode i amb finestres de 500kb com a referència per calcular les mitjanes que necessitem, ja que es la opcio computacionalment menys pesada i com ja hem demostrat abans, la mitjana sortiria la mateixa independentment de la mida de finestra triada per aquesta tasca.
-
-A primera vista (Figura 3) no es noten diferencies apreciables quan s'aplica un o altre metode de normalitzacio, pero observant atentament la comaparativa nomes amb un subset de les dades (Figura 4) es pot veure com s'introdueixen petits canvis.
+En la Figura 3 no es noten diferencies apreciables quan s'aplica un o altre metode de normalitzacio, pero observant atentament la comaparativa nomes amb un subset de les dades (Figura 4) es pot veure com s'introdueixen petits canvis.
 
 
 ```{r XnormInvs,  echo = FALSE, eval = FALSE}
@@ -378,15 +393,12 @@ A primera vista (Figura 3) no es noten diferencies apreciables quan s'aplica un 
   save(recRate.outwins, chr.normalization, ind.normalization, file = paste0(outdir,"Rdata/normInds.Rdata"))
 
 ```
-![](images/normInvs_alldata.png)
 
-**Figura 3. Efecte de diferents normalitzacions sobre les dades. ** _Cada boxplot representa la distribucio de les taxes de recombinació al llarg del genoma per un sol individu. Els individus estan endreçants i colorejats segons el seu nivell de recombinacio global, calculat com la mitjana d'entrecreuaments per cel·lula. Depenent de la mesura que es faci servir, el eix de les y (mostrat aqui en escala logarítmica en base 10) canvia, pero la distribució de les dades es la mateixa. _
+![Efecte de diferents normalitzacions sobre les dades. Cada boxplot representa la distribucio de les taxes de recombinació al llarg del genoma per un sol individu. Els individus estan endreçants i colorejats segons el seu nivell de recombinacio global, calculat com la mitjana d'entrecreuaments per cel·lula. Depenent de la mesura que es faci servir, el eix de les y (mostrat aqui en escala logarítmica en base 10) canvia, pero la distribució de les dades es la mateixa.](images/normInvs_alldata.png)
 
-![](images/normInvs_sample.png)
+![Efecte de diferents normalitzacions sobre les dades en una petita mostra. Cada linia representa l'evolucio d'una mateixa mesura de taxa de recombinacio per un individu i una finestra concrets. L'eix de les y esta en escala logaritmica en base 10 i el color de la linia indica la taxa de recombinacio mitjana d'aquell individu. Els valors son, d'esquerra a dreta, mesura original, mesura corregida per la taxa de recombinació mitjana del cromosoma concret, mesura corregida per la taxa de recombinació mitjana de l'individu i mesura corregida pels entrecreuaments mitjans per cel·lula en cada individu. Els canvis de la primera a la segona mesura, i de la segona a la tercera indica que la normalitzacio, tot i que subtilment, corregeix alguns esbiaixos. De la tercera a la quarta mesura les linies son paraleles perque la normalitzacio esta corregin en els dos casos per la taxa de recombinacio de l'individu.](images/normInvs_sample.png)
 
-**Figura 4. Efecte de diferents normalitzacions sobre les dades en una petita mostra. ** _Cada linia representa l'evolucio d'una mateixa mesura de taxa de recombinacio per un individu i una finestra concrets. L'eix de les y esta en escala logaritmica en base 10 i el color de la linia indica la taxa de recombinacio mitjana d'aquell individu. Els valors son, d'esquerra a dreta, mesura original, mesura corregida per la taxa de recombinació mitjana del cromosoma concret, mesura corregida per la taxa de recombinació mitjana de l'individu i mesura corregida pels entrecreuaments mitjans per cel·lula en cada individu. Els canvis de la primera a la segona mesura, i de la segona a la tercera indica que la normalitzacio, tot i que subtilment, corregeix alguns esbiaixos. De la tercera a la quarta mesura les linies son paraleles perque la normalitzacio esta corregin en els dos casos per la taxa de recombinacio de l'individu. _
-
-En general, els canvis observats son molts subtils. Aixo pot ser degut a la gran similitud que hi ha entre els diferents valors que s'estan fent per corregir, tal com es veu en els seguents resums:
+En general, els canvis observats son molts subtils. Aixo pot ser degut a la gran similitud que hi ha entre els diferents factors de normalització, tal com es veu en els seguents resums:
 
 ```{r DnormInvs}
   
@@ -406,7 +418,7 @@ summary(ind.normalization$meanIndRecRate)
 
 Finalment, de fet, aquestes normalitzacions en concret no s'han fet servir, sino que s'ha optat per calcular quin percentil ocupa cada mesura dins de la distribució de dades per la que es vulgui corregir. 
 
-
+\newpage
 # Anàlisi estadístic
 
 ```{r Dstats, echo = FALSE}
@@ -505,9 +517,7 @@ b<-ggplot(recRate.out.aggregated, aes(x = Genotype_500,  y = cM.Mb.percentile))+
   save(recRate.out.aggregated, file=paste0(outdir, "Rdata/Percentileout.Rdata"))
 ```
 
-![](images/plotPercentile.png)
-
-**Figura 5. Distribucio general de les taxes de recombinacio dins i fora de la inversio.** _Les dades dins de la inversio s'han obtingut del valor de la finestra "in" per cada inversio. Les dades de fora de la inversio son la mitjana del resultat de les diferents finestres "out" de cada inversio. Cada punt representa el percentil que ocupa la taxa de recombinació per una inversio i individu concret en la regio especificada en la distribucio del mapa de recombinacio de l'individu. S'han agrupat les dades per mida de inversio (grups 1, 2, i 3) i per genotip de l'individu en qüestio. Cada punt esta colorejat segons la taxa de recombinacio mitjana d'aquell individu. _
+![Distribucio general de les taxes de recombinacio dins i fora de la inversio. Les dades dins de la inversio s'han obtingut del valor de la finestra "in" per cada inversio. Les dades de fora de la inversio son la mitjana del resultat de les diferents finestres "out" de cada inversio. Cada punt representa el percentil que ocupa la taxa de recombinació per una inversio i individu concret en la regio especificada en la distribucio del mapa de recombinacio de l'individu. S'han agrupat les dades per mida de inversio (grups 1, 2, i 3) i per genotip de l'individu en qüestio. Cada punt esta colorejat segons la taxa de recombinacio mitjana d'aquell individu.](images/plotPercentile.png)
 
 ## Relacio amb la mida de la inversio
 
@@ -590,9 +600,8 @@ ngroup<-data.frame(table(recRate.out.aggregated[,c("group", "Origin")]))
 
 ```
 
-![](images/invTypeRel.png)
+![Taxes de recombinacio fora de la inversio en funció del mencanisme de generació. Les dades son la mitjana del resultat de les diferents finestres "out" de cada inversio per un individu determinat. Cada punt representa el percentil que ocupa la taxa de recombinació per una inversio i individu concret en la regio especificada en la distribucio del mapa de recombinacio de l'individu. S'han agrupat les dades pel mecanisme de generació i pel genotip de l'individu per la inversió en qüestio. Cada punt esta colorejat segons la taxa de recombinacio mitjana d'aquell individu.](images/invTypeRel.png)
 
-**Figura 6. Taxes de recombinacio fora de la inversio en funció del mencanisme de generació.** _Les dades son la mitjana del resultat de les diferents finestres "out" de cada inversio per un individu determinat. Cada punt representa el percentil que ocupa la taxa de recombinació per una inversio i individu concret en la regio especificada en la distribucio del mapa de recombinacio de l'individu. S'han agrupat les dades pel mecanisme de generació i pel genotip de l'individu per la inversió en qüestio. Cada punt esta colorejat segons la taxa de recombinacio mitjana d'aquell individu. _
 
 ## Efecte del genotip sobre la taxa de recombinació, inversió a inversió
 
@@ -631,14 +640,10 @@ for (g in c("G2", "G3")){
 
 ```
 
-![](images/invDescription_G2.png)
+![Inversions del grup 2 en context. Les inversions del grup 2 son d'entre 5 i 50kb. La zona interna de la inversió (finestra "in") està represenada en groc. A banda i banda, en groc fosc, estan les finestres "buffer", que inclouen els breakpoints i inverted repeats coneguts per les inversions, i per les que s'ha fixat una mida mnia de 20kb. La resta de finestres son les finestres "out". Per a cada inversio hi ha 10 finestres "out" de 50kb. Les finestes "out" estan colorejades segons la taxa de recombinacio mitjana de l'individu, i per cada inversio els individus estan endreçats per genotip i taxa de recombinació mitjana.](images/invDescription_G2.png){width=90%}
 
 
-**Figura 7. Inversions del grup 2 en context.** _Les inversions del grup 2 son d'entre 5 i 50kb. La zona interna de la inversió (finestra "in") està represenada en groc. A banda i banda, en groc fosc, estan les finestres "buffer", que inclouen els breakpoints i inverted repeats coneguts per les inversions, i per les que s'ha fixat una mida mnia de 20kb. La resta de finestres son les finestres "out". Per a cada inversio hi ha 10 finestres "out" de 50kb. Les finestes "out" estan colorejades segons la taxa de recombinacio mitjana de l'individu, i per cada inversio els individus estan endreçats per genotip i taxa de recombinació mitjana. _
-
-![](images/invDescription_G3.png)
-
-**Figura 8. Inversions del grup 3 en context.** _Les inversions del grup 3 son de mes de 50kb. La zona interna de la inversió (finestra "in") està represenada en groc. A banda i banda, en groc fosc, estan les finestres "buffer", que inclouen els breakpoints i inverted repeats coneguts per les inversions, i per les que s'ha fixat una mida mnia de 20kb. La resta de finestres son les finestres "out". Per a cada inversio hi ha 20 finestres "out" de 50kb. Les finestes "out" estan colorejades segons la taxa de recombinacio mitjana de l'individu, i per cada inversio els individus estan endreçats per genotip i taxa de recombinació mitjana. _
+![Inversions del grup 3 en context. Les inversions del grup 3 son de mes de 50kb. La zona interna de la inversió (finestra "in") està represenada en groc. A banda i banda, en groc fosc, estan les finestres "buffer", que inclouen els breakpoints i inverted repeats coneguts per les inversions, i per les que s'ha fixat una mida mnia de 20kb. La resta de finestres son les finestres "out". Per a cada inversio hi ha 20 finestres "out" de 50kb. Les finestes "out" estan colorejades segons la taxa de recombinacio mitjana de l'individu, i per cada inversio els individus estan endreçats per genotip i taxa de recombinació mitjana.](images/invDescription_G3.png){width=90%}
 
 Agafem la diferencia entre la mitjana de fora i el valor de dins. Al ser quantils em donen informacio del % de distancia entre ells. Hauria de ser una mesura comparable entre individus. En la Figura 9, s'agrupen en diferents boxplots aquestes diferències. S'ha restat el valor de dins al de fora, per tant un 0 vol dir que ambdues mesures son iguals. Valors positius volen dir que les mesures dins de la inversio son menors que la mitjana de fora. Valors negatius, al reves, dins hi ha mes recombinacio que fora. 
 
@@ -672,6 +677,4 @@ ggplot(recRate.comparison.inout)+geom_boxplot(aes(x=Genotype_500, y = mean.quant
   
 ```
 
-![](images/quantileDifference.png)
-
-**Figura 9. Efecte dels genotips de les inversions sobre la taxa de recombinacio.**_Cada punt es la mitjana per a una sola inversio del valor mesurat per tots els individus amb el genotip especificat. El valor mesurat es la diferencia entre la taxa de recombinacio dins la inversio i la mitjana de les finestres a fora (fora-dins). El color del punt indica en base a quants individus s'ha fet aquesta mitjana i per tant ens dona una idea sobre la fiabilitat d'aquesta dada. _ 
+![Efecte dels genotips de les inversions sobre la taxa de recombinacio. Cada punt es la mitjana per a una sola inversio del valor mesurat per tots els individus amb el genotip especificat. El valor mesurat es la diferencia entre la taxa de recombinacio dins la inversio i la mitjana de les finestres a fora (fora-dins). El color del punt indica en base a quants individus s'ha fet aquesta mitjana i per tant ens dona una idea sobre la fiabilitat d'aquesta dada.](images/quantileDifference.png)
