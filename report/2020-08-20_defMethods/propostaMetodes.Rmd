@@ -2,9 +2,9 @@
 title: "Proves d'anàlisi"
 author: "Ruth Gómez Graciani"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 editor_options:
   chunk_output_type: console
 ---
@@ -258,6 +258,58 @@ rm(recMap.G1o, recMap.G2o, recMap.G3o)
     genotypes$Individual<-sub("^\\d+\\.","",genotypes$Individual)
     genotypes$Individual<-sub("nc", "NC", genotypes$Individual, ignore.case = FALSE)
   
+#---------------------GENOTYPE QUALITY CONTROL -----------------------------------
+    makegeno<-function(genotypes){
+    genotypes_characterized<-genotypes[genotypes$Population %in% c("EUR", "AFR"),]
+    
+    eur.quality<-genotypes_characterized[genotypes_characterized$Population == "EUR" & genotypes_characterized$EUR %in% c("Tagged", "Imputable") ,]
+    afr.quality<-genotypes_characterized[genotypes_characterized$Population == "AFR" & genotypes_characterized$AFR %in% c("Tagged", "Imputable") ,]
+    
+    perc.good.uni.eur<-table(eur.quality$Uniformity)/sum(table(eur.quality$Uniformity))*100
+    perc.good.uni.afr<-table(afr.quality$Uniformity)/sum(table(afr.quality$Uniformity))*100
+    
+    
+    testvec.eur<-eur.quality[ eur.quality$Quality %in% "good",] 
+    testvec.afr<-afr.quality[ afr.quality$Quality %in% "good", ] 
+    
+    perc.good.uni.eur.c<-table(  testvec.eur$Uniformity)
+    perc.good.uni.afr.c<-table( testvec.afr$Uniformity)
+    
+    aresame.eur<-eur.quality[ eur.quality$Quality %in% "good" & eur.quality$Uniformity %in% c("alert", "bad"), ] 
+    aresame.afr<-afr.quality[ afr.quality$Quality %in% "good" & afr.quality$Uniformity %in% c("alert", "bad"), ] 
+
+    # En europeus la inversio 191 dona problemes en 5/12(Es la unica) i en africans la 1075(1/3). Aquestes dues es prendran amb pinces. La resta, si la qualitat es bona en general el resultat tambe. 
+    
+    accepted.eur<-genotypes[genotypes$Population == "EUR" & genotypes$EUR %in% c("Tagged", "Imputable") & genotypes$Probability_con >0.8,]
+    accepted.afr<-genotypes[genotypes$Population == "AFR" & genotypes$AFR %in% c("Tagged", "Imputable") & genotypes$Probability_con >0.8,]
+
+  # SAS i ALL no hi ha moltes referencies
+    test.sas<-genotypes[ (genotypes$GLB %in% c("Tagged", "Imputable") | genotypes$AFR %in% c("Tagged", "Imputable") | genotypes$EUR %in% c("Tagged", "Imputable") ) & genotypes$Population %in% c("ALL", "SAS") , ]
+    test.sas[test.sas$Genotype_500 == "?", "Genotype_500"]<-NA
+    test.sas$Genotype_500<-as.factor(as.character(test.sas$Genotype_500))
+    test.sas$accepted<-"no"
+    test.sas[test.sas$Genotype_100 == test.sas$Genotype_250 & test.sas$Genotype_250 == test.sas$Genotype_500 & 
+             test.sas$Probability_100 > 0.8 & test.sas$Probability_250 > 0.8 & test.sas$Probability_500 > 0.8, "accepted" ]<-"yes"
+    test.sas[test.sas$Inversion %in% c("HsInv0191", "HsInv1075"),"accepted"]<-"no"
+    test.sas[test.sas$Uniformity == "good" & test.sas$Quality == "good","accepted"]<-"yes"
+    
+    accepted.sasall<-test.sas[test.sas$accepted == "yes",]
+    accepted.sasall$accepted <- NULL
+    
+  # Asiatics 
+     accepted.eas<-genotypes[genotypes$Population == "EAS" & 
+(genotypes$GLB %in% c("Tagged", "Imputable") | genotypes$AFR %in% c("Tagged", "Imputable") | genotypes$EUR %in% c("Tagged", "Imputable") )&                     genotypes$Uniformity == "good" & genotypes$Quality %in% c("good", "alert") & genotypes$Probability_con > 0.8,]
+   
+
+     accepted.genotypes<-rbind(accepted.afr, accepted.eas, accepted.eur, accepted.sasall)
+ return(accepted.genotypes)
+    }
+ # ------------------------------------------------------------
+    
+    genotypes<-makegeno(genotypes)
+    
+    length(unique(genotypes$Inversion))
+    
     # Merge with info
     recRate.outwins<-  merge(recRate.outwins, genotypes[,c("Individual", "Inversion", "Genotype_500")], by.x = c("ind", "invID") , by.y = c("Individual", "Inversion" ))
     
@@ -362,7 +414,7 @@ A primera vista (Figura 3) no es noten diferencies apreciables quan s'aplica un 
   tmp.sample<-recRate.outwins[recRate.outwins$cM.Mb %in% quantile(recRate.outwins$cM.Mb, seq(0.0005,1,length.out = 100)),]
   tmp.sample<-tmp.sample[!duplicated(tmp.sample$cM.Mb),]
   
-  tmp.sample<-melt(tmp.sample[,c("cM.Mb", "cM.Mb.chr.norm", "cM.Mb.ind.norm", "cM.Mb.cel.norm", "meanIndRecRate", "ind", "chr_w", "start_w")], id.vars = c("meanIndRecRate" ,"ind", "chr_w", "start_w"))
+  tmp.sample<-melt(tmp.sample[,c("cM.Mb","mean.rec.per.cell", "cM.Mb.chr.norm", "cM.Mb.ind.norm", "cM.Mb.cel.norm", "meanIndRecRate", "ind", "chr_w", "start_w")], id.vars = c("meanIndRecRate" ,"ind", "chr_w", "start_w","mean.rec.per.cell"))
   tmp.sample$id<-paste0(tmp.sample$ind, tmp.sample$chr_w, tmp.sample$start_w)
   
   # Compare normalizations
@@ -372,7 +424,7 @@ A primera vista (Figura 3) no es noten diferencies apreciables quan s'aplica un 
   scale_color_gradient(low = "#1f2896", high = "#d26459")+ggtitle("Comparison of different normalization methods - subset")
   dev.off()
   
-  rm(a, plotname, tmp.sample)
+  rm( plotname, tmp.sample)
   
 # Save for display
   save(recRate.outwins, chr.normalization, ind.normalization, file = paste0(outdir,"Rdata/normInds.Rdata"))
@@ -674,4 +726,108 @@ ggplot(recRate.comparison.inout)+geom_boxplot(aes(x=Genotype_500, y = mean.quant
 
 ![](images/quantileDifference.png)
 
-**Figura 9. Efecte dels genotips de les inversions sobre la taxa de recombinacio.**_Cada punt es la mitjana per a una sola inversio del valor mesurat per tots els individus amb el genotip especificat. El valor mesurat es la diferencia entre la taxa de recombinacio dins la inversio i la mitjana de les finestres a fora (fora-dins). El color del punt indica en base a quants individus s'ha fet aquesta mitjana i per tant ens dona una idea sobre la fiabilitat d'aquesta dada. _ 
+**Figura 9. Efecte dels genotips de les inversions sobre la taxa de recombinacio.**_Cada punt es la mitjana per a una sola inversio del valor mesurat per tots els individus amb el genotip especificat. El valor mesurat es la diferencia entre la taxa de recombinacio dins la inversio i la mitjana de les finestres a fora (fora-dins). El color del punt indica en base a quants individus s'ha fet aquesta mitjana i per tant ens dona una idea sobre la fiabilitat d'aquesta dada. _
+
+# Valors mitjans descriptius
+
+```{r}
+function.InvPlot.means<-function(inversion, recRate.outwins){
+ 
+    test.subset<-aggregate(   cM.Mb.percentile  ~  invID + start_w+end_w + Haplotype +winID,recRate.outwins[recRate.outwins$invID == inversion,], mean)
+    
+recRate.outwins$counts<-1
+test.counts<-aggregate(   counts  ~  invID + start_w+end_w + Haplotype +winID,recRate.outwins[recRate.outwins$invID == inversion,], sum)
+test.subset<-merge(test.subset, test.counts)
+
+
+     a<-      ggplot(test.subset)+geom_rect(aes(xmin=start_w, xmax=end_w, ymin = 0, ymax = cM.Mb.percentile, fill = counts)) + 
+      facet_grid(. ~ Haplotype, scales = "free")+
+      geom_rect(data = test.subset[test.subset$winID=="in",], aes(xmin=start_w, xmax=end_w, ymin = 0, ymax = cM.Mb.percentile), fill="goldenrod")+
+      geom_rect(data = test.subset[test.subset$winID%in% c("br", "bl"),], aes(xmin=start_w, xmax=end_w, ymin = 0, ymax = cM.Mb.percentile), fill="darkgoldenrod")+
+       ggtitle(inversion) +
+       theme(strip.text.x = element_text(size = 20), axis.text.y = element_text(size= 20),axis.text.x = element_text(size= 15),title = element_text(size=20))
+    return(a)
+
+
+}
+
+# for (g in c("G2", "G3")){
+  
+  plotlist<-list()
+  recRate.outwins$Genotype_500<-as.character(recRate.outwins$Genotype_500)
+   recRate.outwins$Haplotype<-"Homozygous"
+recRate.outwins[recRate.outwins$Genotype_500 == "HET","Haplotype"]<-"Heterozygous"
+  for(i in unique(recRate.outwins[recRate.outwins$group %in% c("G2", "G3"), "invID"])){
+    
+   if (length( table(recRate.outwins[recRate.outwins$invID == i,"Haplotype"])) > 1){
+   plotlist[[i]]<-function.InvPlot.means(i, recRate.outwins )
+   }
+  }
+
+  plotname<-paste0(outdir, paste0("images/invDescription_all",".png"))
+  png(filename=plotname, width = 3508/2, height = 2480/2, units = "px" )
+  plot<- annotate_figure( ggarrange(plotlist=plotlist, common.legend = TRUE), top = text_grob(paste0("Recombination rate percentiles aggregated by zygosity" ), size = 50) )
+  print(plot)
+  dev.off()
+  
+  
+  #---------------------------
+  
+  group1.invs<-recRate.outwins[recRate.outwins$group == "G1",]
+  group1.invs$relative.position<-0
+  for(i in unique(group1.invs$invID)){
+    for (n in unique(group1.invs$ind)){
+      tmp<-group1.invs[group1.invs$invID == i & group1.invs$ind ==n ,]
+      tmp[order(tmp$start_w),"relative.position"]<-c(-6:6)
+      group1.invs[rownames(tmp),"relative.position"]<- tmp$relative.position
+    }
+  }
+  
+  inversion.group<-unique(group1.invs[group1.invs$Size > 2000, "invID"])
+  
+  function.InvPlot.means.groups<-function(inversion.group, recRate.outwins){
+
+    test.subset<-aggregate(   cM.Mb.percentile  ~   relative.position + Haplotype+winID ,recRate.outwins[recRate.outwins$invID %in% inversion.group,], mean)
+    
+recRate.outwins$counts<-1
+test.counts<-aggregate(   counts  ~   relative.position + Haplotype+winID,recRate.outwins[recRate.outwins$invID %in% inversion.group,], sum)
+test.subset<-merge(test.subset, test.counts)
+test.subset$end<-test.subset$relative.position+1
+
+
+     a<-      ggplot(test.subset)+geom_rect(aes(xmin=relative.position, xmax=end, ymin = 0, ymax = cM.Mb.percentile, fill = counts)) + 
+      facet_grid(. ~ Haplotype, scales = "free")+
+      geom_rect(data = test.subset[test.subset$winID=="in",], aes(xmin=relative.position, xmax=end, ymin = 0, ymax = cM.Mb.percentile), fill="goldenrod")+
+      geom_rect(data = test.subset[test.subset$winID%in% c("br", "bl"),], aes(xmin=relative.position, xmax=end, ymin = 0, ymax = cM.Mb.percentile), fill="darkgoldenrod")+
+       # ggtitle(inversion) +
+       theme(strip.text.x = element_text(size = 20), axis.text.y = element_text(size= 20),axis.text.x = element_text(size= 15),title = element_text(size=20))
+    return(a)
+
+
+}
+
+   plota<-function.InvPlot.means.groups(inversion.group,group1.invs )
+   plota<-plota+ggtitle("Inversions 2kb-5kb")
+   
+     inversion.group<-unique(group1.invs[group1.invs$Size < 2000 & group1.invs$Size > 1000 , "invID"])
+     plotb<-function.InvPlot.means.groups(inversion.group,group1.invs )
+    plotb<-plotb+ggtitle("Inversions 1kb-2kb")
+    
+      inversion.group<-unique(group1.invs[group1.invs$Size < 1000 & group1.invs$Size > 0 , "invID"])
+     plotc<-function.InvPlot.means.groups(inversion.group,group1.invs )
+    plotc<-plotc+ggtitle("Inversions <1kb")
+    
+# for (g in c("G2", "G3")){
+  
+  plotlist<-list(plota, plotb, plotc)
+
+  plotname<-paste0(outdir, paste0("images/invDescription_small",".png"))
+  png(filename=plotname, width = 3508/2, height = 2480/4, units = "px" )
+  plot<- annotate_figure( ggarrange(plotlist=plotlist, common.legend = TRUE, ncol=3), top = text_grob(paste0("Recombination rate percentiles aggregated by zygosity" ), size = 50) )
+  print(plot)
+  dev.off()
+  
+  
+# }
+```
+
