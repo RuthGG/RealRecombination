@@ -1,0 +1,10 @@
+
+2020-05-15T09:21:19 prefetch.2.10.4: 1) Downloading 'SRR10140428'...
+2020-05-15T09:21:19 prefetch.2.10.4:  Downloading via https...
+2020-05-15T09:53:54 prefetch.2.10.4 int: transfer incomplete while reading file within network system module - Cannot KStreamRead: https://gap-download.be-md.ncbi.nlm.nih.gov/sragap/A9B7C973-17BC-4F9B-887C-5D6E62C87B4F/SRR10140428?pId=21579
+2020-05-15T09:53:54 prefetch.2.10.4:  https download failed
+2020-05-15T09:53:55 prefetch.2.10.4: 1) failed to download SRR10140428
+2020-05-15T09:54:01 fastq-dump.2.10.4 err: directory not found while opening manager within virtual file system module - failed to open 'SRR10140428.sra'
+fastq-dump (PID 3425) quit with error code 3
+[bgzip] No such file or directory: SRR10140428.fastq
+mv: cannot stat 'SRR10140428.fastq.gz': No such file or directory

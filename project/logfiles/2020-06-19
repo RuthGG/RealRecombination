@@ -1,0 +1,7 @@
+
+2020-06-19T08:31:29 prefetch.2.10.4: 1) Downloading 'SRR10140423'...
+2020-06-19T08:31:29 prefetch.2.10.4:  Downloading via https...
+2020-06-19T09:59:55 prefetch.2.10.4:  https download succeed
+2020-06-19T09:59:56 prefetch.2.10.4: 1) 'SRR10140423' was downloaded successfully
+Read 399028996 spots for SRR10140423.sra
+Written 399028996 spots for SRR10140423.sra
