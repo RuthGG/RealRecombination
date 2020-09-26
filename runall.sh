@@ -50,7 +50,6 @@ usage()
     -g <file>                         Path to inversion genotypes file.
     -t <file>                         Path to inversion imputability file.
     -n <file>                         Path to individual sample size list.
-    -w [all|out]                      Windowing method - all regions or only out region. 
  "
 
 }
@@ -75,7 +74,6 @@ COMMAND=$1; shift
 SCREENS=1         # -s Number of screens 
 CURDIR=$(pwd)     # Current directory
 STEP=00           # Steps
-WINDOWING="all"   # Windowing method
 
 # Set empty mandatory variables
 ASSEMBLY=""       # -a Assembly to work with
@@ -207,7 +205,6 @@ case "$COMMAND" in
         c)  INVCOORD=${OPTARG} ;;
         n)  CELLS=${OPTARG} ;;
         x)  CONFILE=${OPTARG} ;;
-        w)  WINDOWING=${OPTARG} ;;
       esac
     done
     shift $((OPTIND -1))
@@ -651,197 +648,38 @@ if  [ "$COMMAND" == "crossovers" ]; then
 
   TMPDIR="tmp/${DATE}_${STEP}_crossovers"
   OUTDIR="analysis/${DATE}_${STEP}_crossovers"
-  mkdir -p $TMPDIR $OUTDIR
+  mkdir -p "$TMPDIR" "$OUTDIR"
 
   # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Register conditions in analysis results
   # ------------------------------------------------------------------------- #
-  cp ${CONFILE} ${OUTDIR} # Windows
+  cp "${CONFILE}" "${OUTDIR}" 
   
   # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Crossovers in windows
   # ------------------------------------------------------------------------- #
 
   # Crossover files to bed
-  zcat $FILE |awk -v OFS="\t" '{print $3, $4, $5, $1"_"$2}' > ${TMPDIR}/allcrossovers.bed
+  zcat "$FILE" |awk -v OFS="\t" '{print $3, $4, $5, $1"_"$2}' > "${TMPDIR}/allcrossovers.bed"
 
   # Window size and confidence interval
-  WINSIZE=$(head -n 1 ${CONFILE})
-  INTERVAL=$(sed '2q;d' ${CONFILE})
+  WINSIZE=$(head -n 1 "${CONFILE}")
+  INTERVAL=$(sed '2q;d' "${CONFILE}")
+  AMOUNTCI=$(("${INTERVAL}"/"${WINSIZE}"))
   
   # Make list of inversion positions and IDs
-  grep -v 'chrX' $INVCOORD  | grep -v 'chrY' | grep 'inversion' | awk -v OFS="\t" '{sub(/ID.*Name=/, "", $9);sub(/;.*/, "", $9)}{print $1, $4, $5, $9}' > ${OUTDIR}/invcoord_noXY.bed
+  grep -v 'chrX' "$INVCOORD" | grep -v 'chrY' | grep 'inversion'  > "${OUTDIR}/invcoord_noXY.gff"
 
+  echo "${WINSIZE}"
+  echo "${AMOUNTCI}" 
   # Makes bedfile with windows/regions list
-  echo -e "chr\tpos.leftbound\tpos.rightbound\tID" > ${TMPDIR}/windows.bed 
-
-  while IFS= read -r line;  do 
-
-    # TAKE IMPORTANT COORDIANTES
-    CHROM=$(echo $line |  cut -f1 -d" ")
-    START=$(echo $line |  cut -f2 -d" ")
-    END=$(echo $line | cut -f3 -d" ")
-    ID=$(echo $line | cut -f4 -d" ")
-
-    # Confidence interval (SIZE) can be fixed or proportional
-    if [[ $INTERVAL == *"%"* ]]; then
-      INTERVAL=$(echo "${INTERVAL//%}")
-      SIZE=$((($END-$START+1)*${INTERVAL}/100))
-    else
-      SIZE=$INTERVAL
-    fi
-
-    # Buffer can be present or not:
-    TEST=$(grep $ID $INVCOORD | grep "buffer"| cut -f3) 
-
-    # Now we apply both:
-    if [ -z "$TEST" ]; then # If buffer not present: 
-       
-      # Apply confidence interval without buffer
-      LEFT=$(($START-$SIZE))
-      RIGHT=$(($END+$SIZE))
-      
-    else  # If buffer present:
-      
-      # Take buffer coordinates
-      BL=$(grep $ID $INVCOORD | grep "buffer1"| cut -f4)
-      BR=$(grep $ID $INVCOORD | grep "buffer2"| cut -f5)
-
-      # Make buffer region be at least 20kb
-      DIFFL=$(($START-$BL))
-      DIFFR=$(($BR-$END))
-
-      if [ ${DIFFL} -lt 20000 ] ; then
-        BL=$(($START-20000))
-      fi
-      if [ ${DIFFR} -lt 20000 ] ; then
-        BR=$(($END+20000))
-      fi
-
-      # Apply confidence interval + buffer
-      LEFT=$(($BL-$SIZE))
-      RIGHT=$(($BR+$SIZE))
-
-    fi
-
-    # MAKE WIDOWS
-
-    # MAKE WINDOWS - NO WIDNOWS: window size 0
-    if [ ${WINSIZE} -eq 0 ] ; then
-
-      # Buffers:
-      if [ -z "$TEST" ]; then # If buffer not present: 
-        
-        # Make 3 windows (1in, 2out)
-        echo -e "${CHROM}\t${LEFT}\t${START}\t${ID}_left" >> ${TMPDIR}/windows.bed  
-        echo -e "${CHROM}\t${START}\t${END}\t${ID}_in" >> ${TMPDIR}/windows.bed  
-        echo -e "${CHROM}\t${END}\t${RIGHT}\t${ID}_right" >> ${TMPDIR}/windows.bed  
-      
-      else   # If buffer present:
-
-        # Make 5 windows (out, buffer, in, buffer, out)
-        echo -e "${CHROM}\t${LEFT}\t${BL}\t${ID}_left" >> ${TMPDIR}/windows.bed  
-        echo -e "${CHROM}\t${BL}\t${START}\t${ID}_bl" >> ${TMPDIR}/windows.bed  
-        echo -e "${CHROM}\t${START}\t${END}\t${ID}_in" >> ${TMPDIR}/windows.bed  
-        echo -e "${CHROM}\t${END}\t${BR}\t${ID}_br" >> ${TMPDIR}/windows.bed  
-        echo -e "${CHROM}\t${BR}\t${RIGHT}\t${ID}_right" >> ${TMPDIR}/windows.bed  
-
-      fi
-        
-    else 
-      
-    # MAKE WINDOWS - EVERYTHING WINDOWS: If we want windows in all region, no left and right will be specified, to allow future code to apply any criterium as desired. 
-      if [ "$WINDOWING" == "all" ]; then
-              
-        WINDOWS=$(seq $LEFT $WINSIZE $RIGHT) # Windows will include confidence interval
-
-        FIRST=0
-
-        for WIN in $WINDOWS; do
-          if [ ${FIRST} != 0 ] ; then
-            echo -e "${CHROM}\t${FIRST}\t${WIN}\t${ID}" >> ${TMPDIR}/windows.bed 
-          fi
-          FIRST=$((${WIN}))
-        done
-    
-    # MAKE WINDOWS - ONLY OUT WINDOWS: If we only want windows outside ("out"), left and right are specified as well
-      else
-       
-       # Buffers:
-        if [ -z "$TEST" ]; then # If buffer not present: 
-        
-          # Make windows from out to inversion
-          WINDOWS=$(seq $LEFT $WINSIZE $START) 
-
-          FIRST=0
-
-          for WIN in $WINDOWS; do
-            if [ ${FIRST} != 0 ] ; then
-              echo -e "${CHROM}\t${FIRST}\t${WIN}\t${ID}_left" >> ${TMPDIR}/windows.bed 
-            fi
-            FIRST=$((${WIN}))
-          done
-
-          # Inversion window
-          echo -e "${CHROM}\t${START}\t${END}\t${ID}_in" >> ${TMPDIR}/windows.bed  
-
-          # Make windows from inversion to out
-          WINDOWS=$(seq $END $WINSIZE $RIGHT) 
-
-          FIRST=0
-
-          for WIN in $WINDOWS; do
-            if [ ${FIRST} != 0 ] ; then
-              echo -e "${CHROM}\t${FIRST}\t${WIN}\t${ID}_right" >> ${TMPDIR}/windows.bed 
-            fi
-            FIRST=$((${WIN}))
-          done
-
-        else   # If buffer present:
-
-          # Make windows from out to buffer
-          WINDOWS=$(seq $LEFT $WINSIZE $BL) # Windows will include confidence interval
-
-          FIRST=0
-          
-          for WIN in $WINDOWS; do
-            if [ ${FIRST} != 0 ] ; then
-              echo -e "${CHROM}\t${FIRST}\t${WIN}\t${ID}_left" >> ${TMPDIR}/windows.bed 
-            fi
-            FIRST=$((${WIN}))
-          done
-
-          # Buffer and inversion windows
-          echo -e "${CHROM}\t${BL}\t${START}\t${ID}_bl" >> ${TMPDIR}/windows.bed  
-          echo -e "${CHROM}\t${START}\t${END}\t${ID}_in" >> ${TMPDIR}/windows.bed  
-          echo -e "${CHROM}\t${END}\t${BR}\t${ID}_br" >> ${TMPDIR}/windows.bed  
-
-          # Make windows from buffer to out
-          WINDOWS=$(seq $BR $WINSIZE $RIGHT) 
-
-          FIRST=0
-
-          for WIN in $WINDOWS; do
-            if [ ${FIRST} != 0 ] ; then
-              echo -e "${CHROM}\t${FIRST}\t${WIN}\t${ID}_right" >> ${TMPDIR}/windows.bed 
-            fi
-            FIRST=$((${WIN}))
-          done
-        fi
-
-      fi
-
-    fi
-
-    TEST=""
-
-  done < ${OUTDIR}/invcoord_noXY.bed
+  python code/python/makeBedWindows.py --input "${OUTDIR}/invcoord_noXY.gff" --output "${TMPDIR}/windows.bed" --fixedWindow "${WINSIZE}" --fixedCIWindow "${WINSIZE}" --amountCI "${AMOUNTCI}" --windowMethod "fromCenter"
 
   # Intersect windows with crossovers
-  bedtools intersect -wao -a ${TMPDIR}/windows.bed  -b ${TMPDIR}/allcrossovers.bed > ${TMPDIR}/comparison.txt
+  bedtools intersect -wao -a "${TMPDIR}/windows.bed"  -b "${TMPDIR}/allcrossovers.bed" > "${TMPDIR}/comparison.txt"
 
   # Make weights
-  awk -v OFS="\t" '$9 == 0{$6=1; $7=2} ;{print $0, $9/($7-$6)}' ${TMPDIR}/comparison.txt > ${TMPDIR}/windows_x_crossovers_weighted.txt
+  awk -v OFS="\t" '$9 == 0{$6=1; $7=2} ;{print $0, $9/($7-$6)}' "${TMPDIR}/comparison.txt" > "${TMPDIR}/windows_x_crossovers_weighted.txt"
 
   # Parse table
-   Rscript code/rscript/crossoverTables.R ${TMPDIR}/windows_x_crossovers_weighted.txt $CELLS ${OUTDIR}/crossoverResult.Rdata
+  Rscript code/rscript/crossoverTables.R "${TMPDIR}/windows_x_crossovers_weighted.txt" "$CELLS" "${OUTDIR}/crossoverResult.Rdata"
 
 fi
