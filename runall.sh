@@ -676,10 +676,7 @@ if  [ "$COMMAND" == "crossovers" ]; then
   # Intersect windows with crossovers
   bedtools intersect -wao -a "${TMPDIR}/windows.bed"  -b "${TMPDIR}/allcrossovers.bed" > "${TMPDIR}/comparison.txt"
 
-  # Make weights
-  awk -v OFS="\t" '$9 == 0{$6=1; $7=2} ;{print $0, $9/($7-$6)}' "${TMPDIR}/comparison.txt" > "${TMPDIR}/windows_x_crossovers_weighted.txt"
-
-  # Parse table
-  Rscript code/rscript/crossoverTables.R "${TMPDIR}/windows_x_crossovers_weighted.txt" "$CELLS" "${OUTDIR}/crossoverResult.Rdata"
+  # Make scores, recombination rates and parse table
+  python code/python/makeRecRates.py --input "${TMPDIR}/comparison.txt" --output "${OUTDIR}/crossoverResult.txt" --numofsamples  "$CELLS"
 
 fi
