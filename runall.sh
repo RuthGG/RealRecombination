@@ -32,7 +32,7 @@ usage()
   impute -f -x -r -m -i -c -g [-s]    Impute inversions listed in -f using the conditions in -x.
   imputetables -i -p -t               Make summary tables after imputation.
   tagsnps -f -x -i -c -g [-s]         Check if tag SNPs in -f are true in VCF in -i. 
-  crossovers -f -c -x -n              Make recombination rates for given regions (win. size and CI in -x).
+  crossovers -f -c -x -n -m -b        Make recombination rates for given regions (win. size and CI in -x).
   "
   echo "Options:
 
@@ -50,6 +50,7 @@ usage()
     -g <file>                         Path to inversion genotypes file.
     -t <file>                         Path to inversion imputability file.
     -n <file>                         Path to individual sample size list.
+    -b <file>                         Path to chromosome boundaries
  "
 
 }
@@ -88,6 +89,7 @@ INVCOORD=""       # -c Path to inversion coordinates file.
 INVGENO=""        # -g Path to inversion genotypes file. 
 INVTAG=""         # -t Path to inversion imputability file.
 CELLS=""           # -n Path to individual sample size list.
+BOUNDARIES=""
 
 
 # Parse command optons
@@ -199,12 +201,14 @@ case "$COMMAND" in
     ;;
     # Execute PCA
    crossovers ) 
-    while getopts "f:c:n:x:w:" OPTIONS ; do
+    while getopts "f:c:n:x:m:b:" OPTIONS ; do
       case "$OPTIONS" in
         f)  FILE=${OPTARG} ;;
         c)  INVCOORD=${OPTARG} ;;
         n)  CELLS=${OPTARG} ;;
         x)  CONFILE=${OPTARG} ;;
+        m)  MAPDIR=${OPTARG} ;;
+        b)  BOUNDARIES=${OPTARG} ;;
       esac
     done
     shift $((OPTIND -1))
@@ -245,8 +249,8 @@ elif [ "$COMMAND" == "tagsnps" ]; then
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -x -i -c -g"; usage; exit
   fi
 elif [ "$COMMAND" == "crossovers" ]; then
-  if [ -z "$FILE" ] || [ -z "$INVCOORD" ] || [ -z "$CONFILE" ] || [ -z "$CELLS" ] ; then 
-    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -c -x -n"; usage; exit
+  if [ -z "$FILE" ] || [ -z "$INVCOORD" ] || [ -z "$CONFILE" ] || [ -z "$CELLS" ] || [ -z "$BOUNDARIES" ] ; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -c -x -n -m -b"; usage; exit
   fi
 else 
   usage; exit
@@ -643,40 +647,68 @@ fi
 # =========================================================================== #
 STEP=$(printf '%02d' $((${STEPB}+1)))
 
-
 if  [ "$COMMAND" == "crossovers" ]; then
 
   TMPDIR="tmp/${DATE}_${STEP}_crossovers"
   OUTDIR="analysis/${DATE}_${STEP}_crossovers"
   mkdir -p "$TMPDIR" "$OUTDIR"
 
-  # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Register conditions in analysis results
+  # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Register conditions & copy in analysis results
   # ------------------------------------------------------------------------- #
-  cp "${CONFILE}" "${OUTDIR}" 
-  
-  # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Crossovers in windows
-  # ------------------------------------------------------------------------- #
-
-  # Crossover files to bed
-  zcat "$FILE" |awk -v OFS="\t" '{print $3, $4, $5, $1"_"$2}' > "${TMPDIR}/allcrossovers.bed"
-
   # Window size and confidence interval
   WINSIZE=$(head -n 1 "${CONFILE}")
   INTERVAL=$(sed '2q;d' "${CONFILE}")
   AMOUNTCI=$(("${INTERVAL}"/"${WINSIZE}"))
+
+  cp "${CONFILE}" "${OUTDIR}" 
+
+  # Crossover files to bed
+  zcat "$FILE" |awk -v OFS="\t" '{print $3, $4, $5, $1"_"$2}' > "${TMPDIR}/allcrossovers.bed"
+  
+  # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Make or search recombination map
+  # ------------------------------------------------------------------------- #
+
+  #  If no mapdir is given, will be created in tmp/
+  if [ -z "$MAPDIR" ] ; then 
+    MAPDIR="${TMPDIR}/recMap"
+  fi
+  
+  # MAPDIR contains directory for recombination map. If map required does not exist, it is created and stored into MAPDIR
+  FILENUM=$(ls ${MAPDIR}/*_${WINSIZE}.txt | wc -l)
+
+  if [ $FILENUM -gt 0 ]; then
+    # Make map with chromosome boundaries
+    mkdir "${TMPDIR}/recMap/"
+    # Makes bedfile with windows/regions list
+    python code/python/makeBedWindows.py --input "${BOUNDARIES}" --output "${TMPDIR}/recMap/windows.bed" --fixedWindow "${WINSIZE}"  --windowMethod "fromLeft"
+
+    # Intersect windows with crossovers
+    bedtools intersect -wao -a "${TMPDIR}/recMap/windows.bed"  -b "${TMPDIR}/allcrossovers.bed" > "${TMPDIR}/recMap/comparison.txt"
+
+    # Make scores, recombination rates and parse table
+    python code/python/makeRecRates.py --input "${TMPDIR}/recMap/comparison.txt" --output "${MAPDIR}/recMap_${WINSIZE}.txt" --numofsamples  "$CELLS"
+
+  fi
+
+  MAP=$(ls ${MAPDIR}/*_${WINSIZE}.txt)
+
+  # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Crossovers in inversions and their chromosomes
+  # ------------------------------------------------------------------------- #
   
   # Make list of inversion positions and IDs
   grep -v 'chrX' "$INVCOORD" | grep -v 'chrY' | grep 'inversion'  > "${OUTDIR}/invcoord_noXY.gff"
 
-  echo "${WINSIZE}"
-  echo "${AMOUNTCI}" 
   # Makes bedfile with windows/regions list
-  python code/python/makeBedWindows.py --input "${OUTDIR}/invcoord_noXY.gff" --output "${TMPDIR}/windows.bed" --fixedWindow "${WINSIZE}" --fixedCIWindow "${WINSIZE}" --amountCI "${AMOUNTCI}" --windowMethod "fromCenter"
+  python code/python/makeBedWindows.py --input "${OUTDIR}/invcoord_noXY.gff" --output "${TMPDIR}/windows.bed" --fixedWindow "${WINSIZE}" --fixedCIWindow "${WINSIZE}" --amountCI "${AMOUNTCI}" --windowMethod "fromCenter" --chromBoundaries "${BOUNDARIES}"
 
   # Intersect windows with crossovers
   bedtools intersect -wao -a "${TMPDIR}/windows.bed"  -b "${TMPDIR}/allcrossovers.bed" > "${TMPDIR}/comparison.txt"
 
   # Make scores, recombination rates and parse table
-  python code/python/makeRecRates.py --input "${TMPDIR}/comparison.txt" --output "${OUTDIR}/crossoverResult.txt" --numofsamples  "$CELLS"
+  python code/python/makeRecRates.py --input "${TMPDIR}/comparison.txt" --output "${TMPDIR}/crossoverResult.txt" --numofsamples  "$CELLS"
+
+  # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Make normalization
+  # ------------------------------------------------------------------------- #
+  python code/python/quantileNormalization.py --input "${TMPDIR}/crossoverResult.txt" --output "${OUTDIR}/crossoverResult_QN.txt" --recMap ${MAP}
 
 fi

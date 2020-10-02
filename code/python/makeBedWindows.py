@@ -4,18 +4,19 @@
 # Ruth Gómez Graciani
 # 25 09 2020
 
-# # %% False arguments
-# class Arguments:
-#     def __init__(self, input, output, fixedWindow, windowMethod, propCIWindow, fixedCIWindow, amountCI):
-#         self.input = input
-#         self.output = output
-#         self.fixedWindow = fixedWindow
-#         self.windowMethod = windowMethod
-#         self.propCIWindow = propCIWindow
-#         self.fixedCIWindow = fixedCIWindow
-#         self.amountCI = amountCI
+# %% False arguments
+class Arguments:
+    def __init__(self, input, output, fixedWindow, windowMethod, propCIWindow, fixedCIWindow, amountCI, chromBoundaries):
+        self.input = input
+        self.output = output
+        self.fixedWindow = fixedWindow
+        self.windowMethod = windowMethod
+        self.propCIWindow = propCIWindow
+        self.fixedCIWindow = fixedCIWindow
+        self.amountCI = amountCI
+        self.chromBoundaries = chromBoundaries
 
-# args = Arguments("../../data/use/inversions_info/2020.08.inversions_hg38_G4.gff", "../../tmp/windows.bed", 100000, "fromCenter", 100, 100, 3)
+args = Arguments("../../data/use/inversions_info/2020.08.inversions_hg38_G4.gff", "../../tmp/windows.bed", 100000, "fromCenter", 100, 100, 3, "../../data/use/assembly_hg38/minmax.gff")
 
 ###############################################################################
 # Description:                                                 
@@ -30,6 +31,7 @@ import pandas as pd # For dataframes: high-performance, easy-to-use data structu
 import re 
 import sys
 
+# %% 
 # ARGUMENTS
 # Process arguments
 # =========================================================================== #
@@ -41,6 +43,7 @@ if __name__ == "__main__": # if file was called and not imported
   # Required arguments
   parser.add_argument("--input", type = str, required = True, help = "Input file.", metavar="FILE")
   parser.add_argument("--output", type = str, required = True, help = "Output file.", metavar="FILE")
+  parser.add_argument("--chromBoundaries", type = str, required = True, help = "Chromosome start and end positions file.", metavar="FILE")
 
   # Required one of the following
   parser.add_argument("--fixedWindow", type = int, default = 0, help = "Window size (in bps) inside target", metavar = "BASEPAIRS")
@@ -64,10 +67,12 @@ if __name__ == "__main__": # if file was called and not imported
   if args.amountCI > 0 and args.fixedCIWindow > 0 and args.propCIWindow > 0:
     parser.error('Only --fixedCIWindow or --propCIWindow can be used.')
 
+  # %% 
   # GET COORDINATES
   # Open file with inversion coordinates and make dataframe
   # =========================================================================== #
   data = pd.read_table(args.input, sep = "\t", header = None)
+  boundaries = pd.read_table(args.chromBoundaries, sep = "\t", header = None)
 
   # MAKE WINDOWS TABLE
   # Make a table with required windows for each line
@@ -139,17 +144,42 @@ if __name__ == "__main__": # if file was called and not imported
 
     # Confidence interval names
     namesCIL=[invID+"_left_%d" % (x + 1) for x in range(len(startsCIL))]
-    namesCIR=[invID+"_right_%d" % (x + 1) for x in range(len(startsCIL))]
+    namesCIR=[invID+"_right_%d" % (x + 1) for x in range(len(startsCIR))]
+
+
+    # MAKE WINDOWS TABLE - Add chromosome buffering for normalization
+    # ------------------------------------------------------------------------- #
+    
+    # Calculate start and endpoints for buffer intervals
+    startBuffer = int(boundaries[boundaries[0] == chrom][3])
+    endBuffer = int(boundaries[boundaries[0] == chrom][4])
+
+    # Confidence interval starts
+    startsBufferL=range(startBuffer, min(startsCIL), winSizeCI)
+    startsBufferR=range( max(endsCIR), endBuffer, winSizeCI)
+    
+    # Confidence interval ends
+    endsBufferL=[ x+winSizeCI for x in startsBufferL]
+    endsBufferR=[ x+winSizeCI for x in startsBufferR]
+
+    # Confidence interval names
+    namesBufferL=[invID+"_buffl_%d" % (x + 1) for x in range(len(startsBufferL))]
+    namesBufferR=[invID+"_buffr_%d" % (x + 1) for x in range(len(startsBufferR))]
+
 
     # MAKE WINDOWS TABLE - Create final table
     # ------------------------------------------------------------------------- #      
     rowWins = pd.DataFrame( 
-      {'pos.leftbound' : startsCIL+starts+startsCIR,
-        'pos.rightbound' : endsCIL+ends+endsCIR,
-        'ID' : namesCIL+names+namesCIR
+      {'pos.leftbound' : startsBufferL+startsCIL+starts+startsCIR+startsBufferR,
+        'pos.rightbound' : endsBufferL+endsCIL+ends+endsCIR+endsBufferR,
+        'ID' : namesBufferL+namesCIL+names+namesCIR+namesBufferR
         }, columns=['pos.leftbound', 'pos.rightbound', 'ID']) # columns maintains my columns in place
 
     rowWins.insert(0, 'chr', chrom) # The 0 is to insert the column in the first place
+    
+    # Trim confidence intervals if necessary
+    rowWins = rowWins[rowWins["pos.leftbound"] >= startBuffer]
+    rowWins = rowWins[rowWins["pos.rightbound"] <= endBuffer]
 
     # Concatenate to final table
     bedFile = pd.concat([bedFile, rowWins])
