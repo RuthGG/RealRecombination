@@ -50,7 +50,7 @@ usage()
     -g <file>                         Path to inversion genotypes file.
     -t <file>                         Path to inversion imputability file.
     -n <file>                         Path to individual sample size list.
-    -b <file>                         Path to chromosome boundaries
+    -b <file>                         Path to chromosome boundaries.
  "
 
 }
@@ -676,21 +676,23 @@ if  [ "$COMMAND" == "crossovers" ]; then
   # MAPDIR contains directory for recombination map. If map required does not exist, it is created and stored into MAPDIR
   FILENUM=$(ls ${MAPDIR}/*_${WINSIZE}.txt | wc -l)
 
-  if [ $FILENUM -gt 0 ]; then
+  if [ $FILENUM -lt 1 ]; then
     # Make map with chromosome boundaries
-    mkdir "${TMPDIR}/recMap/"
+    mkdir -p "${TMPDIR}/recMap/"
     # Makes bedfile with windows/regions list
-    python code/python/makeBedWindows.py --input "${BOUNDARIES}" --output "${TMPDIR}/recMap/windows.bed" --fixedWindow "${WINSIZE}"  --windowMethod "fromLeft"
+    python code/python/makeBedWindows.py --input "${BOUNDARIES}" --output "${TMPDIR}/recMap/windows.bed" --fixedWindow "${WINSIZE}"  --windowMethod "fromLeft" --chromBoundaries "${BOUNDARIES}"
 
     # Intersect windows with crossovers
     bedtools intersect -wao -a "${TMPDIR}/recMap/windows.bed"  -b "${TMPDIR}/allcrossovers.bed" > "${TMPDIR}/recMap/comparison.txt"
 
     # Make scores, recombination rates and parse table
-    python code/python/makeRecRates.py --input "${TMPDIR}/recMap/comparison.txt" --output "${MAPDIR}/recMap_${WINSIZE}.txt" --numofsamples  "$CELLS"
+    python code/python/makeRecRates.py --input "${TMPDIR}/recMap/comparison.txt" --output "${MAPDIR}/recMap_${WINSIZE}.txt" --numofsamples  "$CELLS" 
 
   fi
 
   MAP=$(ls ${MAPDIR}/*_${WINSIZE}.txt)
+
+  # Around 50 seconds up until here
 
   # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Crossovers in inversions and their chromosomes
   # ------------------------------------------------------------------------- #
@@ -707,8 +709,11 @@ if  [ "$COMMAND" == "crossovers" ]; then
   # Make scores, recombination rates and parse table
   python code/python/makeRecRates.py --input "${TMPDIR}/comparison.txt" --output "${TMPDIR}/crossoverResult.txt" --numofsamples  "$CELLS"
 
+  # Around 20 seconds if map exists up until here
+
   # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Make normalization
   # ------------------------------------------------------------------------- #
-  python code/python/quantileNormalization.py --input "${TMPDIR}/crossoverResult.txt" --output "${OUTDIR}/crossoverResult_QN.txt" --recMap ${MAP}
+  python code/python/quantileNormalization.py --input "${TMPDIR}/crossoverResult.txt" --output "${OUTDIR}/crossoverResult_QN.txt" --recMap "${MAP}"
 
+  # Normalization alone is around 20 seconds 
 fi

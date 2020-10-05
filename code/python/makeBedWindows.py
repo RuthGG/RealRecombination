@@ -127,40 +127,56 @@ if __name__ == "__main__": # if file was called and not imported
         winSizeCI = args.fixedCIWindow
       else: # else it is proportional
         winSizeCI = invSize * (args.propCIWindow / 100 )
-
-    confInt = winSizeCI *  args.amountCI
-
-    # Calculate start and endpoints for confidence intervals
-    startCI = min(starts) - confInt
-    endCI = max(ends) + confInt
-
-    # Confidence interval starts
-    startsCIL=range(startCI, min(starts), winSizeCI)
-    startsCIR=range( max(ends), endCI, winSizeCI)
     
-    # Confidence interval ends
-    endsCIL=[ x+winSizeCI for x in startsCIL]
-    endsCIR=[ x+winSizeCI for x in startsCIR]
+      confInt = winSizeCI *  args.amountCI
 
-    # Confidence interval names
-    namesCIL=[invID+"_left_%d" % (x + 1) for x in range(len(startsCIL))]
-    namesCIR=[invID+"_right_%d" % (x + 1) for x in range(len(startsCIR))]
+      # Calculate start and endpoints for confidence intervals
+      startCI = min(starts) - confInt
+      endCI = max(ends) + confInt
 
+      # Confidence interval starts
+      startsCIL=range(startCI, min(starts), winSizeCI)
+      startsCIR=range( max(ends), endCI, winSizeCI)
+      
+      # Confidence interval ends
+      endsCIL=[ x+winSizeCI for x in startsCIL]
+      endsCIR=[ x+winSizeCI for x in startsCIR]
+
+      # Confidence interval names
+      namesCIL=[invID+"_left_%d" % (x + 1) for x in range(len(startsCIL))]
+      namesCIR=[invID+"_right_%d" % (x + 1) for x in range(len(startsCIR))]
+
+    else:
+      startsCIL = []
+      startsCIR = []
+      endsCIL = []
+      endsCIR = []
+      namesCIL = []
+      namesCIR = []
 
     # MAKE WINDOWS TABLE - Add chromosome buffering for normalization
     # ------------------------------------------------------------------------- #
     
+    if args.amountCI > 0 : 
+      winSizeBuffer = winSizeCI
+      endBufferL = min(startsCIL)
+      startBufferR = max (endsCIR )
+    else : 
+      winSizeBuffer = winSize
+      endBufferL = min(starts)
+      startBufferR = max(ends)
+
     # Calculate start and endpoints for buffer intervals
-    startBuffer = int(boundaries[boundaries[0] == chrom][3])
-    endBuffer = int(boundaries[boundaries[0] == chrom][4])
+    startBufferL = int(boundaries[boundaries[0] == chrom][3])
+    endBufferR = int(boundaries[boundaries[0] == chrom][4])
 
     # Confidence interval starts
-    startsBufferL=range(startBuffer, min(startsCIL), winSizeCI)
-    startsBufferR=range( max(endsCIR), endBuffer, winSizeCI)
+    startsBufferL=range(startBufferL, endBufferL, winSizeBuffer)
+    startsBufferR=range( startBufferR, endBufferR, winSizeBuffer)
     
     # Confidence interval ends
-    endsBufferL=[ x+winSizeCI for x in startsBufferL]
-    endsBufferR=[ x+winSizeCI for x in startsBufferR]
+    endsBufferL=[ x+winSizeBuffer for x in startsBufferL]
+    endsBufferR=[ x+winSizeBuffer for x in startsBufferR]
 
     # Confidence interval names
     namesBufferL=[invID+"_buffl_%d" % (x + 1) for x in range(len(startsBufferL))]
@@ -178,8 +194,8 @@ if __name__ == "__main__": # if file was called and not imported
     rowWins.insert(0, 'chr', chrom) # The 0 is to insert the column in the first place
     
     # Trim confidence intervals if necessary
-    rowWins = rowWins[rowWins["pos.leftbound"] >= startBuffer]
-    rowWins = rowWins[rowWins["pos.rightbound"] <= endBuffer]
+    rowWins = rowWins[rowWins["pos.leftbound"] >= startBufferL]
+    rowWins = rowWins[rowWins["pos.rightbound"] <= endBufferR]
 
     # Concatenate to final table
     bedFile = pd.concat([bedFile, rowWins])
