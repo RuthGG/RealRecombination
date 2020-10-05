@@ -1,0 +1,36 @@
+ls: cannot access 'data/use/recMaps/*_25000.txt': No such file or directory
+Traceback (most recent call last):
+  File "code/python/makeRecRates.py", line 61, in <module>
+    data["ind"] = data["idXs"].str.split("_", n = 1, expand = True)[0]
+  File "/home/rgomez/anaconda3/envs/RealRecombination/lib/python2.7/site-packages/pandas/core/strings.py", line 1481, in split
+    return self._wrap_result(result, expand=expand)
+  File "/home/rgomez/anaconda3/envs/RealRecombination/lib/python2.7/site-packages/pandas/core/strings.py", line 1466, in _wrap_result
+    return cons(result, columns=name, index=index)
+  File "/home/rgomez/anaconda3/envs/RealRecombination/lib/python2.7/site-packages/pandas/core/frame.py", line 369, in __init__
+    arrays, columns = _to_arrays(data, columns, dtype=dtype)
+  File "/home/rgomez/anaconda3/envs/RealRecombination/lib/python2.7/site-packages/pandas/core/frame.py", line 6284, in _to_arrays
+    dtype=dtype)
+  File "/home/rgomez/anaconda3/envs/RealRecombination/lib/python2.7/site-packages/pandas/core/frame.py", line 6363, in _list_to_arrays
+    coerce_float=coerce_float)
+  File "/home/rgomez/anaconda3/envs/RealRecombination/lib/python2.7/site-packages/pandas/core/frame.py", line 6429, in _convert_object_array
+    arrays = [convert(arr) for arr in content]
+  File "/home/rgomez/anaconda3/envs/RealRecombination/lib/python2.7/site-packages/pandas/core/frame.py", line 6425, in convert
+    arr = lib.maybe_convert_objects(arr, try_float=coerce_float)
+  File "pandas/_libs/src/inference.pyx", line 1207, in pandas._libs.lib.maybe_convert_objects
+MemoryError
+Traceback (most recent call last):
+  File "code/python/quantileNormalization.py", line 69, in <module>
+    data = pd.read_table(args.input, sep = "\t", header = 0)
+  File "/home/rgomez/anaconda3/envs/RealRecombination/lib/python2.7/site-packages/pandas/io/parsers.py", line 709, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/rgomez/anaconda3/envs/RealRecombination/lib/python2.7/site-packages/pandas/io/parsers.py", line 449, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/home/rgomez/anaconda3/envs/RealRecombination/lib/python2.7/site-packages/pandas/io/parsers.py", line 818, in __init__
+    self._make_engine(self.engine)
+  File "/home/rgomez/anaconda3/envs/RealRecombination/lib/python2.7/site-packages/pandas/io/parsers.py", line 1049, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/rgomez/anaconda3/envs/RealRecombination/lib/python2.7/site-packages/pandas/io/parsers.py", line 1695, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 402, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 718, in pandas._libs.parsers.TextReader._setup_parser_source
+IOError: File tmp/2020-10-05_09_crossovers/crossoverResult.txt does not exist

@@ -200,4 +200,4 @@
   Manually converted two lines into one for each chromosome (start - end) and now the end position is added in position 3
   awk -v OFS="\t" '{print "chr"$1,"Avery2020", "chromosome",$2, $3, ".",".",".","PASS;Name=chr"$1 }' tmp/minmaxchr.txt > data/use/assembly_hg38/minmax.gff
 2020-10-02: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.08.inversions_hg38_G3.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.gff
-			mv analysis/2020-10-02_09_crossovers analysis/2020-10-02_09_crossovers_invsG3
+			mv analysis/2020-10-02_09_crossovers analysis/2020-10-02_09_crossovers_invsG32020-10-05: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.08.inversions_hg38_G4.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.gff
