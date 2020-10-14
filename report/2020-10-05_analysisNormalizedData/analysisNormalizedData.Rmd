@@ -1,0 +1,169 @@
+---
+title: "Analysis normalized data"
+author: "Ruth Gómez Graciani"
+date: "10/5/2020"
+output: html_document
+---
+
+```{r, setup, include=FALSE}
+# require("knitr")
+# require("tidyr")
+# require("ggforce")
+# require("ggpubr")
+# require("reshape2")
+library("ggplot2")
+# require("stringr")
+knitr::opts_knit$set(root.dir = "~/20200401_RealRecombination/")
+# outdir<-"report/2020-08-20_defMethods/"
+
+
+```
+
+These files are from analyzing Group 3 inversions in fixed window sizes. 
+
+```{r XrecRate,  echo = FALSE, eval=FALSE}
+
+normData <- read.table("analysis/2020-10-02_09_crossovers_invsG3/crossoverResult_QN.txt", header = TRUE)
+
+```
+
+
+I also need the genotypes
+
+```{r addGenotypes,  echo = FALSE, eval=FALSE}
+
+ # Individual genotypes
+   # Get individuals genotypes
+    genotypes<-read.table("analysis/2020-05-23_07_imputationTables/imputationResults.csv", header=TRUE, sep = ",")
+  
+    # Get individual names
+    genotypes$Individual<-sub("^\\d+\\.","",genotypes$Individual)
+    genotypes$Individual<-sub("nc", "NC", genotypes$Individual, ignore.case = FALSE)
+  
+#---------------------GENOTYPE QUALITY CONTROL FUNCTION-----------------------------------
+    
+makegeno<-function(genotypes){
+    genotypes_characterized<-genotypes[genotypes$Population %in% c("EUR", "AFR"),]
+    
+    eur.quality<-genotypes_characterized[genotypes_characterized$Population == "EUR" & genotypes_characterized$EUR %in% c("Tagged", "Imputable") ,]
+    afr.quality<-genotypes_characterized[genotypes_characterized$Population == "AFR" & genotypes_characterized$AFR %in% c("Tagged", "Imputable") ,]
+    
+    perc.good.uni.eur<-table(eur.quality$Uniformity)/sum(table(eur.quality$Uniformity))*100
+    perc.good.uni.afr<-table(afr.quality$Uniformity)/sum(table(afr.quality$Uniformity))*100
+    
+    
+    testvec.eur<-eur.quality[ eur.quality$Quality %in% "good",] 
+    testvec.afr<-afr.quality[ afr.quality$Quality %in% "good", ] 
+    
+    perc.good.uni.eur.c<-table(  testvec.eur$Uniformity)
+    perc.good.uni.afr.c<-table( testvec.afr$Uniformity)
+    
+    aresame.eur<-eur.quality[ eur.quality$Quality %in% "good" & eur.quality$Uniformity %in% c("alert", "bad"), ] 
+    aresame.afr<-afr.quality[ afr.quality$Quality %in% "good" & afr.quality$Uniformity %in% c("alert", "bad"), ] 
+
+    # En europeus la inversio 191 dona problemes en 5/12(Es la unica) i en africans la 1075(1/3). Aquestes dues es prendran amb pinces. La resta, si la qualitat es bona en general el resultat tambe. 
+    
+    accepted.eur<-genotypes[genotypes$Population == "EUR" & genotypes$EUR %in% c("Tagged", "Imputable") & genotypes$Probability_con >0.8,]
+    accepted.afr<-genotypes[genotypes$Population == "AFR" & genotypes$AFR %in% c("Tagged", "Imputable") & genotypes$Probability_con >0.8,]
+
+  # SAS i ALL no hi ha moltes referencies
+    test.sas<-genotypes[ (genotypes$GLB %in% c("Tagged", "Imputable") | genotypes$AFR %in% c("Tagged", "Imputable") | genotypes$EUR %in% c("Tagged", "Imputable") ) & genotypes$Population %in% c("ALL", "SAS") , ]
+    test.sas[test.sas$Genotype_500 == "?", "Genotype_500"]<-NA
+    test.sas$Genotype_500<-as.factor(as.character(test.sas$Genotype_500))
+    test.sas$accepted<-"no"
+    test.sas[test.sas$Genotype_100 == test.sas$Genotype_250 & test.sas$Genotype_250 == test.sas$Genotype_500 & 
+             test.sas$Probability_100 > 0.8 & test.sas$Probability_250 > 0.8 & test.sas$Probability_500 > 0.8, "accepted" ]<-"yes"
+    test.sas[test.sas$Inversion %in% c("HsInv0191", "HsInv1075"),"accepted"]<-"no"
+    test.sas[test.sas$Uniformity == "good" & test.sas$Quality == "good","accepted"]<-"yes"
+    
+    accepted.sasall<-test.sas[test.sas$accepted == "yes",]
+    accepted.sasall$accepted <- NULL
+    
+  # Asiatics 
+     accepted.eas<-genotypes[genotypes$Population == "EAS" & 
+(genotypes$GLB %in% c("Tagged", "Imputable") | genotypes$AFR %in% c("Tagged", "Imputable") | genotypes$EUR %in% c("Tagged", "Imputable") )&                     genotypes$Uniformity == "good" & genotypes$Quality %in% c("good", "alert") & genotypes$Probability_con > 0.8,]
+   
+
+     accepted.genotypes<-rbind(accepted.afr, accepted.eas, accepted.eur, accepted.sasall)
+ return(accepted.genotypes)
+    }
+    
+ # ------------------------------------------------------------
+    
+    genotypes<-makegeno(genotypes)
+    
+    # length(unique(genotypes$Inversion))
+    
+    # Merge with info
+    normData<-  merge(normData, genotypes[,c("Individual", "Inversion", "Genotype_500")], by.x = c("ind", "inv") , by.y = c("Individual", "Inversion" ), all.x = TRUE)
+    normData$Haplotype<-NA
+    normData[normData$Genotype_500 %in% c("INV", "STD"), "Haplotype"]<-"Homozygous"
+    normData[normData$Genotype_500 %in% c("HET"), "Haplotype"]<-"Heterozygous"
+    
+    # Clean up
+    rm(genotypes)
+
+```
+
+Now I want to make the summary table that aggregates by genotpe
+
+```{r aggregateTable ,  echo = FALSE, eval=FALSE}
+
+# Parse position markers
+  normData$position <- factor(normData$position , levels = c("left", "inv", "right"))
+  normData$posNumber<- as.numeric(str_split_fixed(normData$idWin, "_", 3)[,3])
+
+# Order table and factors
+  normData<-normData[order( normData$inv, normData$position, normData$posNumber),]
+  normData$idWin<- factor(normData$idWin, levels = unique(normData$idWin))
+  
+# Function to aggregate values by inversion
+    function.InvPlot.means<-function(inversion, toPlot){
+ 
+    test.subset<-aggregate(   cM.Mb.QN  ~  inv + startWin+endWin + Haplotype +idWin+position,toPlot[toPlot$inv == inversion,], mean)
+    
+toPlot$counts<-1
+test.counts<-aggregate(   counts  ~  inv + startWin+endWin + Haplotype +idWin+position,toPlot[toPlot$inv == inversion,], sum)
+test.subset<-merge(test.subset, test.counts)
+
+
+     a<-      ggplot(test.subset)+geom_rect(aes(xmin=startWin, xmax=endWin, ymin = 0, ymax = cM.Mb.QN  , fill = counts)) +
+      facet_grid(. ~ Haplotype, scales = "free") +
+      geom_rect(data = test.subset[test.subset$position=="inv",], aes(xmin=startWin, xmax=endWin, ymin = 0, ymax = cM.Mb.QN), fill="goldenrod")+
+       ggtitle(inversion) #+
+       # theme(strip.text.x = element_text(size = 20), axis.text.y = element_text(size= 20),axis.text.x = element_text(size= 15),title = element_text(size=20))
+    return(a)
+
+
+}
+    toPlot<-normData[!is.na(normData$Haplotype),]
+    plotlist<-list()
+ 
+  for(i in unique(toPlot$inv)){
+    
+   if (length( table(toPlot[toPlot$inv == i,"Haplotype"])) > 1){
+    plotlist[[i]]<-function.InvPlot.means(i, toPlot )
+   }
+  }
+
+  # plotname<-paste0(outdir, paste0("images/invDescription_all",".png"))
+  # png(filename=plotname, width = 3508/2, height = 2480/2, units = "px" )
+  plot<- annotate_figure( ggarrange(plotlist=plotlist, common.legend = TRUE), top = text_grob(paste0("Recombination rate percentiles aggregated by zygosity" ), size = 50) )
+  # print(plot)
+  # dev.off()
+  
+  table(toPlot$inv, toPlot$Haplotype, toPlot$ind)
+  
+inversion <- "HsInv1110"
+plotlist$HsInv0286
+plotlist$HsInv0290
+plotlist$HsInv0786
+```
+
+
+
+
+
+
+
+
