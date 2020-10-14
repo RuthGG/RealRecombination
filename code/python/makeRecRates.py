@@ -24,6 +24,7 @@
 import argparse  # Parser for command-line options, arguments and sub-commands; makes it easy to write user-friendly command-line
 import pandas as pd # For dataframes: high-performance, easy-to-use data structures and data analysis tools 
 import numpy as np
+import re
 
 # ARGUMENTS
 # Process arguments
@@ -44,11 +45,11 @@ if __name__ == "__main__": # if file was called and not imported
   # GET INPUT FILES
   # Open file with inversion vs. crossovers and with individual number of samples
   # =========================================================================== #
-  
+
   # Inversion vs. crossovers comparison
-  data = pd.read_table(args.input, sep = "\t", names = ["chrWin", "startWin", "endWin", "idWin", "chrXs" , "startXs", "endXs", "idXs", "overlap"])
+  data = pd.read_csv(args.input, sep = "\t", names = ["chrWin", "startWin", "endWin", "idWin", "chrXs" , "startXs", "endXs", "ind", "overlap"])
   # Number of samples data
-  numofsamples = pd.read_table(args.numofsamples, sep = " ", names = ["ind", "samples"])
+  numofsamples = pd.read_csv(args.numofsamples, sep = " ", names = ["ind", "samples"])
 
   # MAKE RECOMBINATION RATES    
   # Calculate the recombination rate in cM per Mb
@@ -57,8 +58,6 @@ if __name__ == "__main__": # if file was called and not imported
   # MAKE RECOMBINATION RATES  - Basic table parsing
   # --------------------------------------------------------------------------- #
 
-  # Clean individual names
-  data["ind"] = data["idXs"].str.split("_", n = 1, expand = True)[0]
 
   # Replace points by numbers to avoid dividing by 0
   data['startXs'] = np.where((data.overlap == 0),1,data.startXs)

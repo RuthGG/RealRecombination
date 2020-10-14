@@ -5,18 +5,18 @@
 # 25 09 2020
 
 # %% False arguments
-class Arguments:
-    def __init__(self, input, output, fixedWindow, windowMethod, propCIWindow, fixedCIWindow, amountCI, chromBoundaries):
-        self.input = input
-        self.output = output
-        self.fixedWindow = fixedWindow
-        self.windowMethod = windowMethod
-        self.propCIWindow = propCIWindow
-        self.fixedCIWindow = fixedCIWindow
-        self.amountCI = amountCI
-        self.chromBoundaries = chromBoundaries
+# class Arguments:
+#     def __init__(self, input, output, fixedWindow, windowMethod, propCIWindow, fixedCIWindow, amountCI, chromBoundaries):
+#         self.input = input
+#         self.output = output
+#         self.fixedWindow = fixedWindow
+#         self.windowMethod = windowMethod
+#         self.propCIWindow = propCIWindow
+#         self.fixedCIWindow = fixedCIWindow
+#         self.amountCI = amountCI
+#         self.chromBoundaries = chromBoundaries
 
-args = Arguments("../../data/use/inversions_info/2020.08.inversions_hg38_G4.gff", "../../tmp/windows.bed", 100000, "fromCenter", 100, 100, 3, "../../data/use/assembly_hg38/minmax.gff")
+# args = Arguments("../../data/use/inversions_info/2020.08.inversions_hg38_G4.gff", "../../tmp/windows.bed", 100000, "fromCenter", 100, 100, 3, "../../data/use/assembly_hg38/minmax.gff")
 
 ###############################################################################
 # Description:                                                 

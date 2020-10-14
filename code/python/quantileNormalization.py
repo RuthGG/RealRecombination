@@ -5,13 +5,13 @@
 # 01 10 2020
 
 # %% False arguments
-class Arguments:
-    def __init__(self, input, output, recMap):
-        self.input = input
-        self.output = output
-        self.recMap = recMap
+# class Arguments:
+#     def __init__(self, input, output, recMap):
+#         self.input = input
+#         self.output = output
+#         self.recMap = recMap
 
-args = Arguments("../../analysis/2020-09-30_09_crossovers_invsG3/crossoverResult.Rdata", "tmp/", "../../analysis/2020-09-30_09_crossovers_invsG3/crossoverResult.Rdata")
+# args = Arguments("../../analysis/2020-09-30_09_crossovers_invsG3/crossoverResult.Rdata", "tmp/", "../../analysis/2020-09-30_09_crossovers_invsG3/crossoverResult.Rdata")
 
 def quantile_normalize(df):
     """

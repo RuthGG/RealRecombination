@@ -645,7 +645,7 @@ fi
 # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS
 # Create data used in the statistical analysis of crossovers
 # =========================================================================== #
-STEP=$(printf '%02d' $((${STEPB}+1)))
+STEP=$(printf '%02d' $(("${STEPB}"+1)))
 
 if  [ "$COMMAND" == "crossovers" ]; then
 
@@ -658,13 +658,14 @@ if  [ "$COMMAND" == "crossovers" ]; then
   # Window size and confidence interval
   WINSIZE=$(head -n 1 "${CONFILE}")
   INTERVAL=$(sed '2q;d' "${CONFILE}")
-  AMOUNTCI=$(("${INTERVAL}"/"${WINSIZE}"))
+  AMOUNTCI=$((${INTERVAL}/${WINSIZE}))
 
   cp "${CONFILE}" "${OUTDIR}" 
 
   # Crossover files to bed
-  zcat "$FILE" |awk -v OFS="\t" '{print $3, $4, $5, $1"_"$2}' > "${TMPDIR}/allcrossovers.bed"
+  zcat "$FILE" |awk -v OFS="\t" '{print $3, $4, $5, $1}' > "${TMPDIR}/allcrossovers.bed"
   
+  echo "Conditions registered and analysis results copied"
   # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Make or search recombination map
   # ------------------------------------------------------------------------- #
 
@@ -674,9 +675,10 @@ if  [ "$COMMAND" == "crossovers" ]; then
   fi
   
   # MAPDIR contains directory for recombination map. If map required does not exist, it is created and stored into MAPDIR
-  FILENUM=$(ls ${MAPDIR}/*_${WINSIZE}.txt | wc -l)
+  FILENUM=$(ls "${MAPDIR}/"*"_${WINSIZE}".txt | wc -l)
 
-  if [ $FILENUM -lt 1 ]; then
+  if [ "$FILENUM" -lt 1 ]; then
+    echo "Recombination map will be created in ${MAPDIR}"
     # Make map with chromosome boundaries
     mkdir -p "${TMPDIR}/recMap/"
     # Makes bedfile with windows/regions list
@@ -687,11 +689,12 @@ if  [ "$COMMAND" == "crossovers" ]; then
 
     # Make scores, recombination rates and parse table
     python code/python/makeRecRates.py --input "${TMPDIR}/recMap/comparison.txt" --output "${MAPDIR}/recMap_${WINSIZE}.txt" --numofsamples  "$CELLS" 
-
+   
+    
   fi
 
-  MAP=$(ls ${MAPDIR}/*_${WINSIZE}.txt)
-
+  MAP=$(ls "${MAPDIR}"/*_"${WINSIZE}".txt)
+  echo "Recombination map acquired"
   # Around 50 seconds up until here
 
   # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Crossovers in inversions and their chromosomes
@@ -702,7 +705,7 @@ if  [ "$COMMAND" == "crossovers" ]; then
 
   # Makes bedfile with windows/regions list
   python code/python/makeBedWindows.py --input "${OUTDIR}/invcoord_noXY.gff" --output "${TMPDIR}/windows.bed" --fixedWindow "${WINSIZE}" --fixedCIWindow "${WINSIZE}" --amountCI "${AMOUNTCI}" --windowMethod "fromCenter" --chromBoundaries "${BOUNDARIES}"
-
+  
   # Intersect windows with crossovers
   bedtools intersect -wao -a "${TMPDIR}/windows.bed"  -b "${TMPDIR}/allcrossovers.bed" > "${TMPDIR}/comparison.txt"
 
@@ -711,9 +714,11 @@ if  [ "$COMMAND" == "crossovers" ]; then
 
   # Around 20 seconds if map exists up until here
 
+  echo "Inversion recombination rates registered"
+
   # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS - Make normalization
   # ------------------------------------------------------------------------- #
   python code/python/quantileNormalization.py --input "${TMPDIR}/crossoverResult.txt" --output "${OUTDIR}/crossoverResult_QN.txt" --recMap "${MAP}"
-
+  echo "Inversion recombination rates normalized"
   # Normalization alone is around 20 seconds 
 fi

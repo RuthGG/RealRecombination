@@ -201,3 +201,21 @@
   awk -v OFS="\t" '{print "chr"$1,"Avery2020", "chromosome",$2, $3, ".",".",".","PASS;Name=chr"$1 }' tmp/minmaxchr.txt > data/use/assembly_hg38/minmax.gff
 2020-10-02: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.08.inversions_hg38_G3.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.gff
 			mv analysis/2020-10-02_09_crossovers analysis/2020-10-02_09_crossovers_invsG32020-10-05: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.08.inversions_hg38_G4.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.gff
+
+
+2020-10-13: 
+			printf "10000\n1000000" >  data/use/conditions/winsizeCrossovers.txt
+			bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.gff
+			cp project/logfiles/2020-10-13 analysis/2020-10-13_09_crossovers
+			mv analysis/2020-10-13_09_crossovers analysis/2020-10-13_09_crossovers_10k
+			
+			printf "50000\n1000000" >  data/use/conditions/winsizeCrossovers.txt
+			bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.gff
+			cp project/logfiles/2020-10-13 analysis/2020-10-13_09_crossovers
+			mv analysis/2020-10-13_09_crossovers analysis/2020-10-13_09_crossovers_50k
+
+			printf "200000\n1000000" >  data/use/conditions/winsizeCrossovers.txt
+			bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.gff
+			cp project/logfiles/2020-10-13 analysis/2020-10-13_09_crossovers
+			mv analysis/2020-10-13_09_crossovers analysis/2020-10-13_09_crossovers_200k
+
