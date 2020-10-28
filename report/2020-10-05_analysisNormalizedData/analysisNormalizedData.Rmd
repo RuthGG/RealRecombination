@@ -4,7 +4,7 @@ author: "Ruth Gómez Graciani"
 date: "10/5/2020"
 output: html_document
 editor_options: 
-  chunk_output_type: inline
+  chunk_output_type: console
 ---
 
 ```{r, setup, include=FALSE}
@@ -821,15 +821,17 @@ normData200 <- read.table("analysis/2020-10-14_09_crossovers_200k/crossoverResul
 # Segona versió dels plots de línies, per grups, fent servir mitjanes de les finestres interiors de les invs i fold changes
 normData200.lineplot <- plotInvsDifQN(normData200, genotypes=genotypes, aggregateWins = TRUE)
 normData200.lineplot <- normData200.lineplot[!(normData200.lineplot$inv %in% c("HsInv0124", "HsInv1110")), ]
-lineplot<-ggplot(normData200.lineplot)+geom_line(aes(x = winPos, y = Means.Fold.Change, group = inv), color = "steelblue4")+
+
+
+lineplot<-ggplot(normData200.lineplot[normData200.lineplot$relpos <2,])+geom_line(aes(x = winPos, y = Means.Fold.Changelog, group = inv), color = "steelblue4")+
          facet_grid(Group ~ . ) +
-         # geom_text(data = normData200.lineplot[normData200.lineplot$winPos == "inv_1", ] , aes(x = winPos, y = Means.Fold.Change, label = inv) )+
-  geom_hline(yintercept = 1, color = "red", alpha = 0.75)
+         geom_text(data = normData200.lineplot[normData200.lineplot$winPos == "inv_1", ] , aes(x = winPos, y = Means.Fold.Changelog, label = inv) )+
+  geom_hline(yintercept = 0, color = "red", alpha = 0.75)
 
       
       # return(plot)
 
-  plotname<- "report/2020-10-05_analysisNormalizedData/images/lineplot.200k.png"
+  plotname<- "report/2020-10-05_analysisNormalizedData/images/lineplot.200k.small.png"
   png(filename=plotname, width = 3508/5, height = 2480/3, units = "px" )
   plot<- annotate_figure(lineplot, top = text_grob(paste0("Log2 transformed fold changes between het. and homo in 3 groups" ), size = 10) )
   print(plot)
@@ -865,6 +867,16 @@ ggplot(normData200.boxplot)+geom_boxplot(aes(x = size ,y = Means.Fold.Change, fi
   print(plot)
   dev.off()
   
+  
+library(ggpubr)
+  
+  ggscatter(normData200.lineplot[normData200.lineplot$winPos == "inv_1" , ], x = "size", y = "Means.Fold.Change",
+          add = "reg.line",                                 # Add regression line
+          conf.int = TRUE,                                  # Add confidence interval
+          add.params = list(color = "blue",
+                            fill = "lightgray")
+          )+
+  stat_cor(method = "pearson", label.x = 3, label.y = 10)
   
 ```
 
