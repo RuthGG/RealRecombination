@@ -1,0 +1,1 @@
+idWin	ind	overlapScore	samples	cM	cM.Mb	chrWin	startWin	endWin	winsize	inv	position	cM.Mb.QN

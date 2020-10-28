@@ -645,7 +645,7 @@ fi
 # DATA FOR CROSSOVERS ANALYSIS WITH OUR INVERSIONS
 # Create data used in the statistical analysis of crossovers
 # =========================================================================== #
-STEP=$(printf '%02d' $(("${STEPB}"+1)))
+STEP=$(printf '%02d' $((${STEPB}+1)))
 
 if  [ "$COMMAND" == "crossovers" ]; then
 

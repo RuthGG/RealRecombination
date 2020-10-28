@@ -1,4 +1,4 @@
-#!/home/rgomez/anaconda3/envs/RealRecombination/bin/python
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # Ruth Gómez Graciani
