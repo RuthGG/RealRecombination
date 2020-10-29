@@ -95,7 +95,7 @@ After the imputation, the genotypes were filtered differently depending on the i
 
 Genotypes filtering steps:
 
-GENOTYPES STEP01: Inversions marked as imputable and tagged were accepted. SAS, ALL and EAS individuals were filtered according to the GLB imputability column. EUR and AFR were filtered according to their corresponging columns. Inversions HsInv0191 and HsInv1075 were not accepted for SAS and ALL individuals because it was observed in AFR and EUR individuals that good quality (all results with probability >0.8) not always implied good uniformity (all 'global' results equal and equal to 'same population' control). 
+GENOTYPES STEP01: Inversions marked as imputable, tagged or non_polymorphic were accepted. SAS, ALL and EAS individuals were filtered according to the GLB imputability column. EUR and AFR were filtered according to their corresponging columns. Inversions HsInv0191 and HsInv1075 were not accepted for SAS and ALL individuals because it was observed in AFR and EUR individuals that good quality (all results with probability >0.8) not always implied good uniformity (all 'global' results equal and equal to 'same population' control). 
 
 GENOTYPES STEP02: Quality filter. Individuals without a same population control result (mostly ALL and SAS, but some EAS as well), were required to have probabilities > 0.8 in all the global results. Otherwise, the same population control probability was required to be >0.8.
 
@@ -111,7 +111,7 @@ GENOTYPES STEP04: for a genotype to be accepted, it must pass all three filters.
 
 # STEP01: imputability 
 genotypes$STEP01.pop.imputability<-"FILTERED"
-accepted_tags<-c("Tagged", "Imputable")
+accepted_tags<-c("Tagged", "Imputable", "No_Polymorphic")
 
 genotypes[genotypes$Population %in% c("SAS", "ALL", "EAS") & genotypes$GLB %in% accepted_tags, "STEP01.pop.imputability"  ]<-"PASS"
 genotypes[genotypes$Population %in% c("AFR") & genotypes$AFR %in% accepted_tags, "STEP01.pop.imputability"  ]<-"PASS"
@@ -146,7 +146,7 @@ genotypes[genotypes$STEP01.pop.imputability == "PASS" &
 
 genotypes$accepted_genotype<-genotypes$Genotype_con
 genotypes[is.na(genotypes$accepted_genotype), "accepted_genotype"]<-genotypes[is.na(genotypes$accepted_genotype), "Genotype_500"]
-
+genotypes[genotypes$STEP04.general.filter == "FILTERED", "accepted_genotype"]<-NA
 ```
 
 Once the genotypes are filtered, they are aggregated and counted to filter inversions by the amount of different haplotypes available. 
@@ -158,7 +158,7 @@ INVERIONS STEP06 = STEP04 int. STEP05: autosomal imputable good quality genotype
 ```{r}
 
    # STEP05: AGGREGATING  GENOTYPES
-    
+
     counts<-data.frame(unclass(table(as.character(genotypes$Inversion), genotypes$accepted_genotype)))
     counts$HOMO <- counts$INV + counts$STD
     counts$all<-counts$HET + counts$HOMO
@@ -175,8 +175,9 @@ INVERIONS STEP06 = STEP04 int. STEP05: autosomal imputable good quality genotype
     # STEP06: FINAL FILTER
     test$STEP06.final<-"FILTERED"
     test[(test$STEP04.autosomal.imputable == "PASS" & test$STEP05.genotype == "PASS" ), "STEP06.final"] <- "PASS"
-    
     say.goods(test$STEP06.final)
+
+
 
 ```
 
@@ -188,7 +189,7 @@ write.csv(test, file = "report/2020-10-28_genotypeFilteringReport/inversions_fil
 write.csv(genotypes, file = "report/2020-10-28_genotypeFilteringReport/genotypes_filtered.csv")
   
 
-``
+```
 
 
 
