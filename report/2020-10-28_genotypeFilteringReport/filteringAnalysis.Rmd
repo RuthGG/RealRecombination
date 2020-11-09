@@ -1,7 +1,9 @@
 ---
 title: "Inversion filtering analysis"
 author: "Ruth Gómez Graciani"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r, setup, include=FALSE}
@@ -79,6 +81,7 @@ say.goods(test$STEP04.autosomal.imputable)
 
 
 After the imputation, the genotypes were filtered differently depending on the individual's population. The amount of inversions analyzed with IMPUTE2 is 94 = 92 (autosomal inversions with imputability info), so the table has 1880 rows (20 individuals x 94 inversions).
+
 
 ```{r, include = FALSE}
 
@@ -190,6 +193,7 @@ test<-test[test$STEP02.has.imp.info == "PASS",]
 
 write.csv(test, file = " inversions_filtered.csv")
 write.csv(genotypes, file = " genotypes_filtered.csv")
+
 
 ```
 
