@@ -1,6 +1,7 @@
 ---
 title: "Inversion filtering analysis"
 author: "Ruth Gómez Graciani"
+output: pdf_document
 ---
 
 ```{r, setup, include=FALSE}
@@ -11,7 +12,7 @@ author: "Ruth Gómez Graciani"
 # require("reshape2")
 # library("ggplot2")
 # require("stringr")
-knitr::opts_knit$set(root.dir = "~/20200401_RealRecombination/")
+# knitr::opts_knit$set(root.dir = "~/20200401_RealRecombination/")
 # outdir<-"report/2020-08-20_defMethods/"
 
 say.goods<-function(vector){
@@ -23,20 +24,20 @@ say.goods<-function(vector){
 
 We started with the following list of inversions. When (n = m) inversions is stated, it  means there are n inversions in the list, of which m are unique inversions and n-m are repeated because they had DEL genotypes. 
 
-INVERIONS STEP01: autosomal inversions (106 = 104)
-INVERIONS STEP02: inversions with imputability info (111 = 109)
-INVERIONS IMPUTE2 = STEP01 int STEP02: autosomal invs with imputability info (94 = 92)
-INVERIONS STEP03: is imputable or has tag SNPs or is non polymorphic in at least one population (93 = 92)
-INVERIONS STEP04 = STEP03 int. STEP01: imputable autosomal inversions (83 = 82)
+* INVERIONS STEP01: autosomal inversions (106 = 104)
+* INVERIONS STEP02: inversions with imputability info (111 = 109)
+* INVERIONS IMPUTE2 = STEP01 int STEP02: autosomal invs with imputability info (94 = 92)
+* INVERIONS STEP03: is imputable or has tag SNPs or is non polymorphic in at least one population (93 = 92)
+* INVERIONS STEP04 = STEP03 int. STEP01: imputable autosomal inversions (83 = 82)
 
 
-```{r}
+```{r, include = FALSE}
 
 # LOAD DATA
 
-input.invs<-read.table("data/use/inversions_info/Inversions_imputability.txt", header = TRUE)
+input.invs<-read.table("../../data/use/inversions_info/Inversions_imputability.txt", header = TRUE)
 input.invs$STEP02.has.imp.info<-"PASS"
-coord.invs<-read.table("data/use/inversions_info/Inversions_coordinates_hg19.csv", col.names = c("Inversion", "chromosome", "B1s19", "B1e19", "B2s19", "B2e19"))
+coord.invs<-read.table("../../data/use/inversions_info/Inversions_coordinates_hg19.csv", col.names = c("Inversion", "chromosome", "B1s19", "B1e19", "B2s19", "B2e19"))
 coord.invs<-coord.invs[coord.invs$Inversion != "HsInv0052",]
 
 # STEP01: autosomal
@@ -79,11 +80,11 @@ say.goods(test$STEP04.autosomal.imputable)
 
 After the imputation, the genotypes were filtered differently depending on the individual's population. The amount of inversions analyzed with IMPUTE2 is 94 = 92 (autosomal inversions with imputability info), so the table has 1880 rows (20 individuals x 94 inversions).
 
-```{r createGenotypesGOOD,  echo = FALSE, eval=FALSE}
+```{r, include = FALSE}
 
  # Individual genotypes
    # Get individuals genotypes
-    genotypes<-read.table("analysis/2020-05-23_07_imputationTables/imputationResults.csv", header=TRUE, sep = ",")
+    genotypes<-read.table("../../analysis/2020-05-23_07_imputationTables/imputationResults.csv", header=TRUE, sep = ",")
   
     # Get individual names
     genotypes$Individual<-sub("^\\d+\\.","",genotypes$Individual)
@@ -95,16 +96,16 @@ After the imputation, the genotypes were filtered differently depending on the i
 
 Genotypes filtering steps:
 
-GENOTYPES STEP01: Inversions marked as imputable, tagged or non_polymorphic were accepted. SAS, ALL and EAS individuals were filtered according to the GLB imputability column. EUR and AFR were filtered according to their corresponging columns. Inversions HsInv0191 and HsInv1075 were not accepted for SAS and ALL individuals because it was observed in AFR and EUR individuals that good quality (all results with probability >0.8) not always implied good uniformity (all 'global' results equal and equal to 'same population' control). 
+* GENOTYPES STEP01: Inversions marked as imputable, tagged or non polymorphic were accepted. SAS, ALL and EAS individuals were filtered according to the GLB imputability column. EUR and AFR were filtered according to their corresponging columns. Inversions HsInv0191 and HsInv1075 were not accepted for SAS and ALL individuals because it was observed in AFR and EUR individuals that good quality (all results with probability >0.8) not always implied good uniformity (all 'global' results equal and equal to 'same population' control). 
 
-GENOTYPES STEP02: Quality filter. Individuals without a same population control result (mostly ALL and SAS, but some EAS as well), were required to have probabilities > 0.8 in all the global results. Otherwise, the same population control probability was required to be >0.8.
+* GENOTYPES STEP02: Quality filter. Individuals without a same population control result (mostly ALL and SAS, but some EAS as well), were required to have probabilities > 0.8 in all the global results. Otherwise, the same population control probability was required to be >0.8.
 
-GENOTYPES STEP03:  Uniformity filter. All genotypes for EUR and AFR individuals were accepted regardless their uniformity, because we trust the same population control provided that the corresponging probability is >0.8. Other populations' genotypes were accepted when all their available measurements predicted the same genotype (all 4 measurements in most EAS individuals and the global results only in most SAS and ALL individuals).
+* GENOTYPES STEP03:  Uniformity filter. All genotypes for EUR and AFR individuals were accepted regardless their uniformity, because we trust the same population control provided that the corresponging probability is >0.8. Other populations' genotypes were accepted when all their available measurements predicted the same genotype (all 4 measurements in most EAS individuals and the global results only in most SAS and ALL individuals).
 
-GENOTYPES STEP04: for a genotype to be accepted, it must pass all three filters. The accepted genotype is the same population control when available, and the global results when the same population control is missing.
+* GENOTYPES STEP04: for a genotype to be accepted, it must pass all three filters. The accepted genotype is the same population control when available, and the global results when the same population control is missing.
 
 
-```{r}
+```{r, include = FALSE}
 
 # Now I apply one by one the filters to make sure they are correct
 # Things I noted that could add some inversions: take into account non polymorphic ones
@@ -151,11 +152,11 @@ genotypes[genotypes$STEP04.general.filter == "FILTERED", "accepted_genotype"]<-N
 
 Once the genotypes are filtered, they are aggregated and counted to filter inversions by the amount of different haplotypes available. 
 
-INVERIONS STEP05: those inversions with more than 3 individuals genotyped and with both heterozygous and homozygous individuals available (77 = 76).
+* INVERIONS STEP05: those inversions with more than 3 individuals genotyped and with both heterozygous and homozygous individuals available (62).
 
-INVERIONS STEP06 = STEP04 int. STEP05: autosomal imputable good quality genotyped inverisons (68 = 67)
+* INVERIONS STEP06 = STEP04 int. STEP05: autosomal imputable good quality genotyped inverisons (62)
 
-```{r}
+```{r, include = FALSE}
 
    # STEP05: AGGREGATING  GENOTYPES
 
@@ -181,13 +182,14 @@ INVERIONS STEP06 = STEP04 int. STEP05: autosomal imputable good quality genotype
 
 ```
 
-Save tables
+<!-- Save tables -->
 
-```{r}
+```{r, include = FALSE}
 
-write.csv(test, file = "report/2020-10-28_genotypeFilteringReport/inversions_filtered.csv")
-write.csv(genotypes, file = "report/2020-10-28_genotypeFilteringReport/genotypes_filtered.csv")
-  
+test<-test[test$STEP02.has.imp.info == "PASS",]
+
+write.csv(test, file = " inversions_filtered.csv")
+write.csv(genotypes, file = " genotypes_filtered.csv")
 
 ```
 
