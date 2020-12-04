@@ -1,0 +1,18 @@
+---
+title: "Graphical Representations Report"
+output: html_notebook
+---
+
+```{r, setup, include=FALSE}
+# require("knitr")
+# require("tidyr")
+# require("ggforce")
+# require("ggpubr")
+# require("reshape2")
+library("ggplot2")
+# require("stringr")
+knitr::opts_knit$set(root.dir = "~/20200401_RealRecombination/")
+# outdir<-"report/2020-08-20_defMethods/"
+
+
+```
