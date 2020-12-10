@@ -377,7 +377,9 @@ if [ "$COMMAND" == "preprocess" ]; then
     bcftools merge --missing-to-ref -Ov -l ${TMPDIR}/indlist.txt -o ${TMPDIR}/allind_chr.vcf
     awk '{gsub(/^chr/,""); print}' ${TMPDIR}/allind_chr.vcf > ${TMPDIR}/allind.vcf
 
-    grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq -c 
+    echo "## Summary for merged file: $MERGED"  >> ${OUTDIR}/log/logfiles.txt
+    echo "#By chromosome:" >> ${OUTDIR}/log/logfiles.txt
+    grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq -c >> ${OUTDIR}/log/logfiles.txt
     grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq  > ${TMPDIR}/chromlist.vcf
 
     bgzip ${TMPDIR}/allind.vcf 
@@ -386,12 +388,12 @@ if [ "$COMMAND" == "preprocess" ]; then
     MERGED="${TMPDIR}/allind.vcf.gz"
 
   else
-    bcftools view -Ov $(ls ${INDIR}/*.gz) -o ${TMPDIR}/${INDIR_NAME}_chr.vcf
+    bcftools view -Ov $(ls ${INDIR}/*.gz) -o ${TMPDIR}/${INDIR_NAME}_chr.vcf 
     awk '{gsub(/^chr/,""); print}' ${TMPDIR}/${INDIR_NAME}_chr.vcf > ${TMPDIR}/${INDIR_NAME}.vcf
     
-    echo "## Summary for merged file: $MERGED"
-    echo "#By chromosome:"
-    grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq -c 
+    echo "## Summary for original file: $MERGED"  >> ${OUTDIR}/log/logfiles.txt
+    echo "#By chromosome:" >> ${OUTDIR}/log/logfiles.txt
+    grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq -c  >> ${OUTDIR}/log/logfiles.txt
     grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq  > ${TMPDIR}/chromlist.txt
     
     bgzip ${TMPDIR}/${INDIR_NAME}.vcf 
@@ -402,8 +404,8 @@ if [ "$COMMAND" == "preprocess" ]; then
   fi
 
  
-  echo "#Total" # > ${OUTDIR}/log/logfiles.txt
-  bcftools plugin counts ${MERGED} # >>  ${OUTDIR}/log/logfiles.txt 
+  echo "#Total"  >> ${OUTDIR}/log/logfiles.txt
+  bcftools plugin counts ${MERGED} >> ${OUTDIR}/log/logfiles.txt
 
 # PREPROCESS RAW DATA - Transform to ref file assembly
   # ------------------------------------------------------------------------- #
@@ -428,8 +430,7 @@ if [ "$COMMAND" == "preprocess" ]; then
 
   # PREPROCESS RAW DATA - End of communication
   # ------------------------------------------------------------------------- #
-  # FILENAME=$(echo $MERGED| grep -o '[^/]\+$' | cut -f1 -d '.')
-  # cat ${OUTDIR}/log/*  >> ${OUTDIR}/log/logfiles.txt
+  cat ${OUTDIR}/log/*  >> ${OUTDIR}/log/logfiles.txt
 fi
 
 # MERGE FOR PCA

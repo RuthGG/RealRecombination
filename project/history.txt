@@ -258,3 +258,5 @@
 2020-12-10: runall.sh preprocess -i data/raw/avery_individuals_smalltest -r data/raw/1000genomes_hg19
 2020-12-10: runall.sh preprocess -i data/raw/avery_individuals_smalltest -r data/raw/1000genomes_hg19
 2020-12-10: runall.sh preprocess -i data/raw/avery_individuals_smalltest -r data/raw/1000genomes_hg19
+2020-12-10: runall.sh preprocess -i data/raw/avery_individuals_smalltest -r data/raw/1000genomes_hg19
+2020-12-10: runall.sh preprocess -i data/raw/avery_individuals_smalltest -r data/raw/1000genomes_hg19
