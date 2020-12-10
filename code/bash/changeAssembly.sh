@@ -50,7 +50,7 @@ for CHR in $(cat $CHROMFILE); do
   tabix -p vcf ${OUTDIR}/${FILENAME}_ref_chr${CHR}.vcf.gz
 
   
-  echo "#${FILENAME}_ref_chr${CHR}.txt" >> ${OUTDIR}/log/${FILENAME}_ref_chr${CHR}.txt
+  echo "#${FILENAME}_ref_chr${CHR}.vcf.gz" >> ${OUTDIR}/log/${FILENAME}_ref_chr${CHR}.txt
   bcftools plugin counts ${OUTDIR}/${FILENAME}_ref_chr${CHR}.vcf.gz >> ${OUTDIR}/log/${FILENAME}_ref_chr${CHR}.txt
   echo "strandfile: $(wc -l ${OUTDIR}/${FILENAME}_ref_chr${CHR}.strand)" >> ${OUTDIR}/log/${FILENAME}_ref_chr${CHR}.txt
 

@@ -2,8 +2,8 @@
 
 
 ################MANUAL USAGE OPTIONS################
-if [ "$1" == "-h" ] || [ "$1" == "-help" ] || [ "$1" == "--h" ] || [ "$1" == "--help" ] || [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ] || [[ ! "$4" =~ ^(delete|continue)$ ]]; then
-  printf "\nUsage: `basename $0` executes an order for a specified number of screens.\nThe placeholder to change dinamically the output name is \`screencode\`. \nThe fourth input is to specifiy what to do if the screen already exists: \`delete\` or \`continue\`. \nATTENTION: If \`delete\` is selected, ALL screens with that name will be terminated.\n\n\tExample: bash runScreens.sh 10 screenID 'ls > test_screencode.txt' delete\n\n"
+if [ "$1" == "-h" ] || [ "$1" == "-help" ] || [ "$1" == "--h" ] || [ "$1" == "--help" ] || [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ] || [[ ! "$4" =~ ^(delete|continue)$ ]] ; then
+  printf "\nUsage: $(basename $0) executes an order for a specified number of screens.\nThe placeholder to change dinamically the output name is \`screencode\`. \nThe fourth input is to specifiy what to do if the screen already exists: \`delete\` or \`continue\`. \nATTENTION: If \`delete\` is selected, ALL screens with that name will be terminated.\n\n\tExample: bash runScreens.sh 10 screenID 'ls > test_screencode.txt' delete\n\n"
   printf "Your variables were:\nScreens: ${1}\nScreenID:${2}\nMessage:${3}\nOldScreen:${4}"
   exit 0
 fi

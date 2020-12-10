@@ -358,9 +358,11 @@ if [ "$COMMAND" == "preprocess" ]; then
   TMPDIR="tmp/${DATE}_${STEP}_preprocessRaw"
   INDIR_NAME=$(echo $INDIR| grep -o '[^/]\+$')
   OUTDIR="data/use/${INDIR_NAME}"
-  mkdir -p $TMPDIR $OUTDIR
-  mkdir -p ${OUTDIR}/log/
-  echo "## ${OUTDIR}" >> data/use/README.md
+
+  if [ -d "$OUTDIR" ]; then rm -Rf $OUTDIR; fi
+  if [ -d "$TMPDIR" ]; then rm -Rf $TMPDIR; fi
+
+  mkdir -p $TMPDIR $OUTDIR ${OUTDIR}/log/
 
   # PREPROCESS RAW DATA - Join all files found in INDIR - if necessary
   # ------------------------------------------------------------------------- #
@@ -373,7 +375,11 @@ if [ "$COMMAND" == "preprocess" ]; then
     ls ${INDIR}/*.gz > ${TMPDIR}/indlist.txt
 
     bcftools merge --missing-to-ref -Ov -l ${TMPDIR}/indlist.txt -o ${TMPDIR}/allind_chr.vcf
-    awk '{gsub(/^chr/,""); print}' ${TMPDIR}/20ind_chr.vcf > ${TMPDIR}/allind.vcf
+    awk '{gsub(/^chr/,""); print}' ${TMPDIR}/allind_chr.vcf > ${TMPDIR}/allind.vcf
+
+    grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq -c 
+    grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq  > ${TMPDIR}/chromlist.vcf
+
     bgzip ${TMPDIR}/allind.vcf 
     tabix -p vcf ${TMPDIR}/allind.vcf.gz
 
@@ -381,7 +387,13 @@ if [ "$COMMAND" == "preprocess" ]; then
 
   else
     bcftools view -Ov $(ls ${INDIR}/*.gz) -o ${TMPDIR}/${INDIR_NAME}_chr.vcf
-    awk '{gsub(/^chr/,""); print}' ${TMPDIR}/20ind_chr.vcf > ${TMPDIR}/${INDIR_NAME}.vcf
+    awk '{gsub(/^chr/,""); print}' ${TMPDIR}/${INDIR_NAME}_chr.vcf > ${TMPDIR}/${INDIR_NAME}.vcf
+    
+    echo "## Summary for merged file: $MERGED"
+    echo "#By chromosome:"
+    grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq -c 
+    grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq  > ${TMPDIR}/chromlist.txt
+    
     bgzip ${TMPDIR}/${INDIR_NAME}.vcf 
     tabix -p vcf ${TMPDIR}/${INDIR_NAME}.vcf.gz
     
@@ -389,15 +401,15 @@ if [ "$COMMAND" == "preprocess" ]; then
 
   fi
 
-  echo "## Summary for merged file:"  > ${OUTDIR}/log/logfiles.txt
-  bcftools plugin counts ${MERGED} >>  ${OUTDIR}/log/logfiles.txt 
-  # PREPROCESS RAW DATA - Transform to hg19
+ 
+  echo "#Total" # > ${OUTDIR}/log/logfiles.txt
+  bcftools plugin counts ${MERGED} # >>  ${OUTDIR}/log/logfiles.txt 
+
+# PREPROCESS RAW DATA - Transform to ref file assembly
   # ------------------------------------------------------------------------- #
-  echo "# Transform to hg19"
+  echo "# Transform to ref file"
 
   # Make chromosomes file
-  # for CHR in {1..22} X; do echo ${CHR} >> ${TMPDIR}/chromlist.txt; done # With X 
-  for CHR in {1..1}; do echo ${CHR} >> ${TMPDIR}/chromlist.txt; done # Without X 
   mkdir -p ${TMPDIR}/chromlist_part
   split --number=l/${SCREENS} ${TMPDIR}/chromlist.txt ${TMPDIR}/chromlist_part/chromlist --numeric-suffixes=1 --suffix-length=2
 
@@ -416,10 +428,8 @@ if [ "$COMMAND" == "preprocess" ]; then
 
   # PREPROCESS RAW DATA - End of communication
   # ------------------------------------------------------------------------- #
-  echo "" >> data/use/README.md
-  FILENAME=$(echo $MERGED| grep -o '[^/]\+$' | cut -f1 -d '.')
-
-    cat ${OUTDIR}/log/*  >> ${OUTDIR}/log/logfiles.txt
+  # FILENAME=$(echo $MERGED| grep -o '[^/]\+$' | cut -f1 -d '.')
+  # cat ${OUTDIR}/log/*  >> ${OUTDIR}/log/logfiles.txt
 fi
 
 # MERGE FOR PCA

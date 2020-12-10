@@ -1,0 +1,14 @@
+## PREPROCESS RAW DATA
+# Join all files found in INDIR - if necessary
+## Summary for merged file: 
+#By chromosome:
+ 343369 1
+#Total
+Number of samples: 2
+Number of SNPs:    343369
+Number of INDELs:  0
+Number of MNPs:    0
+Number of others:  0
+Number of sites:   343369
+# Transform to ref file
+code/bash/runScreens.sh: 5: code/bash/runScreens.sh: Syntax error: "(" unexpected (expecting "then")
