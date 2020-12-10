@@ -234,3 +234,12 @@
 2020-10-19: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38_G4.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.strict.gff
 2020-10-19: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38_G4.txt.gz -c data/use/inversions_info/2020.08.inversions_hg38_G4.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.strict.gff
 2020-10-19: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.08.inversions_hg38_G4.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.strict.gff
+2020-12-04: runall.sh preprocess -i data/raw/avery_individuals/nc17nc18 -r data/raw/1000genomes_hg19/
+2020-12-04: runall.sh preprocess -i data/raw/avery_individuals/nc17nc18 -r data/raw/1000genomes_hg19/
+2020-12-07: runall.sh preprocess -i data/raw/avery_individuals/nc17nc18 -r data/raw/1000genomes_hg19/ -s 10
+2020-12-07: runall.sh preprocess -i data/raw/avery_individuals/nc17nc18 -r data/raw/1000genomes_hg19/ -s 10
+2020-12-07: runall.sh preprocess -i data/raw/avery_individuals/nc17nc18 -r data/raw/1000genomes_hg19/ -s 10
+2020-12-07: runall.sh preprocess -i data/raw/avery_individuals/nc17nc18 -r data/raw/1000genomes_hg19/ -s 1
+2020-12-07: runall.sh preprocess -i tmp/vcftest.vcf.gz -r data/raw/1000genomes_hg19/ -s 1
+2020-12-07: runall.sh preprocess -i tmp/test -r data/raw/1000genomes_hg19/ -s 1
+2020-12-07: runall.sh preprocess -i tmp/test -r data/raw/1000genomes_hg19/ -s 1

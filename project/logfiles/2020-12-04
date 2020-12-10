@@ -1,0 +1,752 @@
+## PREPROCESS RAW DATA
+# Join all files found in INDIR - if necessary
+# Transform to hg19
+01:sh code/bash/changeAssembly.sh /home/rgomez/20200401_RealRecombination data/raw/1000genomes_hg19/ tmp/2020-12-04_02_preprocessRaw data/use/nc17nc18 tmp/2020-12-04_02_preprocessRaw/20ind.vcf.gz tmp/2020-12-04_02_preprocessRaw/chromlist_part/chromlist01 
+There is a screen on:
+	27923.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27923.preprocess_01	(Attached)
+1 Socket in /var/run/screen/S-rgomez.
+

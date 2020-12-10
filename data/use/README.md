@@ -15,3 +15,24 @@ A copy of these conditions is stored in analysis/ once they are used, so they ca
 * `2020.02.inversions_hg38.gff` is a gff with inversion coordinates (curated) in hg38
 
 
+## data/use/nc17nc18
+2020-12-04: Ready-to-use files for data/raw/avery_individuals/nc17nc18, in the same assembly as reference (in data/raw/1000genomes_hg19/) and by chromosome. Also the corresponding .strand and .tbi files.
+
+## data/use/nc17nc18
+2020-12-04: Ready-to-use files for data/raw/avery_individuals/nc17nc18, in the same assembly as reference (in data/raw/1000genomes_hg19/) and by chromosome. Also the corresponding .strand and .tbi files.
+
+## data/use/nc17nc18
+## data/use/nc17nc18
+## data/use/nc17nc18
+## data/use/nc17nc18
+## data/use/vcftest.vcf.gz
+## data/use/test
+2020-12-07: Ready-to-use files for tmp/test, in the same assembly as reference (in data/raw/1000genomes_hg19/) and by chromosome. Also the corresponding .strand and .tbi files.
+
+## data/use/test
+2020-12-07: Ready-to-use files for tmp/test, in the same assembly as reference (in data/raw/1000genomes_hg19/) and by chromosome. Also the corresponding .strand and .tbi files.
+
+2020-12-07: Ready-to-use files for tmp/vcftest.vcf.gz, in the same assembly as reference (in data/raw/1000genomes_hg19/) and by chromosome. Also the corresponding .strand and .tbi files.
+
+2020-12-07: Ready-to-use files for data/raw/avery_individuals/nc17nc18, in the same assembly as reference (in data/raw/1000genomes_hg19/) and by chromosome. Also the corresponding .strand and .tbi files.
+
