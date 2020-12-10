@@ -35,7 +35,8 @@ cd $CURDIR
 for CHR in $(cat $CHROMFILE); do 
 
   bcftools view --regions ${CHR} $FILE > ${TMPDIR}/tmp_file_${CHR}.txt
-
+  # grep "#" ${TMPDIR}/tmp_file_${CHR}.txt | tail -1 > ${TMPDIR}/tmp_noheader_${CHR}.txt
+  # grep -v "#" ${TMPDIR}/tmp_file_${CHR}.txt >> ${TMPDIR}/tmp_noheader_${CHR}.txt
   REFILE=$(ls $REFDIR | grep "chr${CHR}\..*gz$")
 
   zgrep "^${CHR}" ${REFDIR}/${REFILE} | cut -f -5 > ${TMPDIR}/tmp_ref_${CHR}.txt      
@@ -52,6 +53,6 @@ for CHR in $(cat $CHROMFILE); do
   
   echo "#${FILENAME}_ref_chr${CHR}.vcf.gz" >> ${OUTDIR}/log/${FILENAME}_ref_chr${CHR}.txt
   bcftools plugin counts ${OUTDIR}/${FILENAME}_ref_chr${CHR}.vcf.gz >> ${OUTDIR}/log/${FILENAME}_ref_chr${CHR}.txt
-  echo "strandfile: $(wc -l ${OUTDIR}/${FILENAME}_ref_chr${CHR}.strand)" >> ${OUTDIR}/log/${FILENAME}_ref_chr${CHR}.txt
+  echo "#Strandfile: $(wc -l ${OUTDIR}/${FILENAME}_ref_chr${CHR}.strand)" >> ${OUTDIR}/log/${FILENAME}_ref_chr${CHR}.txt
 
 done
