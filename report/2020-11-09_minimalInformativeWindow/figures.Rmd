@@ -1,0 +1,95 @@
+---
+title: "R Notebook"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+Quick rnotebook
+
+
+```{r}
+library(plotly)
+correlations <- read.table("correlation.table", header = FALSE)
+colnames(correlations)<-c("correl_count", "mode", "winsize")
+# correlations
+
+library(ggplot2)
+
+p<-ggplot(correlations)+
+  geom_boxplot(data = correlations[correlations$mode == "center",], aes(x=winsize,y=correl_count,fill=mode, group = winsize, color = mode), alpha = 0.5)+
+  geom_boxplot(data = correlations[correlations$mode == "prob",], aes(x=winsize,y=correl_count,fill=mode, group = winsize, color = mode), alpha = 0.5)  + geom_smooth(aes(x = winsize, y = correl_count, color = mode, fill = mode), alpha = 0)+
+  geom_vline(aes(xintercept = 10000), alpha = 0.1)+geom_vline(aes(xintercept = 50000), alpha = 0.1)+geom_vline(aes(xintercept = 200000), alpha = 0.1)
+
+
+fig <- ggplotly(p)
+
+fig
+```
+
+
+```{r}
+
+# Ejemplo para ver por que pasa esto
+library(ggpubr)
+
+
+base<-read.table("tmp/crossoverResult_50000_base1.txt", header  =TRUE)
+prob<-read.table("tmp/crossoverResult_50000_prob.txt", header = TRUE)
+
+tab<-data.frame(win = base$idWin, base = base$overlapScore , prob = prob$overlapScore)
+
+ggscatter(tab, x = "base", y = "prob",
+   add = "reg.line",  # Add regressin line
+   add.params = list(color = "blue", fill = "lightgray"), # Customize reg. line
+   conf.int = TRUE, # Add confidence interval
+   cor.coef = TRUE, # Add correlation coefficient. see ?stat_cor
+   cor.coeff.args = list(method = "pearson", label.x = 3, label.sep = "\n")
+   )
+
+
+```
+
+```{r}
+
+# Ejemplo para ver por que pasa esto
+library(ggpubr)
+
+
+base<-read.table("tmp/crossoverResult_5000_base1.txt", header  =TRUE)
+prob<-read.table("tmp/crossoverResult_5000_prob.txt", header = TRUE)
+
+tab<-data.frame(win = base$idWin, base = base$overlapScore , prob = prob$overlapScore)
+
+ggscatter(tab, x = "base", y = "prob",
+   add = "reg.line",  # Add regressin line
+   add.params = list(color = "blue", fill = "lightgray"), # Customize reg. line
+   conf.int = TRUE, # Add confidence interval
+   cor.coef = TRUE, # Add correlation coefficient. see ?stat_cor
+   cor.coeff.args = list(method = "pearson", label.x = 3, label.sep = "\n")
+   )
+
+
+```
+
+```{r}
+
+# Ejemplo para ver por que pasa esto
+library(ggpubr)
+
+
+base<-read.table("tmp/crossoverResult_500000_base1.txt", header  =TRUE)
+prob<-read.table("tmp/crossoverResult_500000_prob.txt", header = TRUE)
+
+tab<-data.frame(win = base$idWin, base = base$overlapScore , prob = prob$overlapScore)
+
+ggscatter(tab, x = "base", y = "prob",
+   add = "reg.line",  # Add regressin line
+   add.params = list(color = "blue", fill = "lightgray"), # Customize reg. line
+   conf.int = TRUE, # Add confidence interval
+   cor.coef = TRUE, # Add correlation coefficient. see ?stat_cor
+   cor.coeff.args = list(method = "pearson", label.x = 3, label.sep = "\n")
+   )
+
+
+```

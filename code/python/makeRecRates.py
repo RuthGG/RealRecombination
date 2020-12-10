@@ -85,7 +85,7 @@ if __name__ == "__main__": # if file was called and not imported
   
   # Control by number of samples 
   recMap = recMap.merge(numofsamples)
-
+ 
   # Make centiMorgans
   recMap['cM'] = ( recMap['overlapScore'] / recMap['samples'] )  * 100
 
@@ -105,4 +105,5 @@ if __name__ == "__main__": # if file was called and not imported
   # CREATE FILE
   # Make a file with the table
   # =========================================================================== #   
+
   recMap.to_csv(args.output,index=None, sep='\t', mode='w')

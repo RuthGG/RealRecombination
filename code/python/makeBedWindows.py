@@ -41,9 +41,9 @@ if __name__ == "__main__": # if file was called and not imported
   parser = argparse.ArgumentParser(description="Script to create a bedfile with windows to analyze inside and around a target region.")
   
   # Required arguments
-  parser.add_argument("--input", type = str, required = True, help = "Input file.", metavar="FILE")
+  parser.add_argument("--input", type = str, required = True, help = "Input file. GFF expected", metavar="FILE")
   parser.add_argument("--output", type = str, required = True, help = "Output file.", metavar="FILE")
-  parser.add_argument("--chromBoundaries", type = str, required = True, help = "Chromosome start and end positions file.", metavar="FILE")
+  parser.add_argument("--chromBoundaries", type = str, required = True, help = "Chromosome start and end positions file. GFF expected.", metavar="FILE")
 
   # Required one of the following
   parser.add_argument("--fixedWindow", type = int, default = 0, help = "Window size (in bps) inside target", metavar = "BASEPAIRS")
@@ -71,8 +71,8 @@ if __name__ == "__main__": # if file was called and not imported
   # GET COORDINATES
   # Open file with inversion coordinates and make dataframe
   # =========================================================================== #
-  data = pd.read_table(args.input, sep = "\t", header = None)
-  boundaries = pd.read_table(args.chromBoundaries, sep = "\t", header = None)
+  data = pd.read_csv(args.input, sep = "\t", header = None)
+  boundaries = pd.read_csv(args.chromBoundaries, sep = "\t", header = None)
 
   # MAKE WINDOWS TABLE
   # Make a table with required windows for each line
