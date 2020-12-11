@@ -1,37 +1,99 @@
 ## PREPROCESS RAW DATA
 # Join all files found in INDIR - if necessary
-# Transform to ref file
-01:sh code/bash/changeAssembly.sh /home/rgomez/20200401_RealRecombination data/raw/1000genomes_hg19 tmp/2020-12-10_02_preprocessRaw data/use/avery_individuals_smalltest tmp/2020-12-10_02_preprocessRaw/avery_individuals_smalltest.vcf.gz tmp/2020-12-10_02_preprocessRaw/chromlist_part/chromlist01 
-There is a screen on:
-	4291.preprocess_01	(Detached)
-1 Socket in /var/run/screen/S-rgomez.
+Hangup
+form to ref file
+01:sh code/bash/changeAssembly.sh /home/rgomez/20200401_RealRecombination data/raw/1000genomes_hg19 tmp/2020-12-10_02_preprocessRaw data/use/nc17nc18 tmp/2020-12-10_02_preprocessRaw/nc17nc18.vcf.gz tmp/2020-12-10_02_preprocessRaw/chromlist_part/chromlist01 
+02:sh code/bash/changeAssembly.sh /home/rgomez/20200401_RealRecombination data/raw/1000genomes_hg19 tmp/2020-12-10_02_preprocessRaw data/use/nc17nc18 tmp/2020-12-10_02_preprocessRaw/nc17nc18.vcf.gz tmp/2020-12-10_02_preprocessRaw/chromlist_part/chromlist02 
+03:sh code/bash/changeAssembly.sh /home/rgomez/20200401_RealRecombination data/raw/1000genomes_hg19 tmp/2020-12-10_02_preprocessRaw data/use/nc17nc18 tmp/2020-12-10_02_preprocessRaw/nc17nc18.vcf.gz tmp/2020-12-10_02_preprocessRaw/chromlist_part/chromlist03 
+04:sh code/bash/changeAssembly.sh /home/rgomez/20200401_RealRecombination data/raw/1000genomes_hg19 tmp/2020-12-10_02_preprocessRaw data/use/nc17nc18 tmp/2020-12-10_02_preprocessRaw/nc17nc18.vcf.gz tmp/2020-12-10_02_preprocessRaw/chromlist_part/chromlist04 
+05:sh code/bash/changeAssembly.sh /home/rgomez/20200401_RealRecombination data/raw/1000genomes_hg19 tmp/2020-12-10_02_preprocessRaw data/use/nc17nc18 tmp/2020-12-10_02_preprocessRaw/nc17nc18.vcf.gz tmp/2020-12-10_02_preprocessRaw/chromlist_part/chromlist05 
+There are screens on:
+	9246.preprocess_05	(Detached)
+	9214.preprocess_04	(Detached)
+	9182.preprocess_03	(Detached)
+	9148.preprocess_02	(Detached)
+	9134.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
 
-There is a screen on:
-	4291.preprocess_01	(Detached)
-1 Socket in /var/run/screen/S-rgomez.
+There are screens on:
+	9246.preprocess_05	(Detached)
+	9214.preprocess_04	(Detached)
+	9182.preprocess_03	(Detached)
+	9148.preprocess_02	(Detached)
+	9134.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
 
-There is a screen on:
-	4291.preprocess_01	(Detached)
-1 Socket in /var/run/screen/S-rgomez.
+There are screens on:
+	9246.preprocess_05	(Detached)
+	9214.preprocess_04	(Detached)
+	9182.preprocess_03	(Detached)
+	9148.preprocess_02	(Detached)
+	9134.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
 
-There is a screen on:
-	4291.preprocess_01	(Detached)
-1 Socket in /var/run/screen/S-rgomez.
+There are screens on:
+	9246.preprocess_05	(Detached)
+	9214.preprocess_04	(Detached)
+	9182.preprocess_03	(Detached)
+	9148.preprocess_02	(Detached)
+	9134.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
 
-There is a screen on:
-	4291.preprocess_01	(Detached)
-1 Socket in /var/run/screen/S-rgomez.
+There are screens on:
+	9246.preprocess_05	(Detached)
+	9214.preprocess_04	(Detached)
+	9182.preprocess_03	(Detached)
+	9148.preprocess_02	(Detached)
+	9134.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
 
-There is a screen on:
-	4291.preprocess_01	(Detached)
-1 Socket in /var/run/screen/S-rgomez.
+There are screens on:
+	9246.preprocess_05	(Detached)
+	9214.preprocess_04	(Detached)
+	9182.preprocess_03	(Detached)
+	9148.preprocess_02	(Detached)
+	9134.preprocess_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
 
-There is a screen on:
-	4291.preprocess_01	(Detached)
-1 Socket in /var/run/screen/S-rgomez.
+There are screens on:
+	9214.preprocess_04	(Detached)
+	9182.preprocess_03	(Detached)
+	9148.preprocess_02	(Detached)
+	9134.preprocess_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
 
-There is a screen on:
-	4291.preprocess_01	(Detached)
-1 Socket in /var/run/screen/S-rgomez.
+There are screens on:
+	9214.preprocess_04	(Detached)
+	9182.preprocess_03	(Detached)
+	9148.preprocess_02	(Detached)
+	9134.preprocess_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
 
-cat: data/use/avery_individuals_smalltest/log/logfiles.txt: input file is output file
+There are screens on:
+	9214.preprocess_04	(Detached)
+	9182.preprocess_03	(Detached)
+	9148.preprocess_02	(Detached)
+	9134.preprocess_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	9214.preprocess_04	(Detached)
+	9182.preprocess_03	(Detached)
+	9148.preprocess_02	(Detached)
+	9134.preprocess_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	9214.preprocess_04	(Detached)
+	9182.preprocess_03	(Detached)
+	9148.preprocess_02	(Detached)
+	9134.preprocess_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	9214.preprocess_04	(Detached)
+	9182.preprocess_03	(Detached)
+	9148.preprocess_02	(Detached)
+	9134.preprocess_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+

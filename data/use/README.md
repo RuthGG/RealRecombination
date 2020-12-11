@@ -53,3 +53,5 @@ A copy of these conditions is stored in analysis/ once they are used, so they ca
 ## data/use/avery_individuals_smalltest
 2020-12-10: Ready-to-use files for data/raw/avery_individuals_smalltest, in the same assembly as reference (in data/raw/1000genomes_hg19) and by chromosome. Also the corresponding .strand and .tbi files.
 2020-12-10: Ready-to-use files for data/raw/avery_individuals_smalltest, in the same assembly as reference (in data/raw/1000genomes_hg19) and by chromosome. Also the corresponding .strand and .tbi files.
+2020-12-10: Ready-to-use files for data/raw/avery_individuals/nc17nc18, in the same assembly as reference (in data/raw/1000genomes_hg19) and by chromosome. Also the corresponding .strand and .tbi files.
+2020-12-11: Ready-to-use files for data/raw/avery_individuals_smalltest, in the same assembly as reference (in data/raw/1000genomes_hg19) and by chromosome. Also the corresponding .strand and .tbi files.

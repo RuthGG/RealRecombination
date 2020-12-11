@@ -354,9 +354,9 @@ STEP=$(printf "%02d" $((${STEP}+1)))
 if [ "$COMMAND" == "preprocess" ]; then
 
   echo "## PREPROCESS RAW DATA"
-
-  TMPDIR="tmp/${DATE}_${STEP}_preprocessRaw"
   INDIR_NAME=$(echo $INDIR| grep -o '[^/]\+$')
+
+  TMPDIR="tmp/${DATE}_${STEP}_preprocessRaw/${INDIR_NAME}"
   OUTDIR="data/use/${INDIR_NAME}"
 
   if [ -d "$OUTDIR" ]; then rm -Rf $OUTDIR; fi
@@ -365,72 +365,98 @@ if [ "$COMMAND" == "preprocess" ]; then
   mkdir -p $TMPDIR $OUTDIR ${OUTDIR}/log/
 
   # PREPROCESS RAW DATA - Join all files found in INDIR - if necessary
+  # DEPRECATED - TO REVISIT IF I WANT TO PROCESS MULTIPLE FILES AGAIN	
   # ------------------------------------------------------------------------- #
-  echo "# Join all files found in INDIR - if necessary"
+  # echo "# Join all files found in INDIR - if necessary"
 
   FILENUM=$(ls ${INDIR}/*.gz | wc -l)
 
-  if [ $FILENUM -gt 1 ]; then
+  # if [ $FILENUM -gt 1 ]; then
 
-    ls ${INDIR}/*.gz > ${TMPDIR}/indlist.txt
 
-    bcftools merge --missing-to-ref -Ov -l ${TMPDIR}/indlist.txt -o ${TMPDIR}/allind_chr.vcf
-    awk '{gsub(/^chr/,""); print}' ${TMPDIR}/allind_chr.vcf > ${TMPDIR}/allind.vcf
 
-    echo "## Summary for merged file: $MERGED"  >> ${OUTDIR}/log/logfiles.txt
-    echo "#By chromosome:" >> ${OUTDIR}/log/logfiles.txt
-    grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq -c >> ${OUTDIR}/log/logfiles.txt
-    grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq  > ${TMPDIR}/chromlist.vcf
+    # ls ${INDIR}/*.gz > ${TMPDIR}/indlist.txt
 
-    bgzip ${TMPDIR}/allind.vcf 
-    tabix -p vcf ${TMPDIR}/allind.vcf.gz
 
-    MERGED="${TMPDIR}/allind.vcf.gz"
 
-  else
-    bcftools view -Ov $(ls ${INDIR}/*.gz) -o ${TMPDIR}/${INDIR_NAME}_chr.vcf 
-    awk '{gsub(/^chr/,""); print}' ${TMPDIR}/${INDIR_NAME}_chr.vcf > ${TMPDIR}/${INDIR_NAME}.vcf
+    # bcftools merge --missing-to-ref -Ov -l ${TMPDIR}/indlist.txt -o ${TMPDIR}/allind_chr.vcf
+    # awk '{gsub(/^chr/,""); print}' ${TMPDIR}/allind_chr.vcf > ${TMPDIR}/allind.vcf
+
+    # echo "## Summary for merged file: $MERGED"  >> ${OUTDIR}/log/logfiles.txt
+    # echo "#By chromosome:" >> ${OUTDIR}/log/logfiles.txt
+    # grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq -c >> ${OUTDIR}/log/logfiles.txt
+    # grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq | grep -v "X" | grep -v "Y" > ${TMPDIR}/chromlist.vcf
+
+    # bgzip ${TMPDIR}/allind.vcf 
+    # tabix -p vcf ${TMPDIR}/allind.vcf.gz
+
+    # MERGED="${TMPDIR}/allind.vcf.gz"
+
+  # else
+    # bcftools view -Ov $(ls ${INDIR}/*.gz) -o ${TMPDIR}/${INDIR_NAME}.vcf 
+  #   awk '{gsub(/^chr/,""); print}' ${TMPDIR}/${INDIR_NAME}_chr.vcf > ${TMPDIR}/${INDIR_NAME}.vcf
     
-    echo "## Summary for original file: $MERGED"  >> ${OUTDIR}/log/logfiles.txt
-    echo "#By chromosome:" >> ${OUTDIR}/log/logfiles.txt
-    grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq -c  >> ${OUTDIR}/log/logfiles.txt
-    grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq  > ${TMPDIR}/chromlist.txt
+    # echo "# Summary for original file: ${TMPDIR}/${INDIR_NAME}.vcf "  >> ${OUTDIR}/log/logfiles.txt
+    # echo "## By chromosome:" >> ${OUTDIR}/log/logfiles.txt
+    # grep -v "#" ${TMPDIR}/${INDIR_NAME}.vcf | cut -f1 | uniq -c  >> ${OUTDIR}/log/logfiles.txt
+    VCFILE=$(ls ${INDIR}/*.gz)
+    gunzip -c $VCFILE | grep -v "#" | cut -f1 | uniq | grep -v "X" | grep -v "Y" > ${TMPDIR}/chromlist.txt
     
-    bgzip ${TMPDIR}/${INDIR_NAME}.vcf 
-    tabix -p vcf ${TMPDIR}/${INDIR_NAME}.vcf.gz
-    
-    MERGED="${TMPDIR}/${INDIR_NAME}.vcf.gz"
 
-  fi
+  #   bgzip ${TMPDIR}/${INDIR_NAME}.vcf 
+  #   tabix -p vcf ${TMPDIR}/${INDIR_NAME}.vcf.gz
+    
+  #   MERGED="${TMPDIR}/${INDIR_NAME}.vcf.gz"
+
+  # fi
 
  
-  echo "#Total"  >> ${OUTDIR}/log/logfiles.txt
-  bcftools plugin counts ${MERGED} >> ${OUTDIR}/log/logfiles.txt
+  # echo "#Total"  >> ${OUTDIR}/log/logfiles.txt
+  # bcftools plugin counts ${MERGED} >> ${OUTDIR}/log/logfiles.txt
 
 # PREPROCESS RAW DATA - Transform to ref file assembly
-  # ------------------------------------------------------------------------- #
-  echo "# Transform to ref file"
+#   ------------------------------------------------------------------------- #
 
+
+	for CHR in $(cat ${TMPDIR}/chromlist.txt); do 
+
+		echo "
+		#--------------- CHROMOSOME ${CHR} ---------------#
+		"
+
+		bcftools view -r $CHR $VCFILE > ${TMPDIR}/${CHR}.vcf
+		picard LiftoverVcf I=${TMPDIR}/${CHR}.vcf \
+						   O=${TMPDIR}/${CHR}_newAssembly.vcf \
+						   CHAIN=data/raw/chains/hg38ToHg19.over.chain \
+						   REJECT=${OUTDIR}/${CHR}_rejected_variants.vcf \
+						   R=data/raw/chains/${CHR}.fa \
+						   RECOVER_SWAPPED_REF_ALT=true
+		sed "s/^chr//g" ${TMPDIR}/${CHR}_newAssembly.vcf > ${OUTDIR}/${CHR}_newAssembly.vcf
+		bgzip ${OUTDIR}/${CHR}_newAssembly.vcf
+		tabix -p vcf ${OUTDIR}/${CHR}_newAssembly.vcf.gz
+		
   # Make chromosomes file
-  mkdir -p ${TMPDIR}/chromlist_part
-  split --number=l/${SCREENS} ${TMPDIR}/chromlist.txt ${TMPDIR}/chromlist_part/chromlist --numeric-suffixes=1 --suffix-length=2
+  # mkdir -p ${TMPDIR}/chromlist_part
+  # split --number=l/${SCREENS} ${TMPDIR}/chromlist.txt ${TMPDIR}/chromlist_part/chromlist --numeric-suffixes=1 --suffix-length=2
 
   # Run screens for changeAssembly
   # Parameters needed: parent directory, reference directory, tmp directory, out directory, file to transform, list of chromosomes
   # CAUTION! No filters are applied in this step besides strandness for it to be universal (i.e. to have all information for PCAs)
 
-  sh code/bash/runScreens.sh ${SCREENS} preprocess "sh code/bash/changeAssembly.sh $CURDIR $REFDIR $TMPDIR $OUTDIR $MERGED ${TMPDIR}/chromlist_part/chromlistscreencode " delete
+  # sh code/bash/runScreens.sh ${SCREENS} preprocess "sh code/bash/changeAssembly.sh $CURDIR $REFDIR $TMPDIR $OUTDIR $MERGED ${TMPDIR}/chromlist_part/chromlistscreencode " delete
 
-  while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
-    screen -ls 
-    sleep 60
-  done
+  # while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
+  #   screen -ls 
+  #   sleep 60
+  # done
 
-  echo "${DATE}: Ready-to-use files for ${INDIR}, in the same assembly as reference (in ${REFDIR}) and by chromosome. Also the corresponding .strand and .tbi files." >> data/use/README.md
+  # echo "${DATE}: Ready-to-use files for ${INDIR}, in the same assembly as reference (in ${REFDIR}) and by chromosome. Also the corresponding .strand and .tbi files." >> data/use/README.md
 
   # PREPROCESS RAW DATA - End of communication
   # ------------------------------------------------------------------------- #
-  cat ${OUTDIR}/log/*  >> ${OUTDIR}/log/logfiles.txt
+  # cat ${OUTDIR}/log/*  >> ${OUTDIR}/log/logfiles.txt
+
+	done
 fi
 
 # MERGE FOR PCA
