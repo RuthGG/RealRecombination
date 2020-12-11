@@ -2,7 +2,7 @@
 
 		#--------------- CHROMOSOME chr1 ---------------#
 		
-INFO	2020-12-11 19:30:38	LiftoverVcf	
+INFO	2020-12-11 23:33:06	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -11,31 +11,32 @@ INFO	2020-12-11 19:30:38	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr1.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr1_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr1_rejected_variants.vcf -R data/raw/chains/chr1.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr1.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr1_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr1_rejected_variants.vcf -R data/raw/chains/chr1.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:30:39.140 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:30:39 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr1.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr1_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr1_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr1.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:30:39 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:30:39	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:30:40	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:31:01	LiftoverVcf	Processed 558276 variants.
-INFO	2020-12-11 19:31:01	LiftoverVcf	232 variants failed to liftover.
-INFO	2020-12-11 19:31:01	LiftoverVcf	5 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:31:01	LiftoverVcf	0.0425% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:31:01	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:31:01	LiftoverVcf	chr1: 558039 / 558276 (99.9575%)
-INFO	2020-12-11 19:31:01	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:31:01	LiftoverVcf	chr1: 558039
-INFO	2020-12-11 19:31:01	LiftoverVcf	1053 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:31:02	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:31:07 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.48 minutes.
-Runtime.totalMemory()=1765801984
+23:33:07.010 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:33:07 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr1.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr1_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr1_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr1.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:33:07 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:33:07	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:33:09	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+WARNING	2020-12-11 23:33:09	LiftoverVcf	Encountered a contig, chr5 that is not part of the target reference.
+INFO	2020-12-11 23:33:38	LiftoverVcf	Processed 614279 variants.
+INFO	2020-12-11 23:33:38	LiftoverVcf	215 variants failed to liftover.
+INFO	2020-12-11 23:33:38	LiftoverVcf	2 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:33:38	LiftoverVcf	0.0353% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:33:38	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:33:38	LiftoverVcf	chr1: 614062 / 614279 (99.9647%)
+INFO	2020-12-11 23:33:38	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:33:38	LiftoverVcf	chr1: 614062
+INFO	2020-12-11 23:33:38	LiftoverVcf	1002 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:33:39	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:33:46 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.67 minutes.
+Runtime.totalMemory()=1622671360
 
 		#--------------- CHROMOSOME chr2 ---------------#
 		
-INFO	2020-12-11 19:31:24	LiftoverVcf	
+INFO	2020-12-11 23:34:17	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -44,31 +45,31 @@ INFO	2020-12-11 19:31:24	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr2.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr2_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr2_rejected_variants.vcf -R data/raw/chains/chr2.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr2.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr2_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr2_rejected_variants.vcf -R data/raw/chains/chr2.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:31:24.359 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:31:24 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr2.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr2_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr2_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr2.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:31:24 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:31:24	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:31:25	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:31:42	LiftoverVcf	Processed 618483 variants.
-INFO	2020-12-11 19:31:42	LiftoverVcf	61 variants failed to liftover.
-INFO	2020-12-11 19:31:42	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:31:42	LiftoverVcf	0.0099% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:31:42	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:31:42	LiftoverVcf	chr2: 618422 / 618483 (99.9901%)
-INFO	2020-12-11 19:31:42	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:31:42	LiftoverVcf	chr2: 618422
-INFO	2020-12-11 19:31:42	LiftoverVcf	287 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:31:43	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:31:49 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.42 minutes.
-Runtime.totalMemory()=1763180544
+23:34:18.157 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:34:18 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr2.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr2_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr2_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr2.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:34:18 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:34:18	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:34:19	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:34:40	LiftoverVcf	Processed 665213 variants.
+INFO	2020-12-11 23:34:40	LiftoverVcf	70 variants failed to liftover.
+INFO	2020-12-11 23:34:40	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:34:40	LiftoverVcf	0.0105% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:34:40	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:34:40	LiftoverVcf	chr2: 665143 / 665213 (99.9895%)
+INFO	2020-12-11 23:34:40	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:34:40	LiftoverVcf	chr2: 665143
+INFO	2020-12-11 23:34:40	LiftoverVcf	301 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:34:42	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:34:50 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.54 minutes.
+Runtime.totalMemory()=1663041536
 
 		#--------------- CHROMOSOME chr3 ---------------#
 		
-INFO	2020-12-11 19:32:04	LiftoverVcf	
+INFO	2020-12-11 23:35:20	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -77,31 +78,31 @@ INFO	2020-12-11 19:32:04	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr3.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr3_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr3_rejected_variants.vcf -R data/raw/chains/chr3.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr3.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr3_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr3_rejected_variants.vcf -R data/raw/chains/chr3.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:32:05.090 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:32:05 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr3.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr3_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr3_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr3.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:32:05 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:32:05	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:32:07	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:32:20	LiftoverVcf	Processed 521646 variants.
-INFO	2020-12-11 19:32:20	LiftoverVcf	135 variants failed to liftover.
-INFO	2020-12-11 19:32:20	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:32:20	LiftoverVcf	0.0259% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:32:20	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:32:20	LiftoverVcf	chr3: 521511 / 521646 (99.9741%)
-INFO	2020-12-11 19:32:20	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:32:20	LiftoverVcf	chr3: 521511
-INFO	2020-12-11 19:32:20	LiftoverVcf	544 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:32:20	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:32:26 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.36 minutes.
-Runtime.totalMemory()=1770520576
+23:35:20.518 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:35:20 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr3.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr3_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr3_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr3.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:35:20 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:35:20	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:35:21	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:35:38	LiftoverVcf	Processed 559141 variants.
+INFO	2020-12-11 23:35:38	LiftoverVcf	142 variants failed to liftover.
+INFO	2020-12-11 23:35:38	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:35:38	LiftoverVcf	0.0254% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:35:38	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:35:38	LiftoverVcf	chr3: 558999 / 559141 (99.9746%)
+INFO	2020-12-11 23:35:38	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:35:38	LiftoverVcf	chr3: 558999
+INFO	2020-12-11 23:35:38	LiftoverVcf	528 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:35:39	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:35:46 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.43 minutes.
+Runtime.totalMemory()=1653080064
 
 		#--------------- CHROMOSOME chr4 ---------------#
 		
-INFO	2020-12-11 19:32:41	LiftoverVcf	
+INFO	2020-12-11 23:36:13	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -110,31 +111,31 @@ INFO	2020-12-11 19:32:41	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr4.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr4_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr4_rejected_variants.vcf -R data/raw/chains/chr4.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr4.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr4_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr4_rejected_variants.vcf -R data/raw/chains/chr4.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:32:41.556 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:32:41 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr4.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr4_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr4_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr4.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:32:41 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:32:41	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:32:43	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:32:57	LiftoverVcf	Processed 538506 variants.
-INFO	2020-12-11 19:32:57	LiftoverVcf	67 variants failed to liftover.
-INFO	2020-12-11 19:32:57	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:32:57	LiftoverVcf	0.0124% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:32:57	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:32:57	LiftoverVcf	chr4: 538439 / 538506 (99.9876%)
-INFO	2020-12-11 19:32:57	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:32:57	LiftoverVcf	chr4: 538439
-INFO	2020-12-11 19:32:57	LiftoverVcf	274 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:32:57	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:33:03 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.37 minutes.
-Runtime.totalMemory()=1800404992
+23:36:13.665 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:36:13 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr4.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr4_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr4_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr4.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:36:13 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:36:14	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:36:14	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:36:31	LiftoverVcf	Processed 581367 variants.
+INFO	2020-12-11 23:36:31	LiftoverVcf	103 variants failed to liftover.
+INFO	2020-12-11 23:36:31	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:36:31	LiftoverVcf	0.0177% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:36:31	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:36:31	LiftoverVcf	chr4: 581264 / 581367 (99.9823%)
+INFO	2020-12-11 23:36:31	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:36:31	LiftoverVcf	chr4: 581264
+INFO	2020-12-11 23:36:31	LiftoverVcf	405 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:36:31	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:36:39 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.43 minutes.
+Runtime.totalMemory()=1672478720
 
 		#--------------- CHROMOSOME chr5 ---------------#
 		
-INFO	2020-12-11 19:33:16	LiftoverVcf	
+INFO	2020-12-11 23:37:03	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -143,31 +144,31 @@ INFO	2020-12-11 19:33:16	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr5.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr5_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr5_rejected_variants.vcf -R data/raw/chains/chr5.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr5.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr5_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr5_rejected_variants.vcf -R data/raw/chains/chr5.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:33:17.187 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:33:17 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr5.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr5_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr5_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr5.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:33:17 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:33:17	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:33:19	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:33:29	LiftoverVcf	Processed 454989 variants.
-INFO	2020-12-11 19:33:29	LiftoverVcf	18 variants failed to liftover.
-INFO	2020-12-11 19:33:29	LiftoverVcf	1 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:33:29	LiftoverVcf	0.0042% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:33:29	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:33:29	LiftoverVcf	chr5: 454970 / 454989 (99.9958%)
-INFO	2020-12-11 19:33:29	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:33:29	LiftoverVcf	chr5: 454970
-INFO	2020-12-11 19:33:29	LiftoverVcf	63 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:33:30	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:33:35 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.31 minutes.
-Runtime.totalMemory()=1686634496
+23:37:03.874 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:37:03 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr5.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr5_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr5_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr5.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:37:03 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:37:04	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:37:04	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:37:16	LiftoverVcf	Processed 490221 variants.
+INFO	2020-12-11 23:37:16	LiftoverVcf	18 variants failed to liftover.
+INFO	2020-12-11 23:37:16	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:37:16	LiftoverVcf	0.0037% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:37:16	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:37:16	LiftoverVcf	chr5: 490203 / 490221 (99.9963%)
+INFO	2020-12-11 23:37:16	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:37:16	LiftoverVcf	chr5: 490203
+INFO	2020-12-11 23:37:16	LiftoverVcf	71 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:37:20	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:37:26 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.38 minutes.
+Runtime.totalMemory()=1731198976
 
 		#--------------- CHROMOSOME chr6 ---------------#
 		
-INFO	2020-12-11 19:33:48	LiftoverVcf	
+INFO	2020-12-11 23:37:48	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -176,31 +177,31 @@ INFO	2020-12-11 19:33:48	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr6.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr6_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr6_rejected_variants.vcf -R data/raw/chains/chr6.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr6.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr6_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr6_rejected_variants.vcf -R data/raw/chains/chr6.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:33:48.712 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:33:48 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr6.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr6_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr6_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr6.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:33:48 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:33:49	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:33:50	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:34:04	LiftoverVcf	Processed 440593 variants.
-INFO	2020-12-11 19:34:04	LiftoverVcf	263 variants failed to liftover.
-INFO	2020-12-11 19:34:04	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:34:04	LiftoverVcf	0.0597% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:34:04	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:34:04	LiftoverVcf	chr6: 440330 / 440593 (99.9403%)
-INFO	2020-12-11 19:34:04	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:34:04	LiftoverVcf	chr6: 440330
-INFO	2020-12-11 19:34:04	LiftoverVcf	862 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:34:05	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:34:10 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.36 minutes.
-Runtime.totalMemory()=1716518912
+23:37:48.501 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:37:48 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr6.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr6_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr6_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr6.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:37:48 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:37:48	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:37:49	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:38:04	LiftoverVcf	Processed 476834 variants.
+INFO	2020-12-11 23:38:04	LiftoverVcf	275 variants failed to liftover.
+INFO	2020-12-11 23:38:04	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:38:04	LiftoverVcf	0.0577% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:38:04	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:38:04	LiftoverVcf	chr6: 476559 / 476834 (99.9423%)
+INFO	2020-12-11 23:38:04	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:38:04	LiftoverVcf	chr6: 476559
+INFO	2020-12-11 23:38:04	LiftoverVcf	894 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:38:06	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:38:12 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.40 minutes.
+Runtime.totalMemory()=1743781888
 
 		#--------------- CHROMOSOME chr7 ---------------#
 		
-INFO	2020-12-11 19:34:22	LiftoverVcf	
+INFO	2020-12-11 23:38:33	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -209,23 +210,38 @@ INFO	2020-12-11 19:34:22	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr7.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr7_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr7_rejected_variants.vcf -R data/raw/chains/chr7.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr7.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr7_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr7_rejected_variants.vcf -R data/raw/chains/chr7.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:34:22.893 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:34:22 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr7.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr7_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr7_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr7.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:34:22 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:34:23	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:34:24	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-ERROR	2020-12-11 19:34:27	LiftoverVcf	Encountered a contig, chr11 that is not part of the target reference.
-[Fri Dec 11 19:34:27 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.08 minutes.
-Runtime.totalMemory()=1206386688
-To get help, see http://broadinstitute.github.io/picard/index.html#GettingHelp
+23:38:34.204 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:38:34 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr7.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr7_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr7_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr7.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:38:34 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:38:34	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:38:36	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+WARNING	2020-12-11 23:38:41	LiftoverVcf	Encountered a contig, chr11 that is not part of the target reference.
+WARNING	2020-12-11 23:38:41	LiftoverVcf	Encountered a contig, chr2 that is not part of the target reference.
+WARNING	2020-12-11 23:38:41	LiftoverVcf	Encountered a contig, chr2 that is not part of the target reference.
+WARNING	2020-12-11 23:38:41	LiftoverVcf	Encountered a contig, chr10 that is not part of the target reference.
+WARNING	2020-12-11 23:38:41	LiftoverVcf	Encountered a contig, chr22 that is not part of the target reference.
+WARNING	2020-12-11 23:38:41	LiftoverVcf	Encountered a contig, chr17 that is not part of the target reference.
+WARNING	2020-12-11 23:38:41	LiftoverVcf	Encountered a contig, chr22 that is not part of the target reference.
+INFO	2020-12-11 23:38:50	LiftoverVcf	Processed 458709 variants.
+INFO	2020-12-11 23:38:50	LiftoverVcf	307 variants failed to liftover.
+INFO	2020-12-11 23:38:50	LiftoverVcf	3 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:38:50	LiftoverVcf	0.0676% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:38:50	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:38:50	LiftoverVcf	chr7: 458399 / 458709 (99.9324%)
+INFO	2020-12-11 23:38:50	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:38:50	LiftoverVcf	chr7: 458399
+INFO	2020-12-11 23:38:50	LiftoverVcf	916 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:38:52	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:38:58 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.40 minutes.
+Runtime.totalMemory()=1653080064
 
 		#--------------- CHROMOSOME chr8 ---------------#
 		
-INFO	2020-12-11 19:34:35	LiftoverVcf	
+INFO	2020-12-11 23:39:17	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -234,31 +250,31 @@ INFO	2020-12-11 19:34:35	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr8.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr8_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr8_rejected_variants.vcf -R data/raw/chains/chr8.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr8.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr8_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr8_rejected_variants.vcf -R data/raw/chains/chr8.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:34:36.147 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:34:36 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr8.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr8_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr8_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr8.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:34:36 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:34:36	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:34:37	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:34:48	LiftoverVcf	Processed 401701 variants.
-INFO	2020-12-11 19:34:48	LiftoverVcf	87 variants failed to liftover.
-INFO	2020-12-11 19:34:48	LiftoverVcf	1 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:34:48	LiftoverVcf	0.0219% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:34:48	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:34:48	LiftoverVcf	chr8: 401613 / 401701 (99.9781%)
-INFO	2020-12-11 19:34:48	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:34:48	LiftoverVcf	chr8: 401613
-INFO	2020-12-11 19:34:48	LiftoverVcf	335 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:34:49	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:34:54 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.30 minutes.
-Runtime.totalMemory()=1255145472
+23:39:17.951 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:39:17 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr8.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr8_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr8_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr8.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:39:17 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:39:18	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:39:19	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:39:32	LiftoverVcf	Processed 418752 variants.
+INFO	2020-12-11 23:39:32	LiftoverVcf	93 variants failed to liftover.
+INFO	2020-12-11 23:39:32	LiftoverVcf	1 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:39:32	LiftoverVcf	0.0224% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:39:32	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:39:32	LiftoverVcf	chr8: 418658 / 418752 (99.9776%)
+INFO	2020-12-11 23:39:32	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:39:32	LiftoverVcf	chr8: 418658
+INFO	2020-12-11 23:39:32	LiftoverVcf	403 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:39:33	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:39:39 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.35 minutes.
+Runtime.totalMemory()=1577582592
 
 		#--------------- CHROMOSOME chr9 ---------------#
 		
-INFO	2020-12-11 19:35:04	LiftoverVcf	
+INFO	2020-12-11 23:39:56	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -267,31 +283,31 @@ INFO	2020-12-11 19:35:04	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr9.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr9_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr9_rejected_variants.vcf -R data/raw/chains/chr9.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr9.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr9_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr9_rejected_variants.vcf -R data/raw/chains/chr9.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:35:04.324 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:35:04 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr9.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr9_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr9_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr9.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:35:04 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:35:04	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:35:06	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:35:15	LiftoverVcf	Processed 313780 variants.
-INFO	2020-12-11 19:35:15	LiftoverVcf	77 variants failed to liftover.
-INFO	2020-12-11 19:35:15	LiftoverVcf	1 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:35:15	LiftoverVcf	0.0249% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:35:15	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:35:15	LiftoverVcf	chr9: 313702 / 313780 (99.9751%)
-INFO	2020-12-11 19:35:15	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:35:15	LiftoverVcf	chr9: 313702
-INFO	2020-12-11 19:35:15	LiftoverVcf	158 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:35:16	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:35:20 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.26 minutes.
-Runtime.totalMemory()=1408761856
+23:39:56.344 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:39:56 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr9.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr9_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr9_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr9.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:39:56 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:39:56	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:39:58	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:40:10	LiftoverVcf	Processed 344367 variants.
+INFO	2020-12-11 23:40:10	LiftoverVcf	97 variants failed to liftover.
+INFO	2020-12-11 23:40:10	LiftoverVcf	1 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:40:10	LiftoverVcf	0.0285% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:40:10	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:40:10	LiftoverVcf	chr9: 344269 / 344367 (99.9715%)
+INFO	2020-12-11 23:40:10	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:40:10	LiftoverVcf	chr9: 344269
+INFO	2020-12-11 23:40:10	LiftoverVcf	151 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:40:11	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:40:15 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.32 minutes.
+Runtime.totalMemory()=1598554112
 
 		#--------------- CHROMOSOME chr10 ---------------#
 		
-INFO	2020-12-11 19:35:30	LiftoverVcf	
+INFO	2020-12-11 23:40:33	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -300,31 +316,31 @@ INFO	2020-12-11 19:35:30	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr10.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr10_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr10_rejected_variants.vcf -R data/raw/chains/chr10.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr10.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr10_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr10_rejected_variants.vcf -R data/raw/chains/chr10.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:35:30.641 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:35:30 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr10.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr10_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr10_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr10.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:35:30 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:35:30	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:35:32	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:35:43	LiftoverVcf	Processed 369486 variants.
-INFO	2020-12-11 19:35:43	LiftoverVcf	40 variants failed to liftover.
-INFO	2020-12-11 19:35:43	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:35:43	LiftoverVcf	0.0108% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:35:43	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:35:43	LiftoverVcf	chr10: 369446 / 369486 (99.9892%)
-INFO	2020-12-11 19:35:43	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:35:43	LiftoverVcf	chr10: 369446
-INFO	2020-12-11 19:35:43	LiftoverVcf	173 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:35:44	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:35:48 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.30 minutes.
-Runtime.totalMemory()=1249902592
+23:40:33.388 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:40:33 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr10.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr10_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr10_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr10.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:40:33 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:40:33	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:40:35	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:40:48	LiftoverVcf	Processed 406323 variants.
+INFO	2020-12-11 23:40:48	LiftoverVcf	38 variants failed to liftover.
+INFO	2020-12-11 23:40:48	LiftoverVcf	1 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:40:48	LiftoverVcf	0.0096% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:40:48	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:40:48	LiftoverVcf	chr10: 406284 / 406323 (99.9904%)
+INFO	2020-12-11 23:40:48	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:40:48	LiftoverVcf	chr10: 406284
+INFO	2020-12-11 23:40:48	LiftoverVcf	127 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:40:50	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:40:55 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.37 minutes.
+Runtime.totalMemory()=1576534016
 
 		#--------------- CHROMOSOME chr11 ---------------#
 		
-INFO	2020-12-11 19:35:59	LiftoverVcf	
+INFO	2020-12-11 23:41:13	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -333,31 +349,31 @@ INFO	2020-12-11 19:35:59	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr11.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr11_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr11_rejected_variants.vcf -R data/raw/chains/chr11.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr11.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr11_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr11_rejected_variants.vcf -R data/raw/chains/chr11.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:35:59.812 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:35:59 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr11.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr11_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr11_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr11.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:35:59 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:36:00	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:36:01	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:36:10	LiftoverVcf	Processed 361626 variants.
-INFO	2020-12-11 19:36:10	LiftoverVcf	106 variants failed to liftover.
-INFO	2020-12-11 19:36:10	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:36:10	LiftoverVcf	0.0293% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:36:10	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:36:10	LiftoverVcf	chr11: 361520 / 361626 (99.9707%)
-INFO	2020-12-11 19:36:10	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:36:10	LiftoverVcf	chr11: 361520
-INFO	2020-12-11 19:36:10	LiftoverVcf	261 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:36:11	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:36:15 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.26 minutes.
-Runtime.totalMemory()=1205862400
+23:41:14.120 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:41:14 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr11.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr11_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr11_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr11.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:41:14 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:41:14	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:41:15	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:41:27	LiftoverVcf	Processed 387647 variants.
+INFO	2020-12-11 23:41:27	LiftoverVcf	113 variants failed to liftover.
+INFO	2020-12-11 23:41:27	LiftoverVcf	1 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:41:27	LiftoverVcf	0.0294% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:41:27	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:41:27	LiftoverVcf	chr11: 387533 / 387647 (99.9706%)
+INFO	2020-12-11 23:41:27	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:41:27	LiftoverVcf	chr11: 387533
+INFO	2020-12-11 23:41:27	LiftoverVcf	259 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:41:28	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:41:33 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.32 minutes.
+Runtime.totalMemory()=1507328000
 
 		#--------------- CHROMOSOME chr12 ---------------#
 		
-INFO	2020-12-11 19:36:25	LiftoverVcf	
+INFO	2020-12-11 23:41:50	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -366,31 +382,31 @@ INFO	2020-12-11 19:36:25	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr12.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr12_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr12_rejected_variants.vcf -R data/raw/chains/chr12.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr12.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr12_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr12_rejected_variants.vcf -R data/raw/chains/chr12.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:36:26.050 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:36:26 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr12.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr12_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr12_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr12.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:36:26 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:36:26	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:36:27	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:36:36	LiftoverVcf	Processed 333908 variants.
-INFO	2020-12-11 19:36:36	LiftoverVcf	15 variants failed to liftover.
-INFO	2020-12-11 19:36:36	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:36:36	LiftoverVcf	0.0045% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:36:36	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:36:36	LiftoverVcf	chr12: 333893 / 333908 (99.9955%)
-INFO	2020-12-11 19:36:36	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:36:36	LiftoverVcf	chr12: 333893
-INFO	2020-12-11 19:36:36	LiftoverVcf	19 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:36:36	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:36:40 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.24 minutes.
-Runtime.totalMemory()=1206386688
+23:41:50.876 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:41:50 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr12.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr12_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr12_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr12.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:41:50 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:41:51	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:41:52	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:42:03	LiftoverVcf	Processed 367795 variants.
+INFO	2020-12-11 23:42:03	LiftoverVcf	14 variants failed to liftover.
+INFO	2020-12-11 23:42:03	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:42:03	LiftoverVcf	0.0038% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:42:03	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:42:03	LiftoverVcf	chr12: 367781 / 367795 (99.9962%)
+INFO	2020-12-11 23:42:03	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:42:03	LiftoverVcf	chr12: 367781
+INFO	2020-12-11 23:42:03	LiftoverVcf	19 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:42:05	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:42:10 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.32 minutes.
+Runtime.totalMemory()=1517813760
 
 		#--------------- CHROMOSOME chr13 ---------------#
 		
-INFO	2020-12-11 19:36:49	LiftoverVcf	
+INFO	2020-12-11 23:42:24	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -399,31 +415,31 @@ INFO	2020-12-11 19:36:49	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr13.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr13_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr13_rejected_variants.vcf -R data/raw/chains/chr13.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr13.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr13_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr13_rejected_variants.vcf -R data/raw/chains/chr13.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:36:50.061 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:36:50 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr13.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr13_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr13_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr13.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:36:50 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:36:50	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:36:51	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:36:59	LiftoverVcf	Processed 273254 variants.
-INFO	2020-12-11 19:36:59	LiftoverVcf	19 variants failed to liftover.
-INFO	2020-12-11 19:36:59	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:36:59	LiftoverVcf	0.0070% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:36:59	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:36:59	LiftoverVcf	chr13: 273235 / 273254 (99.9930%)
-INFO	2020-12-11 19:36:59	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:36:59	LiftoverVcf	chr13: 273235
-INFO	2020-12-11 19:36:59	LiftoverVcf	37 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:36:59	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:37:02 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.21 minutes.
-Runtime.totalMemory()=1443889152
+23:42:24.953 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:42:24 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr13.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr13_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr13_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr13.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:42:24 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:42:25	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:42:26	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:42:35	LiftoverVcf	Processed 296911 variants.
+INFO	2020-12-11 23:42:35	LiftoverVcf	19 variants failed to liftover.
+INFO	2020-12-11 23:42:35	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:42:35	LiftoverVcf	0.0064% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:42:35	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:42:35	LiftoverVcf	chr13: 296892 / 296911 (99.9936%)
+INFO	2020-12-11 23:42:35	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:42:35	LiftoverVcf	chr13: 296892
+INFO	2020-12-11 23:42:35	LiftoverVcf	34 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:42:36	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:42:40 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.25 minutes.
+Runtime.totalMemory()=1710227456
 
 		#--------------- CHROMOSOME chr14 ---------------#
 		
-INFO	2020-12-11 19:37:10	LiftoverVcf	
+INFO	2020-12-11 23:42:53	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -432,31 +448,31 @@ INFO	2020-12-11 19:37:10	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr14.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr14_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr14_rejected_variants.vcf -R data/raw/chains/chr14.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr14.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr14_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr14_rejected_variants.vcf -R data/raw/chains/chr14.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:37:10.958 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:37:10 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr14.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr14_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr14_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr14.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:37:10 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:37:11	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:37:12	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:37:20	LiftoverVcf	Processed 233491 variants.
-INFO	2020-12-11 19:37:20	LiftoverVcf	418 variants failed to liftover.
-INFO	2020-12-11 19:37:20	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:37:20	LiftoverVcf	0.1790% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:37:20	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:37:20	LiftoverVcf	chr14: 233073 / 233491 (99.8210%)
-INFO	2020-12-11 19:37:20	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:37:20	LiftoverVcf	chr14: 233073
-INFO	2020-12-11 19:37:20	LiftoverVcf	1218 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:37:20	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:37:22 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.19 minutes.
-Runtime.totalMemory()=1684537344
+23:42:53.625 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:42:53 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr14.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr14_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr14_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr14.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:42:53 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:42:54	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:42:55	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:43:06	LiftoverVcf	Processed 250763 variants.
+INFO	2020-12-11 23:43:06	LiftoverVcf	430 variants failed to liftover.
+INFO	2020-12-11 23:43:06	LiftoverVcf	4 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:43:06	LiftoverVcf	0.1731% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:43:06	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:43:06	LiftoverVcf	chr14: 250329 / 250763 (99.8269%)
+INFO	2020-12-11 23:43:06	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:43:06	LiftoverVcf	chr14: 250329
+INFO	2020-12-11 23:43:06	LiftoverVcf	1270 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:43:06	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:43:10 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.27 minutes.
+Runtime.totalMemory()=1701314560
 
 		#--------------- CHROMOSOME chr15 ---------------#
 		
-INFO	2020-12-11 19:37:28	LiftoverVcf	
+INFO	2020-12-11 23:43:21	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -465,31 +481,31 @@ INFO	2020-12-11 19:37:28	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr15.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr15_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr15_rejected_variants.vcf -R data/raw/chains/chr15.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr15.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr15_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr15_rejected_variants.vcf -R data/raw/chains/chr15.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:37:29.190 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:37:29 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr15.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr15_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr15_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr15.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:37:29 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:37:29	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:37:30	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:37:35	LiftoverVcf	Processed 203729 variants.
-INFO	2020-12-11 19:37:35	LiftoverVcf	28 variants failed to liftover.
-INFO	2020-12-11 19:37:35	LiftoverVcf	1 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:37:35	LiftoverVcf	0.0142% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:37:35	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:37:35	LiftoverVcf	chr15: 203700 / 203729 (99.9858%)
-INFO	2020-12-11 19:37:35	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:37:35	LiftoverVcf	chr15: 203700
-INFO	2020-12-11 19:37:35	LiftoverVcf	110 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:37:35	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:37:37 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.14 minutes.
-Runtime.totalMemory()=1662517248
+23:43:21.715 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:43:21 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr15.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr15_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr15_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr15.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:43:21 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:43:22	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:43:23	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:43:28	LiftoverVcf	Processed 220422 variants.
+INFO	2020-12-11 23:43:28	LiftoverVcf	30 variants failed to liftover.
+INFO	2020-12-11 23:43:28	LiftoverVcf	1 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:43:28	LiftoverVcf	0.0141% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:43:28	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:43:28	LiftoverVcf	chr15: 220391 / 220422 (99.9859%)
+INFO	2020-12-11 23:43:28	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:43:28	LiftoverVcf	chr15: 220391
+INFO	2020-12-11 23:43:28	LiftoverVcf	114 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:43:28	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:43:31 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.16 minutes.
+Runtime.totalMemory()=1908932608
 
 		#--------------- CHROMOSOME chr16 ---------------#
 		
-INFO	2020-12-11 19:37:44	LiftoverVcf	
+INFO	2020-12-11 23:43:43	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -498,31 +514,31 @@ INFO	2020-12-11 19:37:44	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr16.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr16_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr16_rejected_variants.vcf -R data/raw/chains/chr16.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr16.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr16_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr16_rejected_variants.vcf -R data/raw/chains/chr16.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:37:44.653 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:37:44 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr16.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr16_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr16_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr16.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:37:44 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:37:44	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:37:45	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:37:50	LiftoverVcf	Processed 227084 variants.
-INFO	2020-12-11 19:37:50	LiftoverVcf	0 variants failed to liftover.
-INFO	2020-12-11 19:37:50	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:37:50	LiftoverVcf	0.0000% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:37:50	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:37:50	LiftoverVcf	chr16: 227084 / 227084 (100.0000%)
-INFO	2020-12-11 19:37:50	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:37:50	LiftoverVcf	chr16: 227084
-INFO	2020-12-11 19:37:50	LiftoverVcf	7 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:37:50	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:37:52 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.13 minutes.
-Runtime.totalMemory()=1620049920
+23:43:43.706 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:43:43 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr16.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr16_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr16_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr16.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:43:43 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:43:44	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:43:45	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:43:50	LiftoverVcf	Processed 242212 variants.
+INFO	2020-12-11 23:43:50	LiftoverVcf	1 variants failed to liftover.
+INFO	2020-12-11 23:43:50	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:43:50	LiftoverVcf	0.0004% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:43:50	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:43:50	LiftoverVcf	chr16: 242211 / 242212 (99.9996%)
+INFO	2020-12-11 23:43:50	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:43:50	LiftoverVcf	chr16: 242211
+INFO	2020-12-11 23:43:50	LiftoverVcf	13 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:43:50	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:43:53 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.16 minutes.
+Runtime.totalMemory()=1908932608
 
 		#--------------- CHROMOSOME chr17 ---------------#
 		
-INFO	2020-12-11 19:37:58	LiftoverVcf	
+INFO	2020-12-11 23:44:03	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -531,31 +547,31 @@ INFO	2020-12-11 19:37:58	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr17.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr17_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr17_rejected_variants.vcf -R data/raw/chains/chr17.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr17.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr17_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr17_rejected_variants.vcf -R data/raw/chains/chr17.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:37:59.115 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:37:59 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr17.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr17_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr17_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr17.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:37:59 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:37:59	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:38:00	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:38:06	LiftoverVcf	Processed 188380 variants.
-INFO	2020-12-11 19:38:06	LiftoverVcf	82 variants failed to liftover.
-INFO	2020-12-11 19:38:06	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:38:06	LiftoverVcf	0.0435% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:38:06	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:38:06	LiftoverVcf	chr17: 188298 / 188380 (99.9565%)
-INFO	2020-12-11 19:38:06	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:38:06	LiftoverVcf	chr17: 188298
-INFO	2020-12-11 19:38:06	LiftoverVcf	274 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:38:06	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:38:07 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.15 minutes.
-Runtime.totalMemory()=1643118592
+23:44:03.506 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:44:03 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr17.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr17_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr17_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr17.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:44:03 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:44:03	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:44:05	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:44:10	LiftoverVcf	Processed 192732 variants.
+INFO	2020-12-11 23:44:10	LiftoverVcf	80 variants failed to liftover.
+INFO	2020-12-11 23:44:10	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:44:10	LiftoverVcf	0.0415% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:44:10	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:44:10	LiftoverVcf	chr17: 192652 / 192732 (99.9585%)
+INFO	2020-12-11 23:44:10	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:44:10	LiftoverVcf	chr17: 192652
+INFO	2020-12-11 23:44:10	LiftoverVcf	295 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:44:10	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:44:12 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.15 minutes.
+Runtime.totalMemory()=1591214080
 
 		#--------------- CHROMOSOME chr18 ---------------#
 		
-INFO	2020-12-11 19:38:14	LiftoverVcf	
+INFO	2020-12-11 23:44:22	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -564,31 +580,31 @@ INFO	2020-12-11 19:38:14	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr18.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr18_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr18_rejected_variants.vcf -R data/raw/chains/chr18.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr18.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr18_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr18_rejected_variants.vcf -R data/raw/chains/chr18.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:38:14.474 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:38:14 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr18.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr18_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr18_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr18.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:38:14 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:38:14	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:38:15	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:38:20	LiftoverVcf	Processed 206865 variants.
-INFO	2020-12-11 19:38:20	LiftoverVcf	21 variants failed to liftover.
-INFO	2020-12-11 19:38:20	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:38:20	LiftoverVcf	0.0102% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:38:20	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:38:20	LiftoverVcf	chr18: 206844 / 206865 (99.9898%)
-INFO	2020-12-11 19:38:20	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:38:20	LiftoverVcf	chr18: 206844
-INFO	2020-12-11 19:38:20	LiftoverVcf	59 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:38:20	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:38:22 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.13 minutes.
-Runtime.totalMemory()=1608515584
+23:44:22.863 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:44:22 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr18.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr18_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr18_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr18.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:44:22 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:44:23	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:44:24	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:44:28	LiftoverVcf	Processed 226380 variants.
+INFO	2020-12-11 23:44:28	LiftoverVcf	19 variants failed to liftover.
+INFO	2020-12-11 23:44:28	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:44:28	LiftoverVcf	0.0084% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:44:28	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:44:28	LiftoverVcf	chr18: 226361 / 226380 (99.9916%)
+INFO	2020-12-11 23:44:28	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:44:28	LiftoverVcf	chr18: 226361
+INFO	2020-12-11 23:44:28	LiftoverVcf	48 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:44:28	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:44:31 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.15 minutes.
+Runtime.totalMemory()=1908932608
 
 		#--------------- CHROMOSOME chr19 ---------------#
 		
-INFO	2020-12-11 19:38:27	LiftoverVcf	
+INFO	2020-12-11 23:44:40	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -597,31 +613,31 @@ INFO	2020-12-11 19:38:27	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr19.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr19_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr19_rejected_variants.vcf -R data/raw/chains/chr19.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr19.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr19_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr19_rejected_variants.vcf -R data/raw/chains/chr19.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:38:27.991 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:38:28 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr19.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr19_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr19_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr19.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:38:28 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:38:28	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:38:29	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:38:32	LiftoverVcf	Processed 161462 variants.
-INFO	2020-12-11 19:38:32	LiftoverVcf	172 variants failed to liftover.
-INFO	2020-12-11 19:38:32	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:38:32	LiftoverVcf	0.1065% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:38:32	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:38:32	LiftoverVcf	chr19: 161290 / 161462 (99.8935%)
-INFO	2020-12-11 19:38:32	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:38:32	LiftoverVcf	chr19: 161290
-INFO	2020-12-11 19:38:32	LiftoverVcf	551 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:38:32	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:38:33 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.10 minutes.
-Runtime.totalMemory()=1251475456
+23:44:41.138 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:44:41 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr19.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr19_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr19_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr19.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:44:41 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:44:41	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:44:42	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:44:46	LiftoverVcf	Processed 168740 variants.
+INFO	2020-12-11 23:44:46	LiftoverVcf	215 variants failed to liftover.
+INFO	2020-12-11 23:44:46	LiftoverVcf	1 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:44:46	LiftoverVcf	0.1280% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:44:46	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:44:46	LiftoverVcf	chr19: 168524 / 168740 (99.8720%)
+INFO	2020-12-11 23:44:46	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:44:46	LiftoverVcf	chr19: 168524
+INFO	2020-12-11 23:44:46	LiftoverVcf	649 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:44:46	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:44:49 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.13 minutes.
+Runtime.totalMemory()=1781530624
 
 		#--------------- CHROMOSOME chr20 ---------------#
 		
-INFO	2020-12-11 19:38:39	LiftoverVcf	
+INFO	2020-12-11 23:44:57	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -630,31 +646,31 @@ INFO	2020-12-11 19:38:39	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr20.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr20_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr20_rejected_variants.vcf -R data/raw/chains/chr20.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr20.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr20_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr20_rejected_variants.vcf -R data/raw/chains/chr20.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:38:39.864 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:38:39 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr20.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr20_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr20_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr20.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:38:39 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:38:40	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:38:40	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:38:43	LiftoverVcf	Processed 163772 variants.
-INFO	2020-12-11 19:38:43	LiftoverVcf	44 variants failed to liftover.
-INFO	2020-12-11 19:38:43	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:38:43	LiftoverVcf	0.0269% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:38:43	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:38:43	LiftoverVcf	chr20: 163728 / 163772 (99.9731%)
-INFO	2020-12-11 19:38:43	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:38:43	LiftoverVcf	chr20: 163728
-INFO	2020-12-11 19:38:43	LiftoverVcf	213 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:38:43	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:38:45 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.09 minutes.
-Runtime.totalMemory()=1248329728
+23:44:57.834 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:44:57 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr20.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr20_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr20_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr20.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:44:57 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:44:58	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:44:58	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:45:03	LiftoverVcf	Processed 172185 variants.
+INFO	2020-12-11 23:45:03	LiftoverVcf	46 variants failed to liftover.
+INFO	2020-12-11 23:45:03	LiftoverVcf	1 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:45:03	LiftoverVcf	0.0273% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:45:03	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:45:03	LiftoverVcf	chr20: 172138 / 172185 (99.9727%)
+INFO	2020-12-11 23:45:03	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:45:03	LiftoverVcf	chr20: 172138
+INFO	2020-12-11 23:45:03	LiftoverVcf	225 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:45:03	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:45:05 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.12 minutes.
+Runtime.totalMemory()=1789919232
 
 		#--------------- CHROMOSOME chr21 ---------------#
 		
-INFO	2020-12-11 19:38:49	LiftoverVcf	
+INFO	2020-12-11 23:45:11	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -663,31 +679,31 @@ INFO	2020-12-11 19:38:49	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr21.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr21_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr21_rejected_variants.vcf -R data/raw/chains/chr21.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr21.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr21_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr21_rejected_variants.vcf -R data/raw/chains/chr21.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:38:49.779 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:38:49 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr21.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr21_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr21_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr21.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:38:49 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:38:50	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:38:50	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:38:53	LiftoverVcf	Processed 98435 variants.
-INFO	2020-12-11 19:38:53	LiftoverVcf	42 variants failed to liftover.
-INFO	2020-12-11 19:38:53	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:38:53	LiftoverVcf	0.0427% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:38:53	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:38:53	LiftoverVcf	chr21: 98393 / 98435 (99.9573%)
-INFO	2020-12-11 19:38:53	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:38:53	LiftoverVcf	chr21: 98393
-INFO	2020-12-11 19:38:53	LiftoverVcf	47 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:38:53	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:38:54 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.07 minutes.
-Runtime.totalMemory()=1323302912
+23:45:11.941 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:45:11 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr21.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr21_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr21_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr21.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:45:11 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:45:12	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:45:12	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:45:15	LiftoverVcf	Processed 106771 variants.
+INFO	2020-12-11 23:45:15	LiftoverVcf	40 variants failed to liftover.
+INFO	2020-12-11 23:45:15	LiftoverVcf	0 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:45:15	LiftoverVcf	0.0375% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:45:15	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:45:15	LiftoverVcf	chr21: 106731 / 106771 (99.9625%)
+INFO	2020-12-11 23:45:15	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:45:15	LiftoverVcf	chr21: 106731
+INFO	2020-12-11 23:45:15	LiftoverVcf	44 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:45:15	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:45:16 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.08 minutes.
+Runtime.totalMemory()=1054343168
 
 		#--------------- CHROMOSOME chr22 ---------------#
 		
-INFO	2020-12-11 19:38:57	LiftoverVcf	
+INFO	2020-12-11 23:45:22	LiftoverVcf	
 
 ********** NOTE: Picard's command line syntax is changing.
 **********
@@ -696,24 +712,24 @@ INFO	2020-12-11 19:38:57	LiftoverVcf
 **********
 ********** The command line looks like this in the new syntax:
 **********
-**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr22.vcf -O tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr22_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/nc6nc22nc25nc26/chr22_rejected_variants.vcf -R data/raw/chains/chr22.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000
+**********    LiftoverVcf -I tmp/2020-12-11_02_preprocessRaw/all14samps/chr22.vcf -O tmp/2020-12-11_02_preprocessRaw/all14samps/chr22_newAssembly.vcf -CHAIN data/raw/chains/hg38ToHg19.over.chain -REJECT data/use/all14samps/chr22_rejected_variants.vcf -R data/raw/chains/chr22.fa -RECOVER_SWAPPED_REF_ALT true -MAX_RECORDS_IN_RAM 250000 -WARN_ON_MISSING_CONTIG true
 **********
 
 
-19:38:57.662 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
-[Fri Dec 11 19:38:57 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr22.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/nc6nc22nc25nc26/chr22_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/nc6nc22nc25nc26/chr22_rejected_variants.vcf RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr22.fa    WARN_ON_MISSING_CONTIG=false LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
-[Fri Dec 11 19:38:57 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
-INFO	2020-12-11 19:38:58	LiftoverVcf	Loading up the target reference genome.
-INFO	2020-12-11 19:38:58	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
-INFO	2020-12-11 19:39:01	LiftoverVcf	Processed 95324 variants.
-INFO	2020-12-11 19:39:01	LiftoverVcf	286 variants failed to liftover.
-INFO	2020-12-11 19:39:01	LiftoverVcf	1 variants lifted over but had mismatching reference alleles after lift over.
-INFO	2020-12-11 19:39:01	LiftoverVcf	0.3011% of variants were not successfully lifted over and written to the output.
-INFO	2020-12-11 19:39:01	LiftoverVcf	liftover success by source contig:
-INFO	2020-12-11 19:39:01	LiftoverVcf	chr22: 95037 / 95324 (99.6989%)
-INFO	2020-12-11 19:39:01	LiftoverVcf	lifted variants by target contig:
-INFO	2020-12-11 19:39:01	LiftoverVcf	chr22: 95037
-INFO	2020-12-11 19:39:01	LiftoverVcf	937 variants were lifted by swapping REF/ALT alleles.
-INFO	2020-12-11 19:39:01	LiftoverVcf	Writing out sorted records to final VCF.
-[Fri Dec 11 19:39:02 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.08 minutes.
-Runtime.totalMemory()=1328545792
+23:45:22.813 INFO  NativeLibraryLoader - Loading libgkl_compression.so from jar:file:/home/rgomez/.conda/envs/RealRecombination/share/picard-2.23.9-0/picard.jar!/com/intel/gkl/native/libgkl_compression.so
+[Fri Dec 11 23:45:22 CET 2020] LiftoverVcf INPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr22.vcf OUTPUT=tmp/2020-12-11_02_preprocessRaw/all14samps/chr22_newAssembly.vcf CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/all14samps/chr22_rejected_variants.vcf WARN_ON_MISSING_CONTIG=true RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 REFERENCE_SEQUENCE=data/raw/chains/chr22.fa    LOG_FAILED_INTERVALS=true WRITE_ORIGINAL_POSITION=false WRITE_ORIGINAL_ALLELES=false LIFTOVER_MIN_MATCH=1.0 ALLOW_MISSING_FIELDS_IN_HEADER=false TAGS_TO_REVERSE=[AF] TAGS_TO_DROP=[MAX_AF] DISABLE_SORT=false VERBOSITY=INFO QUIET=false VALIDATION_STRINGENCY=STRICT COMPRESSION_LEVEL=5 CREATE_INDEX=false CREATE_MD5_FILE=false GA4GH_CLIENT_SECRETS=client_secrets.json USE_JDK_DEFLATER=false USE_JDK_INFLATER=false
+[Fri Dec 11 23:45:22 CET 2020] Executing as rgomez@rgomez-pc on Linux 4.15.0-122-generic amd64; OpenJDK 64-Bit Server VM 1.8.0_152-release-1056-b12; Deflater: Intel; Inflater: Intel; Provider GCS is not available; Picard version: 2.23.9
+INFO	2020-12-11 23:45:23	LiftoverVcf	Loading up the target reference genome.
+INFO	2020-12-11 23:45:23	LiftoverVcf	Lifting variants over and sorting (not yet writing the output file.)
+INFO	2020-12-11 23:45:26	LiftoverVcf	Processed 102126 variants.
+INFO	2020-12-11 23:45:26	LiftoverVcf	293 variants failed to liftover.
+INFO	2020-12-11 23:45:26	LiftoverVcf	2 variants lifted over but had mismatching reference alleles after lift over.
+INFO	2020-12-11 23:45:26	LiftoverVcf	0.2889% of variants were not successfully lifted over and written to the output.
+INFO	2020-12-11 23:45:26	LiftoverVcf	liftover success by source contig:
+INFO	2020-12-11 23:45:26	LiftoverVcf	chr22: 101831 / 102126 (99.7111%)
+INFO	2020-12-11 23:45:26	LiftoverVcf	lifted variants by target contig:
+INFO	2020-12-11 23:45:26	LiftoverVcf	chr22: 101831
+INFO	2020-12-11 23:45:26	LiftoverVcf	972 variants were lifted by swapping REF/ALT alleles.
+INFO	2020-12-11 23:45:26	LiftoverVcf	Writing out sorted records to final VCF.
+[Fri Dec 11 23:45:28 CET 2020] picard.vcf.LiftoverVcf done. Elapsed time: 0.09 minutes.
+Runtime.totalMemory()=1215823872

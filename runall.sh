@@ -430,7 +430,7 @@ if [ "$COMMAND" == "preprocess" ]; then
 						   CHAIN=data/raw/chains/hg38ToHg19.over.chain \
 						   REJECT=${OUTDIR}/${CHR}_rejected_variants.vcf \
 						   R=${REFDIR}/${CHR}.fa \
-						   RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000
+						   RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000 WARN_ON_MISSING_CONTIG=true
 		sed "s/^chr//g" ${TMPDIR}/${CHR}_newAssembly.vcf > ${OUTDIR}/${CHR}_newAssembly.vcf
 		bgzip ${OUTDIR}/${CHR}_newAssembly.vcf
 		tabix -p vcf ${OUTDIR}/${CHR}_newAssembly.vcf.gz

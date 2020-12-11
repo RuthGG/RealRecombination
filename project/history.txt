@@ -234,13 +234,9 @@
 2020-10-19: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38_G4.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.strict.gff
 2020-10-19: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38_G4.txt.gz -c data/use/inversions_info/2020.08.inversions_hg38_G4.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.strict.gff
 2020-10-19: runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.08.inversions_hg38_G4.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.strict.gff
-mkdir -p data/raw/chains/
-wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg38/liftOver/hg38ToHg19.over.chain.gz' -O data/raw/chains/hg38ToHg19.over.chain.gz
 
-picard LiftoverVcf I=data/raw/avery_individuals_smalltest/testfile.vcf.gz O=data/use/avery_individuals_smalltest/nc17nc18_lifted.vcf 
-CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/avery_individuals_smalltest/rejected_variants.vcf R=data/raw/chains/GRCh37.p13.genome.fa
+# RE-PROCESSING DATA AND REDOING IMPUTATION TO AVOID SNP LOSS
 
-2020-12-11: runall.sh preprocess -i data/raw/avery_individuals_smalltest -r data/raw/1000genomes_hg19
+2020-12-11: runall.sh preprocess -i data/raw/avery_individuals/nc17nc18 -r data/raw/chains
 2020-12-11: runall.sh preprocess -i data/raw/avery_individuals/nc6nc22nc25nc26 -r data/raw/chains
-2020-12-11: runall.sh preprocess -i data/raw/avery_individuals/nc6nc22nc25nc26 -r data/raw/chains
-2020-12-11: runall.sh preprocess -i data/raw/avery_individuals/nc6nc22nc25nc26 -r data/raw/chains
+2020-12-11: runall.sh preprocess -i data/raw/avery_individuals/all14samps -r data/raw/chains
