@@ -429,7 +429,7 @@ if [ "$COMMAND" == "preprocess" ]; then
 						   O=${TMPDIR}/${CHR}_newAssembly.vcf \
 						   CHAIN=data/raw/chains/hg38ToHg19.over.chain \
 						   REJECT=${OUTDIR}/${CHR}_rejected_variants.vcf \
-						   R=data/raw/chains/${CHR}.fa \
+						   R=${REFDIR}/${CHR}.fa \
 						   RECOVER_SWAPPED_REF_ALT=true
 		sed "s/^chr//g" ${TMPDIR}/${CHR}_newAssembly.vcf > ${OUTDIR}/${CHR}_newAssembly.vcf
 		bgzip ${OUTDIR}/${CHR}_newAssembly.vcf
