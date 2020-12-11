@@ -242,3 +242,5 @@ CHAIN=data/raw/chains/hg38ToHg19.over.chain REJECT=data/use/avery_individuals_sm
 
 2020-12-11: runall.sh preprocess -i data/raw/avery_individuals_smalltest -r data/raw/1000genomes_hg19
 2020-12-11: runall.sh preprocess -i data/raw/avery_individuals/nc6nc22nc25nc26 -r data/raw/chains
+2020-12-11: runall.sh preprocess -i data/raw/avery_individuals/nc6nc22nc25nc26 -r data/raw/chains
+2020-12-11: runall.sh preprocess -i data/raw/avery_individuals/nc6nc22nc25nc26 -r data/raw/chains

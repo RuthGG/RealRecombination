@@ -362,7 +362,7 @@ if [ "$COMMAND" == "preprocess" ]; then
   if [ -d "$OUTDIR" ]; then rm -Rf $OUTDIR; fi
   if [ -d "$TMPDIR" ]; then rm -Rf $TMPDIR; fi
 
-  mkdir -p $TMPDIR $OUTDIR ${OUTDIR}/log/
+  mkdir -p $TMPDIR ${OUTDIR}/log/
 
   # PREPROCESS RAW DATA - Join all files found in INDIR - if necessary
   # DEPRECATED - TO REVISIT IF I WANT TO PROCESS MULTIPLE FILES AGAIN	
@@ -430,11 +430,12 @@ if [ "$COMMAND" == "preprocess" ]; then
 						   CHAIN=data/raw/chains/hg38ToHg19.over.chain \
 						   REJECT=${OUTDIR}/${CHR}_rejected_variants.vcf \
 						   R=${REFDIR}/${CHR}.fa \
-						   RECOVER_SWAPPED_REF_ALT=true
+						   RECOVER_SWAPPED_REF_ALT=true MAX_RECORDS_IN_RAM=250000
 		sed "s/^chr//g" ${TMPDIR}/${CHR}_newAssembly.vcf > ${OUTDIR}/${CHR}_newAssembly.vcf
 		bgzip ${OUTDIR}/${CHR}_newAssembly.vcf
 		tabix -p vcf ${OUTDIR}/${CHR}_newAssembly.vcf.gz
 		
+
   # Make chromosomes file
   # mkdir -p ${TMPDIR}/chromlist_part
   # split --number=l/${SCREENS} ${TMPDIR}/chromlist.txt ${TMPDIR}/chromlist_part/chromlist --numeric-suffixes=1 --suffix-length=2
@@ -457,6 +458,9 @@ if [ "$COMMAND" == "preprocess" ]; then
   # cat ${OUTDIR}/log/*  >> ${OUTDIR}/log/logfiles.txt
 
 	done
+
+  cp project/logfiles/${DATE} ${OUTDIR}/log/
+
 fi
 
 # MERGE FOR PCA
