@@ -1,0 +1,18 @@
+## MAKE IMPUTATION SUMMARY TABLES
+ Rscript code/rscript/imputeParse.R analysis/2020-12-13_06_imputation_merged data/use/avery_individuals/samples_population.txt data/use/inversions_info/Inversions_imputability.txt analysis/2020-12-13_07_imputationTables
+Loading required package: stringr
+Loading required package: reshape2
+Loading required package: naniar
+[[1]]
+NULL
+
+[[2]]
+NULL
+
+[[3]]
+NULL
+
+Error in `[<-.data.frame`(`*tmp*`, (all_3c$Genotype_100 != all_3c$Genotype_250 |  : 
+  missing values are not allowed in subscripted assignments of data frames
+Calls: [<- -> [<-.data.frame
+Execution halted

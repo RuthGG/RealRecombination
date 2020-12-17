@@ -185,7 +185,7 @@
         code/software/vcf2impute_gen.pl -vcf ${CURDIR}/reference_sorted.vcf -gen ${CURDIR}/reference.gen
 
         # Remove temporary files
-        rm ${CURDIR}/reference_unsorted.vcf ${CURDIR}/reference_sorted.vcf ${CURDIR}/ref_inversion.vcf ${CURDIR}/ref_haplotypes.vcf ${CURDIR}/genotypes_file.txt
+        # rm ${CURDIR}/reference_unsorted.vcf ${CURDIR}/reference_sorted.vcf ${CURDIR}/ref_inversion.vcf ${CURDIR}/ref_haplotypes.vcf ${CURDIR}/genotypes_file.txt
    
       # INPUT FILE
       # individuals (samples), in population of interest
@@ -199,21 +199,23 @@
         
         # Get population file
         POPFILE=$(ls ${INDIR}/*.txt)
-
+ 
         if [ $POP = "ALL" ]; then
           SAMPLES_IN=$(tail -n +2 ${POPFILE}|cut -f1 )
         else
           SAMPLES_IN=$(grep ${POP} ${POPFILE} | cut -f1)
         fi
-      
+
+        if [ -z "$SAMPLES_IN" ]; then echo "NO CORRECT POPULATION IN FILE"; fi
         # INPUT FILE - create input VCF
         # ------------------------------------------------------------------------- #
         echo "## Create input VCF #####################################################"
 
         # Select chromosome and samples and change chromosome names 
         # -m2 and -M2 select bialellic samples. Here I don't want to discard singletons etc. because sometimes I can have only one individual
-        VCF_FILE=$(ls $INDIR | grep "${CHR}\..*gz$")
-        bcftools view  --regions ${CHR_NUM}:${START}-${END} -s $(echo $SAMPLES_IN | tr " " ",")  -m2 -M2 -Ov ${INDIR}/${VCF_FILE}  -o ${CURDIR}/input.vcf
+        VCF_FILE=$(ls $INDIR | grep "${CHR}_.*gz$")
+
+        bcftools view  --regions ${CHR_NUM}:${START}-${END} -s $(echo $SAMPLES_IN | tr " " ",") -m2 -M2 -Ov ${INDIR}/${VCF_FILE}  -o ${CURDIR}/input.vcf
      
         # UNFINISHED chromosome X code-----------------------------------------------------------------
         # if [ $chr = "X" ]

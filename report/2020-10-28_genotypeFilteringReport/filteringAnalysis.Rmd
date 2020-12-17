@@ -87,7 +87,7 @@ After the imputation, the genotypes were filtered differently depending on the i
 
  # Individual genotypes
    # Get individuals genotypes
-    genotypes<-read.table("../../analysis/2020-05-23_07_imputationTables/imputationResults.csv", header=TRUE, sep = ",")
+    genotypes<-read.table("../../analysis/2020-12-14_07_imputationTables/imputationResults.csv", header=TRUE, sep = ",")
   
     # Get individual names
     genotypes$Individual<-sub("^\\d+\\.","",genotypes$Individual)

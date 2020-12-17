@@ -1,0 +1,3040 @@
+-------------------------------------------------------------------------
+HsInv0015
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.U89kyk
+Merging 1 temporary files
+Cleaning
+Done
+## Make IMPUTE2 desired input ###########################################
+10 -- 12789014
+10 -- 12943344
+10 -- 13092456
+10 -- 13268462
+10 -- 13448694
+
+--0 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr10_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr10_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+10 -- 12880224
+10 -- 13117616
+10 -- 13413818
+
+--127 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 233039104.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/reference.gen.gz -g tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/input.gen.gz -int 13105127 13105127 -k_hap 500 -o tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr10_combined_b37.txt -strand_g data/use/avery_individuals/nc6nc22nc25nc26/
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/reference.gen.gz
+          Panel 2 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/input.gen.gz
+        Panel 2 strand info: data/use/avery_individuals/nc6nc22nc25nc26/
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr10_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/output
+                SNP QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/output_info
+             sample QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/output_info_by_sample
+                run summary: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/output_summary
+                warning log: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr10_combined_b37.txt]
+ --read 902 SNPs in the analysis interval+buffer region
+
+-reading strand info for Panel 2 from -strand_g file
+ --filename=[data/use/avery_individuals/nc6nc22nc25nc26/]
+ --read strand info for 0 SNPs in the analysis region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/input.gen.gz]
+ --detected 3 individuals
+ --read 1900 SNPs in the analysis interval+buffer region
+
+-using -strand_g file to align Panel 2 allele labels
+ --flipped strand at 0 out of 0 SNPs
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/reference.gen.gz]
+ --detected 30 individuals
+ --read 3104 SNPs in the analysis interval+buffer region
+
+-removing SNPs that violate the hierarchical data requirements
+ --no SNPs removed
+
+-removing reference-only SNPs from buffer region
+ --removed 1576 SNPs
+
+-checking strand alignment between Panel 2 and Panel 1 by allele labels
+ --flipped strand due to allele mismatch at 0 out of 1900 SNPs in Panel 2
+
+-aligning allele labels between panels
+
+-removing non-aligned genotyped SNPs
+ --removed 0 out of 1528 SNPs with data in multiple panels
+
+--------------
+ Data summary 
+--------------
+
+[type 0 = SNP in Panel 0 only]
+[type 1 = SNP in Panel 1]
+[type 2 = SNP in Panel 2 and all ref panels]
+[type 3 = SNP in Panel 2 only]
+
+-Upstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --843 type 2 SNPs
+ --210 type 3 SNPs
+ --1053 total SNPs
+
+-Downstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --684 type 2 SNPs
+ --163 type 3 SNPs
+ --847 total SNPs
+
+-Analysis region (as defined by -int argument)
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+ --1 total SNPs
+
+-Output file
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+
+-In total, 1901 SNPs will be used in the analysis, including 1527 Panel 2 SNPs
+
+-making initial haplotype guesses for Panel 2 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-making initial haplotype guesses for Panel 1 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-setting storage space
+-setting mutation matrices
+-setting switch rates
+
+----------------
+ Run parameters 
+----------------
+
+        reference diplotypes: 30 [Panel 1]
+           study individuals: 3 [Panel 2]
+           sequence interval: [13105127,13105127]
+                      buffer: 250 kb
+                          Ne: 20000
+           input call thresh: 0.900
+     burn-in MCMC iterations: 10
+       total MCMC iterations: 30 (20 used for inference)
+      HMM states for phasing: 58 [Panel 1]; 64 [Panel 2]
+   HMM states for imputation: 60 [Panel 1->2]
+
+---------
+ Run log 
+---------
+
+MCMC iteration [1/30]
+
+MCMC iteration [2/30]
+
+MCMC iteration [3/30]
+
+RESETTING PARAMETERS FOR "SURROGATE FAMILY" MODELING
+-setting mutation matrices
+-setting switch rates
+
+MCMC iteration [4/30]
+
+MCMC iteration [5/30]
+
+MCMC iteration [6/30]
+
+MCMC iteration [7/30]
+
+MCMC iteration [8/30]
+
+MCMC iteration [9/30]
+
+MCMC iteration [10/30]
+
+MCMC iteration [11/30]
+
+MCMC iteration [12/30]
+
+MCMC iteration [13/30]
+
+MCMC iteration [14/30]
+
+MCMC iteration [15/30]
+
+MCMC iteration [16/30]
+
+MCMC iteration [17/30]
+
+MCMC iteration [18/30]
+
+MCMC iteration [19/30]
+
+MCMC iteration [20/30]
+
+MCMC iteration [21/30]
+
+MCMC iteration [22/30]
+
+MCMC iteration [23/30]
+
+MCMC iteration [24/30]
+
+MCMC iteration [25/30]
+
+MCMC iteration [26/30]
+
+MCMC iteration [27/30]
+
+MCMC iteration [28/30]
+
+MCMC iteration [29/30]
+
+MCMC iteration [30/30]
+
+
+diploid sampling success rate: 0.963
+
+haploid sampling success rate: (no haploid sampling performed)
+
+
+--------------------------------
+ Imputation accuracy assessment 
+--------------------------------
+
+The table below is based on an internal cross-validation that is performed during each IMPUTE2 run. For this analysis, the program masks the genotypes of one variant at a time in the study data (Panel 2) and imputes the masked genotypes by using the remaining study and reference data. The imputed genotypes are then compared with the original genotypes to produce the concordance statistics shown in the table. You can learn more about this procedure and the contents of the table at http://mathgen.stats.ox.ac.uk/impute/concordance_table_description.html.
+
+In the current analysis, IMPUTE2 masked, imputed, and evaluated 0 genotypes that were called with high confidence (maximum probability >= 0.90) in the Panel 2 input file (-g or -known_haps_g).
+
+When the masked study genotypes were imputed with reference data from Panel 1, the concordance between original and imputed genotypes was as follows:
+
+  Interval  #Genotypes %Concordance         Interval  %Called %Concordance
+  [0.0-0.1]          0          0.0         [ >= 0.0]    -nan          0.0
+  [0.1-0.2]          0          0.0         [ >= 0.1]    -nan          0.0
+  [0.2-0.3]          0          0.0         [ >= 0.2]    -nan          0.0
+  [0.3-0.4]          0          0.0         [ >= 0.3]    -nan          0.0
+  [0.4-0.5]          0          0.0         [ >= 0.4]    -nan          0.0
+  [0.5-0.6]          0          0.0         [ >= 0.5]    -nan          0.0
+  [0.6-0.7]          0          0.0         [ >= 0.6]    -nan          0.0
+  [0.7-0.8]          0          0.0         [ >= 0.7]    -nan          0.0
+  [0.8-0.9]          0          0.0         [ >= 0.8]    -nan          0.0
+  [0.9-1.0]          0          0.0         [ >= 0.9]    -nan          0.0
+
+Have a nice day!
+## 6 SAVE RESULTS: In human-readable format #######################
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+Opening genotype files                                      : [                              ] (0/1,0.0s,0.0/s)Opening genotype files                                      : [******************************] (1/1,0.0s,349.7/s)Opening genotype files                                      : [******************************] (1/1,0.0s,279.3/s)
+========================================================================
+
+Input SAMPLE file(s):         Output SAMPLE file:             "(n/a)".
+Sample exclusion output file:   "(n/a)".
+
+Input GEN file(s):
+                                                    (not computed)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/output.gen"
+                                         (total 1 sources, number of snps not computed).
+                      Number of samples: 3
+Output GEN file(s):             "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/output.vcf"
+Output SNP position file(s):    (n/a)
+Sample filter:                  .
+# of samples in input files:    3.
+# of samples after filtering:   3 (0 filtered out).
+
+========================================================================
+
+VCFFormatSNPDataSink::write_header(): FORMAT entries are:
+##FORMAT=<ID=GP,Type=Float,Number=G,Description="Genotype call probabilities">
+
+Processing SNPs                                             :  (0/?,0.0s,0.0/s)Processing SNPs                                             :  (1/?,0.0s,515.5/s)
+Total: 1SNPs.
+========================================================================
+
+Number of SNPs:
+                     -- in input file(s):                 (not computed).
+ -- in output file(s):                1
+
+Number of samples in input file(s):   3.
+
+Output GEN files:                     (1      snps)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0015/output.vcf"
+                                      (total 1 snps).
+========================================================================
+
+
+Thank you for using qctool.
+-------------------------------------------------------------------------
+HsInv0016
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.ubfeSj
+Merging 1 temporary files
+Cleaning
+Done
+## Make IMPUTE2 desired input ###########################################
+10 -- 58930645
+10 -- 59082486
+10 -- 59241249
+10 -- 59417078
+10 -- 59590615
+
+--0 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr10_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr10_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+10 -- 59069368
+10 -- 59363811
+10 -- 59689666
+
+--86 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1002481138.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/reference.gen.gz -g tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/input.gen.gz -int 59257464 59257464 -k_hap 500 -o tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr10_combined_b37.txt -strand_g data/use/avery_individuals/nc6nc22nc25nc26/
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/reference.gen.gz
+          Panel 2 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/input.gen.gz
+        Panel 2 strand info: data/use/avery_individuals/nc6nc22nc25nc26/
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr10_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/output
+                SNP QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/output_info
+             sample QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/output_info_by_sample
+                run summary: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/output_summary
+                warning log: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr10_combined_b37.txt]
+ --read 811 SNPs in the analysis interval+buffer region
+
+-reading strand info for Panel 2 from -strand_g file
+ --filename=[data/use/avery_individuals/nc6nc22nc25nc26/]
+ --read strand info for 0 SNPs in the analysis region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/input.gen.gz]
+ --detected 3 individuals
+ --read 1557 SNPs in the analysis interval+buffer region
+
+-using -strand_g file to align Panel 2 allele labels
+ --flipped strand at 0 out of 0 SNPs
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/reference.gen.gz]
+ --detected 30 individuals
+ --read 3002 SNPs in the analysis interval+buffer region
+
+-removing SNPs that violate the hierarchical data requirements
+ --no SNPs removed
+
+-removing reference-only SNPs from buffer region
+ --removed 1659 SNPs
+
+-checking strand alignment between Panel 2 and Panel 1 by allele labels
+ --flipped strand due to allele mismatch at 0 out of 1557 SNPs in Panel 2
+
+-aligning allele labels between panels
+
+-removing non-aligned genotyped SNPs
+ --removed 0 out of 1343 SNPs with data in multiple panels
+
+--------------
+ Data summary 
+--------------
+
+[type 0 = SNP in Panel 0 only]
+[type 1 = SNP in Panel 1]
+[type 2 = SNP in Panel 2 and all ref panels]
+[type 3 = SNP in Panel 2 only]
+
+-Upstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --531 type 2 SNPs
+ --70 type 3 SNPs
+ --601 total SNPs
+
+-Downstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --811 type 2 SNPs
+ --145 type 3 SNPs
+ --956 total SNPs
+
+-Analysis region (as defined by -int argument)
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+ --1 total SNPs
+
+-Output file
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+
+-In total, 1558 SNPs will be used in the analysis, including 1342 Panel 2 SNPs
+
+-making initial haplotype guesses for Panel 2 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-making initial haplotype guesses for Panel 1 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-setting storage space
+-setting mutation matrices
+-setting switch rates
+
+----------------
+ Run parameters 
+----------------
+
+        reference diplotypes: 30 [Panel 1]
+           study individuals: 3 [Panel 2]
+           sequence interval: [59257464,59257464]
+                      buffer: 250 kb
+                          Ne: 20000
+           input call thresh: 0.900
+     burn-in MCMC iterations: 10
+       total MCMC iterations: 30 (20 used for inference)
+      HMM states for phasing: 58 [Panel 1]; 64 [Panel 2]
+   HMM states for imputation: 60 [Panel 1->2]
+
+---------
+ Run log 
+---------
+
+MCMC iteration [1/30]
+
+MCMC iteration [2/30]
+
+MCMC iteration [3/30]
+
+RESETTING PARAMETERS FOR "SURROGATE FAMILY" MODELING
+-setting mutation matrices
+-setting switch rates
+
+MCMC iteration [4/30]
+
+MCMC iteration [5/30]
+
+MCMC iteration [6/30]
+
+MCMC iteration [7/30]
+
+MCMC iteration [8/30]
+
+MCMC iteration [9/30]
+
+MCMC iteration [10/30]
+
+MCMC iteration [11/30]
+
+MCMC iteration [12/30]
+
+MCMC iteration [13/30]
+
+MCMC iteration [14/30]
+
+MCMC iteration [15/30]
+
+MCMC iteration [16/30]
+
+MCMC iteration [17/30]
+
+MCMC iteration [18/30]
+
+MCMC iteration [19/30]
+
+MCMC iteration [20/30]
+
+MCMC iteration [21/30]
+
+MCMC iteration [22/30]
+
+MCMC iteration [23/30]
+
+MCMC iteration [24/30]
+
+MCMC iteration [25/30]
+
+MCMC iteration [26/30]
+
+MCMC iteration [27/30]
+
+MCMC iteration [28/30]
+
+MCMC iteration [29/30]
+
+MCMC iteration [30/30]
+
+
+diploid sampling success rate: 0.987
+
+haploid sampling success rate: (no haploid sampling performed)
+
+
+--------------------------------
+ Imputation accuracy assessment 
+--------------------------------
+
+The table below is based on an internal cross-validation that is performed during each IMPUTE2 run. For this analysis, the program masks the genotypes of one variant at a time in the study data (Panel 2) and imputes the masked genotypes by using the remaining study and reference data. The imputed genotypes are then compared with the original genotypes to produce the concordance statistics shown in the table. You can learn more about this procedure and the contents of the table at http://mathgen.stats.ox.ac.uk/impute/concordance_table_description.html.
+
+In the current analysis, IMPUTE2 masked, imputed, and evaluated 0 genotypes that were called with high confidence (maximum probability >= 0.90) in the Panel 2 input file (-g or -known_haps_g).
+
+When the masked study genotypes were imputed with reference data from Panel 1, the concordance between original and imputed genotypes was as follows:
+
+  Interval  #Genotypes %Concordance         Interval  %Called %Concordance
+  [0.0-0.1]          0          0.0         [ >= 0.0]    -nan          0.0
+  [0.1-0.2]          0          0.0         [ >= 0.1]    -nan          0.0
+  [0.2-0.3]          0          0.0         [ >= 0.2]    -nan          0.0
+  [0.3-0.4]          0          0.0         [ >= 0.3]    -nan          0.0
+  [0.4-0.5]          0          0.0         [ >= 0.4]    -nan          0.0
+  [0.5-0.6]          0          0.0         [ >= 0.5]    -nan          0.0
+  [0.6-0.7]          0          0.0         [ >= 0.6]    -nan          0.0
+  [0.7-0.8]          0          0.0         [ >= 0.7]    -nan          0.0
+  [0.8-0.9]          0          0.0         [ >= 0.8]    -nan          0.0
+  [0.9-1.0]          0          0.0         [ >= 0.9]    -nan          0.0
+
+Have a nice day!
+## 6 SAVE RESULTS: In human-readable format #######################
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+Opening genotype files                                      : [                              ] (0/1,0.0s,0.0/s)Opening genotype files                                      : [******************************] (1/1,0.0s,367.6/s)Opening genotype files                                      : [******************************] (1/1,0.0s,290.7/s)
+========================================================================
+
+Input SAMPLE file(s):         Output SAMPLE file:             "(n/a)".
+Sample exclusion output file:   "(n/a)".
+
+Input GEN file(s):
+                                                    (not computed)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/output.gen"
+                                         (total 1 sources, number of snps not computed).
+                      Number of samples: 3
+Output GEN file(s):             "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/output.vcf"
+Output SNP position file(s):    (n/a)
+Sample filter:                  .
+# of samples in input files:    3.
+# of samples after filtering:   3 (0 filtered out).
+
+========================================================================
+
+VCFFormatSNPDataSink::write_header(): FORMAT entries are:
+##FORMAT=<ID=GP,Type=Float,Number=G,Description="Genotype call probabilities">
+
+Processing SNPs                                             :  (0/?,0.0s,0.0/s)Processing SNPs                                             :  (1/?,0.0s,471.7/s)
+Total: 1SNPs.
+========================================================================
+
+Number of SNPs:
+                     -- in input file(s):                 (not computed).
+ -- in output file(s):                1
+
+Number of samples in input file(s):   3.
+
+Output GEN files:                     (1      snps)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0016/output.vcf"
+                                      (total 1 snps).
+========================================================================
+
+
+Thank you for using qctool.
+-------------------------------------------------------------------------
+HsInv0030
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.9rKZsM
+Merging 1 temporary files
+Cleaning
+Done
+## Make IMPUTE2 desired input ###########################################
+16 -- 74861868
+16 -- 74944162
+16 -- 75068250
+16 -- 75205141
+16 -- 75301196
+16 -- 75414094
+16 -- 75526669
+16 -- 75663011
+
+--0 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr16_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr16_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+16 -- 75044871
+16 -- 75337332
+16 -- 75623586
+
+--138 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 371297987.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/reference.gen.gz -g tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/input.gen.gz -int 75248378 75248378 -k_hap 500 -o tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt -strand_g data/use/avery_individuals/nc6nc22nc25nc26/
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/reference.gen.gz
+          Panel 2 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/input.gen.gz
+        Panel 2 strand info: data/use/avery_individuals/nc6nc22nc25nc26/
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/output
+                SNP QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/output_info
+             sample QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/output_info_by_sample
+                run summary: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/output_summary
+                warning log: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt]
+ --read 418 SNPs in the analysis interval+buffer region
+
+-reading strand info for Panel 2 from -strand_g file
+ --filename=[data/use/avery_individuals/nc6nc22nc25nc26/]
+ --read strand info for 0 SNPs in the analysis region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/input.gen.gz]
+ --detected 3 individuals
+ --read 1644 SNPs in the analysis interval+buffer region
+
+-using -strand_g file to align Panel 2 allele labels
+ --flipped strand at 0 out of 0 SNPs
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/reference.gen.gz]
+ --detected 133 individuals
+ --read 4315 SNPs in the analysis interval+buffer region
+
+-removing SNPs that violate the hierarchical data requirements
+ --no SNPs removed
+
+-removing reference-only SNPs from buffer region
+ --removed 2762 SNPs
+
+-checking strand alignment between Panel 2 and Panel 1 by allele labels
+ --flipped strand due to allele mismatch at 0 out of 1644 SNPs in Panel 2
+
+-aligning allele labels between panels
+
+-removing non-aligned genotyped SNPs
+ --removed 0 out of 1553 SNPs with data in multiple panels
+
+--------------
+ Data summary 
+--------------
+
+[type 0 = SNP in Panel 0 only]
+[type 1 = SNP in Panel 1]
+[type 2 = SNP in Panel 2 and all ref panels]
+[type 3 = SNP in Panel 2 only]
+
+-Upstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --743 type 2 SNPs
+ --55 type 3 SNPs
+ --798 total SNPs
+
+-Downstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --809 type 2 SNPs
+ --37 type 3 SNPs
+ --846 total SNPs
+
+-Analysis region (as defined by -int argument)
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+ --1 total SNPs
+
+-Output file
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+
+-In total, 1645 SNPs will be used in the analysis, including 1552 Panel 2 SNPs
+
+-making initial haplotype guesses for Panel 2 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-making initial haplotype guesses for Panel 1 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-setting storage space
+-setting mutation matrices
+-setting switch rates
+
+----------------
+ Run parameters 
+----------------
+
+        reference diplotypes: 133 [Panel 1]
+           study individuals: 3 [Panel 2]
+           sequence interval: [75248378,75248378]
+                      buffer: 250 kb
+                          Ne: 20000
+           input call thresh: 0.900
+     burn-in MCMC iterations: 10
+       total MCMC iterations: 30 (20 used for inference)
+      HMM states for phasing: 80 [Panel 1]; 80 [Panel 2]
+   HMM states for imputation: 266 [Panel 1->2]
+
+---------
+ Run log 
+---------
+
+MCMC iteration [1/30]
+
+MCMC iteration [2/30]
+
+MCMC iteration [3/30]
+
+RESETTING PARAMETERS FOR "SURROGATE FAMILY" MODELING
+-setting mutation matrices
+-setting switch rates
+
+MCMC iteration [4/30]
+
+MCMC iteration [5/30]
+
+MCMC iteration [6/30]
+
+MCMC iteration [7/30]
+
+MCMC iteration [8/30]
+
+MCMC iteration [9/30]
+
+MCMC iteration [10/30]
+
+MCMC iteration [11/30]
+
+MCMC iteration [12/30]
+
+MCMC iteration [13/30]
+
+MCMC iteration [14/30]
+
+MCMC iteration [15/30]
+
+MCMC iteration [16/30]
+
+MCMC iteration [17/30]
+
+MCMC iteration [18/30]
+
+MCMC iteration [19/30]
+
+MCMC iteration [20/30]
+
+MCMC iteration [21/30]
+
+MCMC iteration [22/30]
+
+MCMC iteration [23/30]
+
+MCMC iteration [24/30]
+
+MCMC iteration [25/30]
+
+MCMC iteration [26/30]
+
+MCMC iteration [27/30]
+
+MCMC iteration [28/30]
+
+MCMC iteration [29/30]
+
+MCMC iteration [30/30]
+
+
+diploid sampling success rate: 0.994
+
+haploid sampling success rate: (no haploid sampling performed)
+
+
+--------------------------------
+ Imputation accuracy assessment 
+--------------------------------
+
+The table below is based on an internal cross-validation that is performed during each IMPUTE2 run. For this analysis, the program masks the genotypes of one variant at a time in the study data (Panel 2) and imputes the masked genotypes by using the remaining study and reference data. The imputed genotypes are then compared with the original genotypes to produce the concordance statistics shown in the table. You can learn more about this procedure and the contents of the table at http://mathgen.stats.ox.ac.uk/impute/concordance_table_description.html.
+
+In the current analysis, IMPUTE2 masked, imputed, and evaluated 0 genotypes that were called with high confidence (maximum probability >= 0.90) in the Panel 2 input file (-g or -known_haps_g).
+
+When the masked study genotypes were imputed with reference data from Panel 1, the concordance between original and imputed genotypes was as follows:
+
+  Interval  #Genotypes %Concordance         Interval  %Called %Concordance
+  [0.0-0.1]          0          0.0         [ >= 0.0]    -nan          0.0
+  [0.1-0.2]          0          0.0         [ >= 0.1]    -nan          0.0
+  [0.2-0.3]          0          0.0         [ >= 0.2]    -nan          0.0
+  [0.3-0.4]          0          0.0         [ >= 0.3]    -nan          0.0
+  [0.4-0.5]          0          0.0         [ >= 0.4]    -nan          0.0
+  [0.5-0.6]          0          0.0         [ >= 0.5]    -nan          0.0
+  [0.6-0.7]          0          0.0         [ >= 0.6]    -nan          0.0
+  [0.7-0.8]          0          0.0         [ >= 0.7]    -nan          0.0
+  [0.8-0.9]          0          0.0         [ >= 0.8]    -nan          0.0
+  [0.9-1.0]          0          0.0         [ >= 0.9]    -nan          0.0
+
+Have a nice day!
+## 6 SAVE RESULTS: In human-readable format #######################
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+Opening genotype files                                      : [                              ] (0/1,0.0s,0.0/s)Opening genotype files                                      : [******************************] (1/1,0.0s,307.7/s)Opening genotype files                                      : [******************************] (1/1,0.0s,242.7/s)
+========================================================================
+
+Input SAMPLE file(s):         Output SAMPLE file:             "(n/a)".
+Sample exclusion output file:   "(n/a)".
+
+Input GEN file(s):
+                                                    (not computed)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/output.gen"
+                                         (total 1 sources, number of snps not computed).
+                      Number of samples: 3
+Output GEN file(s):             "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/output.vcf"
+Output SNP position file(s):    (n/a)
+Sample filter:                  .
+# of samples in input files:    3.
+# of samples after filtering:   3 (0 filtered out).
+
+========================================================================
+
+VCFFormatSNPDataSink::write_header(): FORMAT entries are:
+##FORMAT=<ID=GP,Type=Float,Number=G,Description="Genotype call probabilities">
+
+Processing SNPs                                             :  (0/?,0.0s,0.0/s)Processing SNPs                                             :  (1/?,0.0s,529.1/s)
+Total: 1SNPs.
+========================================================================
+
+Number of SNPs:
+                     -- in input file(s):                 (not computed).
+ -- in output file(s):                1
+
+Number of samples in input file(s):   3.
+
+Output GEN files:                     (1      snps)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0030/output.vcf"
+                                      (total 1 snps).
+========================================================================
+
+
+Thank you for using qctool.
+-------------------------------------------------------------------------
+HsInv0031
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.qDm1SW
+Merging 1 temporary files
+Cleaning
+Done
+## Make IMPUTE2 desired input ###########################################
+16 -- 84777652
+16 -- 84857552
+16 -- 84931113
+16 -- 85012468
+16 -- 85104486
+16 -- 85194353
+16 -- 85294571
+16 -- 85383526
+16 -- 85468755
+16 -- 85556089
+16 -- 85668990
+
+--0 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr16_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr16_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+16 -- 84952901
+16 -- 85168870
+16 -- 85418210
+
+--116 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 603714706.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0031/reference.gen.gz -g tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0031/input.gen.gz -int 85189259 85189259 -k_hap 500 -o tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0031/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt -strand_g data/use/avery_individuals/nc6nc22nc25nc26/
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0031/reference.gen.gz
+          Panel 2 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0031/input.gen.gz
+        Panel 2 strand info: data/use/avery_individuals/nc6nc22nc25nc26/
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0031/output
+                SNP QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0031/output_info
+             sample QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0031/output_info_by_sample
+                run summary: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0031/output_summary
+                warning log: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0031/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt]
+ --read 764 SNPs in the analysis interval+buffer region
+
+-reading strand info for Panel 2 from -strand_g file
+ --filename=[data/use/avery_individuals/nc6nc22nc25nc26/]
+ --read strand info for 0 SNPs in the analysis region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0031/input.gen.gz]
+ --detected 3 individuals
+ --read 2092 SNPs in the analysis interval+buffer region
+
+-using -strand_g file to align Panel 2 allele labels
+ --flipped strand at 0 out of 0 SNPs
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0031/reference.gen.gz]
+ --detected 132 individuals
+ --read 5502 SNPs in the analysis interval+buffer region
+
+-removing SNPs that violate the hierarchical data requirements
+ --no SNPs removed
+
+-removing reference-only SNPs from buffer region
+ --removed 3539 SNPs
+
+-checking strand alignment between Panel 2 and Panel 1 by allele labels
+ --flipped strand due to allele mismatch at 0 out of 2092 SNPs in Panel 2
+
+-aligning allele labels between panels
+
+-removing non-aligned genotyped SNPs
+ --removed 0 out of 1963 SNPs with data in multiple panels
+
+--------------
+ Data summary 
+--------------
+
+[type 0 = SNP in Panel 0 only]
+[type 1 = SNP in Panel 1]
+[type 2 = SNP in Panel 2 and all ref panels]
+[type 3 = SNP in Panel 2 only]
+
+-Upstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --1073 type 2 SNPs
+ --57 type 3 SNPs
+ --1130 total SNPs
+
+-Downstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --889 type 2 SNPs
+ --73 type 3 SNPs
+ --962 total SNPs
+
+-Analysis region (as defined by -int argument)
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+ --1 total SNPs
+
+-Output file
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+
+-In total, 2093 SNPs will be used in the analysis, including 1962 Panel 2 SNPs
+
+-making initial haplotype guesses for Panel 2 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-making initial haplotype guesses for Panel 1 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-setting storage space
+-setting mutation matrices
+-setting switch rates
+
+----------------
+ Run parameters 
+----------------
+
+        reference diplotypes: 132 [Panel 1]
+           study individuals: 3 [Panel 2]
+           sequence interval: [85189259,85189259]
+                      buffer: 250 kb
+                          Ne: 20000
+           input call thresh: 0.900
+     burn-in MCMC iterations: 10
+       total MCMC iterations: 30 (20 used for inference)
+      HMM states for phasing: 80 [Panel 1]; 80 [Panel 2]
+   HMM states for imputation: 264 [Panel 1->2]
+
+---------
+ Run log 
+---------
+
+MCMC iteration [1/30]
+
+MCMC iteration [2/30]
+
+MCMC iteration [3/30]
+
+RESETTING PARAMETERS FOR "SURROGATE FAMILY" MODELING
+-setting mutation matrices
+-setting switch rates
+
+MCMC iteration [4/30]
+-------------------------------------------------------------------------
+HsInv1057
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.eqLm0A
+Merging 1 temporary files
+Cleaning
+Done
+## Make IMPUTE2 desired input ###########################################
+6 -- 167234870
+6 -- 167384756
+6 -- 167595418
+6 -- 167701409
+6 -- 167822090
+6 -- 168061452
+6 -- 168240455
+
+--0 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr6_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr6_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+6 -- 167357501
+6 -- 167628376
+6 -- 167822832
+6 -- 168193213
+
+--232 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 688124967.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/reference.gen.gz -g tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/input.gen.gz -int 167692186 167692186 -k_hap 500 -o tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr6_combined_b37.txt -strand_g data/use/avery_individuals/nc6nc22nc25nc26/
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/reference.gen.gz
+          Panel 2 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/input.gen.gz
+        Panel 2 strand info: data/use/avery_individuals/nc6nc22nc25nc26/
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr6_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/output
+                SNP QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/output_info
+             sample QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/output_info_by_sample
+                run summary: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/output_summary
+                warning log: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr6_combined_b37.txt]
+ --read 730 SNPs in the analysis interval+buffer region
+
+-reading strand info for Panel 2 from -strand_g file
+ --filename=[data/use/avery_individuals/nc6nc22nc25nc26/]
+ --read strand info for 0 SNPs in the analysis region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/input.gen.gz]
+ --detected 3 individuals
+ --read 1953 SNPs in the analysis interval+buffer region
+
+-using -strand_g file to align Panel 2 allele labels
+ --flipped strand at 0 out of 0 SNPs
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/reference.gen.gz]
+ --detected 29 individuals
+ --read 3543 SNPs in the analysis interval+buffer region
+
+-removing SNPs that violate the hierarchical data requirements
+ --no SNPs removed
+
+-removing reference-only SNPs from buffer region
+ --removed 1891 SNPs
+
+-checking strand alignment between Panel 2 and Panel 1 by allele labels
+ --flipped strand due to allele mismatch at 0 out of 1953 SNPs in Panel 2
+
+-aligning allele labels between panels
+
+-removing non-aligned genotyped SNPs
+ --removed 0 out of 1652 SNPs with data in multiple panels
+
+--------------
+ Data summary 
+--------------
+
+[type 0 = SNP in Panel 0 only]
+[type 1 = SNP in Panel 1]
+[type 2 = SNP in Panel 2 and all ref panels]
+[type 3 = SNP in Panel 2 only]
+
+-Upstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --765 type 2 SNPs
+ --144 type 3 SNPs
+ --909 total SNPs
+
+-Downstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --886 type 2 SNPs
+ --158 type 3 SNPs
+ --1044 total SNPs
+
+-Analysis region (as defined by -int argument)
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+ --1 total SNPs
+
+-Output file
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+
+-In total, 1954 SNPs will be used in the analysis, including 1651 Panel 2 SNPs
+
+-making initial haplotype guesses for Panel 2 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-making initial haplotype guesses for Panel 1 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-setting storage space
+-setting mutation matrices
+-setting switch rates
+
+----------------
+ Run parameters 
+----------------
+
+        reference diplotypes: 29 [Panel 1]
+           study individuals: 3 [Panel 2]
+           sequence interval: [167692186,167692186]
+                      buffer: 250 kb
+                          Ne: 20000
+           input call thresh: 0.900
+     burn-in MCMC iterations: 10
+       total MCMC iterations: 30 (20 used for inference)
+      HMM states for phasing: 56 [Panel 1]; 62 [Panel 2]
+   HMM states for imputation: 58 [Panel 1->2]
+
+---------
+ Run log 
+---------
+
+MCMC iteration [1/30]
+
+MCMC iteration [2/30]
+
+MCMC iteration [3/30]
+
+RESETTING PARAMETERS FOR "SURROGATE FAMILY" MODELING
+-setting mutation matrices
+-setting switch rates
+
+MCMC iteration [4/30]
+
+MCMC iteration [5/30]
+
+MCMC iteration [6/30]
+
+MCMC iteration [7/30]
+
+MCMC iteration [8/30]
+
+MCMC iteration [9/30]
+
+MCMC iteration [10/30]
+
+MCMC iteration [11/30]
+
+MCMC iteration [12/30]
+
+MCMC iteration [13/30]
+
+MCMC iteration [14/30]
+
+MCMC iteration [15/30]
+
+MCMC iteration [16/30]
+
+MCMC iteration [17/30]
+
+MCMC iteration [18/30]
+
+MCMC iteration [19/30]
+
+MCMC iteration [20/30]
+
+MCMC iteration [21/30]
+
+MCMC iteration [22/30]
+
+MCMC iteration [23/30]
+
+MCMC iteration [24/30]
+
+MCMC iteration [25/30]
+
+MCMC iteration [26/30]
+
+MCMC iteration [27/30]
+
+MCMC iteration [28/30]
+
+MCMC iteration [29/30]
+
+MCMC iteration [30/30]
+
+
+diploid sampling success rate: 0.974
+
+haploid sampling success rate: (no haploid sampling performed)
+
+
+--------------------------------
+ Imputation accuracy assessment 
+--------------------------------
+
+The table below is based on an internal cross-validation that is performed during each IMPUTE2 run. For this analysis, the program masks the genotypes of one variant at a time in the study data (Panel 2) and imputes the masked genotypes by using the remaining study and reference data. The imputed genotypes are then compared with the original genotypes to produce the concordance statistics shown in the table. You can learn more about this procedure and the contents of the table at http://mathgen.stats.ox.ac.uk/impute/concordance_table_description.html.
+
+In the current analysis, IMPUTE2 masked, imputed, and evaluated 0 genotypes that were called with high confidence (maximum probability >= 0.90) in the Panel 2 input file (-g or -known_haps_g).
+
+When the masked study genotypes were imputed with reference data from Panel 1, the concordance between original and imputed genotypes was as follows:
+
+  Interval  #Genotypes %Concordance         Interval  %Called %Concordance
+  [0.0-0.1]          0          0.0         [ >= 0.0]    -nan          0.0
+  [0.1-0.2]          0          0.0         [ >= 0.1]    -nan          0.0
+  [0.2-0.3]          0          0.0         [ >= 0.2]    -nan          0.0
+  [0.3-0.4]          0          0.0         [ >= 0.3]    -nan          0.0
+  [0.4-0.5]          0          0.0         [ >= 0.4]    -nan          0.0
+  [0.5-0.6]          0          0.0         [ >= 0.5]    -nan          0.0
+  [0.6-0.7]          0          0.0         [ >= 0.6]    -nan          0.0
+  [0.7-0.8]          0          0.0         [ >= 0.7]    -nan          0.0
+  [0.8-0.9]          0          0.0         [ >= 0.8]    -nan          0.0
+  [0.9-1.0]          0          0.0         [ >= 0.9]    -nan          0.0
+
+Have a nice day!
+## 6 SAVE RESULTS: In human-readable format #######################
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+Opening genotype files                                      : [                              ] (0/1,0.0s,0.0/s)Opening genotype files                                      : [******************************] (1/1,0.0s,369.0/s)Opening genotype files                                      : [******************************] (1/1,0.0s,291.5/s)
+========================================================================
+
+Input SAMPLE file(s):         Output SAMPLE file:             "(n/a)".
+Sample exclusion output file:   "(n/a)".
+
+Input GEN file(s):
+                                                    (not computed)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/output.gen"
+                                         (total 1 sources, number of snps not computed).
+                      Number of samples: 3
+Output GEN file(s):             "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/output.vcf"
+Output SNP position file(s):    (n/a)
+Sample filter:                  .
+# of samples in input files:    3.
+# of samples after filtering:   3 (0 filtered out).
+
+========================================================================
+
+VCFFormatSNPDataSink::write_header(): FORMAT entries are:
+##FORMAT=<ID=GP,Type=Float,Number=G,Description="Genotype call probabilities">
+
+Processing SNPs                                             :  (0/?,0.0s,0.0/s)Processing SNPs                                             :  (1/?,0.0s,537.6/s)
+Total: 1SNPs.
+========================================================================
+
+Number of SNPs:
+                     -- in input file(s):                 (not computed).
+ -- in output file(s):                1
+
+Number of samples in input file(s):   3.
+
+Output GEN files:                     (1      snps)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1057/output.vcf"
+                                      (total 1 snps).
+========================================================================
+
+
+Thank you for using qctool.
+-------------------------------------------------------------------------
+HsInv0045
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.PV037v
+Merging 1 temporary files
+Cleaning
+Done
+## Make IMPUTE2 desired input ###########################################
+21 -- 27652621
+21 -- 27780051
+21 -- 27919932
+21 -- 28038950
+21 -- 28146010
+21 -- 28272351
+21 -- 28412123
+
+--0 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+## Make IMPUTE2 desired input ###########################################
+21 -- 27873895
+21 -- 28148730
+21 -- 28499343
+
+--77 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 474726368.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/reference.gen.gz -g tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/input.gen.gz -int 28021157 28021157 -k_hap 500 -o tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr21_combined_b37.txt -strand_g data/use/avery_individuals/nc6nc22nc25nc26/
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/reference.gen.gz
+          Panel 2 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/input.gen.gz
+        Panel 2 strand info: data/use/avery_individuals/nc6nc22nc25nc26/
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr21_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/output
+                SNP QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/output_info
+             sample QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/output_info_by_sample
+                run summary: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/output_summary
+                warning log: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr21_combined_b37.txt]
+ --read 804 SNPs in the analysis interval+buffer region
+
+-reading strand info for Panel 2 from -strand_g file
+ --filename=[data/use/avery_individuals/nc6nc22nc25nc26/]
+ --read strand info for 0 SNPs in the analysis region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/input.gen.gz]
+ --detected 3 individuals
+ --read 1653 SNPs in the analysis interval+buffer region
+
+-using -strand_g file to align Panel 2 allele labels
+ --flipped strand at 0 out of 0 SNPs
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/reference.gen.gz]
+ --detected 133 individuals
+ --read 4070 SNPs in the analysis interval+buffer region
+
+-removing SNPs that violate the hierarchical data requirements
+ --no SNPs removed
+
+-removing reference-only SNPs from buffer region
+ --removed 2494 SNPs
+
+-checking strand alignment between Panel 2 and Panel 1 by allele labels
+ --flipped strand due to allele mismatch at 0 out of 1653 SNPs in Panel 2
+
+-aligning allele labels between panels
+
+-removing non-aligned genotyped SNPs
+ --removed 0 out of 1576 SNPs with data in multiple panels
+
+--------------
+ Data summary 
+--------------
+
+[type 0 = SNP in Panel 0 only]
+[type 1 = SNP in Panel 1]
+[type 2 = SNP in Panel 2 and all ref panels]
+[type 3 = SNP in Panel 2 only]
+
+-Upstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --714 type 2 SNPs
+ --36 type 3 SNPs
+ --750 total SNPs
+
+-Downstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --861 type 2 SNPs
+ --42 type 3 SNPs
+ --903 total SNPs
+
+-Analysis region (as defined by -int argument)
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+ --1 total SNPs
+
+-Output file
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+
+-In total, 1654 SNPs will be used in the analysis, including 1575 Panel 2 SNPs
+
+-making initial haplotype guesses for Panel 2 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-making initial haplotype guesses for Panel 1 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-setting storage space
+-setting mutation matrices
+-setting switch rates
+
+----------------
+ Run parameters 
+----------------
+
+        reference diplotypes: 133 [Panel 1]
+           study individuals: 3 [Panel 2]
+           sequence interval: [28021157,28021157]
+                      buffer: 250 kb
+                          Ne: 20000
+           input call thresh: 0.900
+     burn-in MCMC iterations: 10
+       total MCMC iterations: 30 (20 used for inference)
+      HMM states for phasing: 80 [Panel 1]; 80 [Panel 2]
+   HMM states for imputation: 266 [Panel 1->2]
+
+---------
+ Run log 
+---------
+
+MCMC iteration [1/30]
+
+MCMC iteration [2/30]
+
+MCMC iteration [3/30]
+
+RESETTING PARAMETERS FOR "SURROGATE FAMILY" MODELING
+-setting mutation matrices
+-setting switch rates
+
+MCMC iteration [4/30]
+
+MCMC iteration [5/30]
+
+MCMC iteration [6/30]
+
+MCMC iteration [7/30]
+
+MCMC iteration [8/30]
+
+MCMC iteration [9/30]
+
+MCMC iteration [10/30]
+
+MCMC iteration [11/30]
+
+MCMC iteration [12/30]
+
+MCMC iteration [13/30]
+
+MCMC iteration [14/30]
+
+MCMC iteration [15/30]
+
+MCMC iteration [16/30]
+
+MCMC iteration [17/30]
+
+MCMC iteration [18/30]
+
+MCMC iteration [19/30]
+
+MCMC iteration [20/30]
+
+MCMC iteration [21/30]
+
+MCMC iteration [22/30]
+
+MCMC iteration [23/30]
+
+MCMC iteration [24/30]
+
+MCMC iteration [25/30]
+
+MCMC iteration [26/30]
+
+MCMC iteration [27/30]
+
+MCMC iteration [28/30]
+
+MCMC iteration [29/30]
+
+MCMC iteration [30/30]
+
+
+diploid sampling success rate: 0.986
+
+haploid sampling success rate: (no haploid sampling performed)
+
+
+--------------------------------
+ Imputation accuracy assessment 
+--------------------------------
+
+The table below is based on an internal cross-validation that is performed during each IMPUTE2 run. For this analysis, the program masks the genotypes of one variant at a time in the study data (Panel 2) and imputes the masked genotypes by using the remaining study and reference data. The imputed genotypes are then compared with the original genotypes to produce the concordance statistics shown in the table. You can learn more about this procedure and the contents of the table at http://mathgen.stats.ox.ac.uk/impute/concordance_table_description.html.
+
+In the current analysis, IMPUTE2 masked, imputed, and evaluated 0 genotypes that were called with high confidence (maximum probability >= 0.90) in the Panel 2 input file (-g or -known_haps_g).
+
+When the masked study genotypes were imputed with reference data from Panel 1, the concordance between original and imputed genotypes was as follows:
+
+  Interval  #Genotypes %Concordance         Interval  %Called %Concordance
+  [0.0-0.1]          0          0.0         [ >= 0.0]    -nan          0.0
+  [0.1-0.2]          0          0.0         [ >= 0.1]    -nan          0.0
+  [0.2-0.3]          0          0.0         [ >= 0.2]    -nan          0.0
+  [0.3-0.4]          0          0.0         [ >= 0.3]    -nan          0.0
+  [0.4-0.5]          0          0.0         [ >= 0.4]    -nan          0.0
+  [0.5-0.6]          0          0.0         [ >= 0.5]    -nan          0.0
+  [0.6-0.7]          0          0.0         [ >= 0.6]    -nan          0.0
+  [0.7-0.8]          0          0.0         [ >= 0.7]    -nan          0.0
+  [0.8-0.9]          0          0.0         [ >= 0.8]    -nan          0.0
+  [0.9-1.0]          0          0.0         [ >= 0.9]    -nan          0.0
+
+Have a nice day!
+## 6 SAVE RESULTS: In human-readable format #######################
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+Opening genotype files                                      : [                              ] (0/1,0.0s,0.0/s)Opening genotype files                                      : [******************************] (1/1,0.0s,227.3/s)Opening genotype files                                      : [******************************] (1/1,0.0s,178.9/s)
+========================================================================
+
+Input SAMPLE file(s):         Output SAMPLE file:             "(n/a)".
+Sample exclusion output file:   "(n/a)".
+
+Input GEN file(s):
+                                                    (not computed)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/output.gen"
+                                         (total 1 sources, number of snps not computed).
+                      Number of samples: 3
+Output GEN file(s):             "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/output.vcf"
+Output SNP position file(s):    (n/a)
+Sample filter:                  .
+# of samples in input files:    3.
+# of samples after filtering:   3 (0 filtered out).
+
+========================================================================
+
+VCFFormatSNPDataSink::write_header(): FORMAT entries are:
+##FORMAT=<ID=GP,Type=Float,Number=G,Description="Genotype call probabilities">
+
+Processing SNPs                                             :  (0/?,0.0s,0.0/s)Processing SNPs                                             :  (1/?,0.0s,330.0/s)
+Total: 1SNPs.
+========================================================================
+
+Number of SNPs:
+                     -- in input file(s):                 (not computed).
+ -- in output file(s):                1
+
+Number of samples in input file(s):   3.
+
+Output GEN files:                     (1      snps)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0045/output.vcf"
+                                      (total 1 snps).
+========================================================================
+
+
+Thank you for using qctool.
+-------------------------------------------------------------------------
+HsInv0052nd
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.H0opsQ
+Merging 1 temporary files
+Cleaning
+Done
+## Make IMPUTE2 desired input ###########################################
+3 -- 162239892
+3 -- 162434317
+3 -- 162637969
+3 -- 162776472
+3 -- 163008252
+
+--0 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr3_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr3_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+3 -- 162265490
+3 -- 162545744
+3 -- 162747611
+
+--101 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1293580351.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/reference.gen.gz -g tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/input.gen.gz -int 162546619 162546619 -k_hap 500 -o tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt -strand_g data/use/avery_individuals/nc6nc22nc25nc26/
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/reference.gen.gz
+          Panel 2 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/input.gen.gz
+        Panel 2 strand info: data/use/avery_individuals/nc6nc22nc25nc26/
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/output
+                SNP QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/output_info
+             sample QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/output_info_by_sample
+                run summary: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/output_summary
+                warning log: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt]
+ --read 726 SNPs in the analysis interval+buffer region
+
+-reading strand info for Panel 2 from -strand_g file
+ --filename=[data/use/avery_individuals/nc6nc22nc25nc26/]
+ --read strand info for 0 SNPs in the analysis region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/input.gen.gz]
+ --detected 3 individuals
+ --read 2026 SNPs in the analysis interval+buffer region
+
+-using -strand_g file to align Panel 2 allele labels
+ --flipped strand at 0 out of 0 SNPs
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/reference.gen.gz]
+ --detected 30 individuals
+ --read 2815 SNPs in the analysis interval+buffer region
+
+-removing SNPs that violate the hierarchical data requirements
+ --no SNPs removed
+
+-removing reference-only SNPs from buffer region
+ --removed 892 SNPs
+
+-checking strand alignment between Panel 2 and Panel 1 by allele labels
+ --flipped strand due to allele mismatch at 0 out of 2026 SNPs in Panel 2
+
+-aligning allele labels between panels
+
+-removing non-aligned genotyped SNPs
+ --removed 0 out of 1923 SNPs with data in multiple panels
+
+--------------
+ Data summary 
+--------------
+
+[type 0 = SNP in Panel 0 only]
+[type 1 = SNP in Panel 1]
+[type 2 = SNP in Panel 2 and all ref panels]
+[type 3 = SNP in Panel 2 only]
+
+-Upstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --820 type 2 SNPs
+ --58 type 3 SNPs
+ --878 total SNPs
+
+-Downstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --1102 type 2 SNPs
+ --46 type 3 SNPs
+ --1148 total SNPs
+
+-Analysis region (as defined by -int argument)
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+ --1 total SNPs
+
+-Output file
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+
+-In total, 2027 SNPs will be used in the analysis, including 1922 Panel 2 SNPs
+
+-making initial haplotype guesses for Panel 2 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-making initial haplotype guesses for Panel 1 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-setting storage space
+-setting mutation matrices
+-setting switch rates
+
+----------------
+ Run parameters 
+----------------
+
+        reference diplotypes: 30 [Panel 1]
+           study individuals: 3 [Panel 2]
+           sequence interval: [162546619,162546619]
+                      buffer: 250 kb
+                          Ne: 20000
+           input call thresh: 0.900
+     burn-in MCMC iterations: 10
+       total MCMC iterations: 30 (20 used for inference)
+      HMM states for phasing: 58 [Panel 1]; 64 [Panel 2]
+   HMM states for imputation: 60 [Panel 1->2]
+
+---------
+ Run log 
+---------
+
+MCMC iteration [1/30]
+
+MCMC iteration [2/30]
+
+MCMC iteration [3/30]
+
+RESETTING PARAMETERS FOR "SURROGATE FAMILY" MODELING
+-setting mutation matrices
+-setting switch rates
+
+MCMC iteration [4/30]
+
+MCMC iteration [5/30]
+
+MCMC iteration [6/30]
+
+MCMC iteration [7/30]
+
+MCMC iteration [8/30]
+
+MCMC iteration [9/30]
+
+MCMC iteration [10/30]
+
+MCMC iteration [11/30]
+
+MCMC iteration [12/30]
+
+MCMC iteration [13/30]
+
+MCMC iteration [14/30]
+
+MCMC iteration [15/30]
+
+MCMC iteration [16/30]
+
+MCMC iteration [17/30]
+
+MCMC iteration [18/30]
+
+MCMC iteration [19/30]
+
+MCMC iteration [20/30]
+
+MCMC iteration [21/30]
+
+MCMC iteration [22/30]
+
+MCMC iteration [23/30]
+
+MCMC iteration [24/30]
+
+MCMC iteration [25/30]
+
+MCMC iteration [26/30]
+
+MCMC iteration [27/30]
+
+MCMC iteration [28/30]
+
+MCMC iteration [29/30]
+
+MCMC iteration [30/30]
+
+
+diploid sampling success rate: 0.995
+
+haploid sampling success rate: (no haploid sampling performed)
+
+
+--------------------------------
+ Imputation accuracy assessment 
+--------------------------------
+
+The table below is based on an internal cross-validation that is performed during each IMPUTE2 run. For this analysis, the program masks the genotypes of one variant at a time in the study data (Panel 2) and imputes the masked genotypes by using the remaining study and reference data. The imputed genotypes are then compared with the original genotypes to produce the concordance statistics shown in the table. You can learn more about this procedure and the contents of the table at http://mathgen.stats.ox.ac.uk/impute/concordance_table_description.html.
+
+In the current analysis, IMPUTE2 masked, imputed, and evaluated 0 genotypes that were called with high confidence (maximum probability >= 0.90) in the Panel 2 input file (-g or -known_haps_g).
+
+When the masked study genotypes were imputed with reference data from Panel 1, the concordance between original and imputed genotypes was as follows:
+
+  Interval  #Genotypes %Concordance         Interval  %Called %Concordance
+  [0.0-0.1]          0          0.0         [ >= 0.0]    -nan          0.0
+  [0.1-0.2]          0          0.0         [ >= 0.1]    -nan          0.0
+  [0.2-0.3]          0          0.0         [ >= 0.2]    -nan          0.0
+  [0.3-0.4]          0          0.0         [ >= 0.3]    -nan          0.0
+  [0.4-0.5]          0          0.0         [ >= 0.4]    -nan          0.0
+  [0.5-0.6]          0          0.0         [ >= 0.5]    -nan          0.0
+  [0.6-0.7]          0          0.0         [ >= 0.6]    -nan          0.0
+  [0.7-0.8]          0          0.0         [ >= 0.7]    -nan          0.0
+  [0.8-0.9]          0          0.0         [ >= 0.8]    -nan          0.0
+  [0.9-1.0]          0          0.0         [ >= 0.9]    -nan          0.0
+
+Have a nice day!
+## 6 SAVE RESULTS: In human-readable format #######################
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+Opening genotype files                                      : [                              ] (0/1,0.0s,0.0/s)Opening genotype files                                      : [******************************] (1/1,0.0s,339.0/s)Opening genotype files                                      : [******************************] (1/1,0.0s,272.5/s)
+========================================================================
+
+Input SAMPLE file(s):         Output SAMPLE file:             "(n/a)".
+Sample exclusion output file:   "(n/a)".
+
+Input GEN file(s):
+                                                    (not computed)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/output.gen"
+                                         (total 1 sources, number of snps not computed).
+                      Number of samples: 3
+Output GEN file(s):             "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/output.vcf"
+Output SNP position file(s):    (n/a)
+Sample filter:                  .
+# of samples in input files:    3.
+# of samples after filtering:   3 (0 filtered out).
+
+========================================================================
+
+VCFFormatSNPDataSink::write_header(): FORMAT entries are:
+##FORMAT=<ID=GP,Type=Float,Number=G,Description="Genotype call probabilities">
+
+Processing SNPs                                             :  (0/?,0.0s,0.0/s)Processing SNPs                                             :  (1/?,0.0s,534.8/s)
+Total: 1SNPs.
+========================================================================
+
+Number of SNPs:
+                     -- in input file(s):                 (not computed).
+ -- in output file(s):                1
+
+Number of samples in input file(s):   3.
+
+Output GEN files:                     (1      snps)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052nd/output.vcf"
+                                      (total 1 snps).
+========================================================================
+
+
+Thank you for using qctool.
+-------------------------------------------------------------------------
+HsInv0052si
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.HCxkza
+Merging 1 temporary files
+Cleaning
+Done
+## Make IMPUTE2 desired input ###########################################
+3 -- 162485244
+3 -- 162728425
+
+--0 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr3_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr3_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+3 -- 162265490
+3 -- 162545744
+3 -- 162747611
+
+--101 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 400740398.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/reference.gen.gz -g tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/input.gen.gz -int 162546619 162546619 -k_hap 500 -o tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt -strand_g data/use/avery_individuals/nc6nc22nc25nc26/
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/reference.gen.gz
+          Panel 2 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/input.gen.gz
+        Panel 2 strand info: data/use/avery_individuals/nc6nc22nc25nc26/
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/output
+                SNP QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/output_info
+             sample QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/output_info_by_sample
+                run summary: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/output_summary
+                warning log: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt]
+ --read 726 SNPs in the analysis interval+buffer region
+
+-reading strand info for Panel 2 from -strand_g file
+ --filename=[data/use/avery_individuals/nc6nc22nc25nc26/]
+ --read strand info for 0 SNPs in the analysis region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/input.gen.gz]
+ --detected 3 individuals
+ --read 2026 SNPs in the analysis interval+buffer region
+
+-using -strand_g file to align Panel 2 allele labels
+ --flipped strand at 0 out of 0 SNPs
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/reference.gen.gz]
+ --detected 6 individuals
+ --read 1796 SNPs in the analysis interval+buffer region
+
+-removing SNPs that violate the hierarchical data requirements
+ --no SNPs removed
+
+-removing reference-only SNPs from buffer region
+ --removed 405 SNPs
+
+-checking strand alignment between Panel 2 and Panel 1 by allele labels
+ --flipped strand due to allele mismatch at 0 out of 2026 SNPs in Panel 2
+
+-aligning allele labels between panels
+
+-removing non-aligned genotyped SNPs
+ --removed 0 out of 1391 SNPs with data in multiple panels
+
+--------------
+ Data summary 
+--------------
+
+[type 0 = SNP in Panel 0 only]
+[type 1 = SNP in Panel 1]
+[type 2 = SNP in Panel 2 and all ref panels]
+[type 3 = SNP in Panel 2 only]
+
+-Upstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --549 type 2 SNPs
+ --329 type 3 SNPs
+ --878 total SNPs
+
+-Downstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --841 type 2 SNPs
+ --307 type 3 SNPs
+ --1148 total SNPs
+
+-Analysis region (as defined by -int argument)
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+ --1 total SNPs
+
+-Output file
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+
+-In total, 2027 SNPs will be used in the analysis, including 1390 Panel 2 SNPs
+
+-making initial haplotype guesses for Panel 2 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-making initial haplotype guesses for Panel 1 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-setting storage space
+-setting mutation matrices
+-setting switch rates
+
+----------------
+ Run parameters 
+----------------
+
+        reference diplotypes: 6 [Panel 1]
+           study individuals: 3 [Panel 2]
+           sequence interval: [162546619,162546619]
+                      buffer: 250 kb
+                          Ne: 20000
+           input call thresh: 0.900
+     burn-in MCMC iterations: 10
+       total MCMC iterations: 30 (20 used for inference)
+      HMM states for phasing: 10 [Panel 1]; 16 [Panel 2]
+   HMM states for imputation: 12 [Panel 1->2]
+
+---------
+ Run log 
+---------
+
+MCMC iteration [1/30]
+
+MCMC iteration [2/30]
+
+MCMC iteration [3/30]
+
+RESETTING PARAMETERS FOR "SURROGATE FAMILY" MODELING
+-setting mutation matrices
+-setting switch rates
+
+MCMC iteration [4/30]
+
+MCMC iteration [5/30]
+
+MCMC iteration [6/30]
+
+MCMC iteration [7/30]
+
+MCMC iteration [8/30]
+
+MCMC iteration [9/30]
+
+MCMC iteration [10/30]
+
+MCMC iteration [11/30]
+
+MCMC iteration [12/30]
+
+MCMC iteration [13/30]
+
+MCMC iteration [14/30]
+
+MCMC iteration [15/30]
+
+MCMC iteration [16/30]
+
+MCMC iteration [17/30]
+
+MCMC iteration [18/30]
+
+MCMC iteration [19/30]
+
+MCMC iteration [20/30]
+
+MCMC iteration [21/30]
+
+MCMC iteration [22/30]
+
+MCMC iteration [23/30]
+
+MCMC iteration [24/30]
+
+MCMC iteration [25/30]
+
+MCMC iteration [26/30]
+
+MCMC iteration [27/30]
+
+MCMC iteration [28/30]
+
+MCMC iteration [29/30]
+
+MCMC iteration [30/30]
+
+
+diploid sampling success rate: 0.984
+
+haploid sampling success rate: (no haploid sampling performed)
+
+
+--------------------------------
+ Imputation accuracy assessment 
+--------------------------------
+
+The table below is based on an internal cross-validation that is performed during each IMPUTE2 run. For this analysis, the program masks the genotypes of one variant at a time in the study data (Panel 2) and imputes the masked genotypes by using the remaining study and reference data. The imputed genotypes are then compared with the original genotypes to produce the concordance statistics shown in the table. You can learn more about this procedure and the contents of the table at http://mathgen.stats.ox.ac.uk/impute/concordance_table_description.html.
+
+In the current analysis, IMPUTE2 masked, imputed, and evaluated 0 genotypes that were called with high confidence (maximum probability >= 0.90) in the Panel 2 input file (-g or -known_haps_g).
+
+When the masked study genotypes were imputed with reference data from Panel 1, the concordance between original and imputed genotypes was as follows:
+
+  Interval  #Genotypes %Concordance         Interval  %Called %Concordance
+  [0.0-0.1]          0          0.0         [ >= 0.0]    -nan          0.0
+  [0.1-0.2]          0          0.0         [ >= 0.1]    -nan          0.0
+  [0.2-0.3]          0          0.0         [ >= 0.2]    -nan          0.0
+  [0.3-0.4]          0          0.0         [ >= 0.3]    -nan          0.0
+  [0.4-0.5]          0          0.0         [ >= 0.4]    -nan          0.0
+  [0.5-0.6]          0          0.0         [ >= 0.5]    -nan          0.0
+  [0.6-0.7]          0          0.0         [ >= 0.6]    -nan          0.0
+  [0.7-0.8]          0          0.0         [ >= 0.7]    -nan          0.0
+  [0.8-0.9]          0          0.0         [ >= 0.8]    -nan          0.0
+  [0.9-1.0]          0          0.0         [ >= 0.9]    -nan          0.0
+
+Have a nice day!
+## 6 SAVE RESULTS: In human-readable format #######################
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+Opening genotype files                                      : [                              ] (0/1,0.0s,0.0/s)Opening genotype files                                      : [******************************] (1/1,0.0s,353.4/s)Opening genotype files                                      : [******************************] (1/1,0.0s,275.5/s)
+========================================================================
+
+Input SAMPLE file(s):         Output SAMPLE file:             "(n/a)".
+Sample exclusion output file:   "(n/a)".
+
+Input GEN file(s):
+                                                    (not computed)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/output.gen"
+                                         (total 1 sources, number of snps not computed).
+                      Number of samples: 3
+Output GEN file(s):             "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/output.vcf"
+Output SNP position file(s):    (n/a)
+Sample filter:                  .
+# of samples in input files:    3.
+# of samples after filtering:   3 (0 filtered out).
+
+========================================================================
+
+VCFFormatSNPDataSink::write_header(): FORMAT entries are:
+##FORMAT=<ID=GP,Type=Float,Number=G,Description="Genotype call probabilities">
+
+Processing SNPs                                             :  (0/?,0.0s,0.0/s)Processing SNPs                                             :  (1/?,0.0s,512.8/s)
+Total: 1SNPs.
+========================================================================
+
+Number of SNPs:
+                     -- in input file(s):                 (not computed).
+ -- in output file(s):                1
+
+Number of samples in input file(s):   3.
+
+Output GEN files:                     (1      snps)  "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0052si/output.vcf"
+                                      (total 1 snps).
+========================================================================
+
+
+Thank you for using qctool.
+-------------------------------------------------------------------------
+HsInv0055
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.36G8a8
+Merging 1 temporary files
+Cleaning
+Done
+## Make IMPUTE2 desired input ###########################################
+5 -- 63434033
+5 -- 63629739
+5 -- 63790216
+5 -- 63959834
+5 -- 64117505
+5 -- 64272721
+
+--0 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr5_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr5_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+5 -- 63864501
+5 -- 64223988
+
+--85 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1654205690.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0055/reference.gen.gz -g tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0055/input.gen.gz -int 63769835 63769835 -k_hap 500 -o tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0055/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr5_combined_b37.txt -strand_g data/use/avery_individuals/nc6nc22nc25nc26/
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0055/reference.gen.gz
+          Panel 2 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0055/input.gen.gz
+        Panel 2 strand info: data/use/avery_individuals/nc6nc22nc25nc26/
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr5_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0055/output
+                SNP QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0055/output_info
+             sample QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0055/output_info_by_sample
+                run summary: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0055/output_summary
+                warning log: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0055/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr5_combined_b37.txt]
+ --read 422 SNPs in the analysis interval+buffer region
+
+-reading strand info for Panel 2 from -strand_g file
+ --filename=[data/use/avery_individuals/nc6nc22nc25nc26/]
+ --read strand info for 0 SNPs in the analysis region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0055/input.gen.gz]
+ --detected 3 individuals
+ --read 926 SNPs in the analysis interval+buffer region
+
+-using -strand_g file to align Panel 2 allele labels
+ --flipped strand at 0 out of 0 SNPs
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv0055/reference.gen.gz]
+ --detected 133 individuals
+ --read 2911 SNPs in the analysis interval+buffer region
+
+-removing SNPs that violate the hierarchical data requirements
+ --no SNPs removed
+
+-removing reference-only SNPs from buffer region
+ --removed 2055 SNPs
+
+-checking strand alignment between Panel 2 and Panel 1 by allele labels
+ --flipped strand due to allele mismatch at 0 out of 926 SNPs in Panel 2
+
+-aligning allele labels between panels
+
+-removing non-aligned genotyped SNPs
+ --removed 0 out of 856 SNPs with data in multiple panels
+
+--------------
+ Data summary 
+--------------
+
+[type 0 = SNP in Panel 0 only]
+[type 1 = SNP in Panel 1]
+[type 2 = SNP in Panel 2 and all ref panels]
+[type 3 = SNP in Panel 2 only]
+
+-Upstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --374 type 2 SNPs
+ --36 type 3 SNPs
+ --410 total SNPs
+
+-Downstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --481 type 2 SNPs
+ --35 type 3 SNPs
+ --516 total SNPs
+
+-Analysis region (as defined by -int argument)
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+ --1 total SNPs
+
+-Output file
+ --0 type 0 SNPs
+ --1 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+
+-In total, 927 SNPs will be used in the analysis, including 855 Panel 2 SNPs
+
+-making initial haplotype guesses for Panel 2 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-making initial haplotype guesses for Panel 1 by phasing hets at random and imputing missing genotypes from allele freqs
+
+-setting storage space
+-setting mutation matrices
+-setting switch rates
+
+----------------
+ Run parameters 
+----------------
+
+        reference diplotypes: 133 [Panel 1]
+           study individuals: 3 [Panel 2]
+           sequence interval: [63769835,63769835]
+                      buffer: 250 kb
+                          Ne: 20000
+           input call thresh: 0.900
+     burn-in MCMC iterations: 10
+       total MCMC iterations: 30 (20 used for inference)
+      HMM states for phasing: 80 [Panel 1]; 80 [Panel 2]
+   HMM states for imputation: 266 [Panel 1->2]
+
+---------
+ Run log 
+---------
+
+MCMC iteration [1/30]
+
+MCMC iteration [2/30]
+
+MCMC iteration [3/30]
+
+RESETTING PARAMETERS FOR "SURROGATE FAMILY" MODELING
+-setting mutation matrices
+-setting switch rates
+
+MCMC iteration [4/30]
+
+MCMC iteration [5/30]
+
+MCMC iteration [6/30]
+
+MCMC iteration [7/30]
+
+MCMC iteration [8/30]
+
+MCMC iteration [9/30]
+
+MCMC iteration [10/30]
+
+MCMC iteration [11/30]
+
+MCMC iteration [12/30]
+
+MCMC iteration [13/30]
+
+MCMC iteration [14/30]
+
+MCMC iteration [15/30]
+
+MCMC iteration [16/30]
+
+MCMC iteration [17/30]
+
+MCMC iteration [18/30]
+
+MCMC iteration [19/30]
+
+MCMC iteration [20/30]
+
+MCMC iteration [21/30]
+
+MCMC iteration [22/30]
+
+MCMC iteration [23/30]
+
+MCMC iteration [24/30]
+
+MCMC iteration [25/30]
+
+MCMC iteration [26/30]
+
+MCMC iteration [27/30]
+
+MCMC iteration [28/30]
+
+MCMC iteration [29/30]
+
+MCMC iteration [30/30]
+-------------------------------------------------------------------------
+HsInv1075
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.W3Ri95
+[E::vcf_parse_format] Invalid character 'D' in 'GT' FORMAT field at 11:66019254
+Merging 1 temporary files
+Cleaning
+Done
+## Make IMPUTE2 desired input ###########################################
+11 -- 65727607
+11 -- 65940433
+11 -- 66173250
+11 -- 66451900
+
+--0 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr11_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr11_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+11 -- 66052832
+
+--49 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 114341708.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/reference.gen.gz -g tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/input.gen.gz -int 66019254 66019254 -k_hap 500 -o tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt -strand_g data/use/avery_individuals/nc6nc22nc25nc26/
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/reference.gen.gz
+          Panel 2 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/input.gen.gz
+        Panel 2 strand info: data/use/avery_individuals/nc6nc22nc25nc26/
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output
+                SNP QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output_info
+             sample QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output_info_by_sample
+                run summary: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output_summary
+                warning log: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt]
+ --read 300 SNPs in the analysis interval+buffer region
+
+-reading strand info for Panel 2 from -strand_g file
+ --filename=[data/use/avery_individuals/nc6nc22nc25nc26/]
+ --read strand info for 0 SNPs in the analysis region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/input.gen.gz]
+ --detected 3 individuals
+ --read 954 SNPs in the analysis interval+buffer region
+
+-using -strand_g file to align Panel 2 allele labels
+ --flipped strand at 0 out of 0 SNPs
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/reference.gen.gz]
+ --detected 57 individuals
+ --read 2108 SNPs in the analysis interval+buffer region
+
+-removing SNPs that violate the hierarchical data requirements
+ --no SNPs removed
+
+-removing reference-only SNPs from buffer region
+ --removed 1272 SNPs
+
+-checking strand alignment between Panel 2 and Panel 1 by allele labels
+ --flipped strand due to allele mismatch at 0 out of 954 SNPs in Panel 2
+
+-aligning allele labels between panels
+
+-removing non-aligned genotyped SNPs
+ --removed 0 out of 836 SNPs with data in multiple panels
+
+--------------
+ Data summary 
+--------------
+
+[type 0 = SNP in Panel 0 only]
+[type 1 = SNP in Panel 1]
+[type 2 = SNP in Panel 2 and all ref panels]
+[type 3 = SNP in Panel 2 only]
+
+-Upstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --395 type 2 SNPs
+ --58 type 3 SNPs
+ --453 total SNPs
+
+-Downstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --441 type 2 SNPs
+ --60 type 3 SNPs
+ --501 total SNPs
+
+-Analysis region (as defined by -int argument)
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+ --0 total SNPs
+
+-Output file
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+
+-In total, 954 SNPs will be used in the analysis, including 836 Panel 2 SNPs
+
+Your current command-line settings imply that there will not be any SNPs in the output file, so IMPUTE2 will not perform any analysis or print output files.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1075
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.7DCPRZ
+[E::vcf_parse_format] Invalid character 'D' in 'GT' FORMAT field at 11:66019254
+Merging 1 temporary files
+Cleaning
+Done
+## Make IMPUTE2 desired input ###########################################
+11 -- 65727607
+11 -- 65940433
+11 -- 66173250
+11 -- 66451900
+
+--0 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr11_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/nc6nc22nc25nc26/chr11_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+11 -- 66052832
+
+--49 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1173227146.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/reference.gen.gz -g tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/input.gen.gz -int 66019254 66019254 -k_hap 500 -o tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt -strand_g data/use/avery_individuals/nc6nc22nc25nc26/
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/reference.gen.gz
+          Panel 2 genotypes: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/input.gen.gz
+        Panel 2 strand info: data/use/avery_individuals/nc6nc22nc25nc26/
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output
+                SNP QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output_info
+             sample QC info: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output_info_by_sample
+                run summary: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output_summary
+                warning log: tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt]
+ --read 300 SNPs in the analysis interval+buffer region
+
+-reading strand info for Panel 2 from -strand_g file
+ --filename=[data/use/avery_individuals/nc6nc22nc25nc26/]
+ --read strand info for 0 SNPs in the analysis region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/input.gen.gz]
+ --detected 3 individuals
+ --read 954 SNPs in the analysis interval+buffer region
+
+-using -strand_g file to align Panel 2 allele labels
+ --flipped strand at 0 out of 0 SNPs
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/reference.gen.gz]
+ --detected 57 individuals
+ --read 2108 SNPs in the analysis interval+buffer region
+
+-removing SNPs that violate the hierarchical data requirements
+ --no SNPs removed
+
+-removing reference-only SNPs from buffer region
+ --removed 1272 SNPs
+
+-checking strand alignment between Panel 2 and Panel 1 by allele labels
+ --flipped strand due to allele mismatch at 0 out of 954 SNPs in Panel 2
+
+-aligning allele labels between panels
+
+-removing non-aligned genotyped SNPs
+ --removed 0 out of 836 SNPs with data in multiple panels
+
+--------------
+ Data summary 
+--------------
+
+[type 0 = SNP in Panel 0 only]
+[type 1 = SNP in Panel 1]
+[type 2 = SNP in Panel 2 and all ref panels]
+[type 3 = SNP in Panel 2 only]
+
+-Upstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --395 type 2 SNPs
+ --58 type 3 SNPs
+ --453 total SNPs
+
+-Downstream buffer region
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --441 type 2 SNPs
+ --60 type 3 SNPs
+ --501 total SNPs
+
+-Analysis region (as defined by -int argument)
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+ --0 total SNPs
+
+-Output file
+ --0 type 0 SNPs
+ --0 type 1 SNPs
+ --0 type 2 SNPs
+ --0 type 3 SNPs
+
+-In total, 954 SNPs will be used in the analysis, including 836 Panel 2 SNPs
+
+Your current command-line settings imply that there will not be any SNPs in the output file, so IMPUTE2 will not perform any analysis or print output files.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess/AFR_500/HsInv1075/output.vcf: No such file or directory

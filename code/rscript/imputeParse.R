@@ -17,7 +17,8 @@ if (length(args)<4) {
 }
 
 # Example
-# args[1]<-"analysis/2020-04-22_06_imputation/" # Directory with imputation results in .vcf
+#  
+# args[1]<-"analysis/2020-12-13_06_imputation_merged" # Directory with imputation results in .vcf
 # args[2]<-"data/use/avery_individuals/samples_population.txt"  # Test individuals population
 # args[3]<-"data/use/inversions_info/Inversions_imputability.txt" # Inversions imputability
 # args[4]<-"tmp/test" # output directory
@@ -44,7 +45,9 @@ lapply(packages,FUN = function(x) {
 # --------------------------------------------------------------------------- #
 
 # Set it as a function to limit stored intermediate objects
+# directory<-args[1]
   parsedir<-function(directory){
+    
   # Previous parameters
     files<-list.files(directory, pattern = "*.vcf", full.names=TRUE)
     filelist<-list()
@@ -53,7 +56,7 @@ lapply(packages,FUN = function(x) {
 
   # Parsing loop
     for (filename in files) {
-    trim_filename<-sub( ".*\\/\\/", "", filename)
+    trim_filename<-sub( ".*\\/", "", filename)
     trim_filename<-sub( "_readSum.vcf", "", trim_filename)
     table<-read.table( filename, sep = "\t", stringsAsFactors = FALSE, comment.char = "" , skip = 2, header = TRUE, check.names = FALSE )
   

@@ -563,7 +563,10 @@ STEP=$(printf "%02d" $((${STEP}+1)))
 
 if  [ "$COMMAND" == "impute" ]; then
 
-  TMPDIR="tmp/${DATE}_${STEP}_imputation"
+  INDIR_NAME=$(echo $INDIR| grep -o '[^/]\+$')
+
+
+  TMPDIR="tmp/${DATE}_${STEP}_imputation/${INDIR_NAME}"
   OUTDIR="analysis/${DATE}_${STEP}_imputation"
   mkdir -p $TMPDIR $OUTDIR
 
@@ -571,41 +574,84 @@ if  [ "$COMMAND" == "impute" ]; then
   # ------------------------------------------------------------------------- #
   cp ${CONFILE} ${OUTDIR}
   cp ${FILE} ${OUTDIR}
-
-  # MAKE IMPUTATION - Divide inversion into n lists where n is # of screens
+  
+  # MAKE IMPUTATION - Check if analysis is feasible
   # ------------------------------------------------------------------------- #
-  mkdir -p $TMPDIR/invlist_part 
-  split --number=l/${SCREENS} ${FILE} $TMPDIR/invlist_part/invlist --numeric-suffixes=1 --suffix-length=2
+  # Save original conditions file for later
+  cp $CONFILE ${TMPDIR}/conditions.txt
+  # Populations to look at
+  POPLIST=$(cut -d ',' -f1 $CONFILE )
 
-  # MAKE IMPUTATION - Run imputation in # of screens
-  # ------------------------------------------------------------------------- #
-  mkdir -p $TMPDIR/imputationProcess
-  sh code/bash/runScreens.sh ${SCREENS} imputation "sh code/bash/runImputation.sh $CONFILE $TMPDIR/invlist_part/invlistscreencode $REFDIR $MAPDIR $INDIR $INVCOORD $INVGENO $TMPDIR/imputationProcess" delete
+  # Get population file
+  POPFILE=$(ls ${INDIR}/*.txt)
 
-  while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
-    screen -ls 
-    sleep 60
+  for POP in $POPLIST ; do
+
+    if [ $POP = "ALL" ]; then
+      SAMPLES_IN=$(tail -n +2 ${POPFILE}|cut -f1 )
+    else
+      SAMPLES_IN=$(grep ${POP} ${POPFILE} | cut -f1)
+    fi
+
+    # Delete population if not present in samples 
+    HASPOP=$(echo $SAMPLES_IN | wc -w)
+    
+    if [ $HASPOP == "0" ]; then         
+      grep -v ${POP} $CONFILE > ${TMPDIR}/conditions_tmp.txt
+      cp -f ${TMPDIR}/conditions_tmp.txt $CONFILE
+      echo "Sample file does not contain $POP population"
+    else 
+      echo "Sample file does contain $POP population"
+    fi
+
   done
 
-  # MAKE IMPUTATION - Once finished, make summary output files.
-  # ------------------------------------------------------------------------- #
-  mkdir -p project/logfiles/${DATE}_${STEP}_imputation
-  # Take first inversion to make header
-  FIRST=$(head -n1 ${FILE})
+  DECIDE=$( grep "^.*$" -c $CONFILE )
 
-  # Make a summary file for each experimental condition
-  for DIR in $(ls $TMPDIR/imputationProcess); do
+  if [ $DECIDE == 0 ]; then
+    echo "None of the required populations was in the sample file"
+  else
 
-    head -n 3 "$TMPDIR/imputationProcess/${DIR}/${FIRST}/output_readable.vcf" > ${OUTDIR}/${DIR}_readSum.vcf
+    # MAKE IMPUTATION - Divide inversion into n lists where n is # of screens
+    # ------------------------------------------------------------------------- #
+    mkdir -p $TMPDIR/invlist_part 
+    split --number=l/${SCREENS} ${FILE} $TMPDIR/invlist_part/invlist --numeric-suffixes=1 --suffix-length=2
 
-    for DIRINV in $(ls $TMPDIR/imputationProcess/${DIR}); do
+    # MAKE IMPUTATION - Run imputation in # of screens
+    # ------------------------------------------------------------------------- #
+    mkdir -p $TMPDIR/imputationProcess
+    sh code/bash/runScreens.sh ${SCREENS} imputation "sh code/bash/runImputation.sh $CONFILE $TMPDIR/invlist_part/invlistscreencode $REFDIR $MAPDIR $INDIR $INVCOORD $INVGENO $TMPDIR/imputationProcess" delete
 
-      cat $TMPDIR/imputationProcess/${DIR}/${DIRINV}/log.out >> project/logfiles/${DATE}_${STEP}_imputation/log_${DIR}.txt
-      sed -n 4p "$TMPDIR/imputationProcess/${DIR}/${DIRINV}/output_readable.vcf" >> ${OUTDIR}/${DIR}_readSum.vcf
+    while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
+      screen -ls 
+      sleep 60
+    done
 
-    done 
+    # MAKE IMPUTATION - Once finished, make summary output files.
+    # ------------------------------------------------------------------------- #
+    mkdir -p project/logfiles/${DATE}_${STEP}_imputation
+    # Take first inversion to make header
+    FIRST=$(head -n1 ${FILE})
 
-  done
+    # Make a summary file for each experimental condition
+    for DIR in $(ls $TMPDIR/imputationProcess); do
+
+      head -n 3 "$TMPDIR/imputationProcess/${DIR}/${FIRST}/output_readable.vcf" > ${OUTDIR}/${DIR}_readSum.vcf
+
+      for DIRINV in $(ls $TMPDIR/imputationProcess/${DIR}); do
+
+        cat $TMPDIR/imputationProcess/${DIR}/${DIRINV}/log.out >> project/logfiles/${DATE}_${STEP}_imputation/log_${DIR}.txt
+        sed -n 4p "$TMPDIR/imputationProcess/${DIR}/${DIRINV}/output_readable.vcf" >> ${OUTDIR}/${DIR}_readSum.vcf
+
+      done 
+
+    done
+
+  fi
+
+  # Restore confile!!
+  cp -f ${TMPDIR}/conditions.txt $CONFILE
+
 
 fi
 
@@ -621,7 +667,10 @@ if [ "$COMMAND" == "imputetables" ]; then
   OUTDIR="analysis/${DATE}_${STEP}_imputationTables"
   mkdir -p $OUTDIR
 
+
+  echo  " Rscript code/rscript/imputeParse.R $INDIR $POPFILE $INVTAG $OUTDIR"
   Rscript code/rscript/imputeParse.R $INDIR $POPFILE $INVTAG $OUTDIR
+
 
 fi
 

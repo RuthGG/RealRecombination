@@ -1,0 +1,1 @@
+analysis/2020-12-12_06_imputation_all14samps/EAS_500_readSum.vcf

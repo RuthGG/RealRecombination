@@ -1,0 +1,13 @@
+Sample file does contain AFR population
+Sample file does contain ALL population
+Sample file does contain ALL population
+Sample file does contain ALL population
+01:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/invlist_part/invlist01 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/nc6nc22nc25nc26 data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/all_genotypes.csv tmp/2020-12-14_06_imputation/nc6nc22nc25nc26/imputationProcess
+There is a screen on:
+	14711.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	14711.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
