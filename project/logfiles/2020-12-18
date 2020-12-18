@@ -1,0 +1,5959 @@
+Sample file does not contain AFR population
+Sample file does contain EUR population
+Sample file does contain EAS population
+Sample file does contain SAS population
+Sample file does contain ALL population
+Sample file does contain ALL population
+Sample file does contain ALL population
+01:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist01 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+02:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist02 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+03:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist03 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+04:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist04 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+05:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist05 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+06:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist06 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+07:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist07 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+08:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist08 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+09:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist09 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+10:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist10 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+11:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist11 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+12:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist12 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+13:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist13 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+14:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2020-12-18_06_imputation/all14samps/invlist_part/invlist14 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/all14samps data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2020-12-18_06_imputation/all14samps/imputationProcess
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	29225.imputation_13	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+14 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+13 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+13 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+13 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+13 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+13 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+13 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+13 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+13 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+13 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+13 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+13 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	28404.imputation_11	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+13 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	28843.imputation_12	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+12 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	29338.imputation_14	(Detached)
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+11 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+10 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+10 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27615.imputation_09	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+10 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27991.imputation_10	(Detached)
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+9 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27382.imputation_06	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+8 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27305.imputation_05	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+7 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27072.imputation_02	(Detached)
+	27062.imputation_01	(Detached)
+6 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27538.imputation_08	(Detached)
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+5 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27149.imputation_03	(Detached)
+	27062.imputation_01	(Detached)
+4 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27459.imputation_07	(Detached)
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	27226.imputation_04	(Detached)
+	27062.imputation_01	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+
+There is a screen on:
+	27062.imputation_01	(Detached)
+1 Socket in /var/run/screen/S-rgomez.
+

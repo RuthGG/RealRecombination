@@ -67,7 +67,7 @@
       
         # Current directory
         CURDIR="${OUTDIR}/${INV}"
-        mkdir -p $CURDIR
+        mkdir $CURDIR
         
         # Logfiles
         exec 3>&1 4>&2
@@ -185,7 +185,7 @@
         code/software/vcf2impute_gen.pl -vcf ${CURDIR}/reference_sorted.vcf -gen ${CURDIR}/reference.gen
 
         # Remove temporary files
-        # rm ${CURDIR}/reference_unsorted.vcf ${CURDIR}/reference_sorted.vcf ${CURDIR}/ref_inversion.vcf ${CURDIR}/ref_haplotypes.vcf ${CURDIR}/genotypes_file.txt
+        rm ${CURDIR}/reference_unsorted.vcf ${CURDIR}/reference_sorted.vcf ${CURDIR}/ref_inversion.vcf ${CURDIR}/ref_haplotypes.vcf ${CURDIR}/genotypes_file.txt
    
       # INPUT FILE
       # individuals (samples), in population of interest
@@ -254,7 +254,7 @@
         STEP=$((${STEP}+1))
         echo "## ${STEP} IMPUTE2: Run imputation #######################################"
 
-        code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref ${CURDIR}/reference.gen.gz -g ${CURDIR}/input.gen.gz -int $POS $POS -k_hap ${IND} -o ${CURDIR}/output -m ${MAPDIR}/${MAP} -strand_g  ${INDIR}/${STRAND}
+        code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref ${CURDIR}/reference.gen.gz -g ${CURDIR}/input.gen.gz -int $POS $POS -k_hap ${IND} -o ${CURDIR}/output -m ${MAPDIR}/${MAP} #-strand_g  ${INDIR}/${STRAND}
       
       # SAVE RESULTS
       # In human-readable format
