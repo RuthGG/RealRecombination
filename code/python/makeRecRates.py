@@ -15,7 +15,7 @@
 
 ###############################################################################
 # Description:                                                 
-# Script to make windows as required. Based on previous code chunks in bash      
+# Script to calculate recombination rates in a series of windows  
 ###############################################################################
 
 # MODULES

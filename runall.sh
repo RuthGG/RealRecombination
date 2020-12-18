@@ -31,7 +31,7 @@ usage()
   pcaplot -f -p                       Plot PCA results.
   impute -f -x -r -m -i -c -g [-s]    Impute inversions listed in -f using the conditions in -x.
   imputetables -i -p -t               Make summary tables after imputation.
-  tagsnps -f -x -i -c -g [-s]         Check if tag SNPs in -f are true in VCF in -i. 
+  tagsnps -f -x -i -c -g -r           Check if tag SNPs in -f are true in VCF in -i. 
   crossovers -f -c -x -n -m -b        Make recombination rates for given regions (win. size and CI in -x).
   "
   echo "Options:
@@ -185,21 +185,21 @@ case "$COMMAND" in
     done
     shift $((OPTIND -1))
     ;;
-  # Check if a list of inversions has tag SNPs
+  # Check the genotype of a list of inversions with their tag snps
    tagsnps)
-    while getopts "f:x:i:c:g:s:" OPTIONS ; do
+    while getopts "f:x:i:c:r:g:" OPTIONS ; do
       case "$OPTIONS" in
         f)  FILE=${OPTARG} ;;
         x)  CONFILE=${OPTARG} ;;
         i)  INDIR=${OPTARG} ;;
         c)  INVCOORD=${OPTARG} ;;
+        r)  REFDIR=${OPTARG} ;;
         g)  INVGENO=${OPTARG} ;;
-        s)  SCREENS=${OPTARG} ;;
       esac
     done
     shift $((OPTIND -1))
     ;;
-    # Execute PCA
+    # Caculate crossover maps
    crossovers ) 
     while getopts "f:c:n:x:m:b:" OPTIONS ; do
       case "$OPTIONS" in
@@ -245,8 +245,8 @@ elif [ "$COMMAND" == "imputetables" ]; then
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -i -p -t"; usage; exit
   fi
 elif [ "$COMMAND" == "tagsnps" ]; then
-  if [ -z "$FILE" ] || [ -z "$CONFILE" ] || [ -z "$INDIR" ] || [ -z "$INVCOORD" ] || [ -z "$INVGENO" ]  ; then 
-    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -x -i -c -g"; usage; exit
+  if [ -z "$FILE" ] || [ -z "$CONFILE" ] || [ -z "$INDIR" ] || [ -z "$INVCOORD" ] || [ -z "$REFDIR" ] || [ -z "$INVGENO" ]  ; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -x -i -c -r -g"; usage; exit
   fi
 elif [ "$COMMAND" == "crossovers" ]; then
   if [ -z "$FILE" ] || [ -z "$INVCOORD" ] || [ -z "$CONFILE" ] || [ -z "$CELLS" ] || [ -z "$BOUNDARIES" ] ; then 
@@ -688,56 +688,109 @@ if  [ "$COMMAND" == "tagsnps" ]; then
   OUTDIR="analysis/${DATE}_${STEP}_tagsnps"
   mkdir -p $TMPDIR $OUTDIR
 
-  # MAKE TAG SNPS CHECK - Register conditions in analysis results
+  # MAKE TAG SNPS CHECK - Register conditions in analysis folder
   # ------------------------------------------------------------------------- #
-  cp ${CONFILE} ${OUTDIR} # Populations 
-  tail -n+2 ${FILE} | cut -f1   | sort | uniq > ${OUTDIR}/invlist.txt # List of inversions
-  awk -v OFS="\t" 'NR>1{print $2, $3}' ${FILE} | grep -v "chrY" | grep -v "chrX" | sed 's/^chr//g'  > ${OUTDIR}/regions.txt # SNPs to check
+  cp ${CONFILE} ${OUTDIR} # Population
+  tail -n+2 ${FILE} | grep -v "chrY" | grep -v "chrX" | cut -f1   | sort | uniq > ${OUTDIR}/invlist.txt # List of inversions
 
-  # MAKE TAG SNPS CHECK - Divide inversion into n lists where n is # of screens
+  echo -e "Individual\tGenotype\tProbability\tCoverage\tInversion\tPopulation" > ${OUTDIR}/tagSNPGenotypedInvs.txt
+
+
+  # MAKE TAG SNPS CHECK - Loop over inversions and populations
   # ------------------------------------------------------------------------- #
-  mkdir -p $TMPDIR/invlist_part 
-  split --number=l/${SCREENS} ${OUTDIR}/invlist.txt $TMPDIR/invlist_part/invlist --numeric-suffixes=1 --suffix-length=2
 
-  # MAKE TAG SNPS CHECK - Take only the interesting SNPs from total VCF file
-  # ------------------------------------------------------------------------- #
-  # This could be improved to take into account that indir can have one file for all chromosomes or one file per chromosome
-  VCF=$(ls $INDIR | grep "gz$")
-  bcftools view --regions-file  ${OUTDIR}/regions.txt  -Oz ${INDIR}/$VCF -o ${TMPDIR}/interestingSNP.vcf.gz
-  tabix ${TMPDIR}/interestingSNP.vcf.gz
+  for POP in $(cat ${CONFILE}); do
+    
+    # MAKE TAG SNPS CHECK - Make individual lists
+    # ------------------------------------------------------------------------- #
+    
+    # LIST IMPUT INDIVIDUALS
+      # Get population file
+      POPFILE=$(ls ${INDIR}/*.txt)
 
-  # MAKE TAG SNPS CHECK - Copy population file
-  # ------------------------------------------------------------------------- #
-  cp ${INDIR}/*.txt ${TMPDIR}
+      # Filter by population
+      if [ $POP = "GLB"  ] || [ $POP = "ALL"  ]; then
+        POP="GLB"
+        SAMPLES_IN=$(tail -n +2 ${POPFILE}|cut -f1 )
+      else
+        SAMPLES_IN=$(grep ${POP} ${POPFILE} | cut -f1)
+      fi
 
-  # MAKE TAG SNPS CHECK - Run imputation in # of screens
-  # ------------------------------------------------------------------------- #
-  mkdir -p $TMPDIR/tagsnpsProcess
-  sh code/bash/runScreens.sh ${SCREENS} tagsnp "sh code/bash/checkTagSNPs.sh $CONFILE $TMPDIR/invlist_part/invlistscreencode $TMPDIR $INVCOORD $INVGENO $TMPDIR/tagsnpsProcess" delete
+    # LIST REFERENCE INDIVIDUALS
+      # Common 1KGP individuals filtered by populations + Inversion individuals
+      GENO=$(cut -f1 ${INVGENO} )
+      POPREFILE=$(ls ${REFDIR}/*.txt)
 
-  while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
-    screen -ls 
-    sleep 60
-  done
+      # Filter by population 
+      if [ $POP = "GLB"  ] || [ $POP = "ALL" ]; then
+        POP="GLB"
+        POP_FILTER=$(cut -f1 ${POPREFILE})
+      else
+        POP_FILTER=$(grep ${POP} ${POPREFILE} | cut -f1)
+      fi
+      
+      # Combine
+      SAMPLES_REF=$(echo $GENO $POP_FILTER | tr " " "\n" | sort | uniq -d)
 
-  # MAKE TAG SNPS CHECK - Once finished, make summary output files.
-  # ------------------------------------------------------------------------- #
-  mkdir -p project/logfiles/${DATE}_${STEP}_tagsnps
+    # CHECK IF THERE ARE INDIVIDUALS
 
-  FIRST=$(head -n1 ${OUTDIR}/invlist.txt)
+    if [ -z "$SAMPLES_IN" ]  ; then 
+      
+      echo "No sample individuals were found for ${POP} population in ${INDIR}"
+   
+    else
 
-  # Make a summary file for each experimental condition
-   for DIR in $(ls $TMPDIR/tagsnpsProcess); do
+      mkdir -p ${TMPDIR}/$POP
+      echo -e "Individual\tGenotype\tProbability\tCoverage\tInversion" > ${TMPDIR}/${POP}/${POP}_summary
 
-    head -n 1 "$TMPDIR/tagsnpsProcess/${DIR}/${FIRST}/output_plink.ld" > ${OUTDIR}/${DIR}_output_plink.ld
+      for INV in $(cat ${OUTDIR}/invlist.txt) ; do
+        echo $POP $INV
+        # MAKE TAG SNPS CHECK - Prepare ref and sample files for python script
+        # ------------------------------------------------------------------------- #
 
-    for DIRINV in $(ls $TMPDIR/tagsnpsProcess/${DIR}); do
+        # Check where is population in file
+        POPCOL=$(head -1 $FILE |  tr "\t" "\n" | cat -n | grep $POP | cut -f1 | tr -d " ")
 
-      cat $TMPDIR/tagsnpsProcess/${DIR}/${DIRINV}/log.out >> project/logfiles/${DATE}_${STEP}_tagsnps/log_${DIR}.txt
-      tail -n +2 "$TMPDIR/tagsnpsProcess/${DIR}/${DIRINV}/output_plink.ld" >> ${OUTDIR}/${DIR}_output_plink.ld
+        # Make list for tagSNPs in this population
+        grep $INV  $FILE  | cut -f2,3,$POPCOL | grep '\s1$' | cut -f1,2 | sed "s/ //g" |sed "s/chr//g"> ${TMPDIR}/${POP}/${INV}_tagsnpList
 
-    done 
+        # Check if there are tagSNPs
+        DECIDE=$( grep "^.*$" -c  ${TMPDIR}/${POP}/${INV}_tagsnpList )
 
+        if [ $DECIDE == 0 ]; then
+          echo "No perfect tag SNPs for ${INV} in ${POP}"
+        else
+
+          # Extract which chromosome is the inversion in
+          CHRNUM=$(cut -f1 ${TMPDIR}/${POP}/${INV}_tagsnpList | head -n1)
+
+          # Extract genotype template in sample
+          INVCOL=$(head -1 $INVGENO |  tr "\t" "\n" | cat -n | grep $INV | cut -f1 | tr -d " ")
+          cat  $INVGENO  | cut -f1,$INVCOL | grep -v '\.' | grep -v 'NA$' | tail -n+2 > ${TMPDIR}/${POP}/${INV}_templateGenos
+
+          #Obtener genotipo de los SNPs para la referencia
+          VCF_PH3=$(ls $REFDIR | grep "chr${CHRNUM}\..*gz$")
+          bcftools view -R ${TMPDIR}/${POP}/${INV}_tagsnpList --force-samples  -s $(echo $SAMPLES_REF | tr " " ",") ${REFDIR}/$VCF_PH3 | bcftools query -H -f '%CHROM\t%POS\t%ID[\t%GT]\n' > ${TMPDIR}/${POP}/${INV}_refGenos
+
+          # Obtener genotipo de los SNPs para la muestra
+          VCF_SAMPLE=$(ls $INDIR | grep "chr${CHRNUM}\_.*gz$")
+          bcftools view -R ${TMPDIR}/${POP}/${INV}_tagsnpList ${INDIR}/$VCF_SAMPLE | bcftools query -H -f '%CHROM\t%POS\t%ID[\t%GT]\n' > ${TMPDIR}/${POP}/${INV}_sampleGenos
+
+          # MAKE TAG SNPS CHECK - Run script that genotypes according to template
+          # ------------------------------------------------------------------------- #
+
+          python code/python/tagSNPcheck.py --reference ${TMPDIR}/${POP}/${INV}_refGenos --sample  ${TMPDIR}/${POP}/${INV}_sampleGenos --template ${TMPDIR}/${POP}/${INV}_templateGenos --output ${TMPDIR}/${POP}/${INV}_calcGenos
+
+          # MAKE TAG SNPS CHECK - Add inversion name to file
+          # ------------------------------------------------------------------------- #
+          tail -n+2 ${TMPDIR}/${POP}/${INV}_calcGenos | awk -v OFS="\t" -v inv="${INV}" '{print $0, inv}' >> ${TMPDIR}/${POP}/${POP}_summary
+
+        fi
+      done
+
+      tail -n+2 ${TMPDIR}/${POP}/${POP}_summary | awk -v OFS="\t" -v pop="${POP}" '{print $0, pop}' >> ${OUTDIR}/tagSNPGenotypedInvs.txt
+
+    fi
   done
 
 fi

@@ -31,7 +31,7 @@ def quantile_normalize(df):
 
 ###############################################################################
 # Description:                                                 
-# Script to make windows as required. Based on previous code chunks in bash      
+# Quantile normalizes crossover data    
 ###############################################################################
 
 # MODULES
