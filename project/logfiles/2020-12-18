@@ -1,112 +1,55 @@
-GLB HsInv0003
-GLB HsInv0004
-GLB HsInv0006
-GLB HsInv0030
-No perfect tag SNPs for HsInv0030 in GLB
-GLB HsInv0031
-GLB HsInv0040
-GLB HsInv0041
-No tag SNPs for HsInv0041 in sample file.
-GLB HsInv0045
-GLB HsInv0055
-No perfect tag SNPs for HsInv0055 in GLB
-GLB HsInv0058
-No tag SNPs for HsInv0058 in sample file.
-GLB HsInv0059
-GLB HsInv0061
-No perfect tag SNPs for HsInv0061 in GLB
-GLB HsInv0063
-GLB HsInv0068
-GLB HsInv0092
-No tag SNPs for HsInv0092 in sample file.
-GLB HsInv0095
-GLB HsInv0097
-No tag SNPs for HsInv0097 in sample file.
-GLB HsInv0098
-No tag SNPs for HsInv0098 in sample file.
-GLB HsInv0102
-No perfect tag SNPs for HsInv0102 in GLB
-GLB HsInv0105
-No perfect tag SNPs for HsInv0105 in GLB
-GLB HsInv0114
-No perfect tag SNPs for HsInv0114 in GLB
-GLB HsInv0124
-No perfect tag SNPs for HsInv0124 in GLB
-GLB HsInv0201
-GLB HsInv0209
-No perfect tag SNPs for HsInv0209 in GLB
 GLB HsInv0241
 No perfect tag SNPs for HsInv0241 in GLB
-GLB HsInv0260
-No tag SNPs for HsInv0260 in sample file.
-GLB HsInv0266
-No perfect tag SNPs for HsInv0266 in GLB
-GLB HsInv0284
-No tag SNPs for HsInv0284 in sample file.
-GLB HsInv0340
-No perfect tag SNPs for HsInv0340 in GLB
-GLB HsInv0341
-No perfect tag SNPs for HsInv0341 in GLB
-GLB HsInv0347
-No perfect tag SNPs for HsInv0347 in GLB
-GLB HsInv0379
-No tag SNPs for HsInv0379 in sample file.
-GLB HsInv0790
-No tag SNPs for HsInv0790 in sample file.
-EUR HsInv0003
-EUR HsInv0004
-EUR HsInv0006
-EUR HsInv0030
-No perfect tag SNPs for HsInv0030 in EUR
-EUR HsInv0031
-EUR HsInv0040
-EUR HsInv0041
-No tag SNPs for HsInv0041 in sample file.
-EUR HsInv0045
-EUR HsInv0055
-No perfect tag SNPs for HsInv0055 in EUR
-EUR HsInv0058
-No tag SNPs for HsInv0058 in sample file.
-EUR HsInv0059
-EUR HsInv0061
-No perfect tag SNPs for HsInv0061 in EUR
-EUR HsInv0063
-EUR HsInv0068
-EUR HsInv0092
-No tag SNPs for HsInv0092 in sample file.
-EUR HsInv0095
-EUR HsInv0097
-No perfect tag SNPs for HsInv0097 in EUR
-EUR HsInv0098
-No tag SNPs for HsInv0098 in sample file.
-EUR HsInv0102
-No perfect tag SNPs for HsInv0102 in EUR
-EUR HsInv0105
-EUR HsInv0114
-No perfect tag SNPs for HsInv0114 in EUR
-EUR HsInv0124
-No perfect tag SNPs for HsInv0124 in EUR
-EUR HsInv0201
-EUR HsInv0209
-No tag SNPs for HsInv0209 in sample file.
-EUR HsInv0241
-No perfect tag SNPs for HsInv0241 in EUR
-EUR HsInv0260
-No tag SNPs for HsInv0260 in sample file.
-EUR HsInv0266
-No perfect tag SNPs for HsInv0266 in EUR
-EUR HsInv0284
-No perfect tag SNPs for HsInv0284 in EUR
-EUR HsInv0340
-No tag SNPs for HsInv0340 in sample file.
-EUR HsInv0341
-No perfect tag SNPs for HsInv0341 in EUR
-EUR HsInv0347
-No perfect tag SNPs for HsInv0347 in EUR
-EUR HsInv0379
-No perfect tag SNPs for HsInv0379 in EUR
-EUR HsInv0790
-No perfect tag SNPs for HsInv0790 in EUR
-No sample individuals were found for EAS population in data/use/avery_individuals/nc17nc18
-No sample individuals were found for SAS population in data/use/avery_individuals/nc17nc18
-No sample individuals were found for AFR population in data/use/avery_individuals/nc17nc18
+GLB HsInv0290
+No perfect tag SNPs for HsInv0290 in GLB
+GLB HsInv0370
+No perfect tag SNPs for HsInv0370 in GLB
+GLB HsInv0382
+No perfect tag SNPs for HsInv0382 in GLB
+GLB HsInv0573
+No tag SNPs for HsInv0573 in sample file.
+GLB HsInv0786
+No perfect tag SNPs for HsInv0786 in GLB
+GLB HsInv1057
+Traceback (most recent call last):
+  File "code/python/tagSNPcheck.py", line 93, in <module>
+    gen_sih : consensus[0]
+IndexError: list index out of range
+tail: cannot open 'tmp/2020-12-18_08_tagsnps/GLB/HsInv1057_calcGenos' for reading: No such file or directory
+GLB HsInv1111
+No perfect tag SNPs for HsInv1111 in GLB
+No sample individuals were found for EUR population in data/use/avery_individuals/nc6nc22nc25nc26
+No sample individuals were found for EAS population in data/use/avery_individuals/nc6nc22nc25nc26
+No sample individuals were found for SAS population in data/use/avery_individuals/nc6nc22nc25nc26
+AFR HsInv0241
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0241 in AFR
+AFR HsInv0290
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0290 in AFR
+AFR HsInv0370
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0370 in AFR
+AFR HsInv0382
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0382 in AFR
+AFR HsInv0573
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0573 in AFR
+AFR HsInv0786
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0786 in AFR
+AFR HsInv1057
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv1057 in AFR
+AFR HsInv1111
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv1111 in AFR

@@ -292,7 +292,20 @@ done
 #------------------------ TO REPEAT ------------------------
 
 # Tag SNPs genotyping
-2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
 
+mkdir analysis/2020-12-18_tagsnps_all
+for FILE in v4.7 v5 ; do
+  for SAMPLES in all14samps nc17nc18 nc6nc22nc25nc26 ; do  
+    bash runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_${FILE} -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/${SAMPLES} -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
+    mv analysis/2020-12-18_08_tagsnps analysis/2020-12-18_tagsnps_all/${FILE}_${SAMPLES}
+  done
+done
+
+# Automatic messages from previous loop: Tag SNPs genotyping
+2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/all14samps -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
 2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
-2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
+2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
+2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v5 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/all14samps -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
+2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v5 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
+2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v5 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
+

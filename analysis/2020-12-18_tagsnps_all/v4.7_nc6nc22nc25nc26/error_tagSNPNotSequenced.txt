@@ -1,0 +1,12 @@
+# Failed because there were not tagSNPs sequenced in sample
+GLB HsInv0058
+GLB HsInv0097
+GLB HsInv0260
+GLB HsInv0284
+GLB HsInv0379
+GLB HsInv0790
+AFR HsInv0058
+AFR HsInv0097
+AFR HsInv0260
+AFR HsInv0284
+AFR HsInv0790

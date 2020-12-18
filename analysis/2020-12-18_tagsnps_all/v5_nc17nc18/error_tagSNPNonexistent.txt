@@ -1,0 +1,15 @@
+# Failed because there were not perfect tagSNPs in population
+GLB HsInv0241
+GLB HsInv0290
+GLB HsInv0370
+GLB HsInv0382
+GLB HsInv0786
+GLB HsInv1111
+EUR HsInv0241
+EUR HsInv0290
+EUR HsInv0370
+EUR HsInv0382
+EUR HsInv0573
+EUR HsInv0786
+EUR HsInv1057
+EUR HsInv1111
