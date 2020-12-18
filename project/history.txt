@@ -241,17 +241,15 @@
 2020-12-11: runall.sh preprocess -i data/raw/avery_individuals/nc6nc22nc25nc26 -r data/raw/chains
 2020-12-11: runall.sh preprocess -i data/raw/avery_individuals/all14samps -r data/raw/chains
 
-2020-12-12: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 6
-mv analysis/2020-12-12_06_imputation analysis/2020-12-12_06_imputation_nc17nc18
+2020-12-17: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/20201217_all_genotypes.csv -s 10
+mv analysis/2020-12-17_06_imputation analysis/2020-12-17_06_imputation_nc17nc18
+2020-12-17: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/20201217_all_genotypes.csv -s 14
+mv analysis/2020-12-17_06_imputation analysis/2020-12-17_06_imputation_nc6nc22nc25nc26
+2020-12-18: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/all14samps -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/20201217_all_genotypes.csv -s 14
+mv analysis/2020-12-18_06_imputation analysis/2020-12-17_06_imputation_all14samps
 
-2020-12-12: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 6
-mv analysis/2020-12-12_06_imputation analysis/2020-12-12_06_imputation_nc6nc22nc25nc26
 
-2020-12-12: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/all14samps -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 10
-mv analysis/2020-12-12_06_imputation analysis/2020-12-12_06_imputation_all14samps
-
-2020-12-14: runall.sh impute -f data/use/conditions/inversionToImpute_small.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv
-mv analysis/2020-12-14_06_imputation analysis/2020-12-12_06_imputation_rep1075
+#------------------------ TO REPEAT ------------------------
 
 # MANUAL MERGE OF VCFS
 
@@ -290,11 +288,9 @@ done
 
 2020-12-14: runall.sh imputetables -i analysis/2020-12-13_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
 # Re-analyzed with report/2020-10-28_genotypeFilteringReport/filteringAnalysis.Rmd2020-12-14: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 6
-2020-12-14: runall.sh impute -f data/use/conditions/inversionToImpute_small.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv
-2020-12-14: runall.sh impute -f data/use/conditions/inversionToImpute_small.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv
-2020-12-14: runall.sh impute -f data/use/conditions/inversionToImpute_small.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv
+
+#------------------------ TO REPEAT ------------------------
+
+# Tag SNPs genotyping
 2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
-2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
-2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
-2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
-2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
+
