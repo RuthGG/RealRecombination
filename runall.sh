@@ -694,7 +694,8 @@ if  [ "$COMMAND" == "tagsnps" ]; then
   tail -n+2 ${FILE} | grep -v "chrY" | grep -v "chrX" | cut -f1   | sort | uniq > ${OUTDIR}/invlist.txt # List of inversions
 
   echo -e "Individual\tGenotype\tProbability\tCoverage\tInversion\tPopulation" > ${OUTDIR}/tagSNPGenotypedInvs.txt
-
+  echo "# Failed because there were not perfect tagSNPs in population" > ${OUTDIR}/error_tagSNPNonexistent.txt
+  echo "# Failed because there were not tagSNPs sequenced in sample" > ${OUTDIR}/error_tagSNPNotSequenced.txt
 
   # MAKE TAG SNPS CHECK - Loop over inversions and populations
   # ------------------------------------------------------------------------- #
@@ -759,6 +760,7 @@ if  [ "$COMMAND" == "tagsnps" ]; then
 
         if [ $DECIDE == 0 ]; then
           echo "No perfect tag SNPs for ${INV} in ${POP}"
+          echo $POP $INV >>  ${OUTDIR}/error_tagSNPNonexistent.txt
         else
 
           # Extract which chromosome is the inversion in
@@ -768,23 +770,31 @@ if  [ "$COMMAND" == "tagsnps" ]; then
           INVCOL=$(head -1 $INVGENO |  tr "\t" "\n" | cat -n | grep $INV | cut -f1 | tr -d " ")
           cat  $INVGENO  | cut -f1,$INVCOL | grep -v '\.' | grep -v 'NA$' | tail -n+2 > ${TMPDIR}/${POP}/${INV}_templateGenos
 
-          #Obtener genotipo de los SNPs para la referencia
+          # Get SNP genotype for reference
           VCF_PH3=$(ls $REFDIR | grep "chr${CHRNUM}\..*gz$")
           bcftools view -R ${TMPDIR}/${POP}/${INV}_tagsnpList --force-samples  -s $(echo $SAMPLES_REF | tr " " ",") ${REFDIR}/$VCF_PH3 | bcftools query -H -f '%CHROM\t%POS\t%ID[\t%GT]\n' > ${TMPDIR}/${POP}/${INV}_refGenos
 
-          # Obtener genotipo de los SNPs para la muestra
+          # Get SNP genotype for sample
           VCF_SAMPLE=$(ls $INDIR | grep "chr${CHRNUM}\_.*gz$")
           bcftools view -R ${TMPDIR}/${POP}/${INV}_tagsnpList ${INDIR}/$VCF_SAMPLE | bcftools query -H -f '%CHROM\t%POS\t%ID[\t%GT]\n' > ${TMPDIR}/${POP}/${INV}_sampleGenos
 
-          # MAKE TAG SNPS CHECK - Run script that genotypes according to template
-          # ------------------------------------------------------------------------- #
+          # Check if there are SNP genotypes 
+          DECIDE2=$(tail -n+2 ${TMPDIR}/${POP}/${INV}_sampleGenos | grep "^.*$" -c)
+          if [ $DECIDE2 == 0 ]; then
+            echo "No tag SNPs for ${INV} in sample file."
+            echo $POP $INV >>  ${OUTDIR}/error_tagSNPNotSequenced.txt
+          else
 
-          python code/python/tagSNPcheck.py --reference ${TMPDIR}/${POP}/${INV}_refGenos --sample  ${TMPDIR}/${POP}/${INV}_sampleGenos --template ${TMPDIR}/${POP}/${INV}_templateGenos --output ${TMPDIR}/${POP}/${INV}_calcGenos
+            # MAKE TAG SNPS CHECK - Run script that genotypes according to template
+            # ------------------------------------------------------------------------- #
 
-          # MAKE TAG SNPS CHECK - Add inversion name to file
-          # ------------------------------------------------------------------------- #
-          tail -n+2 ${TMPDIR}/${POP}/${INV}_calcGenos | awk -v OFS="\t" -v inv="${INV}" '{print $0, inv}' >> ${TMPDIR}/${POP}/${POP}_summary
+            python code/python/tagSNPcheck.py --reference ${TMPDIR}/${POP}/${INV}_refGenos --sample  ${TMPDIR}/${POP}/${INV}_sampleGenos --template ${TMPDIR}/${POP}/${INV}_templateGenos --output ${TMPDIR}/${POP}/${INV}_calcGenos
 
+            # MAKE TAG SNPS CHECK - Add inversion name to file
+            # ------------------------------------------------------------------------- #
+            tail -n+2 ${TMPDIR}/${POP}/${INV}_calcGenos | awk -v OFS="\t" -v inv="${INV}" '{print $0, inv}' >> ${TMPDIR}/${POP}/${POP}_summary
+          
+          fi
         fi
       done
 

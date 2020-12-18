@@ -294,3 +294,5 @@ done
 # Tag SNPs genotyping
 2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
 
+2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
+2020-12-18: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v4.7 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv

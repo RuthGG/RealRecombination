@@ -119,7 +119,7 @@ if __name__ == "__main__": # if file was called and not imported
 
   # Merge samples to pattern to compare
   compare  = pd.merge(templateParsed, sample_table , how = 'inner')
-
+  
   # For each individual
   for ind in compare.columns[ ~compare.columns.isin(templateParsed.columns)] : 
     
@@ -133,6 +133,7 @@ if __name__ == "__main__": # if file was called and not imported
     # For each genotype (gen_sih), compare sample to template
     for gen_sih in ["STD", "INV", "HET"]:
       compare_part.loc[compare_part[gen_sih] == compare_part[ind], ['genotype']] = gen_sih
+
 
     # Calculate how many genotypes of each were found
     ranking = compare_part['genotype'].value_counts(normalize = True)
