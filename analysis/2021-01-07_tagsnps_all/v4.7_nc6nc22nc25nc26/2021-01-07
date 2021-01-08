@@ -1,0 +1,253 @@
+YRI HsInv0003
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+YRI HsInv0004
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+Traceback (most recent call last):
+  File "code/python/tagSNPcheck.py", line 100, in <module>
+    gen_sih : consensus[0]
+IndexError: list index out of range
+tail: cannot open 'tmp/2021-01-07_08_tagsnps//YRI/HsInv0004_calcGenos' for reading: No such file or directory
+YRI HsInv0006
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+Traceback (most recent call last):
+  File "code/python/tagSNPcheck.py", line 100, in <module>
+    gen_sih : consensus[0]
+IndexError: list index out of range
+tail: cannot open 'tmp/2021-01-07_08_tagsnps//YRI/HsInv0006_calcGenos' for reading: No such file or directory
+YRI HsInv0030
+No perfect tag SNPs for HsInv0030 in YRI
+YRI HsInv0031
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+YRI HsInv0040
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+YRI HsInv0041
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+YRI HsInv0045
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+YRI HsInv0055
+No perfect tag SNPs for HsInv0055 in YRI
+YRI HsInv0058
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0058 in sample file.
+YRI HsInv0059
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+Traceback (most recent call last):
+  File "code/python/tagSNPcheck.py", line 100, in <module>
+    gen_sih : consensus[0]
+IndexError: list index out of range
+tail: cannot open 'tmp/2021-01-07_08_tagsnps//YRI/HsInv0059_calcGenos' for reading: No such file or directory
+YRI HsInv0061
+No perfect tag SNPs for HsInv0061 in YRI
+YRI HsInv0063
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+YRI HsInv0068
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+YRI HsInv0092
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+YRI HsInv0095
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+Traceback (most recent call last):
+  File "code/python/tagSNPcheck.py", line 100, in <module>
+    gen_sih : consensus[0]
+IndexError: list index out of range
+tail: cannot open 'tmp/2021-01-07_08_tagsnps//YRI/HsInv0095_calcGenos' for reading: No such file or directory
+YRI HsInv0097
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0097 in sample file.
+YRI HsInv0098
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+YRI HsInv0102
+No perfect tag SNPs for HsInv0102 in YRI
+YRI HsInv0105
+No perfect tag SNPs for HsInv0105 in YRI
+YRI HsInv0114
+No perfect tag SNPs for HsInv0114 in YRI
+YRI HsInv0124
+No perfect tag SNPs for HsInv0124 in YRI
+YRI HsInv0201
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+YRI HsInv0209
+No perfect tag SNPs for HsInv0209 in YRI
+YRI HsInv0241
+No perfect tag SNPs for HsInv0241 in YRI
+YRI HsInv0260
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0260 in sample file.
+YRI HsInv0266
+No perfect tag SNPs for HsInv0266 in YRI
+YRI HsInv0284
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0284 in sample file.
+YRI HsInv0340
+No perfect tag SNPs for HsInv0340 in YRI
+YRI HsInv0341
+No perfect tag SNPs for HsInv0341 in YRI
+YRI HsInv0347
+No perfect tag SNPs for HsInv0347 in YRI
+YRI HsInv0379
+No perfect tag SNPs for HsInv0379 in YRI
+YRI HsInv0790
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0790 in sample file.
+No sample individuals were found for CEU population in data/use/avery_individuals/nc6nc22nc25nc26
+GLB HsInv0003
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0004
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0006
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0030
+No perfect tag SNPs for HsInv0030 in GLB
+GLB HsInv0031
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0040
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0041
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0045
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0055
+No perfect tag SNPs for HsInv0055 in GLB
+GLB HsInv0058
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0058 in sample file.
+GLB HsInv0059
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0061
+No perfect tag SNPs for HsInv0061 in GLB
+GLB HsInv0063
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0068
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0092
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0095
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0097
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0097 in sample file.
+GLB HsInv0098
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0102
+No perfect tag SNPs for HsInv0102 in GLB
+GLB HsInv0105
+No perfect tag SNPs for HsInv0105 in GLB
+GLB HsInv0114
+No perfect tag SNPs for HsInv0114 in GLB
+GLB HsInv0124
+No perfect tag SNPs for HsInv0124 in GLB
+GLB HsInv0201
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv0209
+No perfect tag SNPs for HsInv0209 in GLB
+GLB HsInv0241
+No perfect tag SNPs for HsInv0241 in GLB
+GLB HsInv0260
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0260 in sample file.
+GLB HsInv0266
+No perfect tag SNPs for HsInv0266 in GLB
+GLB HsInv0284
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0284 in sample file.
+GLB HsInv0340
+No perfect tag SNPs for HsInv0340 in GLB
+GLB HsInv0341
+No perfect tag SNPs for HsInv0341 in GLB
+GLB HsInv0347
+No perfect tag SNPs for HsInv0347 in GLB
+GLB HsInv0379
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0379 in sample file.
+GLB HsInv0790
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0790 in sample file.
+No sample individuals were found for EUR population in data/use/avery_individuals/nc6nc22nc25nc26
+No sample individuals were found for EAS population in data/use/avery_individuals/nc6nc22nc25nc26
+No sample individuals were found for SAS population in data/use/avery_individuals/nc6nc22nc25nc26
+AFR HsInv0003
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+AFR HsInv0004
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+Traceback (most recent call last):
+  File "code/python/tagSNPcheck.py", line 100, in <module>
+    gen_sih : consensus[0]
+IndexError: list index out of range
+tail: cannot open 'tmp/2021-01-07_08_tagsnps//AFR/HsInv0004_calcGenos' for reading: No such file or directory
+AFR HsInv0006
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+Traceback (most recent call last):
+  File "code/python/tagSNPcheck.py", line 100, in <module>
+    gen_sih : consensus[0]
+IndexError: list index out of range
+tail: cannot open 'tmp/2021-01-07_08_tagsnps//AFR/HsInv0006_calcGenos' for reading: No such file or directory
+AFR HsInv0030
+No perfect tag SNPs for HsInv0030 in AFR
+AFR HsInv0031
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+AFR HsInv0040
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+AFR HsInv0041
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+AFR HsInv0045
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+AFR HsInv0055
+No perfect tag SNPs for HsInv0055 in AFR
+AFR HsInv0058
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0058 in sample file.
+AFR HsInv0059
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+Traceback (most recent call last):
+  File "code/python/tagSNPcheck.py", line 100, in <module>
+    gen_sih : consensus[0]
+IndexError: list index out of range
+tail: cannot open 'tmp/2021-01-07_08_tagsnps//AFR/HsInv0059_calcGenos' for reading: No such file or directory
+AFR HsInv0061
+No perfect tag SNPs for HsInv0061 in AFR
+AFR HsInv0063
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+AFR HsInv0068
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+AFR HsInv0092
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+AFR HsInv0095
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+AFR HsInv0097
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0097 in sample file.
+AFR HsInv0098
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+AFR HsInv0102
+No perfect tag SNPs for HsInv0102 in AFR
+AFR HsInv0105
+No perfect tag SNPs for HsInv0105 in AFR
+AFR HsInv0114
+No perfect tag SNPs for HsInv0114 in AFR
+AFR HsInv0124
+No perfect tag SNPs for HsInv0124 in AFR
+AFR HsInv0201
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+AFR HsInv0209
+No perfect tag SNPs for HsInv0209 in AFR
+AFR HsInv0241
+No perfect tag SNPs for HsInv0241 in AFR
+AFR HsInv0260
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0260 in sample file.
+AFR HsInv0266
+No perfect tag SNPs for HsInv0266 in AFR
+AFR HsInv0284
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0284 in sample file.
+AFR HsInv0340
+No perfect tag SNPs for HsInv0340 in AFR
+AFR HsInv0341
+No perfect tag SNPs for HsInv0341 in AFR
+AFR HsInv0347
+No perfect tag SNPs for HsInv0347 in AFR
+AFR HsInv0379
+No perfect tag SNPs for HsInv0379 in AFR
+AFR HsInv0790
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0790 in sample file.

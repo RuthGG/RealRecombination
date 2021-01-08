@@ -1,0 +1,8 @@
+# Failed because there were not perfect tagSNPs in population
+YRI HsInv0241
+YRI HsInv0290
+YRI HsInv0370
+YRI HsInv0382
+YRI HsInv0573
+YRI HsInv0786
+YRI HsInv1111

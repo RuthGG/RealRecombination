@@ -684,7 +684,7 @@ STEP=$(printf '%02d' $((${STEP}+1)))
 
 if  [ "$COMMAND" == "tagsnps" ]; then
 
-  TMPDIR="tmp/${DATE}_${STEP}_tagsnps"
+  TMPDIR="tmp/${DATE}_${STEP}_tagsnps/"
   OUTDIR="analysis/${DATE}_${STEP}_tagsnps"
   mkdir -p $TMPDIR $OUTDIR
 
@@ -713,6 +713,10 @@ if  [ "$COMMAND" == "tagsnps" ]; then
       if [ $POP = "GLB"  ] || [ $POP = "ALL"  ]; then
         POP="GLB"
         SAMPLES_IN=$(tail -n +2 ${POPFILE}|cut -f1 )
+      elif [ $POP = "CEU" ]; then
+        SAMPLES_IN=$(grep "EUR" ${POPFILE} | cut -f1)
+      elif [ $POP = "YRI" ]; then
+        SAMPLES_IN=$(grep "AFR" ${POPFILE} | cut -f1)
       else
         SAMPLES_IN=$(grep ${POP} ${POPFILE} | cut -f1)
       fi
@@ -738,11 +742,12 @@ if  [ "$COMMAND" == "tagsnps" ]; then
     if [ -z "$SAMPLES_IN" ]  ; then 
       
       echo "No sample individuals were found for ${POP} population in ${INDIR}"
-   
+    elif [ -z "$SAMPLES_REF" ]  ; then 
+       echo "No genotyped reference individuals were found for ${POP} population in ${INDIR}"
     else
 
       mkdir -p ${TMPDIR}/$POP
-      echo -e "Individual\tGenotype\tProbability\tCoverage\tInversion" > ${TMPDIR}/${POP}/${POP}_summary
+      echo -e "Individual\tGenotype\tProbability\Avail.TagSNPs\tExist.tagSNPs" > ${TMPDIR}/${POP}/${POP}_summary
 
       for INV in $(cat ${OUTDIR}/invlist.txt) ; do
         echo $POP $INV
@@ -772,7 +777,7 @@ if  [ "$COMMAND" == "tagsnps" ]; then
 
           # Get SNP genotype for reference
           VCF_PH3=$(ls $REFDIR | grep "chr${CHRNUM}\..*gz$")
-          bcftools view -R ${TMPDIR}/${POP}/${INV}_tagsnpList --force-samples  -s $(echo $SAMPLES_REF | tr " " ",") ${REFDIR}/$VCF_PH3 | bcftools query -H -f '%CHROM\t%POS\t%ID[\t%GT]\n' > ${TMPDIR}/${POP}/${INV}_refGenos
+          bcftools view -R ${TMPDIR}/${POP}/${INV}_tagsnpList --force-samples -v snps -s $(echo $SAMPLES_REF  | tr " " ",") -Ov ${REFDIR}/$VCF_PH3 | bcftools query -H -f '%CHROM\t%POS\t%ID[\t%GT]\n' > ${TMPDIR}/${POP}/${INV}_refGenos
 
           # Get SNP genotype for sample
           VCF_SAMPLE=$(ls $INDIR | grep "chr${CHRNUM}\_.*gz$")

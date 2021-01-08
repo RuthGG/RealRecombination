@@ -1,0 +1,3 @@
+# Failed because there were not tagSNPs sequenced in sample
+CEU HsInv0290
+CEU HsInv0573

@@ -52,9 +52,12 @@ if __name__ == "__main__": # if file was called and not imported
   # Parse template and genotypes to know which SNP genotypes correspond o each inv orientation
   # =========================================================================== #
   
+  # List which genotypes we have available (e.g. STD, INV, HET)
+  gen_sih_av = template.GENOTYPE.value_counts().index.tolist()
+
   # Clean colnames for ref_table
   colnames = list(ref_table.columns)
-  colnames = [re.sub('\[\d+\]', '', file) for file in colnames]
+  colnames = [re.sub("\[\d+\]", '', file) for file in colnames]
   colnames = [re.sub(':GT', '', file) for file in colnames]
   ref_table.columns = colnames
 
@@ -63,11 +66,14 @@ if __name__ == "__main__": # if file was called and not imported
   templateParsed = pd.DataFrame() 
 
   # Make a template columns for each genotype (gen_sih)
-  for gen_sih in ["STD", "INV", "HET"]:
+  for gen_sih in gen_sih_av:
 
     # Make a list of individuals' ID with the required genotype
     indlist = template[template.GENOTYPE == gen_sih]["ID"]
     
+    if len(indlist) == 0:
+      continue
+
     # Filter indlist to include only those that are present in the reference table
     indlist = indlist[ indlist.isin(ref_table.columns)]
     
@@ -83,6 +89,7 @@ if __name__ == "__main__": # if file was called and not imported
 
       # Store all SNP genotypes that should be a consensus
       consensus = list(subset.iloc[index,3:len(columns)])
+      
       consensus = [re.sub('1\|0', '0|1', geno )  for geno in consensus] # Just in case heterozygous inds
 
       # If there is actually a consensus, add to templateParsed_part
@@ -105,7 +112,7 @@ if __name__ == "__main__": # if file was called and not imported
   # Calculate inversion genotype for each individual according to template
   # =========================================================================== #
     
-  # Clean colnames for smaple_table
+  # Clean colnames for sample_table
   colnames = list(sample_table.columns)
   colnames = [re.sub('\[\d+\]\d*\.*', '', file) for file in colnames]
   colnames = [re.sub(':GT', '', file) for file in colnames]
@@ -124,14 +131,14 @@ if __name__ == "__main__": # if file was called and not imported
   for ind in compare.columns[ ~compare.columns.isin(templateParsed.columns)] : 
     
     # Make subset only for this individual 
-    compare_part = compare[['STD', 'INV', 'HET' , ind]].copy()
+    compare_part = compare[gen_sih_av +[ind]].copy()
     compare_part[ind] = [re.sub('1\|0', '0|1', geno )  for geno in compare_part[ind]] # Just in case heterozygous inds
 
     # Create empty column for final genotype
     compare_part['genotype'] = ""
 
     # For each genotype (gen_sih), compare sample to template
-    for gen_sih in ["STD", "INV", "HET"]:
+    for gen_sih in gen_sih_av:
       compare_part.loc[compare_part[gen_sih] == compare_part[ind], ['genotype']] = gen_sih
 
 
@@ -142,7 +149,8 @@ if __name__ == "__main__": # if file was called and not imported
     genotypedSamples = genotypedSamples.append( { 'Ind' : ind,
                                               'Genotype' : ranking.index.tolist()[0],
                                               'Probability': ranking[0],
-                                              'Coverage' : compare_part[compare_part['genotype'] != ""]['genotype'].count()
+                                              'Avail.Tagsnps' : compare_part[compare_part['genotype'] != ""]['genotype'].count(),
+                                              'Exist.Tagsnps': templateParsed.shape[0]
                                             } , ignore_index=True)
 
   # %%

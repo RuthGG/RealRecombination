@@ -1,0 +1,14 @@
+# Failed because there were not tagSNPs sequenced in sample
+CEU HsInv0058
+GLB HsInv0058
+GLB HsInv0097
+GLB HsInv0284
+GLB HsInv0379
+GLB HsInv0790
+EUR HsInv0058
+EUR HsInv0209
+EAS HsInv0058
+EAS HsInv0061
+EAS HsInv0102
+EAS HsInv0209
+EAS HsInv0379

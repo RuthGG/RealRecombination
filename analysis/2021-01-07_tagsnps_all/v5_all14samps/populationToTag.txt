@@ -1,0 +1,7 @@
+YRI
+CEU
+ALL
+EUR
+EAS
+SAS
+AFR

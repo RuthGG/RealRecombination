@@ -1,0 +1,122 @@
+No sample individuals were found for YRI population in data/use/avery_individuals/all14samps
+CEU HsInv0241
+No perfect tag SNPs for HsInv0241 in CEU
+CEU HsInv0290
+Traceback (most recent call last):
+  File "code/python/tagSNPcheck.py", line 100, in <module>
+    gen_sih : consensus[0]
+IndexError: list index out of range
+tail: cannot open 'tmp/2020-12-21_08_tagsnps/CEU/HsInv0290_calcGenos' for reading: No such file or directory
+CEU HsInv0370
+No perfect tag SNPs for HsInv0370 in CEU
+CEU HsInv0382
+No perfect tag SNPs for HsInv0382 in CEU
+CEU HsInv0573
+No tag SNPs for HsInv0573 in sample file.
+CEU HsInv0786
+Traceback (most recent call last):
+  File "code/python/tagSNPcheck.py", line 100, in <module>
+    gen_sih : consensus[0]
+IndexError: list index out of range
+tail: cannot open 'tmp/2020-12-21_08_tagsnps/CEU/HsInv0786_calcGenos' for reading: No such file or directory
+CEU HsInv1057
+No perfect tag SNPs for HsInv1057 in CEU
+CEU HsInv1111
+No perfect tag SNPs for HsInv1111 in CEU
+GLB HsInv0241
+No perfect tag SNPs for HsInv0241 in GLB
+GLB HsInv0290
+No perfect tag SNPs for HsInv0290 in GLB
+GLB HsInv0370
+No perfect tag SNPs for HsInv0370 in GLB
+GLB HsInv0382
+No perfect tag SNPs for HsInv0382 in GLB
+GLB HsInv0573
+No tag SNPs for HsInv0573 in sample file.
+GLB HsInv0786
+No perfect tag SNPs for HsInv0786 in GLB
+GLB HsInv1057
+No tag SNPs for HsInv1057 in sample file.
+GLB HsInv1111
+No perfect tag SNPs for HsInv1111 in GLB
+EUR HsInv0241
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0241 in EUR
+EUR HsInv0290
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0290 in EUR
+EUR HsInv0370
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0370 in EUR
+EUR HsInv0382
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0382 in EUR
+EUR HsInv0573
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0573 in EUR
+EUR HsInv0786
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0786 in EUR
+EUR HsInv1057
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv1057 in EUR
+EUR HsInv1111
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv1111 in EUR
+EAS HsInv0241
+No perfect tag SNPs for HsInv0241 in EAS
+EAS HsInv0290
+No perfect tag SNPs for HsInv0290 in EAS
+EAS HsInv0370
+No perfect tag SNPs for HsInv0370 in EAS
+EAS HsInv0382
+No perfect tag SNPs for HsInv0382 in EAS
+EAS HsInv0573
+No perfect tag SNPs for HsInv0573 in EAS
+EAS HsInv0786
+No perfect tag SNPs for HsInv0786 in EAS
+EAS HsInv1057
+No perfect tag SNPs for HsInv1057 in EAS
+EAS HsInv1111
+No perfect tag SNPs for HsInv1111 in EAS
+SAS HsInv0241
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0241 in SAS
+SAS HsInv0290
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0290 in SAS
+SAS HsInv0370
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0370 in SAS
+SAS HsInv0382
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0382 in SAS
+SAS HsInv0573
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0573 in SAS
+SAS HsInv0786
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0786 in SAS
+SAS HsInv1057
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv1057 in SAS
+SAS HsInv1111
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv1111 in SAS
+No sample individuals were found for AFR population in data/use/avery_individuals/all14samps

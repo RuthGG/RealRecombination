@@ -1,0 +1,69 @@
+YRI HsInv0241
+No perfect tag SNPs for HsInv0241 in YRI
+YRI HsInv0290
+No perfect tag SNPs for HsInv0290 in YRI
+YRI HsInv0370
+No perfect tag SNPs for HsInv0370 in YRI
+YRI HsInv0382
+No perfect tag SNPs for HsInv0382 in YRI
+YRI HsInv0573
+No perfect tag SNPs for HsInv0573 in YRI
+YRI HsInv0786
+No perfect tag SNPs for HsInv0786 in YRI
+YRI HsInv1057
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+YRI HsInv1111
+No perfect tag SNPs for HsInv1111 in YRI
+No sample individuals were found for CEU population in data/use/avery_individuals/nc6nc22nc25nc26
+GLB HsInv0241
+No perfect tag SNPs for HsInv0241 in GLB
+GLB HsInv0290
+No perfect tag SNPs for HsInv0290 in GLB
+GLB HsInv0370
+No perfect tag SNPs for HsInv0370 in GLB
+GLB HsInv0382
+No perfect tag SNPs for HsInv0382 in GLB
+GLB HsInv0573
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+No tag SNPs for HsInv0573 in sample file.
+GLB HsInv0786
+No perfect tag SNPs for HsInv0786 in GLB
+GLB HsInv1057
+Warn: subset called for sample that does not exist in header: "-Ov"... skipping
+GLB HsInv1111
+No perfect tag SNPs for HsInv1111 in GLB
+No sample individuals were found for EUR population in data/use/avery_individuals/nc6nc22nc25nc26
+No sample individuals were found for EAS population in data/use/avery_individuals/nc6nc22nc25nc26
+No sample individuals were found for SAS population in data/use/avery_individuals/nc6nc22nc25nc26
+AFR HsInv0241
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0241 in AFR
+AFR HsInv0290
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0290 in AFR
+AFR HsInv0370
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0370 in AFR
+AFR HsInv0382
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0382 in AFR
+AFR HsInv0573
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0573 in AFR
+AFR HsInv0786
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv0786 in AFR
+AFR HsInv1057
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv1057 in AFR
+AFR HsInv1111
+cut: fields are numbered from 1
+Try 'cut --help' for more information.
+No perfect tag SNPs for HsInv1111 in AFR

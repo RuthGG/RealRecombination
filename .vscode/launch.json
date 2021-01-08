@@ -10,10 +10,10 @@
             "request": "launch",
             "program": "${file}",
             "args": [
-                "--reference", "/home/rgomez/Documents/PHD_Repos/20200401_RealRecombination/tmp/2020-12-18_08_tagsnps/GLB/HsInv0041_refGenos",
-                "--sample", "/home/rgomez/Documents/PHD_Repos/20200401_RealRecombination/tmp/2020-12-18_08_tagsnps/GLB/HsInv0041_sampleGenos",
-                "--output", "/home/rgomez/Documents/PHD_Repos/20200401_RealRecombination/tmp/2020-12-18_08_tagsnps/GLB/HsInv0041_result",
-                "--template", "/home/rgomez/Documents/PHD_Repos/20200401_RealRecombination/tmp/2020-12-18_08_tagsnps/GLB/HsInv0041_templateGenos"
+                "--reference", "/home/rgomez/Documents/PHD_Repos/20200401_RealRecombination/tmp/2020-12-21_08_tagsnps/YRI/HsInv1057_refGenos",
+                "--sample", "/home/rgomez/Documents/PHD_Repos/20200401_RealRecombination/tmp/2020-12-21_08_tagsnps/YRI/HsInv1057_sampleGenos",
+                "--output", "/home/rgomez/Documents/PHD_Repos/20200401_RealRecombination/tmp/2020-12-21_08_tagsnps/YRI/HsInv1057_result",
+                "--template", "/home/rgomez/Documents/PHD_Repos/20200401_RealRecombination/tmp/2020-12-21_08_tagsnps/YRI/HsInv1057_templateGenos"
             ],
             "console": "integratedTerminal"
         }
