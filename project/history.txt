@@ -325,4 +325,4 @@ done
 	mkdir analysis/2021-01-11_09_coverage_allinds
 	cat analysis/2021-01-08_09_coverage/coverage_table.txt > analysis/2021-01-11_09_coverage_allinds/coverage_table.txt
 	tail -n+2 analysis/2021-01-10_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt
-	tail -n+2 analysis/2021-01-11_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt
+	tail -n+2 analysis/2021-01-11_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt2021-01-11: runall.sh imputetables -i analysis/2020-12-17_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt

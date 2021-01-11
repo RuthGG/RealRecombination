@@ -1,10 +1,15 @@
 ## MAKE IMPUTATION SUMMARY TABLES
  Rscript code/rscript/imputeParse.R analysis/2020-12-17_06_imputation_merged data/use/avery_individuals/samples_population.txt data/use/inversions_info/Inversions_imputability.txt analysis/2021-01-11_07_imputationTables
 Loading required package: stringr
-Error in contrib.url(repos, type) : 
-  trying to use CRAN without setting a mirror
-Calls: lapply -> FUN -> install.packages -> grep -> contrib.url
-In addition: Warning message:
-In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
-  there is no package called ‘stringr’
-Execution halted
+Loading required package: reshape2
+Loading required package: naniar
+[[1]]
+NULL
+
+[[2]]
+NULL
+
+[[3]]
+NULL
+
+Using Genotype_con as value column: use value.var to override.
