@@ -1,0 +1,85 @@
+rm: cannot remove 'tmp/2021-01-10_09_coverage/makeline_tmp': No such file or directory
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+[E::_reader_seek] Could not seek: 5:113814781-0
+bcftools: synced_bcf_reader.c:448: _reader_seek: Assertion `0' failed.
+[E::_reader_seek] Could not seek: 5:113814781-0
+bcftools: synced_bcf_reader.c:448: _reader_seek: Assertion `0' failed.
+[W::vcf_parse] INFO 'POSIT' is not defined in the header, assuming Type=String
+[E::_reader_seek] Could not seek: 5:113814781-0
+bcftools: synced_bcf_reader.c:448: _reader_seek: Assertion `0' failed.
+[E::_reader_seek] Could not seek: 5:113814781-0
+bcftools: synced_bcf_reader.c:448: _reader_seek: Assertion `0' failed.
+[W::vcf_parse] INFO 'POS' is not defined in the header, assuming Type=String
+[E::_reader_seek] Could not seek: 5:113814781-0
+bcftools: synced_bcf_reader.c:448: _reader_seek: Assertion `0' failed.
+[E::_reader_seek] Could not seek: 5:113814781-0
+bcftools: synced_bcf_reader.c:448: _reader_seek: Assertion `0' failed.
+[W::vcf_parse] INFO 'POSIT' is not defined in the header, assuming Type=String
+[E::_reader_seek] Could not seek: 5:113814781-0
+bcftools: synced_bcf_reader.c:448: _reader_seek: Assertion `0' failed.
+[E::_reader_seek] Could not seek: 5:113814781-0
+bcftools: synced_bcf_reader.c:448: _reader_seek: Assertion `0' failed.
+[W::vcf_parse] INFO 'POS' is not defined in the header, assuming Type=String
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type
+Failed to read the regions: tmp/2021-01-10_09_coverage/makeline_tmp_1kgpmaf
+Failed to open -: unknown file type

@@ -33,6 +33,7 @@ usage()
   imputetables -i -p -t               Make summary tables after imputation.
   tagsnps -f -x -i -c -g -r           Check if tag SNPs in -f are true in VCF in -i. 
   crossovers -f -c -x -n -m -b        Make recombination rates for given regions (win. size and CI in -x).
+  coverage -f -c -x -r -i             Check coverage around inverions and compare it to 1KGP
   "
   echo "Options:
 
@@ -213,6 +214,20 @@ case "$COMMAND" in
     done
     shift $((OPTIND -1))
     ;;
+     # Make coverage study
+   coverage ) 
+    while getopts "f:x:r:c:i:" OPTIONS ; do
+      case "$OPTIONS" in
+        f)  FILE=${OPTARG} ;; 
+        x)  CONFILE=${OPTARG} ;;
+        r)  REFDIR=${OPTARG} ;;
+        c)  INVCOORD=${OPTARG} ;;
+        i)  INDIR=${OPTARG} ;;
+      esac
+    done
+    shift $((OPTIND -1))
+    ;;
+
   esac
 
 # Check that empty mandatory variables are full
@@ -251,6 +266,10 @@ elif [ "$COMMAND" == "tagsnps" ]; then
 elif [ "$COMMAND" == "crossovers" ]; then
   if [ -z "$FILE" ] || [ -z "$INVCOORD" ] || [ -z "$CONFILE" ] || [ -z "$CELLS" ] || [ -z "$BOUNDARIES" ] ; then 
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -c -x -n -m -b"; usage; exit
+  fi
+elif [ "$COMMAND" == "coverage" ]; then
+  if [ -z "$FILE" ] || [ -z "$INVCOORD" ] || [ -z "$CONFILE" ] || [ -z "$REFDIR"  ] || [ -z "$INDIR" ] ; then 
+    echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f -x -r -c -i"; usage; exit
   fi
 else 
   usage; exit
@@ -889,4 +908,85 @@ if  [ "$COMMAND" == "crossovers" ]; then
   python code/python/quantileNormalization.py --input "${TMPDIR}/crossoverResult.txt" --output "${OUTDIR}/crossoverResult_QN.txt" --recMap "${MAP}"
   echo "Inversion recombination rates normalized"
   # Normalization alone is around 20 seconds 
+fi
+
+
+# COVERAGE CHECK AROUND AN INVERSION
+# Make summary table to check coverage
+# =========================================================================== #
+STEP=$(printf '%02d' $((${STEPB}+1)))
+
+if  [ "$COMMAND" == "coverage" ]; then
+
+    #  Set directories
+    TMPDIR="tmp/${DATE}_${STEP}_coverage"
+    OUTDIR="analysis/${DATE}_${STEP}_coverage"
+    mkdir -p "$TMPDIR" "$OUTDIR"
+
+    # Set confidence interval around region and threshold maf
+    RANGE=$(head -n 1 "${CONFILE}")
+    MAFLIST=$(head -n 2 "${CONFILE}" | tail -n 1)
+    cp ${CONFILE} ${OUTDIR} 
+
+    #  Make header
+    echo -e "INV\tMAF\tCI\tCHR\tSTART\tEND\tIND\tsequenced_total\tsequenced_1kgp\tsequenced_maf\ttotal_1kgp\ttotal_maf" > ${OUTDIR}/coverage_table.txt
+
+    # For each inversion, check coverage inside and around
+    for INV in $(cat $FILE) ; do
+      # Take coordinates from inversion
+        CHR=$(grep -e "${INV}" ${INVCOORD} | cut -f2)
+        CHR_NUM=$(echo ${CHR} | sed 's/chr//g' )
+        INV_START=$(grep -e "${INV}" ${INVCOORD} | cut -f3) # Inversion region
+        INV_END=$(grep -e "${INV}" ${INVCOORD} | cut -f6)
+
+      # Reference file
+      VCF_PH3=$(ls $REFDIR | grep "chr${CHR_NUM}\..*gz$")
+      # Sample file
+      VCF_FILE=$(ls $INDIR | grep "${CHR}_.*gz$")
+
+      # Funcion to make the table line
+      makeline () { 
+        CI="$1"
+        MF=$2
+        #  Sum confidence interval
+        START=$(($INV_START-$CI))     # Region we take for imputation
+        END=$(($INV_END+$CI))
+
+        # Total snps in the 1kgp region
+        bcftools view -r "${CHR_NUM}:$START-$END" --type snps -Ov ${REFDIR}/$VCF_PH3 | bcftools query  -f '%CHROM\t%POS\t%ID\t%AF\n' > ${TMPDIR}/makeline_tmp_1kgptotal
+        COL4=$(cat ${TMPDIR}/makeline_tmp_1kgptotal | wc -l)
+        # snps above a threshold maf in region 
+        bcftools view -r "${CHR_NUM}:$START-$END" --type snps --min-af $MF -Ov ${REFDIR}/$VCF_PH3  | bcftools query -f  '%CHROM\t%POS\t%ID\t%AF\n' > ${TMPDIR}/makeline_tmp_1kgpmaf
+        COL5=$(cat  ${TMPDIR}/makeline_tmp_1kgpmaf | wc -l)
+       
+        # From sample file
+        INDLIST=$(bcftools query -l "${INDIR}/$VCF_FILE" )
+        rm ${TMPDIR}/makeline_tmp
+
+        for IND in $INDLIST ; do
+          # total sequenced snps
+          COL1=$(bcftools view -r "${CHR_NUM}:$START-$END" -s "$IND" --type snps -Ov ${INDIR}/$VCF_FILE  | bcftools query -f  '%CHROM\t%POS\t%ID[\t%GT]\n' | grep -v "\./\." | wc -l)
+          # snps present in 1kgp
+          COL2=$(bcftools view -R ${TMPDIR}/makeline_tmp_1kgptotal -s "$IND" -Ov ${INDIR}/$VCF_FILE  | bcftools query  -f  '%CHROM\t%POS\t%ID[\t%GT]\n'   | grep -v "\./\." | wc -l)
+          #  snps present in 1kgp AND MAF > threshold 
+          COL3=$(bcftools view -R  ${TMPDIR}/makeline_tmp_1kgpmaf -s "$IND" -Ov ${INDIR}/$VCF_FILE  | bcftools query -f  '%CHROM\t%POS\t%ID[\t%GT]\n'  | grep -v "\./\." | wc -l)
+
+          echo -e "$INV\t$MAF\t$CI\t$CHR_NUM\t$START\t$END\t$IND\t$COL1\t$COL2\t$COL3\t$COL4\t$COL5" >>  ${TMPDIR}/makeline_tmp
+          
+        done
+         
+        cat ${TMPDIR}/makeline_tmp
+
+      }
+
+      for MAF in $MAFLIST; do 
+        # All region
+        if [ "$RANGE" != 0 ] ; then
+          makeline $RANGE $MAF >> ${OUTDIR}/coverage_table.txt
+        fi
+        # Inside inversion
+        makeline 0 $MAF >> ${OUTDIR}/coverage_table.txt
+      done
+
+    done
 fi

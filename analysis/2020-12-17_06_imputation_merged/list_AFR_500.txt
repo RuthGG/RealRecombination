@@ -1,0 +1,2 @@
+analysis/2020-12-17_06_imputation_merged/AFR_500_readSum.vcf
+analysis/2020-12-17_06_imputation_nc6nc22nc25nc26/AFR_500_readSum.vcf

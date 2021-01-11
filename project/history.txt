@@ -253,41 +253,39 @@ mv analysis/2020-12-18_06_imputation analysis/2020-12-17_06_imputation_all14samp
 
 # MANUAL MERGE OF VCFS
 
-mkdir analysis/2020-12-13_06_imputation_merged 
+mkdir analysis/2020-12-17_06_imputation_merged 
 CONLIST=$(cut -f1 data/use/conditions/imputConditions.txt )
 
 for CONDITION in $CONLIST;do
 	CPARSED=$(echo $CONDITION | sed 's/,/_/' )
-	ls analysis/2020-12-12_06_imputation_*/${CPARSED}_readSum.vcf > analysis/2020-12-13_06_imputation_merged/list_${CPARSED}.txt 
-	NUMLINES=$(grep "^.*$" -c  analysis/2020-12-13_06_imputation_merged/list_${CPARSED}.txt  )
+	ls analysis/2020-12-17_06_imputation_*/${CPARSED}_readSum.vcf > analysis/2020-12-17_06_imputation_merged/list_${CPARSED}.txt 
+	NUMLINES=$(grep "^.*$" -c  analysis/2020-12-17_06_imputation_merged/list_${CPARSED}.txt  )
 	if [ $NUMLINES == 1 ]; then
-		cp $(cat analysis/2020-12-13_06_imputation_merged/list_${CPARSED}.txt) analysis/2020-12-13_06_imputation_merged
+	cp $(cat analysis/2020-12-17_06_imputation_merged/list_${CPARSED}.txt) analysis/2020-12-17_06_imputation_merged
 	else
-		echo  ${CPARSED} >> analysis/2020-12-13_06_imputation_merged/multilist.txt
+	echo  ${CPARSED} >> analysis/2020-12-17_06_imputation_merged/multilist.txt
 	fi
 done
 
 	R:
 
-		 multilist <- readLines("analysis/2020-12-13_06_imputation_merged/multilist.txt")
+		 multilist <- readLines("analysis/2020-12-17_06_imputation_merged/multilist.txt")
 		 
 		 for (m in multilist) { 
-		 	filelist <- readLines( paste0("analysis/2020-12-13_06_imputation_merged/list_",m,".txt"))
+		 	filelist <- readLines( paste0("analysis/2020-12-17_06_imputation_merged/list_",m,".txt"))
 		 	merged<-read.table(filelist[1], sep = "\t", comment.char="", skip=2, header = TRUE, check.names = FALSE)
 		 	header <- readLines(filelist[1], n  = 2)
 		 	for (f in filelist[c(2:length(filelist))]){
 		 		merged<-merge(read.table(f, sep = "\t", comment.char="", skip = 2, header = TRUE, check.names = FALSE), merged, all.y = TRUE)
 		 	}
-		 	write(header,paste0("analysis/2020-12-13_06_imputation_merged/", m , "_readSum.vcf") ) 
-		 	write.table(merged, paste0("analysis/2020-12-13_06_imputation_merged/", m , "_readSum.vcf"), quote = FALSE, sep = "\t", row.names = FALSE, append = TRUE)
+		 	write(header,paste0("analysis/2020-12-17_06_imputation_merged/", m , "_readSum.vcf") ) 
+		 	write.table(merged, paste0("analysis/2020-12-17_06_imputation_merged/", m , "_readSum.vcf"), quote = FALSE, sep = "\t", row.names = FALSE, append = TRUE)
 		 }
-
 
 
 # PIPELINE FROM HERE DOWN AS NORMAL
 
-2020-12-14: runall.sh imputetables -i analysis/2020-12-13_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
-# Re-analyzed with report/2020-10-28_genotypeFilteringReport/filteringAnalysis.Rmd2020-12-14: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 6
+ runall.sh imputetables -i analysis/2020-12-17_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
 
 #------------------------ TO REPEAT ------------------------
 
@@ -317,5 +315,14 @@ for DIR in `ls -d  analysis/${DATE}_tagsnps_all/*/`; do
 	cat $DIR/tagSNPGenotypedInvs.txt >> analysis/${DATE}_tagsnps_all/tagSNPGenotypedInvs_conc.txt
 done
 
-# Coverage assessment
+# Coverage assessment - in imputation range is 500000
 
+2021-01-08: runall.sh coverage -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/coverageConditions.txt -r data/raw/1000genomes_hg19 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -i data/use/avery_individuals/all14samps
+2021-01-10: runall.sh coverage -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/coverageConditions.txt -r data/raw/1000genomes_hg19 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -i data/use/avery_individuals/nc6nc22nc25nc26
+2021-01-11: runall.sh coverage -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/coverageConditions.txt -r data/raw/1000genomes_hg19 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -i data/use/avery_individuals/nc17nc18
+
+2021-01-11: Manually join all files
+	mkdir analysis/2021-01-11_09_coverage_allinds
+	cat analysis/2021-01-08_09_coverage/coverage_table.txt > analysis/2021-01-11_09_coverage_allinds/coverage_table.txt
+	tail -n+2 analysis/2021-01-10_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt
+	tail -n+2 analysis/2021-01-11_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt

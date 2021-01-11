@@ -1,0 +1,2 @@
+analysis/2020-12-17_06_imputation_all14samps/SAS_500_readSum.vcf
+analysis/2020-12-17_06_imputation_merged/SAS_500_readSum.vcf
