@@ -1,5 +1,5 @@
 ---
-title: "Inversion filtering analysis"
+title: "Genotype inference analysis"
 author: "Ruth Gómez Graciani"
 output:
   html_document:
@@ -23,6 +23,8 @@ say.goods<-function(vector){
 
 
 ```
+
+# Imputation
 
 We started with the following list of inversions. When (n = m) inversions is stated, it  means there are n inversions in the list, of which m are unique inversions and n-m are repeated because they had DEL genotypes. 
 
@@ -197,8 +199,13 @@ write.csv(genotypes, file = " genotypes_filtered.csv")
 
 ```
 
+# Tag SNPs direct inference
 
+We had tagSNPs for n inversions. Some of them had global and metapopulatoin tagSNPs (GLB, EUR, AFR) and some of them has proxy populations (CEU, CHB). 
 
+# Coverage check
+
+I checked how many SNPs that are in 1/40 and 1/20 chromosomes are present in our dataset, for regions inside inversions and inversion +- 500kb (imputation region). 
 
 
 
