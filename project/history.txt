@@ -249,7 +249,6 @@ mv analysis/2020-12-17_06_imputation analysis/2020-12-17_06_imputation_nc6nc22nc
 mv analysis/2020-12-18_06_imputation analysis/2020-12-17_06_imputation_all14samps
 
 
-#------------------------ TO REPEAT ------------------------
 
 # MANUAL MERGE OF VCFS
 
@@ -285,9 +284,8 @@ done
 
 # PIPELINE FROM HERE DOWN AS NORMAL
 
- runall.sh imputetables -i analysis/2020-12-17_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
+2021-01-11: runall.sh imputetables -i analysis/2020-12-17_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
 
-#------------------------ TO REPEAT ------------------------
 
 # Tag SNPs genotyping
 
@@ -310,9 +308,9 @@ done
 2021-01-07: runall.sh tagsnps -f data/raw/inversions_info/TagVs_INVs_v5 -x data/use/conditions/populationToTag.txt -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -r data/raw/1000genomes_hg19 -g data/use/inversions_info/20201217_all_genotypes.csv
 
 # Join all
-cat head -1 analysis/${DATE}_tagsnps_all/v4.7_all14samps/tagSNPGenotypedInvs.txt > analysis/${DATE}_tagsnps_all/tagSNPGenotypedInvs_conc.txt
+echo -e "Individual\tGenotype\tProbability\tAvail.TagSNPs\tExist.tagSNPs\tInversion\tPopulation" > analysis/${DATE}_tagsnps_all/tagSNPGenotypedInvs_conc.txt
 for DIR in `ls -d  analysis/${DATE}_tagsnps_all/*/`; do 
-	cat $DIR/tagSNPGenotypedInvs.txt >> analysis/${DATE}_tagsnps_all/tagSNPGenotypedInvs_conc.txt
+	cat $DIR/tagSNPGenotypedInvs.txt | tail -n+2 >> analysis/${DATE}_tagsnps_all/tagSNPGenotypedInvs_conc.txt
 done
 
 # Coverage assessment - in imputation range is 500000
@@ -325,4 +323,4 @@ done
 	mkdir analysis/2021-01-11_09_coverage_allinds
 	cat analysis/2021-01-08_09_coverage/coverage_table.txt > analysis/2021-01-11_09_coverage_allinds/coverage_table.txt
 	tail -n+2 analysis/2021-01-10_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt
-	tail -n+2 analysis/2021-01-11_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt2021-01-11: runall.sh imputetables -i analysis/2020-12-17_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
+	tail -n+2 analysis/2021-01-11_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt
