@@ -1,18 +1,231 @@
 ---
 title: "Graphical Representations Report"
 output: html_notebook
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, setup, include=FALSE}
 # require("knitr")
 # require("tidyr")
 # require("ggforce")
-# require("ggpubr")
-# require("reshape2")
+require("ggpubr")
+require("reshape2")
 library("ggplot2")
+require("data.table")
 # require("stringr")
 knitr::opts_knit$set(root.dir = "~/20200401_RealRecombination/")
 # outdir<-"report/2020-08-20_defMethods/"
 
 
 ```
+
+
+# Data processing
+
+Adapted from analysisNormalizedData.Rmd
+
+```{r allProcessDifFun }
+
+# Read normalized data
+normData <- read.table("analysis/2020-10-14_09_crossovers_200k/crossoverResult_QN.txt", header = TRUE)
+
+# Read genotypes
+genotypes <- read.table("report/2020-10-28_genotypeFilteringReport/allgenotypes_classified.csv", header = TRUE, sep = ",", row.names = 1, stringsAsFactors = FALSE)
+
+genotypes$AcceptedG<-ifelse(is.na(genotypes$Imp.genotype), genotypes$TagSNP.genotype, genotypes$Imp.genotype)
+genotypes<-genotypes[genotypes$Result %in% c("A.Imputed","A.Tag.Imput","A.Tagged" ), c("Individual", "Inversion","Population", "AcceptedG")]
+
+# Search for name changes between files
+g<-unique(genotypes$Inversion)
+n<- unique(normData$inv)
+g[!g%in%intersect(g,n)]
+
+namechanges<-read.table("data/use/inversions_info/2021.01.19to38nameChanges", header = TRUE, stringsAsFactors = FALSE)
+rownames(namechanges)<-namechanges$hg19
+genotypes[genotypes$Inversion %in% namechanges$hg19, "Inversion"]<-namechanges[genotypes[genotypes$Inversion %in% namechanges$hg19, "Inversion"],"hg38"]
+
+# Adjust genotypes from si, sd , id
+# inv52<-genotypes[genotypes$Inversion %in% c("HsInv0052id" ,"HsInv0052sd" ,"HsInv0052si" ),]
+# inv52<-reshape(inv52, idvar = c("Individual", "Population"), timevar = "Inversion", direction = "wide")
+
+# Merge
+normGenoData<-merge(normData, genotypes, by.x = c("ind", "inv") , by.y = c("Individual", "Inversion" ) )
+
+# Discard data without genotypes
+
+
+# plotInvsDifQN<-function(normData, genotypes=genotypes, aggregateWins =FALSE){
+    # unique(genotypes$Inversion)  # 63
+   # Add genotypes to table
+    # normData<-  merge(normData, genotypes[,c("Individual", "Inversion", "Genotype_500")], by.x = c("ind", "inv") , by.y = c("Individual", "Inversion" ), all.x = TRUE)
+    
+    normGenoData$Haplotype<-ifelse(normGenoData$AcceptedG %in% c("INV", "STD"), "Homozygous" , "Heterozygous")
+
+    # Make plottable inversions list
+    # toPlot<-normData[!is.na(normGenoData$Haplotype),]
+   
+    # Make new summary inside inversion line
+    if (aggregateWins == TRUE){
+      partn<-aggregate(cM.Mb.QN  ~  inv + Haplotype +position+ind ,  normGenoData[normGenoData$position == "inv",], mean)
+      parts<-aggregate(startWin  ~  inv + Haplotype +position+ind ,  normGenoData[normGenoData$position == "inv",], min)
+      parte<-aggregate(endWin  ~  inv + Haplotype +position+ind ,  normGenoData[normGenoData$position == "inv",], max)
+      part<-merge(partn, merge(parts, parte))
+      part$idWin<-paste(part$inv, "inv_1", sep="_" )
+      
+      toPlot<-rbind(normGenoData[normGenoData$position != "inv", colnames(part)], part)
+    }else{
+      toPlot<-normGenoData
+    }
+    
+    # Aggregate by zygosity to make the two sides of the comparison
+      # Mean value
+      test.subset<-aggregate(   cM.Mb.QN  ~  inv + startWin+endWin + Haplotype +idWin,toPlot, mean)
+      # Count of individuals
+      toPlot$counts<-1
+      test.counts<-aggregate(   counts  ~  inv + startWin+endWin + Haplotype +idWin,toPlot, sum)
+      test.subset<-merge(test.subset, test.counts)
+    
+    # Make both tables wide
+      # Counts table wide
+      test.subset.counts<-dcast(test.subset, inv + startWin + endWin + idWin  ~ Haplotype, value.var="counts")
+      colnames(test.subset.counts)[colnames(test.subset.counts) %in% c( "Heterozygous", "Homozygous"  )]<-c("Heterozygous.counts", "Homozygous.counts"  )
+      # CM.Mb table wide
+      test.subset.values<-dcast(test.subset, inv + startWin + endWin + idWin  ~ Haplotype, value.var="cM.Mb.QN")   
+      colnames(test.subset.values)[colnames(test.subset.values) %in% c( "Heterozygous", "Homozygous"  )]<-c("Heterozygous.cM.Mb.QN", "Homozygous.cM.Mb.QN" )
+      
+    # Merge wide table 
+      test.subset.wide<-merge(test.subset.counts, test.subset.values)
+      
+      # Filter by zygosity minimum threshold
+      
+      test.subset.wide<-test.subset.wide [test.subset.wide$Heterozygous.counts > 0 & test.subset.wide$Homozygous.counts > 0,]
+      test.subset.wide<-test.subset.wide[(test.subset.wide$Heterozygous.counts + test.subset.wide$Homozygous.counts ) > 3,]
+
+      # Make comparisons
+        # Difference
+        test.subset.wide$Means.Difference<- test.subset.wide$Heterozygous.cM.Mb.QN - test.subset.wide$Homozygous.cM.Mb.QN 
+        # Power ratio
+        test.subset.wide$Power.score<-log(test.subset.wide$Homozygous.counts / test.subset.wide$Heterozygous.counts)
+        # Fold changes
+        test.subset.wide$Means.Fold.Change<- test.subset.wide$Heterozygous.cM.Mb.QN / test.subset.wide$Homozygous.cM.Mb.QN 
+        # Fold changes log
+        test.subset.wide$Means.Fold.Changelog<- log2(test.subset.wide$Means.Fold.Change)
+      
+      
+      # Discard those without data
+      test.subset.wide<-  test.subset.wide[!is.na(test.subset.wide$Means.Difference),]
+       # test.subset.wide<- test.subset.wide[!(test.subset.wide$inv %in% c("HsInv0290", "HsInv0786")),]
+     
+       # Order table and factors
+      
+      test.subset.wide[c("side", "relpos")]<-str_split_fixed(test.subset.wide$idWin, "_", 3)[,c(2,3)]
+      test.subset.wide[c("winPos")]<-str_split_fixed(test.subset.wide$idWin, "_", 2)[,2]
+      
+
+      test.subset.wide$side<-factor(test.subset.wide$side, levels = c("left", "inv", "right"))
+      test.subset.wide$relpos<-as.numeric(test.subset.wide$relpos)
+      
+      test.subset.wide<-test.subset.wide[order( test.subset.wide$side, test.subset.wide$relpos),]
+       test.subset.wide$winPos<- factor(  test.subset.wide$winPos, levels = unique(  test.subset.wide$winPos))
+          
+   
+      invinfo<-read.table("data/use/inversions_info/2020.07.inversions_hg38.gff")
+      invinfo$size<-invinfo$V5-invinfo$V4
+      invinfo$Group<-"Small"
+      invinfo[invinfo$size > 5000,"Group"]<-"Medium"
+      invinfo[invinfo$size > 50000,"Group"]<-"Big"
+      
+      invinfo$inv<-gsub("ID=1;Name=", "", invinfo$V9)
+      invinfo$inv<-gsub(";.*$", "", invinfo$inv)
+      
+      test.subset.wide<-merge(test.subset.wide, invinfo[c("inv", "Group", "size")], all.x = TRUE)
+      
+      return(test.subset.wide)
+# }
+
+
+# 
+#        plot<-ggplot(test.subset.wide)+geom_line(aes(x = winPos, y = Means.Difference, group = inv, color = Power.score))+
+#          facet_grid(Group ~ . )+
+#          geom_text(data = test.subset.wide[test.subset.wide$winPos == "inv_1", ] , aes(x = winPos, y = Means.Difference, label = inv)  )
+#  
+#        
+      # return(plot)
+       
+# }
+      
+```
+
+
+## 3: Repetir plots que ja existeixen
+I repeteixo el plot de les línies
+
+```{r}
+
+# 200 KB
+
+normData200 <- read.table("analysis/2020-10-14_09_crossovers_200k/crossoverResult_QN.txt", header = TRUE)
+
+# Segona versió dels plots de línies, per grups, fent servir mitjanes de les finestres interiors de les invs i fold changes
+normData200.lineplot <- test.subset.wide#<- plotInvsDifQN(normData200, genotypes=genotypes, aggregateWins = TRUE)
+normData200.lineplot <- normData200.lineplot[!(normData200.lineplot$inv %in% c("HsInv0124", "HsInv1110")), ]
+
+
+lineplot<-ggplot(normData200.lineplot[normData200.lineplot$relpos <2,])+geom_line(aes(x = winPos, y = Means.Fold.Changelog, group = inv), color = "steelblue4")+
+         facet_grid(Group ~ . ) +
+         geom_text(data = normData200.lineplot[normData200.lineplot$winPos == "inv_1", ] , aes(x = winPos, y = Means.Fold.Changelog, label = inv) )+
+  geom_hline(yintercept = 0, color = "red", alpha = 0.75)
+
+      
+      # return(plot)
+
+  plotname<- "report/2020-11-25_GraphicalRepresentationReport/lineplot.200k.small.png"
+  png(filename=plotname, width = 3508/5, height = 2480/3, units = "px" )
+  plot<- annotate_figure(lineplot, top = text_grob(paste0("Log2 transformed fold changes between het. and homo in 3 groups" ), size = 10) )
+  print(plot)
+  dev.off()
+  
+  table(normData200.lineplot$Group)/11
+  
+  
+  unique(normData200.lineplot$inv)
+  
+```
+
+## 4: Fer plots nous
+
+```{r}
+
+# 200 KB
+# 
+# normData200 <- read.table("analysis/2020-10-14_09_crossovers_200k/crossoverResult_QN.txt", header = TRUE)
+
+# Segona versió dels plots de línies, per grups, fent servir mitjanes de les finestres interiors de les invs i fold changes
+normData200.boxplot <- test.subset.wide #<- plotInvsDifQN(normData200, genotypes=genotypes)
+
+ggplot(normData200.boxplot)+geom_boxplot(aes(x = size ,y = Means.Fold.Change, fill = Group, group = inv ) ) +
+         facet_grid(side ~ Group , scales = "free") + scale_x_log10()
+         geom_text(data = normData200.lineplot[normData200.lineplot$winPos == "inv_1", ] , aes(x = winPos, y = Means.Fold.Changelog, label = inv)  )
+
+
+
+  plotname<- "report/2020-10-05_analysisNormalizedData/images/lineplot.200k.png"
+  png(filename=plotname, width = 3508, height = 2480, units = "px" )
+  plot<- annotate_figure(lineplot, top = text_grob(paste0("Log2 transformed fold changes between het. and homo in 3 groups" ), size = 50) )
+  print(plot)
+  dev.off()
+  
+  
+library(ggpubr)
+  
+  ggscatter(normData200.lineplot[normData200.lineplot$winPos == "inv_1" , ], x = "size", y = "Means.Fold.Change",
+          add = "reg.line",                                 # Add regression line
+          conf.int = TRUE,                                  # Add confidence interval
+          add.params = list(color = "blue",
+                            fill = "lightgray")
+          )+
+  stat_cor(method = "pearson", label.x = 3, label.y = 10)
+  
+```
+
