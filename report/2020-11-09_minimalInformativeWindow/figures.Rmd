@@ -25,6 +25,13 @@ p<-ggplot(correlations)+
 fig <- ggplotly(p)
 
 fig
+
+  plotname<- "window_assimptote.png"
+  png(filename=plotname, width = 3508/3, height = 2480/3, units = "px" )
+  plot<- annotate_figure(p, top = text_grob(paste0("Correlation between real and estimated recombination values depending on window size, with original method and our method." ), size = 20) )
+  print(plot)
+  dev.off()
+
 ```
 
 
