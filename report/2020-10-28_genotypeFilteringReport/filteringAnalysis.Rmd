@@ -4,63 +4,86 @@ author: "Ruth Gómez Graciani"
 output:
   bookdown::pdf_document2:
     toc: false
-header-includes:
-  \usepackage{float}
-  \floatplacement{figure}{H}
+    latex_engine: xelatex
+  header-includes:
+  - \usepackage{xcolor}
+  - \usepackage{framed}
+
+
+mainfont: OpenSans
 ---
+
+\colorlet{shadecolor}{teal!10} 
 
 _In this report, I put together IMPUTE2 results, genotypes inferred from tag SNPs and a coverage analysis to elaborte a definitive dataset of inversions reliably genotyped in as much individuals as possible from the 20 originally available. Those inversions genotyped in more than 3 individuals with at least 1 heterozygous and 1 homozygous sample will be used in later analyses. _
 
-```{r, include=FALSE}
-
+```{r setup, include=FALSE}
+require("stringr")
 require("reshape2")
 library("ggplot2")
 library("kableExtra")
+library("ggforce")
 
 ```
 
 # IMPUTE2 results
 
-```{r, include=FALSE}
+\begin{shaded}
+
+\textbf{Note about individuals' populations:} As explained in previous reports and in the wiki, we had 20 individuals from different populations. Some individuals had confusing or unespecific ancestry information, so I did a PCA to confirm their origin. The final distribution was 12 EUR, 3 AFR, 3 EAS, 1 SAS, 1 Admixed. 
+\end{shaded}
+
+IMPUTE2 infers unknown genotypes for variants in a sample using a set of reference haplotypes from genotyped individuals. As a general rule, the more reference individuals, the better is the imputation precision. On the other hand, we must be careful when imputing recurrent inversions: haplotypes from opposite orientations could be more similar than normal and differences in recurrence rates between populations can be misleading for the program. 
+
+```{r loadData, include=FALSE}
 
 # LOAD DATA
-input.invs<-read.table("../../data/use/inversions_info/Inversions_imputability.txt", header = TRUE, stringsAsFactors = F)
-coord.invs<-read.table("../../data/use/inversions_info/Inversions_coordinates_hg19.csv", col.names = c("Inversion", "chromosome", "B1s19", "B1e19", "B2s19", "B2e19"), stringsAsFactors = F)
+  # Imputability
+  input.invs<-read.table("../../data/use/inversions_info/Inversions_imputability.txt", header = TRUE, stringsAsFactors = F)
+  
+  # Coordinates
+  coord.invs<-read.table("../../data/use/inversions_info/Inversions_coordinates_hg19.csv", col.names = c("Inversion", "chromosome", "B1s19", "B1e19", "B2s19", "B2e19"), stringsAsFactors = F)
+
+  # Recurrence
+  rec.invs<-read.table("../../data/use/inversions_info/2021-02_recurrenceInfo.csv", header = T, stringsAsFactors = F, sep = "\t")
+  rec.invs[rec.invs=="Unique?"]<-"Recurrent"
+  rec.invs[rec.invs=="ND"]<-NA
+
+  # New names
+  namechanges<-read.table("../../data/use/inversions_info/2021.01.19to38nameChanges", header = TRUE, stringsAsFactors = FALSE)
+  rownames(namechanges)<-namechanges$hg38
+  namechanges<-namechanges[namechanges$hg38 != "HsInv1075",]
+  rec.invs[rec.invs$Inversion %in% namechanges$hg38, "Inversion"]<-namechanges[rec.invs[rec.invs$Inversion %in% namechanges$hg38, "Inversion"],"hg19"]
 
 # MERGE DATA
-invs<- merge(coord.invs[, c("Inversion", "chromosome")], input.invs , all = TRUE, by = "Inversion")
+  invs<- merge(coord.invs[, c("Inversion", "chromosome")], input.invs , all = TRUE, by = "Inversion")
+  invs<-merge(invs, rec.invs[,c("Inversion", "Origin")], all.x = T, by = "Inversion")
+
+# CHANGE ORIGIN IN DEL INVS
+  # invs[grep( ".*id$", invs$Inversion),]
+  for (inv in c("HsInv0052", "HsInv0370", "HsInv1075")){
+    invs[grep( inv, invs$Inversion),c( "Origin")]<-rec.invs[rec.invs$Inversion == inv, c( "Origin")]
+  }
 
 # FILTER AUTOSOMAL IMPUTABLE
-# Autosomal
-invs<-invs[!(invs$chromosome %in% c("chrX", "chrY")),] 
-# Imputable
-accepted_tags<-c("Tagged", "Imputable", "No_Polymorphic")
-invs <- invs[(invs$GLB %in% accepted_tags | invs$EUR %in% accepted_tags | invs$AFR %in% accepted_tags) ,]
+  # Autosomal
+  invs<-invs[!(invs$chromosome %in% c("chrX", "chrY"))&!is.na(invs$chromosome),] #HsInv0822 is chrX and NA
+  # Imputable
+  accepted_tags<-c("Tagged", "Imputable", "No_Polymorphic")
+  goodinvs_count <- invs[(invs$GLB %in% accepted_tags | invs$EUR %in% accepted_tags | invs$AFR %in% accepted_tags) ,]
 
 # GREP invs with 3 options due to DEL genotype
-amount_delinvs<-nrow(invs[grep( ".*id$", invs$Inversion),])
-
+  amount_delinvs.input<-nrow(input.invs[grep( ".*id$", input.invs$Inversion),])
+  amount_delinvs.invs<-nrow(goodinvs_count[grep( ".*id$", goodinvs_count$Inversion),])
 ```
 
+We have a list of `r nrow(input.invs) - (amount_delinvs.input*2)` inversions that were classified according to their imputability (i.e. IMPUTE2 success rate in inferring the same inversion orientations as in experimental genotype validations in a set of individuals). The imputability information was available for AFR and EUR populations and we had a global (GLB) estimation as well. We selected for the analysis only those that were autosomal and imputable in at least one population (`r nrow(goodinvs_count) - (amount_delinvs.invs*2)` inversions). 
 
-We had `r nrow(input.invs) - (amount_delinvs*2)` inversions with imputability information. The imputability information was available for GLB, AFR and EUR populations, and each inversion was marked as "No_Imputable", "Tagged", "Imputable" or "No_Polymorphic" (example in Table  \@ref(tab:imputability)). From this dataset, **`r nrow(invs)-(amount_delinvs*2)` inversions were autosomal and imputable** (i.e. "Tagged", "Imputable" or "No_Polymorphic" in at least 1 population). 
-
-```{r imputability, echo =FALSE}
-
-# Show
-
- kbl(head(input.invs,3), booktabs = T, row.names = FALSE, caption = "Example rows from the imputability information table", position = "h") %>%
-  kable_styling(position = "center")
-
-```
-
-Since we don't have have measurements about how well does IMPUTE2 predict inversion orientations in EAS, SAS and ALL (admixed) individuals, the imputation process was repeated for each inversion and individual multiple times using different reference panels: same population haplotypes when possible (as control), and the 500, 250 and 100 closest haplotypes from the general population. This way, general population results can be used to (1) double check control results in EAS and SAS populations, where we don't know how reliable is IMPUTE2, and (2) predict orientation when same-population control results are not available. SNPs within the inversion region + 500kb to each side were used. 
-
-The resulting table shows, for each inversion and individual, one Genotype and one Probability column for each reference panel that was used, marked as _con, _500, _250 and _100 to tell them apart (example in Table \@ref(tab:impute2)).
+We imputed each inversion in those individuals classified as "Tagged", "Imputable" or "No_Polymorphic" in their respective population  (EAS, SAS and the admixed individual were assessed according to the GLB column). The reference sample size was a maximum of 500 haplotypes. When we had more than 500 reference haplotypes available, IMPUTE2 automatically selected them sorted by similarity to the individual to genotype. The origin of references varied depending on the inversions' recurrence: from the global dataset for unique inversions and from a same-population dataset for recurrent inversions. 
 
 ```{r impute2, echo =FALSE}
 
- # Individual genotypes
+ # LOAD IMPUTE2 RESULTS
    # Get individuals genotypes
     genotypes<-read.table("../../analysis/2021-01-11_07_imputationTables/imputationResults.csv", header=TRUE, sep = ",", stringsAsFactors = FALSE)
   
@@ -69,92 +92,55 @@ The resulting table shows, for each inversion and individual, one Genotype and o
     genotypes$Individual<-sub("nc", "NC", genotypes$Individual, ignore.case = FALSE)
     genotypes$Individual<-sub("ab", "", genotypes$Individual, ignore.case = FALSE)
 
-    genotypes$Quality<-genotypes$Uniformity<- genotypes$EUR<-genotypes$AFR<-genotypes$GLB<-NULL
+    genotypes$GLB<-genotypes$AFR<-genotypes$EUR <- NULL
+
+    # Merge in important info
+    genotypes<-merge(genotypes, invs, all.x = TRUE)
     
-    # Show
-    kbl(head(genotypes[,c(1:8)]), booktabs=T, row.names = FALSE, caption = "Some example rows from IMPUTE2 results table. Only some of the Probability and Genotype columns are present in this example.", position = "h")%>%
-      kable_styling(position = "center", font_size = 7)
-    
-    # Merge with  imputation info
-    genotypes<-merge(genotypes, input.invs, by = "Inversion")
- 
-    
-```
-
-Three columns were incorporated to this table, that help us decide how reliable each imputation result is. 
-
-* **Imputability:** This column contains the population-specific imputability information relevant to this inversion and individual, obtained from the imputability information table (example in Table \@ref(tab:imputability)). EUR and AFR individuals will have the information from their corresponding columns and SAS, ALL and EAS individuals from the GLB column. 
-
-* **Imp.min.probability:** For a predicted genotype to be considered we'll require a minimum probability value of 0.8. When there are Probability_con measurements, we'll only take those into account, because we trust same-population measurements more than whole population measurements. If this value is NULL due to a lack of samples in the reference panel, which happens in most ALL and SAS individuals but with some EAS individuals as well, all the remaining results (Probability_500, _250 and _100) will be required to meet the criteria. Thus, the Imp.min.quality (imputation minimum probability) column contains either the Probability_con value or the minimum value from Probability_500, _250 and _100 columns. 
-
-* **Imp.all.equal:** This column contains TRUE/FALSE values indicating the consistency of imputation results. All genotypes for EUR and AFR individuals contain automatically a TRUE value, because we will consider the same population control only. Other populations' genotypes have a TRUE value when all their predicted genotypes are equal. All 4 measurements are available for most EAS individuals, and many of the inversions did not have a Genotype_con result in SAS and ALL individuals. 
-
-```{r, include = FALSE}
-
-# Now I apply one by one the filters to make sure they are correct
-
 # STEP01: imputability 
-genotypes$Imputability<-NA
-genotypes[genotypes$Population %in% c("SAS", "ALL", "EAS"), "Imputability"]<-genotypes[genotypes$Population %in% c("SAS", "ALL", "EAS"), "GLB"]
-genotypes[genotypes$Population %in% c("AFR"), "Imputability"]<-genotypes[genotypes$Population %in% c("AFR"), "AFR"]
-genotypes[genotypes$Population %in% c("EUR"), "Imputability"]<-genotypes[genotypes$Population %in% c("EUR"), "EUR"]
-    
-# STEP02: quality
-genotypes$Imp.min.quality<-apply(genotypes, 1, function(x){
-  if (is.na(x["Probability_con"])){
-    min( c( x["Probability_100"], x["Probability_250"], x["Probability_500"]))
-  }else{
-    x["Probability_con"]
-  }
-})
+  genotypes$Imputability<-ifelse(genotypes$Population %in% c("SAS", "ALL", "EAS"), genotypes$GLB,
+                          ifelse(genotypes$Population =="AFR", genotypes$AFR, genotypes$EUR))
 
-# STEP03: uniformity
-genotypes$Imp.all.equal<-FALSE
-genotypes[genotypes$Population %in% c("EUR", "AFR") ,"Imp.all.equal"] <- TRUE
+# STEP02: reference sample according to recurrence
 
-# Filter the other genotypes
-genotypes[!(is.na(genotypes$Genotype_con)) &  (genotypes$Genotype_con == genotypes$Genotype_100 & genotypes$Genotype_100 == genotypes$Genotype_250 & genotypes$Genotype_250 == genotypes$Genotype_500), "Imp.all.equal" ] <-TRUE
+  genotypes$Probability<-ifelse( (is.na(genotypes$Origin)|genotypes$Origin == "Recurrent"), 
+                                  genotypes$Probability_con, genotypes$Probability_500)
+  genotypes$Genotype<-ifelse( (is.na(genotypes$Origin)|genotypes$Origin == "Recurrent"), 
+                                  genotypes$Genotype_con, genotypes$Genotype_500)
+  
+# MAKE FINAL (clean) TABLE
 
-genotypes[is.na(genotypes$Genotype_con) & (genotypes$Genotype_100 == genotypes$Genotype_250 & genotypes$Genotype_250 == genotypes$Genotype_500), "Imp.all.equal"] <-TRUE
+    genotypes<-genotypes[,c("Inversion", "Individual", "Population", "Imputability", "Origin", "Probability", "Genotype")]
+```
 
+The result table (example in Table  \@ref(tab:imputability), shows for each inversion and individual (inversion-individual pair), the Genotype predicted by IMPUTE2 and a Probability score indicating how reliable is the result. `r sum(is.na(genotypes[genotypes$Imputability %in% accepted_tags,  "Probability"]))` inversion-individual pairs, mostly from SAS and Admixed individuals, did not have enough reference samples to be imputed. 
+
+```{r imputability, echo = FALSE}
+  # Show
+    kbl(
+      head(genotypes, 4), booktabs=T, row.names = FALSE, caption = "Sample rows from the imputation results", position = "h")%>%
+        kable_styling(position = "center")
 
 ```
 
+We established a minimum threshold of 90% Probability for a result to be accepted, which is the highest we can go without losing too much information (Figure \@ref(fig:thresholdplot)). 
 
-```{r, include = FALSE}
-# Check for inversions that did'nt work that well.
+```{r thresholdplot, echo = FALSE, message = FALSE, fig.cap ="This plot shows how many inversion-individual pairs will be filtered depending on the threshold applied to imputation results. From the 6 thresholds here proposed, 0.9 is the highest one that leaves out less than 10% of the data",fig.height=3.5}
 
-#  From african and european
-test_dataset<-genotypes[genotypes$Population %in% c("AFR", "EUR"),]
+toplot<-genotypes[genotypes$Imputability %in% accepted_tags, ]
 
-# With good quality
-test_dataset<-test_dataset[which(test_dataset$Probability_con>0.8 & test_dataset$Probability_500 > 0.8 & test_dataset$Probability_250 > 0.8 & test_dataset$Probability_100 > 0.8),]
+takeloss<-function(x){nrow(toplot[toplot$Probability <x,])}
+takeperc<-function(x){nrow(toplot[toplot$Probability <x,])/nrow(toplot)*100}
 
-# Which of them were consistent?
-test_dataset$working<-"FILTERED"
-test_dataset[(test_dataset$Genotype_con == test_dataset$Genotype_100 & test_dataset$Genotype_100 == test_dataset$Genotype_250 & test_dataset$Genotype_250 == test_dataset$Genotype_500), "working"]<-"PASS"
+losses<-data.frame(threshold=seq(0.75,1, 0.05))
+losses$loss<-apply(losses, 1, function(x) {takeloss(x["threshold"])})
+losses$percentage<-round(apply(losses, 1, function(x) {takeperc(x["threshold"])}),2)
 
-invs_tested<-unique(test_dataset[test_dataset$working == "FILTERED", "Inversion"])
+ggplot(losses, aes(x = as.factor(threshold), y = loss))+geom_bar(stat = "identity")+
+  geom_text(aes(label=paste0(loss," (", percentage, ")")), nudge_y =  30)+
+  ggtitle("Quantitiy of filtered information depending on imputation threshold")+
+  labs(y = "Filtered inversion-individual pairs", x = "Imputation threshold")
 
-# Delete these invs for the inds without POP info
-genotypes[is.na(genotypes$Genotype_con) & genotypes$Inversion %in% invs_tested & genotypes$Imp.all.equal == TRUE,  "Imp.all.equal"]<-NA
-
-# Make column with genotypes
-
-genotypes$Imp.genotype<-NA
-
-genotypes[genotypes$Imputability %in% accepted_tags & genotypes$Imp.min.quality >= 0.8 & (genotypes$Imp.all.equal == TRUE | is.na(genotypes$Imp.all.equal)) , "Imp.genotype"]<-genotypes[genotypes$Imputability %in% accepted_tags & genotypes$Imp.min.quality >= 0.8 & (genotypes$Imp.all.equal == TRUE | is.na(genotypes$Imp.all.equal)) , "Genotype_con"]
-
-genotypes[genotypes$Imputability %in% accepted_tags & genotypes$Imp.min.quality >= 0.8 & (genotypes$Imp.all.equal == TRUE | is.na(genotypes$Imp.all.equal))& is.na(genotypes$Imp.genotype) , "Imp.genotype"]<-genotypes[genotypes$Imputability %in% accepted_tags & genotypes$Imp.min.quality >= 0.8 & (genotypes$Imp.all.equal == TRUE | is.na(genotypes$Imp.all.equal)) & is.na(genotypes$Imp.genotype) , "Genotype_500"]
-
-```
-
-As I mentioned before, one of the uses for imputation results that used a general-population reference is to predict inversion orientations when same-population results are not available. This way of genotyping the inversions is assuming that when the three general-population results have probabilities > 0.8 and predict the same genotype, they will be showing the same result a same-population reference would. Thus, if we observe any inversion to not follow this tendency, we should be careful with the prediction. I searched for inversions in AFR and EUR populations where all IMPUTE2 results had >0.8 Probability but where general-population results were different from the same-population result. Those inversions were: `r paste(invs_tested, collapse=", ")`. In consequence, those results that in column "Imp.all.equal" were marked as TRUE (consistent results) **changed to NA in `r nrow(genotypes[genotypes$Imp.all.equal == "ALERT",])` inversion-individual pairs**.
-
-Finally, **Imp.genotype** has the resulting genotype only for those inversions and individuals that are imputable, have imputation minimum probaility >= 0.8 and have TRUE or NA values in the Imp.all.equal column. The table with the new columns is stored in impute.genotypes_filtered.csv
-
-```{r, include=FALSE}
-write.csv(genotypes, file = "impute.genotypes_filtered.csv")
 ```
 
 # Tag SNP genotyping results 
@@ -199,7 +185,7 @@ tagtab[tagtab$TagSNP.population == "YRI", "TagSNP.population"]<- "AFR"
   
 ```
 
-We had `r length(unique(tagtab$Inversion))` inversions with known perfect tag SNPs (LD = 1) in suitable populations. I made a sript that summarizes which are the tag SNP genotypes associated to each inversion orientation in the reference panel, and then uses this as a template to infer the inversion orientations in the sample individuals. The resulting table (example in Table  \@ref(tab:tagSNP)) shows, for each inversion and individual:
+We had `r length(unique(tagtab$Inversion))` inversions with known perfect tag SNPs (LD = 1) in suitable populations. I made a script that summarizes which are the tag SNP genotypes associated to each inversion orientation in the reference panel, and then uses this as a template to infer the inversion orientations in the sample individuals. The resulting table (example in Table  \@ref(tab:tagSNP)) shows, for each inversion and individual:
 
 * **TagSNP.existing:** how many tag SNPs we know 
 * **TagSNP.sequenced:** how many tag SNPs were actually sequenced in the individual VCFs
@@ -249,9 +235,7 @@ tagtab_summary[is.na(tagtab_summary$TagSNP.genotype ),  ]<-tagtab_unfiltered[
 
 ```
 
-
-Due to the looping strategy used by the program, some inversion-individual pairs can be repeated because they were compared against more than one population (e.g. GLB and EUR). Taking into account only results with TagSNP.probability >= 0.8, for each inversion and individual the predicted orientation was selected in order of priority: GLB prediction and then population-specific prediction if GLB not available. **`r nrow(tagtab_summary[tagtab_summary$TagSNP.probability >=0.8,])` out of `r nrow(tagtab_summary)` inversion-individual pairs had at least one valid result available**. 
-
+Due to the looping strategy used by the program, some inversion-individual pairs can be repeated because they were compared against more than one population (e.g. GLB and EUR). Taking into account only results with TagSNP.probability >= 0.8, for each pair the predicted orientation was selected in order of priority: GLB prediction and then population-specific prediction if GLB not available. **`r nrow(tagtab_summary[tagtab_summary$TagSNP.probability >=0.8,])` out of `r nrow(tagtab_summary)` inversion-individual pairs had at least one valid result available**. 
 
 ```{r tagSNP, echo = FALSE}
   # Show
@@ -353,36 +337,35 @@ plotable<-covTab[covTab$CI == 500000 & covTab$MAF == 0.025 & covTab$INV %in% c("
 ```
 
 
-
-
 # Putting it all together
 
 In this last part I create a table where we can see what happened with each inversion in each individual at a glance. Before explaining how inversions were classified, I need to define or revisit some key concepts:
 
-* **Good imputation results:** those cases where Imp.min.quality >= 0.8 and Imp.all.equal is TRUE, that are imputable (i.e. "Tagged", "Imputable" or "No_Polymorphic") in this individual according to their population. 
+* **Good imputation results:** those cases that are imputable (i.e. "Tagged", "Imputable" or "No_Polymorphic") and imputation Probability is >= 0.9.
 * **Good tagSNP results:** those cases where a tag SNP check result with TagSNP.probability >= 0.8 was found using either in GLB or same-population reference panels. 
 * **Enough coverage:** sequenced vs. existing SNPs with MAF >=0.025 proportion (Cov.seq.vs.exp_maf) is >=0.3 or more than 500 SNPs sequenced (Cov.sequenced_maf).
 
 Knowing these conditions, we can find each inversion-individual pair classified as one of these categories: 
 
 * **Accepted (A)**
+    + **A.Tag.Imput**: Good imputation and tagSNP results that match with imputation predictions. Enough coverage
     + **A.Tagged**: Good tag SNP results with bad imputation results. Enough coverage. 
     + **A.Imputed**:Good imputation results with bad or no tag SNP results. Enough coverage. 
-    + **A.Tag.Imput**: Good imputation and tagSNP results that match with imputation predictions. Enough coverage
 * **To check (C)**
     + **C.Tag.Imput**: Good imputation and tag SNP results, not matching. Enough coverage.
-    + **C.check.Imput**: Imputation results with NA in the Imp.all.equal column. 
 * **Rejected (R)**
-    + **R.badImputability**: Not imputable. 
-    + **R.badCoverage**: Bad coverage.
     + **R.badImputation**: Bad imputation results without tagSNP information. 
+    + **R.badCoverage**: Bad coverage.
+    + **R.badImputability**: Not imputable. 
+
   
 In some cases, a record could fit in more than one category (e.g. Not imputable and Bad Coverage), but I tried to apply them in an order that allows us to know the root reason for rejecting genotype prediction (in the example, Not imputable, because we wouldn't be able to predict the orientation even with a Good Coverage).
 
 ```{r, include = FALSE}
 
-  allgeno<-merge(genotypes[,c("Inversion", "Individual", "Population", "Imputability", "Imp.min.quality", "Imp.all.equal", "Imp.genotype")], tagtab_summary[,c("Inversion", "Individual", "TagSNP.sequenced","TagSNP.probability", "TagSNP.population",  "TagSNP.genotype")], by = c("Inversion", "Individual"), all = TRUE)
-
+  allgeno<-merge(genotypes, tagtab_summary[,c("Inversion", "Individual", "TagSNP.sequenced","TagSNP.probability", "TagSNP.population",  "TagSNP.genotype")], by = c("Inversion", "Individual"), all = TRUE)
+  colnames(allgeno)[colnames(allgeno) %in% c("Probability","Genotype")]<-c("Imp.probability", "Imp.genotype")
+  
     # Get individual names for coverage table
     covTab$IND<-sub("^\\d+\\.","",covTab$IND)
     covTab$IND<-sub("nc", "NC", covTab$IND, ignore.case = FALSE)
@@ -392,14 +375,16 @@ In some cases, a record could fit in more than one category (e.g. Not imputable 
 
 
 # Set filters
+  allgeno$Result<-NA
   
-  # Good imputation = !(is.na(allgeno$Imp.genotype))
+  # Good imputation = (!(is.na(allgeno$Imp.probability)) & allgeno$Imp.probability >= 0.9)
   # Good tagSNP =  allgeno$TagSNP.probability >=0.8 
   # Bad coverage =  allgeno$seq.vs.exp_maf < 0.3 & allgeno$sequenced_maf < 500 
   # Not good tag SNP = (allgeno$TagSNP.probability < 0.8 | is.na(allgeno$TagSNP.probability ))
+  # Not good imputation = (allgeno$Imp.probability < 0.9 | is.na(allgeno$Imp.probability ))
 
+  
   # R.badImputability
-  allgeno$Result<-NA
   allgeno[!(allgeno$Imputability %in% accepted_tags) & # Imputation is not Tagged, not polymorphic or imputable
             is.na(allgeno$Result) , "Result"]<-"R.badImputability"
   
@@ -408,33 +393,28 @@ In some cases, a record could fit in more than one category (e.g. Not imputable 
                   is.na(allgeno$Result)) , "Result"]<-"R.badCoverage"
   
   # R.badImputation
-  allgeno[which( is.na(allgeno$Imp.genotype) & # Not good imputatoin
+  allgeno[which( (allgeno$Imp.probability < 0.9 | is.na(allgeno$Imp.probability ) )& # Not good imputation
                   (allgeno$TagSNP.probability < 0.8 | is.na(allgeno$TagSNP.probability )) &  # Not good tag SNP
                    is.na(allgeno$Result)), "Result"]<-"R.badImputation"
   
   # C.Tag.Imput
-  allgeno[which( !(is.na(allgeno$Imp.genotype))& # Good imputation
+  allgeno[which( (!(is.na(allgeno$Imp.probability)) & allgeno$Imp.probability >= 0.9) & # Good imputation
                    allgeno$TagSNP.probability >=0.8 & # Good tag SNP
                    allgeno$Imp.genotype != allgeno$TagSNP.genotype & # Imputation not equal to tag snp
                    is.na(allgeno$Result)), "Result"]<-"C.Tag.Imput"
     
-  # C.check.Imput
-  allgeno[which( allgeno$Imp.min.quality >= 0.8 & # Should be a good imputation
-                  is.na(allgeno$Imp.all.equal) & # Marked as NA in all equal because assumptions are not always met
-                  is.na(allgeno$Result)), "Result"]<-"C.check.Imput"
-  
   # A.Tagged
   allgeno[which( allgeno$TagSNP.probability >=0.8 & # Good tagSNP
-                   is.na(allgeno$Imp.genotype) & #Not good imputation
+                   (allgeno$Imp.probability < 0.9 | is.na(allgeno$Imp.probability )) & #Not good imputation
                    is.na(allgeno$Result)), "Result"]<-"A.Tagged"
   
   # A.Imputed
-  allgeno[which(!(is.na(allgeno$Imp.genotype))& # Good imputation
+  allgeno[which( (!(is.na(allgeno$Imp.probability)) & allgeno$Imp.probability >= 0.9)& # Good imputation
                 (allgeno$TagSNP.probability < 0.8 | is.na(allgeno$TagSNP.probability )) & # Not good tag SNP
                   is.na(allgeno$Result)), "Result"]<-"A.Imputed"
   
   # A.Tag.Imput
-  allgeno[which( !(is.na(allgeno$Imp.genotype)) & # Good imputation
+  allgeno[which(  (!(is.na(allgeno$Imp.probability)) & allgeno$Imp.probability >= 0.9) & # Good imputation
                   allgeno$TagSNP.probability >=0.8 & # Good tagSNP
                   allgeno$Imp.genotype == allgeno$TagSNP.genotype & # Imputation equal to tag snp
                   is.na(allgeno$Result)), "Result"]<-"A.Tag.Imput"
@@ -443,15 +423,20 @@ In some cases, a record could fit in more than one category (e.g. Not imputable 
   colnames(allgeno)[ colnames(allgeno) %in% c("seq.vs.exp_maf"  ,   "sequenced_maf" ) ]<-c("Cov.seq.vs.exp_maf", "Cov.sequenced_maf")
   
 
-
-  
-  
 ```
 
 Once the genotypes are filtered depending on the imputation, tagSNP and coverage results, they are aggregated and counted to filter inversions by the amount of different quality haplotypes available, introducing a new Rejected (R) category: **R.lowSample**, which will be assigned to previously Accepted (A) results whose inversions don't have more than 3 individuals genotyped and both heterozygous and homozygous individuals available. The final table (example in Table \@ref(tab:final)) is stored in allgenotypes_classified.csv.
 
 ```{r, include = FALSE}
-# GLOBAL03
+
+# Make inversion summary before R.lowSample
+
+invSummary<-allgeno[,c( "Inversion", "Result")]
+invSummary$counts<-1
+invSummary<-aggregate(counts ~ Inversion + Result,  invSummary, sum )
+invSummary<-dcast(invSummary, Inversion ~ Result)
+
+# R.lowSample
 
    geno_filtered<-allgeno[allgeno$Result %in% c("A.Tagged" ,"A.Tag.Imput","A.Imputed"  ) ,]
 
@@ -477,27 +462,26 @@ Once the genotypes are filtered depending on the imputation, tagSNP and coverage
 
 
 ```{r final, echo = FALSE}
-allgeno<-allgeno[,c("Inversion","Individual","Population","Result","Imputability","Imp.min.quality","Imp.all.equal","Imp.genotype",       "TagSNP.sequenced","TagSNP.probability", "TagSNP.population" , "TagSNP.genotype" ,   "Cov.seq.vs.exp_maf","Cov.sequenced_maf" ,"HET.genotype","HOMO.genotype","all.genotype"   )]
+allgeno<-allgeno[,c("Inversion","Individual","Population","Result","Imputability", "Origin","Imp.probability","Imp.genotype",       "TagSNP.sequenced","TagSNP.probability", "TagSNP.population" , "TagSNP.genotype" ,   "Cov.seq.vs.exp_maf","Cov.sequenced_maf" ,"HET.genotype","HOMO.genotype","all.genotype"   )]
 
   # Show
 
        kbl(
-      head(allgeno[,c(1:9)]), booktabs=T, row.names = FALSE,  caption = "Sample summary table for the results", position = "h")%>%
+      head(allgeno[,c(1:10)]), booktabs=T, row.names = FALSE,  caption = "Sample summary table for the results", position = "h")%>%
         kable_styling(position = "center", latex_options =c( "scale_down"))
 kbl(
-      head(allgeno[,c(10:17)]), booktabs=T, row.names = FALSE, position = "h")%>%
+      head(allgeno[,c(11:17)]), booktabs=T, row.names = FALSE, position = "h")%>%
         kable_styling(position = "center", latex_options =c( "scale_down"))
 
 ```
 
 
-In addition, a per-inversion summary table with the amount of correctly genotyped individuals and a column indicating whether the inversion was "Accepted", "lowSample" or "unableToGenotype" is stored in inversions_summary.csv,
-
+In addition, a per-inversion summary table stored in inversions_summary.csv show how are the 20 individual results distributed regarding this inversion before applying the "R.lowSample" tag, the amount of correctly heterozygous, homozygous and total genotyped individuals, and a column indicating whether the inversion was "Accepted", "lowSample" or "unableToGenotype". 
 
 ```{r, include=FALSE}
 write.csv(allgeno, file = "allgenotypes_classified.csv")
 
-invSummary<-unique(allgeno[, c("Inversion", "HET.genotype", "HOMO.genotype", "all.genotype")])
+invSummary<-merge(invSummary, unique(allgeno[, c("Inversion", "HET.genotype", "HOMO.genotype", "all.genotype")]))
 invSummary$Result<-"lowSample"
 invSummary[which(invSummary$all.genotype > 3 &  (invSummary$HET.genotype > 0 & invSummary$HOMO.genotype > 0)), "Result"]<-"Accepted"
 invSummary[which( is.na(invSummary$all.genotype ) ), "Result"]<-"unableToGenotype"
@@ -515,6 +499,7 @@ Figure  \@ref(fig:results) shows the incidence of each classification category. 
 results_summary<-data.frame(table(allgeno$Result))
 
 
+
 ggplot(results_summary,aes(x=Var1, y =Freq))+geom_bar(stat="Identity")+geom_text(aes(label=Freq), vjust = -0.25)+
   ggtitle("Incidence of each classification category")+
   labs(y = "Amount of inversion-individual pairs", x = "Category")+
@@ -523,5 +508,269 @@ ggplot(results_summary,aes(x=Var1, y =Freq))+geom_bar(stat="Identity")+geom_text
 
 ```
 
+```{r results2}
 
+
+invSummary<-melt(invSummary, id.vars =  c("Inversion", "HET.genotype", "HOMO.genotype", "all.genotype", "Result"))
+
+rejectList<-invSummary[invSummary$variable == "R.badImputability" & invSummary$value == 20,"Inversion"]
+
+invSummaryPlot<-invSummary[!(invSummary$Inversion %in% rejectList),]
+
+sTab<-merge(aggregate(value   ~ Inversion, invSummaryPlot, max), invSummaryPlot ) 
+
+invSummaryPlot$Inversion<-factor(invSummaryPlot$Inversion, levels =  sTab[order(sTab$variable, sTab$value), "Inversion"])
+
+# blues<-colorRampPalette(c("#0B9885", "#A3EA99"))
+# oranges<-colorRampPalette(c("#F3EB90",  "#dd6e42" ))
+colors<-colorRampPalette(c("#308474", "#8cb87d","#f9d476",  "#e5ab68","#ad5757"))
+
+invSummaryPlot$variable<-factor(invSummaryPlot$variable, levels = c("A.Tag.Imput", "A.Tagged", "A.Imputed" ,"C.Tag.Imput","R.badImputation","R.badCoverage", "R.badImputability"))
+
+ggplot(invSummaryPlot)+geom_bar(aes(x = Inversion, y =value, fill = variable), stat="identity")+coord_flip() + facet_grid(Result ~., scales = "free", space = "free")+
+  # scale_fill_brewer(palette = "Spectral", direction = -1)
+  scale_fill_manual(values = c(colors(7)))
+ 
+
+```
+
+
+
+# Future directions
+
+
+* An imputability assessment in EAS population will allow us to process the correspongind individuals as we did with EUR and AFR. 
+
+
+
+<!-- # Different filters, tested.  -->
+
+
+<!-- ```{r} -->
+
+<!-- test_filter<-function(Imp.min.quality){ -->
+
+<!--   allgeno<-merge(genotypes[,c("Inversion", "Individual", "Population", "Imputability", "Imp.min.quality", "Imp.all.equal", "Imp.genotype")], tagtab_summary[,c("Inversion", "Individual", "TagSNP.sequenced","TagSNP.probability", "TagSNP.population",  "TagSNP.genotype")], by = c("Inversion", "Individual"), all = TRUE) -->
+
+<!--     # Get individual names for coverage table -->
+<!--     covTab$IND<-sub("^\\d+\\.","",covTab$IND) -->
+<!--     covTab$IND<-sub("nc", "NC", covTab$IND, ignore.case = FALSE) -->
+<!--     covTab$IND<-sub("ab", "", covTab$IND, ignore.case = FALSE) -->
+
+<!--   allgeno<-merge(allgeno, covTab[covTab$MAF == 0.025 & covTab$CI == 500000,c("IND", "INV", "seq.vs.exp_maf", "sequenced_maf")] , by.x = c("Inversion", "Individual") , by.y = c("INV", "IND"), all.x=TRUE) -->
+
+
+<!-- # Set filters -->
+
+<!--   # Good imputation =( allgeno$Imp.min.quality >= Imp.min.quality & !is.na(allgeno$Imp.genotype)) -->
+<!--   # Good tagSNP =  allgeno$TagSNP.probability >=0.8  -->
+<!--   # Bad coverage =  allgeno$seq.vs.exp_maf < 0.3 & allgeno$sequenced_maf < 500  -->
+<!--   # Not good tag SNP = (allgeno$TagSNP.probability < 0.8 | is.na(allgeno$TagSNP.probability )) -->
+<!--   # Not good imputatoin = (allgeno$Imp.min.quality  < Imp.min.quality | is.na(allgeno$Imp.min.quality )) -->
+
+<!--   # R.badImputability -->
+<!--   allgeno$Result<-NA -->
+<!--   allgeno[!(allgeno$Imputability %in% accepted_tags) & # Imputation is not Tagged, not polymorphic or imputable -->
+<!--             is.na(allgeno$Result) , "Result"]<-"R.badImputability" -->
+
+<!--   # R.badCoverage -->
+<!--   allgeno[which( allgeno$seq.vs.exp_maf < 0.3 & allgeno$sequenced_maf < 500 &  # Has bad coverage -->
+<!--                   is.na(allgeno$Result)) , "Result"]<-"R.badCoverage" -->
+
+<!--   # R.badImputation -->
+<!--   allgeno[which(  (allgeno$Imp.min.quality  < Imp.min.quality | is.na(allgeno$Imp.min.quality )) & # Not good imputatoin -->
+<!--                   (allgeno$TagSNP.probability < 0.8 | is.na(allgeno$TagSNP.probability )) &  # Not good tag SNP -->
+<!--                    is.na(allgeno$Result)), "Result"]<-"R.badImputation" -->
+
+<!--   # C.Tag.Imput -->
+<!--   allgeno[which(  ( allgeno$Imp.min.quality >= Imp.min.quality & !is.na(allgeno$Imp.genotype))& # Good imputation -->
+<!--                    allgeno$TagSNP.probability >=0.8 & # Good tag SNP -->
+<!--                    allgeno$Imp.genotype != allgeno$TagSNP.genotype & # Imputation not equal to tag snp -->
+<!--                    is.na(allgeno$Result)), "Result"]<-"C.Tag.Imput" -->
+
+<!--   # C.check.Imput -->
+<!--   allgeno[which( ( allgeno$Imp.min.quality >= Imp.min.quality & !is.na(allgeno$Imp.genotype)) & # Should be a good imputation -->
+<!--                   is.na(allgeno$Imp.all.equal) & # Marked as NA in all equal because assumptions are not always met -->
+<!--                   is.na(allgeno$Result)), "Result"]<-"C.check.Imput" -->
+
+<!--   # A.Tagged -->
+<!--   allgeno[which( allgeno$TagSNP.probability >=0.8 & # Good tagSNP -->
+<!--                   (allgeno$Imp.min.quality  < Imp.min.quality | is.na(allgeno$Imp.min.quality )) & #Not good imputation -->
+<!--                    is.na(allgeno$Result)), "Result"]<-"A.Tagged" -->
+
+<!--   # A.Imputed -->
+<!--   allgeno[which(( allgeno$Imp.min.quality >= Imp.min.quality & !is.na(allgeno$Imp.genotype))& # Good imputation -->
+<!--                 (allgeno$TagSNP.probability < 0.8 | is.na(allgeno$TagSNP.probability )) & # Not good tag SNP -->
+<!--                   is.na(allgeno$Result)), "Result"]<-"A.Imputed" -->
+
+<!--   # A.Tag.Imput -->
+<!--   allgeno[which( ( allgeno$Imp.min.quality >= Imp.min.quality & !is.na(allgeno$Imp.genotype)) & # Good imputation -->
+<!--                   allgeno$TagSNP.probability >=0.8 & # Good tagSNP -->
+<!--                   allgeno$Imp.genotype == allgeno$TagSNP.genotype & # Imputation equal to tag snp -->
+<!--                   is.na(allgeno$Result)), "Result"]<-"A.Tag.Imput" -->
+
+
+<!--   colnames(allgeno)[ colnames(allgeno) %in% c("seq.vs.exp_maf"  ,   "sequenced_maf" ) ]<-c("Cov.seq.vs.exp_maf", "Cov.sequenced_maf") -->
+
+
+
+<!-- # Make inversion summary before R.lowSample -->
+
+<!-- invSummary<-allgeno[,c( "Inversion", "Result")] -->
+<!-- invSummary$counts<-1 -->
+<!-- invSummary<-aggregate(counts ~ Inversion + Result,  invSummary, sum ) -->
+<!-- invSummary<-dcast(invSummary, Inversion ~ Result) -->
+
+<!-- # R.lowSample -->
+
+<!--    geno_filtered<-allgeno[allgeno$Result %in% c("A.Tagged" ,"A.Tag.Imput","A.Imputed"  ) ,] -->
+
+<!--     geno_filtered$Genotype<-ifelse(is.na(geno_filtered$Imp.genotype), geno_filtered$TagSNP.genotype, geno_filtered$Imp.genotype) -->
+
+<!--     counts<-data.frame(unclass(table(as.character(geno_filtered$Inversion), geno_filtered$Genotype))) -->
+
+<!--     counts$HOMO <- counts$INV + counts$STD -->
+<!--     counts$all<-counts$HET + counts$HOMO -->
+
+<!--     colnames(counts)<- paste0(colnames(counts),".genotype") -->
+<!--     counts$Inversion<-rownames(counts) -->
+
+<!--     allgeno<-merge(allgeno, counts[,c("HET.genotype", "HOMO.genotype", "all.genotype", "Inversion")],all=TRUE, by = "Inversion") -->
+
+<!--     allgeno[which( allgeno$Result %in% c("A.Tagged" ,"A.Tag.Imput","A.Imputed") & # Previously accepted results -->
+<!--       !(allgeno$all.genotype > 3 &  (allgeno$HET.genotype > 0 & allgeno$HOMO.genotype > 0)) # Not enough sample -->
+<!--                    ), "Result"]<-"R.lowSample" -->
+
+
+<!-- invSummary<-merge(invSummary, unique(allgeno[, c("Inversion", "HET.genotype", "HOMO.genotype", "all.genotype")])) -->
+<!-- invSummary$Result<-"lowSample" -->
+<!-- invSummary[which(invSummary$all.genotype > 3 &  (invSummary$HET.genotype > 0 & invSummary$HOMO.genotype > 0)), "Result"]<-"Accepted" -->
+<!-- invSummary[which( is.na(invSummary$all.genotype ) ), "Result"]<-"unableToGenotype" -->
+
+<!-- invSummary[is.na(invSummary)] <- 0 -->
+
+<!-- results_summary<-data.frame(table(allgeno$Result)) -->
+
+
+<!-- isplot<-unique(invSummary[c("Inversion", "Result")]) -->
+
+<!-- results_invs<-data.frame(table(isplot$Result)) -->
+
+<!-- return(list(results_summary, results_invs, unique(isplot[isplot$Result == "Accepted" , "Inversion"]))) -->
+<!-- } -->
+
+<!-- ```  -->
+
+
+<!-- - All the same procedure, but requiring different probabilites -->
+
+<!-- ```{r} -->
+
+<!-- pairs<-data.frame() -->
+<!-- invs<-data.frame() -->
+<!-- invlist<-list() -->
+
+<!-- for (prob in c(0.8, 0.85, 0.9, 0.95, 1)) { -->
+<!--   tmp_p<- data.frame(test_filter(prob)[1]) -->
+<!--   tmp_p$threshold <- prob -->
+<!--   pairs<-rbind(pairs,tmp_p) -->
+
+<!--   tmp_i<- data.frame(test_filter(prob)[2]) -->
+<!--   tmp_i$threshold <- prob -->
+<!--   invs<-rbind(invs,tmp_i) -->
+
+<!--   invlist[[as.character(prob)]]<-test_filter(prob)[3] -->
+
+
+<!-- } -->
+
+
+
+<!-- factorblues<-colorRampPalette(c( '#c2e699','#41b6c4','#253494')) -->
+
+<!-- # Evolution of pairs -->
+
+<!-- ggplot(pairs,aes(x=Var1, y =Freq, fill = as.factor(threshold)))+geom_bar(stat="Identity", position = "dodge")+geom_text(aes(label=Freq), vjust = -0.25,  position = position_dodge(width = 1))+ -->
+<!--   ggtitle("Incidence of each classification category")+ -->
+<!--   labs(y = "Amount of inversion-individual pairs", x = "Category")+ -->
+<!--    theme(axis.text.x = element_text(angle = 45, hjust = 1))+ -->
+<!--   scale_fill_manual(values=factorblues(5)) -->
+
+<!-- # Evolution of inversions -->
+
+<!-- ggplot(invs,aes(x=Var1, y =Freq, fill = as.factor(threshold)))+geom_bar(stat="Identity", position = "dodge")+geom_text(aes(label=Freq), vjust = -0.25,position = position_dodge(width = 1))+ -->
+<!--   ggtitle("How many inversions per group")+ -->
+<!--   labs(y = "Amount of inversions", x = "Category")+ -->
+<!--   scale_fill_manual(values=factorblues(5)) -->
+
+<!-- # Which inversions did we loose? -->
+
+<!-- setdiff(unlist(invlist$`0.8`), -->
+<!-- unlist(invlist$`0.95`)) -->
+
+<!-- ``` -->
+
+
+<!-- - All panel in unique inversions; same population panel in recurrent inversions -->
+<!-- Let's assume we use 0.95 filter.  -->
+
+<!-- ```{r} -->
+
+<!-- typeinvs<-read.table("../../data/use/inversions_info/2020-08_inversionInfo_hg38.csv", sep = "\t", header = T) -->
+
+<!-- genotypes_save<-genotypes -->
+
+<!-- genotypes<-merge(genotypes, typeinvs[,c("Inversion" , "Origin" )], all.x = TRUE) -->
+
+
+<!-- genotypes$Imp.min.quality<-ifelse( -->
+<!--                                     is.na(genotypes$Origin), genotypes$Probability_con, ifelse( -->
+<!--                                     genotypes$Origin == "NH", genotypes$Probability_500, genotypes$Probability_con) -->
+<!--                                     ) -->
+<!-- genotypes$Imp.genotype<-ifelse( -->
+<!--                                     is.na(genotypes$Origin), genotypes$Genotype_con, ifelse( -->
+<!--                                     genotypes$Origin == "NH", genotypes$Genotype_500, genotypes$Genotype_con) -->
+<!--                                     ) -->
+
+<!-- prob<-0.8 -->
+
+<!--   tmp_p<- data.frame(test_filter(prob)[1]) -->
+<!--   tmp_p$threshold <- paste0(prob,"_origin") -->
+<!--   pairs<-rbind(pairs,tmp_p) -->
+
+<!--   tmp_i<- data.frame(test_filter(prob)[2]) -->
+<!--   tmp_i$threshold <- paste0(prob,"_origin") -->
+<!--   invs<-rbind(invs,tmp_i) -->
+
+<!--   invlist[[as.character(paste0(prob,"_origin"))]]<-test_filter(prob)[3] -->
+
+
+
+<!--   ggplot(pairs,aes(x=Var1, y =Freq, fill = as.factor(threshold)))+geom_bar(stat="Identity", position = "dodge")+geom_text(aes(label=Freq), vjust = -0.25,  position = position_dodge(width = 1))+ -->
+<!--   ggtitle("Incidence of each classification category")+ -->
+<!--   labs(y = "Amount of inversion-individual pairs", x = "Category")+ -->
+<!--    theme(axis.text.x = element_text(angle = 45, hjust = 1))+ -->
+<!--   scale_fill_manual(values=factorblues(7)) -->
+
+
+<!--     ggplot(invs,aes(x=Var1, y =Freq, fill = as.factor(threshold)))+geom_bar(stat="Identity", position = "dodge")+geom_text(aes(label=Freq), vjust = -0.25,position = position_dodge(width = 1))+ -->
+<!--   ggtitle("How many inversions per group")+ -->
+<!--   labs(y = "Amount of inversions", x = "Category")+ -->
+<!--   scale_fill_manual(values=factorblues(7)) -->
+
+<!--   # Which inversions did we loose? -->
+
+<!-- setdiff(unlist(invlist$`0.8_origin`), -->
+<!-- unlist(invlist$`0.8`)) -->
+
+
+<!-- #0.95_origin Perd les mateixes que el 0.95, pero recupera la 1222. Cas 1222: 2 europeus (suposadament no_polymorphic) surten HET. Tecnicament la inv té tag snps pero no els tenia a la meva llista, o sigui que ja s'arreglara.  -->
+
+
+<!-- # 0.8_origin recupera la 965 que es perdia perque en un ind EAS la sample global petita no sortia HET pero la resta si, i la 1066 que tambe en un EAS surt HET en tots els samples globals pero STD en la mateixa població.  -->
+
+
+
+
+<!-- ``` -->
 
