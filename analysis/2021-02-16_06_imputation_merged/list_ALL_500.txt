@@ -1,0 +1,3 @@
+analysis/2021-02-16_06_imputation_all14samps/ALL_500_readSum.vcf
+analysis/2021-02-16_06_imputation_nc17nc18/ALL_500_readSum.vcf
+analysis/2021-02-16_06_imputation_nc6nc22nc25nc26/ALL_500_readSum.vcf

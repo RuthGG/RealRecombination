@@ -1,0 +1,1287 @@
+-------------------------------------------------------------------------
+HsInv0052nd
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+cut: fields and positions are numbered from 1
+Try 'cut --help' for more information.
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+[E::hts_open_format] Failed to open file 2:minor
+Failed to open 2:minor: No such file or directory
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.MdAHBg
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+code/bash/runImputation.sh: line 62: 12620 Segmentation fault      (core dumped) bcftools sort ${CURDIR}/reference_unsorted.vcf -Ov -o ${CURDIR}/reference_sorted.vcf
+## Make IMPUTE2 desired input ###########################################
+Can't open tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/reference_sorted.vcf: No such file or directory
+rm: cannot remove ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/reference_sorted.vcf’: No such file or directory
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr3_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr3_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+3 -- 162291019
+3 -- 162548052
+3 -- 162739434
+3 -- 162990671
+
+--77 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1541485277.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/reference.gen.gz -g tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/input.gen.gz -int 162546619 162546619 -k_hap 500 -o tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/reference.gen.gz
+          Panel 2 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/input.gen.gz
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output
+                SNP QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output_info
+             sample QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output_info_by_sample
+                run summary: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output_summary
+                warning log: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt]
+ --read 726 SNPs in the analysis interval+buffer region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/input.gen.gz]
+ --detected 1 individuals
+ --read 2210 SNPs in the analysis interval+buffer region
+ --excluded 292 SNPs, leaving 1918 SNPs for analysis
+   --292 SNPs excluded for having no data
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/reference.gen.gz]
+
+ERROR: The -g_ref file you specified does not exist.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0052si
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+[E::hts_open_format] Failed to open file 2:minor
+Failed to open 2:minor: No such file or directory
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.AcLOu6
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+code/bash/runImputation.sh: line 62: 12758 Segmentation fault      (core dumped) bcftools sort ${CURDIR}/reference_unsorted.vcf -Ov -o ${CURDIR}/reference_sorted.vcf
+## Make IMPUTE2 desired input ###########################################
+Can't open tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/reference_sorted.vcf: No such file or directory
+rm: cannot remove ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/reference_sorted.vcf’: No such file or directory
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr3_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr3_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+3 -- 162291019
+3 -- 162548052
+3 -- 162739434
+3 -- 162990671
+
+--77 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 170609608.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/reference.gen.gz -g tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/input.gen.gz -int 162546619 162546619 -k_hap 500 -o tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/reference.gen.gz
+          Panel 2 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/input.gen.gz
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output
+                SNP QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output_info
+             sample QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output_info_by_sample
+                run summary: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output_summary
+                warning log: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt]
+ --read 726 SNPs in the analysis interval+buffer region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/input.gen.gz]
+ --detected 1 individuals
+ --read 2210 SNPs in the analysis interval+buffer region
+ --excluded 292 SNPs, leaving 1918 SNPs for analysis
+   --292 SNPs excluded for having no data
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/reference.gen.gz]
+
+ERROR: The -g_ref file you specified does not exist.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0370nd
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+cut: fields and positions are numbered from 1
+Try 'cut --help' for more information.
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+[E::hts_open_format] Failed to open file 2:minor
+Failed to open 2:minor: No such file or directory
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.K1th6t
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+bcftools: bgzf.c:982: bgzf_read: Assertion `fp->is_write == 0' failed.
+code/bash/runImputation.sh: line 62: 14744 Aborted                 (core dumped) bcftools sort ${CURDIR}/reference_unsorted.vcf -Ov -o ${CURDIR}/reference_sorted.vcf
+## Make IMPUTE2 desired input ###########################################
+Can't open tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/reference_sorted.vcf: No such file or directory
+rm: cannot remove ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/reference_sorted.vcf’: No such file or directory
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr16_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr16_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+16 -- 20306906
+16 -- 20620131
+
+--168 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1732194831.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/reference.gen.gz -g tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/input.gen.gz -int 20523200 20523200 -k_hap 500 -o tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/reference.gen.gz
+          Panel 2 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/input.gen.gz
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output
+                SNP QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output_info
+             sample QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output_info_by_sample
+                run summary: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output_summary
+                warning log: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt]
+ --read 503 SNPs in the analysis interval+buffer region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/input.gen.gz]
+ --detected 1 individuals
+ --read 1328 SNPs in the analysis interval+buffer region
+ --excluded 5 SNPs, leaving 1323 SNPs for analysis
+   --5 SNPs excluded for having no data
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/reference.gen.gz]
+
+ERROR: The -g_ref file you specified does not exist.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0370si
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+[E::hts_open_format] Failed to open file 2:minor
+Failed to open 2:minor: No such file or directory
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.8YbY9J
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+bcftools: bgzf.c:982: bgzf_read: Assertion `fp->is_write == 0' failed.
+code/bash/runImputation.sh: line 62: 14898 Aborted                 (core dumped) bcftools sort ${CURDIR}/reference_unsorted.vcf -Ov -o ${CURDIR}/reference_sorted.vcf
+## Make IMPUTE2 desired input ###########################################
+Can't open tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/reference_sorted.vcf: No such file or directory
+rm: cannot remove ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/reference_sorted.vcf’: No such file or directory
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr16_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr16_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+16 -- 20306906
+16 -- 20620131
+
+--168 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1732194831.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/reference.gen.gz -g tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/input.gen.gz -int 20523200 20523200 -k_hap 500 -o tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/reference.gen.gz
+          Panel 2 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/input.gen.gz
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output
+                SNP QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output_info
+             sample QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output_info_by_sample
+                run summary: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output_summary
+                warning log: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt]
+ --read 503 SNPs in the analysis interval+buffer region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/input.gen.gz]
+ --detected 1 individuals
+ --read 1328 SNPs in the analysis interval+buffer region
+ --excluded 5 SNPs, leaving 1323 SNPs for analysis
+   --5 SNPs excluded for having no data
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/reference.gen.gz]
+
+ERROR: The -g_ref file you specified does not exist.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1075nd
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+cut: fields and positions are numbered from 1
+Try 'cut --help' for more information.
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+[E::hts_open_format] Failed to open file 2:minor
+Failed to open 2:minor: No such file or directory
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.uuhUzz
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+code/bash/runImputation.sh: line 62: 14202 Segmentation fault      (core dumped) bcftools sort ${CURDIR}/reference_unsorted.vcf -Ov -o ${CURDIR}/reference_sorted.vcf
+## Make IMPUTE2 desired input ###########################################
+Can't open tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/reference_sorted.vcf: No such file or directory
+rm: cannot remove ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/reference_sorted.vcf’: No such file or directory
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr11_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr11_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+11 -- 65962002
+
+--33 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1185269041.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/reference.gen.gz -g tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/input.gen.gz -int 66019254 66019254 -k_hap 500 -o tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/reference.gen.gz
+          Panel 2 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/input.gen.gz
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output
+                SNP QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output_info
+             sample QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output_info_by_sample
+                run summary: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output_summary
+                warning log: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt]
+ --read 300 SNPs in the analysis interval+buffer region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/input.gen.gz]
+ --detected 1 individuals
+ --read 964 SNPs in the analysis interval+buffer region
+ --excluded 1 SNPs, leaving 963 SNPs for analysis
+   --1 SNPs excluded for having no data
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/reference.gen.gz]
+
+ERROR: The -g_ref file you specified does not exist.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv1075si
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+[E::hts_open_format] Failed to open file 2:minor
+Failed to open 2:minor: No such file or directory
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.592KzZ
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+code/bash/runImputation.sh: line 62: 14033 Segmentation fault      (core dumped) bcftools sort ${CURDIR}/reference_unsorted.vcf -Ov -o ${CURDIR}/reference_sorted.vcf
+## Make IMPUTE2 desired input ###########################################
+Can't open tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/reference_sorted.vcf: No such file or directory
+rm: cannot remove ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/reference_sorted.vcf’: No such file or directory
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr11_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr11_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+11 -- 65962002
+
+--33 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1337825360.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/reference.gen.gz -g tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/input.gen.gz -int 66019254 66019254 -k_hap 500 -o tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/reference.gen.gz
+          Panel 2 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/input.gen.gz
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output
+                SNP QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output_info
+             sample QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output_info_by_sample
+                run summary: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output_summary
+                warning log: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt]
+ --read 300 SNPs in the analysis interval+buffer region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/input.gen.gz]
+ --detected 1 individuals
+ --read 964 SNPs in the analysis interval+buffer region
+ --excluded 1 SNPs, leaving 963 SNPs for analysis
+   --1 SNPs excluded for having no data
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/reference.gen.gz]
+
+ERROR: The -g_ref file you specified does not exist.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output.vcf: No such file or directory
+-------------------------------------------------------------------------
+HsInv0052nd
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+cut: fields and positions are numbered from 1
+Try 'cut --help' for more information.
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+[E::hts_open_format] Failed to open file 2:minor
+Failed to open 2:minor: No such file or directory
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.f0P0Ts
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+bcftools: bgzf.c:982: bgzf_read: Assertion `fp->is_write == 0' failed.
+code/bash/runImputation.sh: line 62: 20531 Aborted                 (core dumped) bcftools sort ${CURDIR}/reference_unsorted.vcf -Ov -o ${CURDIR}/reference_sorted.vcf
+## Make IMPUTE2 desired input ###########################################
+Can't open tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/reference_sorted.vcf: No such file or directory
+rm: cannot remove ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/reference_sorted.vcf’: No such file or directory
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr3_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr3_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+3 -- 162291019
+3 -- 162548052
+3 -- 162739434
+3 -- 162990671
+
+--77 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1610494993.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/reference.gen.gz -g tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/input.gen.gz -int 162546619 162546619 -k_hap 500 -o tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/reference.gen.gz
+          Panel 2 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/input.gen.gz
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output
+                SNP QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output_info
+             sample QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output_info_by_sample
+                run summary: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output_summary
+                warning log: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt]
+ --read 726 SNPs in the analysis interval+buffer region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/input.gen.gz]
+ --detected 1 individuals
+ --read 2210 SNPs in the analysis interval+buffer region
+ --excluded 292 SNPs, leaving 1918 SNPs for analysis
+   --292 SNPs excluded for having no data
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/reference.gen.gz]
+
+ERROR: The -g_ref file you specified does not exist.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052nd/output.vcf: No such file or directory
+mkdir: cannot create directory ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si’: File exists
+-------------------------------------------------------------------------
+HsInv0052si
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+[E::hts_open_format] Failed to open file 2:minor
+Failed to open 2:minor: No such file or directory
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.IvFcyf
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+code/bash/runImputation.sh: line 62: 20669 Segmentation fault      (core dumped) bcftools sort ${CURDIR}/reference_unsorted.vcf -Ov -o ${CURDIR}/reference_sorted.vcf
+## Make IMPUTE2 desired input ###########################################
+Can't open tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/reference_sorted.vcf: No such file or directory
+rm: cannot remove ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/reference_sorted.vcf’: No such file or directory
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr3_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr3_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+3 -- 162291019
+3 -- 162548052
+3 -- 162739434
+3 -- 162990671
+
+--77 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1301039638.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/reference.gen.gz -g tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/input.gen.gz -int 162546619 162546619 -k_hap 500 -o tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/reference.gen.gz
+          Panel 2 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/input.gen.gz
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output
+                SNP QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output_info
+             sample QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output_info_by_sample
+                run summary: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output_summary
+                warning log: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr3_combined_b37.txt]
+ --read 726 SNPs in the analysis interval+buffer region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/input.gen.gz]
+ --detected 1 individuals
+ --read 2210 SNPs in the analysis interval+buffer region
+ --excluded 292 SNPs, leaving 1918 SNPs for analysis
+   --292 SNPs excluded for having no data
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/reference.gen.gz]
+
+ERROR: The -g_ref file you specified does not exist.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0052si/output.vcf: No such file or directory
+mkdir: cannot create directory ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/ALL_500/HsInv0052nd’: File exists
+-------------------------------------------------------------------------
+HsInv0370nd
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+cut: fields and positions are numbered from 1
+Try 'cut --help' for more information.
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+[E::hts_open_format] Failed to open file 2:minor
+Failed to open 2:minor: No such file or directory
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.zOEeGo
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+bcftools: bgzf.c:982: bgzf_read: Assertion `fp->is_write == 0' failed.
+code/bash/runImputation.sh: line 62: 21030 Aborted                 (core dumped) bcftools sort ${CURDIR}/reference_unsorted.vcf -Ov -o ${CURDIR}/reference_sorted.vcf
+## Make IMPUTE2 desired input ###########################################
+Can't open tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/reference_sorted.vcf: No such file or directory
+rm: cannot remove ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/reference_sorted.vcf’: No such file or directory
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr16_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr16_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+16 -- 20306906
+16 -- 20620131
+
+--168 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1463531893.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/reference.gen.gz -g tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/input.gen.gz -int 20523200 20523200 -k_hap 500 -o tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/reference.gen.gz
+          Panel 2 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/input.gen.gz
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output
+                SNP QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output_info
+             sample QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output_info_by_sample
+                run summary: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output_summary
+                warning log: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt]
+ --read 503 SNPs in the analysis interval+buffer region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/input.gen.gz]
+ --detected 1 individuals
+ --read 1328 SNPs in the analysis interval+buffer region
+ --excluded 5 SNPs, leaving 1323 SNPs for analysis
+   --5 SNPs excluded for having no data
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/reference.gen.gz]
+
+ERROR: The -g_ref file you specified does not exist.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370nd/output.vcf: No such file or directory
+mkdir: cannot create directory ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si’: File exists
+-------------------------------------------------------------------------
+HsInv0370si
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+[E::hts_open_format] Failed to open file 2:minor
+Failed to open 2:minor: No such file or directory
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.Tij8HN
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+bcftools: bgzf.c:982: bgzf_read: Assertion `fp->is_write == 0' failed.
+code/bash/runImputation.sh: line 62: 21168 Aborted                 (core dumped) bcftools sort ${CURDIR}/reference_unsorted.vcf -Ov -o ${CURDIR}/reference_sorted.vcf
+## Make IMPUTE2 desired input ###########################################
+Can't open tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/reference_sorted.vcf: No such file or directory
+rm: cannot remove ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/reference_sorted.vcf’: No such file or directory
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr16_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr16_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+16 -- 20306906
+16 -- 20620131
+
+--168 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 1163112795.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/reference.gen.gz -g tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/input.gen.gz -int 20523200 20523200 -k_hap 500 -o tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/reference.gen.gz
+          Panel 2 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/input.gen.gz
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output
+                SNP QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output_info
+             sample QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output_info_by_sample
+                run summary: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output_summary
+                warning log: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr16_combined_b37.txt]
+ --read 503 SNPs in the analysis interval+buffer region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/input.gen.gz]
+ --detected 1 individuals
+ --read 1328 SNPs in the analysis interval+buffer region
+ --excluded 5 SNPs, leaving 1323 SNPs for analysis
+   --5 SNPs excluded for having no data
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/reference.gen.gz]
+
+ERROR: The -g_ref file you specified does not exist.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv0370si/output.vcf: No such file or directory
+mkdir: cannot create directory ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/ALL_500/HsInv0370nd’: File exists
+-------------------------------------------------------------------------
+HsInv1075nd
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+cut: fields and positions are numbered from 1
+Try 'cut --help' for more information.
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+[E::hts_open_format] Failed to open file 2:minor
+Failed to open 2:minor: No such file or directory
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.S7xRf4
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+code/bash/runImputation.sh: line 62: 19576 Segmentation fault      (core dumped) bcftools sort ${CURDIR}/reference_unsorted.vcf -Ov -o ${CURDIR}/reference_sorted.vcf
+## Make IMPUTE2 desired input ###########################################
+Can't open tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/reference_sorted.vcf: No such file or directory
+rm: cannot remove ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/reference_sorted.vcf’: No such file or directory
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr11_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr11_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+11 -- 65962002
+
+--33 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 475286494.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/reference.gen.gz -g tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/input.gen.gz -int 66019254 66019254 -k_hap 500 -o tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/reference.gen.gz
+          Panel 2 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/input.gen.gz
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output
+                SNP QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output_info
+             sample QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output_info_by_sample
+                run summary: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output_summary
+                warning log: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt]
+ --read 300 SNPs in the analysis interval+buffer region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/input.gen.gz]
+ --detected 1 individuals
+ --read 964 SNPs in the analysis interval+buffer region
+ --excluded 1 SNPs, leaving 963 SNPs for analysis
+   --1 SNPs excluded for having no data
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/reference.gen.gz]
+
+ERROR: The -g_ref file you specified does not exist.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd/output.vcf: No such file or directory
+mkdir: cannot create directory ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/ALL_500/HsInv1075si’: File exists
+-------------------------------------------------------------------------
+HsInv1075si
+-------------------------------------------------------------------------
+## 1 GENOTYPES FILE: genotypes for the inversion of interest ######
+## 2 REFERENCE FILE: 1KGP + Inversion in this pop. individuals ####
+## Common individuals (samples), in population of interest ##############
+## Take 1KGP VCFs for common individuals ################################
+[E::hts_open_format] Failed to open file 2:minor
+Failed to open 2:minor: No such file or directory
+## Take inversion genotypes for common individuals ######################
+## Add inversion genotypes to 1000 KGP VCF ##############################
+Writing to /tmp/bcftools-sort.nHkJXB
+[E::bcf_hdr_read] Input is not detected as bcf or vcf format
+code/bash/runImputation.sh: line 62: 19438 Segmentation fault      (core dumped) bcftools sort ${CURDIR}/reference_unsorted.vcf -Ov -o ${CURDIR}/reference_sorted.vcf
+## Make IMPUTE2 desired input ###########################################
+Can't open tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/reference_sorted.vcf: No such file or directory
+rm: cannot remove ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/reference_sorted.vcf’: No such file or directory
+## 3 INPUT FILE: individuals (samples), in population of interest ###
+## Individuals (samples), in population of interest #####################
+## Create input VCF #####################################################
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr11_newAssembly.vcf.gz.tbi
+[W::hts_idx_load2] The index file is older than the data file: data/use/avery_individuals/all14samps/chr11_newAssembly.vcf.gz.tbi
+## Make IMPUTE2 desired input ###########################################
+11 -- 65962002
+
+--33 SNPs were removed by the FILTER tag.
+
+--0 SNPs were removed for having more than one allele in the ALT column.
+
+## 4 OTHER FILES: Recombination map and strand file ###############
+## 5 IMPUTE2: Run imputation #######################################
+
+======================
+ IMPUTE version 2.3.2 
+======================
+
+Copyright 2008 Bryan Howie, Peter Donnelly, and Jonathan Marchini
+Please see the LICENCE file included with this program for conditions of use.
+
+The seed for the random number generator is 475286494.
+
+Command-line input: code/software/impute_v2.3.2_x86_64_static/impute2 -g_ref tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/reference.gen.gz -g tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/input.gen.gz -int 66019254 66019254 -k_hap 500 -o tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output -m data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt
+
+---------------------------------
+ Nomenclature and data structure 
+---------------------------------
+
+     Panel 1: unphased reference genotypes
+     Panel 2: unphased study genotypes
+
+For optimal results, each successive panel (0,1,2) should contain a subset of the SNPs in the previous panel. When the data structure deviates from this ideal configuration, IMPUTE2 tries to use as much of the available information as possible; see documentation for details.
+
+-------------
+ Input files 
+-------------
+
+          Panel 1 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/reference.gen.gz
+          Panel 2 genotypes: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/input.gen.gz
+                genetic map: data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt
+
+--------------
+ Output files 
+--------------
+
+                main output: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output
+                SNP QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output_info
+             sample QC info: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output_info_by_sample
+                run summary: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output_summary
+                warning log: tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output_warnings
+
+-----------------
+ Data processing 
+-----------------
+
+-reading genetic map from -m file
+ --filename=[data/raw/1000genomes_hg19_maps/genetic_map_chr11_combined_b37.txt]
+ --read 300 SNPs in the analysis interval+buffer region
+
+-reading Panel 2 genotypes from -g file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/input.gen.gz]
+ --detected 1 individuals
+ --read 964 SNPs in the analysis interval+buffer region
+ --excluded 1 SNPs, leaving 963 SNPs for analysis
+   --1 SNPs excluded for having no data
+
+-reading Panel 1 genotypes from -g_ref file
+ --filename=[tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/reference.gen.gz]
+
+ERROR: The -g_ref file you specified does not exist.
+
+## 6 SAVE RESULTS: In human-readable format #######################
+mv: cannot stat ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output’: No such file or directory
+
+Welcome to qctool
+(version: 2.0.7, revision 2ead517)
+
+(C) 2009-2017 University of Oxford
+
+
+Error: No file matching "tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output.gen" could be found.
+
+Thank you for using qctool.
+tail: cannot open ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output.vcf’ for reading: No such file or directory
+sed: can't read tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075si/output.vcf: No such file or directory
+mkdir: cannot create directory ‘tmp/2021-02-15_06_imputation/all14samps/imputationProcess/SAS_500/HsInv1075nd’: File exists

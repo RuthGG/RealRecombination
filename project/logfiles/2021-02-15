@@ -1,0 +1,23 @@
+Sample file does contain EUR population
+Sample file does not contain EAS population
+Sample file does not contain SAS population
+Sample file does contain ALL population
+01:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2021-02-15_06_imputation/nc17nc18/invlist_part/invlist01 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/nc17nc18 data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2021-02-15_06_imputation/nc17nc18/imputationProcess
+02:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2021-02-15_06_imputation/nc17nc18/invlist_part/invlist02 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/nc17nc18 data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2021-02-15_06_imputation/nc17nc18/imputationProcess
+03:sh code/bash/runImputation.sh data/use/conditions/imputConditions.txt tmp/2021-02-15_06_imputation/nc17nc18/invlist_part/invlist03 data/raw/1000genomes_hg19 data/raw/1000genomes_hg19_maps data/use/avery_individuals/nc17nc18 data/use/inversions_info/Inversions_coordinates_hg19.csv data/use/inversions_info/20201217_all_genotypes.csv tmp/2021-02-15_06_imputation/nc17nc18/imputationProcess
+There are screens on:
+	23868.imputation_03	(Detached)
+	23646.imputation_02	(Detached)
+	23635.imputation_01	(Detached)
+3 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	23868.imputation_03	(Detached)
+	23646.imputation_02	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+
+There are screens on:
+	23868.imputation_03	(Detached)
+	23646.imputation_02	(Detached)
+2 Sockets in /var/run/screen/S-rgomez.
+

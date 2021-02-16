@@ -323,4 +323,60 @@ done
 	mkdir analysis/2021-01-11_09_coverage_allinds
 	cat analysis/2021-01-08_09_coverage/coverage_table.txt > analysis/2021-01-11_09_coverage_allinds/coverage_table.txt
 	tail -n+2 analysis/2021-01-10_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt
-	tail -n+2 analysis/2021-01-11_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt
+	tail -n+2 analysis/2021-01-11_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt2021-02-15: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/all14samps -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/20201217_all_genotypes.csv -s 3
+
+
+# Repeat imputation for DEL genotype inversions
+
+2021-02-16: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/all14samps -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 3
+mv analysis/2021-02-16_06_imputation analysis/2021-02-16_06_imputation_all14samps
+2021-02-16: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 3
+mv analysis/2021-02-16_06_imputation analysis/2021-02-16_06_imputation_nc6nc22nc25nc26
+2021-02-16: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 3
+mv analysis/2021-02-16_06_imputation analysis/2021-02-16_06_imputation_nc17nc18
+
+DATE=2021-02-16
+rm analysis/${DATE}_06_imputation_merged/*
+mkdir analysis/${DATE}_06_imputation_merged
+CONLIST=$(cut -f1 data/use/conditions/imputConditions.txt )
+
+for CONDITION in $CONLIST;do
+	CPARSED=$(echo $CONDITION | sed 's/,/_/' )
+	FLIST=$(ls analysis/${DATE}_06_imputation_*/${CPARSED}_readSum.vcf)
+	echo -n "" > analysis/${DATE}_06_imputation_merged/list_${CPARSED}.txt 
+	for FILE in $FLIST; do
+		LINESN=$(grep "^.*$" -c  $FILE  )
+		if [ $LINESN != 0 ]; then
+			echo $FILE >> analysis/${DATE}_06_imputation_merged/list_${CPARSED}.txt 
+		fi
+	done
+	NUMLINES=$(grep "^.*$" -c  analysis/${DATE}_06_imputation_merged/list_${CPARSED}.txt  )
+	#	echo $CPARSED $NUMLINES
+	if [ $NUMLINES == 0 ]; then
+		echo "No lines in ${CPARSED}"
+	elif [ $NUMLINES == 1 ]; then
+		cp $(cat analysis/${DATE}_06_imputation_merged/list_${CPARSED}.txt) analysis/${DATE}_06_imputation_merged
+	else
+		echo ${CPARSED}
+		echo  ${CPARSED} >> analysis/${DATE}_06_imputation_merged/multilist.txt
+	fi
+
+done
+
+	R:
+		date<-"2021-02-16"
+		 multilist <- readLines(paste0("analysis/",date,"_06_imputation_merged/multilist.txt"))
+		 
+		 for (m in multilist) { 
+		 	filelist <- readLines( paste0("analysis/",date,"_06_imputation_merged/list_",m,".txt"))
+		 	merged<-read.table(filelist[1], sep = "\t", comment.char="", skip=2, header = TRUE, check.names = FALSE)
+		 	header <- readLines(filelist[1], n  = 2)
+		 	for (f in filelist[c(2:length(filelist))]){
+		 		merged<-merge(read.table(f, sep = "\t", comment.char="", skip = 2, header = TRUE, check.names = FALSE), merged, all.y = TRUE)
+		 	}
+		 	write(header,paste0("analysis/",date,"_06_imputation_merged/", m , "_readSum.vcf") ) 
+		 	write.table(merged, paste0("analysis/",date,"_06_imputation_merged/", m , "_readSum.vcf"), quote = FALSE, sep = "\t", row.names = FALSE, append = TRUE)
+		 }
+
+2021-02-16: runall.sh imputetables -i analysis/2021-02-16_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
+2021-02-16: runall.sh imputetables -i analysis/2021-02-16_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt

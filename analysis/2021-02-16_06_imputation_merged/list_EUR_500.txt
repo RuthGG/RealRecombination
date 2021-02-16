@@ -1,0 +1,2 @@
+analysis/2021-02-16_06_imputation_all14samps/EUR_500_readSum.vcf
+analysis/2021-02-16_06_imputation_nc17nc18/EUR_500_readSum.vcf
