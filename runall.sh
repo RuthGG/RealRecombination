@@ -30,6 +30,7 @@ usage()
   pca -f                              Run PCA analysis with QTL tools over the -f VCF file.
   pcaplot -f -p                       Plot PCA results.
   impute -f -x -r -m -i -c -g [-s]    Impute inversions listed in -f using the conditions in -x.
+  imputeREF -f -x -r -m -i -c -g [-s] Impute inversions for which we already have a reference VCF file.
   imputetables -i -p -t               Make summary tables after imputation.
   tagsnps -f -x -i -c -g -r           Check if tag SNPs in -f are true in VCF in -i. 
   crossovers -f -c -x -n -m -b        Make recombination rates for given regions (win. size and CI in -x).
@@ -41,7 +42,7 @@ usage()
     -s <screens>                      Set a number of screens to use. 
     -a [hg19|hg38]                    Set assembly to work with.
     -i <directory>                    Directory that contains files with test VCFs (sometimes needs index).
-    -r <directory>                    Directory that contains reference genome files.
+    -r <directory>                    Directory that contains reference genome files (imputeREF asks for file).
     -f <file>                         Path to file to use as input (vcf, inversion list, crossover list...).
     -p <file>                         Path to relevant population file.
     -d <dbGap ID>                     dbGap ID to download.
@@ -175,6 +176,22 @@ case "$COMMAND" in
     done
     shift $((OPTIND -1))
     ;;
+  # Make inversion imputation
+   imputeREF ) 
+    while getopts "f:x:r:m:i:c:g:s:" OPTIONS ; do
+      case "$OPTIONS" in
+        f)  FILE=${OPTARG} ;;
+        x)  CONFILE=${OPTARG} ;;
+        r)  REFDIR=${OPTARG} ;;
+        m)  MAPDIR=${OPTARG} ;;
+        i)  INDIR=${OPTARG} ;;
+        c)  INVCOORD=${OPTARG} ;;
+        g)  INVGENO=${OPTARG} ;;
+        s)  SCREENS=${OPTARG} ;;
+      esac
+    done
+    shift $((OPTIND -1))
+    ;;
   # Make summary tables after imputation.
    imputetables ) 
     while getopts "i:p:t:" OPTIONS ; do
@@ -251,7 +268,7 @@ elif [ "$COMMAND" == "pcaplot" ]; then
   if [ -z "$FILE" ] || [ -z "$POPFILE" ] ; then 
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f, -p"; usage; exit
   fi
-elif [ "$COMMAND" == "impute" ]; then
+elif [ "$COMMAND" == "impute" ] || [ "$COMMAND" == "imputeREF" ]; then
   if [ -z "$FILE" ] || [ -z "$CONFILE" ] || [ -z "$REFDIR" ] || [ -z "$MAPDIR" ] || [ -z "$INDIR" ] || [ -z "$INVCOORD" ] || [ -z "$INVGENO" ] ; then 
     echo "Remember that to use the '${COMMAND}' command, mandatory options are: -f, -x, -r, -m, -i, -c, -g"; usage; exit
   fi
@@ -580,7 +597,7 @@ fi
 STEP=$(printf "%02d" $((${STEP}+1)))
 
 
-if  [ "$COMMAND" == "impute" ]; then
+if  [ "$COMMAND" == "impute" ] || [ "$COMMAND" == "imputeREF" ]; then
 
   INDIR_NAME=$(echo $INDIR| grep -o '[^/]\+$')
 
@@ -639,8 +656,14 @@ if  [ "$COMMAND" == "impute" ]; then
     # MAKE IMPUTATION - Run imputation in # of screens
     # ------------------------------------------------------------------------- #
     mkdir -p $TMPDIR/imputationProcess
-    sh code/bash/runScreens.sh ${SCREENS} imputation "sh code/bash/runImputation.sh $CONFILE $TMPDIR/invlist_part/invlistscreencode $REFDIR $MAPDIR $INDIR $INVCOORD $INVGENO $TMPDIR/imputationProcess" delete
 
+    if  [ "$COMMAND" == "imputeREF" ]; then
+      sh code/bash/runScreens.sh ${SCREENS} imputation "sh code/bash/runImputation_withRefVCF.sh $CONFILE $TMPDIR/invlist_part/invlistscreencode $REFDIR $MAPDIR $INDIR $INVCOORD $INVGENO $TMPDIR/imputationProcess" delete
+    else
+      sh code/bash/runScreens.sh ${SCREENS} imputation "sh code/bash/runImputation.sh $CONFILE $TMPDIR/invlist_part/invlistscreencode $REFDIR $MAPDIR $INDIR $INVCOORD $INVGENO $TMPDIR/imputationProcess" delete
+    fi
+
+    #statements
     while [ $(screen -ls  | wc -l | awk '{print $1-3}') -gt 0 ]; do
       screen -ls 
       sleep 60
