@@ -1,0 +1,14 @@
+## MAKE IMPUTATION SUMMARY TABLES
+ Rscript code/rscript/imputeParse.R analysis/2021-02-17_06_imputation_merged data/use/avery_individuals/samples_population.txt data/use/inversions_info/Inversions_imputability.txt analysis/2021-02-17_07_imputationTables
+Loading required package: stringr
+Loading required package: reshape2
+Loading required package: naniar
+[[1]]
+NULL
+
+[[2]]
+NULL
+
+[[3]]
+NULL
+
