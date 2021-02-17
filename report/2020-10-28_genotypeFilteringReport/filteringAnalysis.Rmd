@@ -1,5 +1,6 @@
 ---
 title: "Genotype inference analysis"
+subtitle: "Version 2"
 author: "Ruth Gómez Graciani"
 output:
   bookdown::pdf_document2:
@@ -23,6 +24,7 @@ require("reshape2")
 library("ggplot2")
 library("kableExtra")
 library("ggforce")
+library("plyr")
 
 ```
 
@@ -61,8 +63,11 @@ IMPUTE2 infers unknown genotypes for variants in a sample using a set of referen
 
 # CHANGE ORIGIN IN DEL INVS
   # invs[grep( ".*id$", invs$Inversion),]
-  for (inv in c("HsInv0052", "HsInv0370", "HsInv1075")){
-    invs[grep( inv, invs$Inversion),c( "Origin")]<-rec.invs[rec.invs$Inversion == inv, c( "Origin")]
+  delinvs<-c("HsInv0052", "HsInv0370", "HsInv1075")
+  for (inv in delinvs){
+    invs[grep( inv, invs$Inversion),c(2:ncol(invs))]<-lapply(invs[grep( inv, invs$Inversion),c(2:ncol(invs))], function(x){
+      max(x, na.rm = T)
+    })
   }
 
 # FILTER AUTOSOMAL IMPUTABLE
@@ -71,13 +76,12 @@ IMPUTE2 infers unknown genotypes for variants in a sample using a set of referen
   # Imputable
   accepted_tags<-c("Tagged", "Imputable", "No_Polymorphic")
   goodinvs_count <- invs[(invs$GLB %in% accepted_tags | invs$EUR %in% accepted_tags | invs$AFR %in% accepted_tags) ,]
-
-# GREP invs with 3 options due to DEL genotype
-  amount_delinvs.input<-nrow(input.invs[grep( ".*id$", input.invs$Inversion),])
-  amount_delinvs.invs<-nrow(goodinvs_count[grep( ".*id$", goodinvs_count$Inversion),])
+  delinvs_ingood<-sum(delinvs %in% goodinvs_count$Inversion)
+  delinvs_each<-nrow(goodinvs_count[grep( delinvs[delinvs %in% goodinvs_count$Inversion][1], goodinvs_count$Inversion),])
+  
 ```
 
-We have a list of `r nrow(input.invs) - (amount_delinvs.input*2)` inversions that were classified according to their imputability (i.e. IMPUTE2 success rate in inferring the same inversion orientations as in experimental genotype validations in a set of individuals). The imputability information was available for AFR and EUR populations and we had a global (GLB) estimation as well. We selected for the analysis only those that were autosomal and imputable in at least one population (`r nrow(goodinvs_count) - (amount_delinvs.invs*2)` inversions). 
+We have a list of `r nrow(input.invs) - (length(delinvs)*delinvs_each)` inversions that were classified according to their imputability (i.e. IMPUTE2 success rate in inferring the same inversion orientations as in experimental genotype validations in a set of individuals). The imputability information was available for AFR and EUR populations and we had a global (GLB) estimation as well. We selected for the analysis only those that were autosomal and imputable in at least one population (`r nrow(goodinvs_count) - (delinvs_ingood*delinvs_each)` inversions). 
 
 We imputed each inversion in those individuals classified as "Tagged", "Imputable" or "No_Polymorphic" in their respective population  (EAS, SAS and the admixed individual were assessed according to the GLB column). The reference sample size was a maximum of 500 haplotypes. When we had more than 500 reference haplotypes available, IMPUTE2 automatically selected them sorted by similarity to the individual to genotype. The origin of references varied depending on the inversions' recurrence: from the global dataset for unique inversions and from a same-population dataset for recurrent inversions. 
 
@@ -86,7 +90,18 @@ We imputed each inversion in those individuals classified as "Tagged", "Imputabl
  # LOAD IMPUTE2 RESULTS
    # Get individuals genotypes
     genotypes<-read.table("../../analysis/2021-01-11_07_imputationTables/imputationResults.csv", header=TRUE, sep = ",", stringsAsFactors = FALSE)
-  
+    # Get genotypes for 0501
+    genotypes_HsInv0501<-read.table("../../analysis/2021-02-17_07_imputationTables_HsInv0501/new_genotypes.csv", header=TRUE, sep = "\t", stringsAsFactors = FALSE)
+    genotypes_HsInv0501$Inversion<-"HsInv0501"
+    # Get genoypes for DEl invs
+    genotypes_delinvs<-read.table("../../analysis/2021-02-16_07_imputationTables_DELinvs/new_genotypes.csv", header=TRUE, sep = "\t", stringsAsFactors = FALSE)
+    
+    # Remove DEL invs from general file
+    genotypes<-genotypes[!(rownames(genotypes) %in% grep( paste(delinvs, collapse= "|" ), genotypes$Inversion)),]
+    
+    # Merge all three genotype files
+    genotypes<-rbind.fill(rbind.fill(genotypes, genotypes_HsInv0501), genotypes_delinvs)
+    
     # Get individual names
     genotypes$Individual<-sub("^\\d+\\.","",genotypes$Individual)
     genotypes$Individual<-sub("nc", "NC", genotypes$Individual, ignore.case = FALSE)
@@ -96,21 +111,52 @@ We imputed each inversion in those individuals classified as "Tagged", "Imputabl
 
     # Merge in important info
     genotypes<-merge(genotypes, invs, all.x = TRUE)
-    
+    genotypes[genotypes == "."]<-NA
+
 # STEP01: imputability 
   genotypes$Imputability<-ifelse(genotypes$Population %in% c("SAS", "ALL", "EAS"), genotypes$GLB,
                           ifelse(genotypes$Population =="AFR", genotypes$AFR, genotypes$EUR))
 
 # STEP02: reference sample according to recurrence
 
-  genotypes$Probability<-ifelse( (is.na(genotypes$Origin)|genotypes$Origin == "Recurrent"), 
-                                  genotypes$Probability_con, genotypes$Probability_500)
-  genotypes$Genotype<-ifelse( (is.na(genotypes$Origin)|genotypes$Origin == "Recurrent"), 
-                                  genotypes$Genotype_con, genotypes$Genotype_500)
+  genotypes$Probability<-ifelse( (is.na(genotypes$Origin)|genotypes$Origin == "Recurrent"), genotypes$Probability_con,  # if rec.
+                                  ifelse(is.na(genotypes$Probability_500), genotypes$Probability_con, # unique but no general info
+                                 genotypes$Probability_500))# unique inv with general-population info
+  genotypes$Genotype<-ifelse( (is.na(genotypes$Origin)|genotypes$Origin == "Recurrent"), genotypes$Genotype_con,  # if rec.
+                                  ifelse(is.na(genotypes$Probability_500), genotypes$Genotype_con, # ifelse probability = same row
+                                 genotypes$Genotype_500)) # unique inv with general-population info
   
-# MAKE FINAL (clean) TABLE
+# MAKE CLEAN TABLE
 
-    genotypes<-genotypes[,c("Inversion", "Individual", "Population", "Imputability", "Origin", "Probability", "Genotype")]
+  genotypes<-genotypes[,c("Inversion", "Individual", "Population", "Imputability", "Origin", "Probability", "Genotype")]
+  
+# STEP03: DEL invs processing  
+  # Make subset, delete same subset from genotypes data
+  del.subset<-genotypes[ grep( paste(delinvs, collapse= "|" ), genotypes$Inversion),]
+  genotypes<-genotypes[!(rownames(genotypes) %in% grep( paste(delinvs, collapse= "|" ), genotypes$Inversion)),]
+
+  # Separate names and positions
+  del.subset$Position<-substr(del.subset$Inversion, 10, 12)
+  del.subset$Inversion<-substr(del.subset$Inversion, 1, 9)
+  
+  # Momentary substitution of Origin NAs
+  del.subset$Origin<-with(del.subset, ifelse(is.na(Origin), "Unknown", Origin)) 
+  
+  # Long to wide
+  del.subset<-reshape(del.subset, idvar = c("Inversion", "Individual", "Population", "Imputability", "Origin"), 
+          timevar = "Position", direction = "wide")
+  
+  # Restore Origin NAs
+  del.subset$Origin<-with(del.subset, ifelse(Origin == "Unknown", NA, Origin)) 
+  
+  # Strategy 1 (only valid if the same threshold will go fot both nd and si)
+  del.subset$Probability<-with(del.subset, ifelse(Probability.nd < Probability.si, Probability.nd, Probability.si) )
+  del.subset$Genotype<-with(del.subset, ifelse(Genotype.nd == "STD", Genotype.si, 
+                                        ifelse(Genotype.nd == "HET", paste0(Genotype.si, "DEL"), "DEL" ) ))
+  
+# MAKE FINAL TABLE
+  genotypes<-rbind(genotypes, del.subset[, colnames(genotypes)])
+  
 ```
 
 The result table (example in Table  \@ref(tab:imputability), shows for each inversion and individual (inversion-individual pair), the Genotype predicted by IMPUTE2 and a Probability score indicating how reliable is the result. `r sum(is.na(genotypes[genotypes$Imputability %in% accepted_tags,  "Probability"]))` inversion-individual pairs, mostly from SAS and Admixed individuals, did not have enough reference samples to be imputed. 
