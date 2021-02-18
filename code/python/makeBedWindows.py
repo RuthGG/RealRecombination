@@ -5,18 +5,18 @@
 # 25 09 2020
 
 # %% False arguments
-# class Arguments:
-#     def __init__(self, input, output, fixedWindow, windowMethod, propCIWindow, fixedCIWindow, amountCI, chromBoundaries):
-#         self.input = input
-#         self.output = output
-#         self.fixedWindow = fixedWindow
-#         self.windowMethod = windowMethod
-#         self.propCIWindow = propCIWindow
-#         self.fixedCIWindow = fixedCIWindow
-#         self.amountCI = amountCI
-#         self.chromBoundaries = chromBoundaries
+class Arguments:
+    def __init__(self, input, output, fixedWindow, windowMethod, propCIWindow, fixedCIWindow, amountCI, chromBoundaries):
+        self.input = input
+        self.output = output
+        self.fixedWindow = fixedWindow
+        self.windowMethod = windowMethod
+        self.propCIWindow = propCIWindow
+        self.fixedCIWindow = fixedCIWindow
+        self.amountCI = amountCI
+        self.chromBoundaries = chromBoundaries
 
-# args = Arguments("../../data/use/inversions_info/2020.08.inversions_hg38_G4.gff", "../../tmp/windows.bed", 100000, "fromCenter", 100, 100, 3, "../../data/use/assembly_hg38/minmax.gff")
+args = Arguments("../../analysis/2021-02-18_09_crossovers/invcoord_noXY.gff", "../../tmp/2021-02-18_09_crossovers/windows.bed", 200000, "fromCenter", 0, 200000, 5, "../../data/use/assembly_hg38/minmax.strict.gff")
 
 ###############################################################################
 # Description:                                                 
@@ -30,6 +30,7 @@ import argparse  # Parser for command-line options, arguments and sub-commands; 
 import pandas as pd # For dataframes: high-performance, easy-to-use data structures and data analysis tools 
 import re 
 import sys
+import math
 
 # %% 
 # ARGUMENTS
@@ -105,12 +106,19 @@ if __name__ == "__main__": # if file was called and not imported
     # Calculate start points for windows inside inversion 
     if args.windowMethod == "fromCenter":
       center = start + (invSize / 2) # This will not be the exact center in odd numbers, but works well enough
-      if (winSize > invSize) and (invSize < (2 * winSize)) : 
-        starts = [ center - (winSize / 2) ]
-      else: 
-        rangeInvL=range(center, start, -winSize)
+      if (invSize < winSize) : # La inv es mes petita que la  finestra
+        starts = [ center - (winSize / 2) ] 
+      else: # La finestra es mes petita que la inv
+        if ( (math.ceil(invSize/winSize)/2).is_integer() ) : # Hi cap un numero parell de finestres
+          center_big = center  
+        else: # Hi cap un numero imparell de finestres
+          center_big = center - (winSize / 2)
+
+        rangeInvL=range(center_big, start, -winSize)
         rangeInvL=[ x-winSize for x in rangeInvL]
-        rangeInvR=range(center, end, winSize)
+        rangeInvL.reverse()
+        rangeInvR=range(center_big, end, winSize)
+        rangeInvR=[ x for x in rangeInvR]
         starts = rangeInvL+rangeInvR
     else:  # Else it is fromLeft
       starts = range(start, end, winSize)
@@ -118,7 +126,7 @@ if __name__ == "__main__": # if file was called and not imported
     # Calculate end points for windows inside inversion
     ends =[ x+winSize for x in starts]
     names=[invID+"_inv_%d" % (x + 1) for x in range(len(starts))]
-
+ 
     # MAKE WINDOWS TABLE - Add confidence intervals
     # ------------------------------------------------------------------------- #
     # Calculate condifence interval size
@@ -137,7 +145,7 @@ if __name__ == "__main__": # if file was called and not imported
       # Confidence interval starts
       startsCIL=range(startCI, min(starts), winSizeCI)
       startsCIR=range( max(ends), endCI, winSizeCI)
-      
+    
       # Confidence interval ends
       endsCIL=[ x+winSizeCI for x in startsCIL]
       endsCIR=[ x+winSizeCI for x in startsCIR]
@@ -204,3 +212,5 @@ if __name__ == "__main__": # if file was called and not imported
   # Make a file with the table
   # =========================================================================== #   
   bedFile.to_csv(args.output,index=None, sep='\t', mode='w')
+
+
