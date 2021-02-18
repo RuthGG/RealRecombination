@@ -91,7 +91,7 @@ We imputed each inversion in those individuals classified as "Tagged", "Imputabl
    # Get individuals genotypes
     genotypes<-read.table("../../analysis/2021-01-11_07_imputationTables/imputationResults.csv", header=TRUE, sep = ",", stringsAsFactors = FALSE)
     # Get genotypes for 0501
-    genotypes_HsInv0501<-read.table("../../analysis/2021-02-17_07_imputationTables_HsInv0501/new_genotypes.csv", header=TRUE, sep = "\t", stringsAsFactors = FALSE)
+    genotypes_HsInv0501<-read.table("../../analysis/2021-02-18_07_imputationTables_HsInv0501/new_genotypes.csv", header=TRUE, sep = "\t", stringsAsFactors = FALSE)
     genotypes_HsInv0501$Inversion<-"HsInv0501"
     # Get genoypes for DEl invs
     genotypes_delinvs<-read.table("../../analysis/2021-02-16_07_imputationTables_DELinvs/new_genotypes.csv", header=TRUE, sep = "\t", stringsAsFactors = FALSE)

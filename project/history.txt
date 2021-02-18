@@ -325,7 +325,6 @@ done
 	tail -n+2 analysis/2021-01-10_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt
 	tail -n+2 analysis/2021-01-11_09_coverage/coverage_table.txt >> analysis/2021-01-11_09_coverage_allinds/coverage_table.txt2021-02-15: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/all14samps -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/20201217_all_genotypes.csv -s 3
 
-
 # Repeat imputation for DEL genotype inversions
 
 2021-02-16: runall.sh impute -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/raw/1000genomes_hg19 -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/all14samps -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 3
@@ -379,21 +378,24 @@ done
 		 }
 
 2021-02-16: runall.sh imputetables -i analysis/2021-02-16_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
+			mv analysis/2021-02-16_07_imputationTables analysis/2021-02-16_07_imputationTables_DELinvs
+
 
 # Impute HsInv0501 from a different panel
 
 2021-02-16: manually copied file in data/raw/inversions_info/HsInv0501_haplotypes/haplotypes_EUR.vcf and data/use/inversions_info/HsInv0501_haplotypes/haplotypes_EUR.vcf
-cd data/use/inversions_info/HsInv0501_haplotypes/
-bgzip haplotypes_EUR.vcf 
-tabix -p vcf haplotypes_EUR.vcf.gz
+			cd data/use/inversions_info/HsInv0501_haplotypes/
+			bgzip haplotypes_EUR.vcf 
+			tabix -p vcf haplotypes_EUR.vcf.gz
+2021-02-18: Added coordinate information for HsInv0501 to data/raw/inversions_info/HsInv0501_haplotypes
+2021-02-18: Changed data/use/inversions_info/Inversions_coordinates_hg19.csv to contain HsInv0501 coordinates in hg19 (previously in hg18 due to an error)
 
-2021-02-17: runall.sh imputeREF -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/use/inversions_info/HsInv0501_haplotypes/haplotypes_EUR.vcf.gz -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/all14samps -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 1
-mv analysis/2021-02-17_06_imputation analysis/2021-02-17_06_imputation_all14samps
-2021-02-17: runall.sh imputeREF -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/use/inversions_info/HsInv0501_haplotypes/haplotypes_EUR.vcf.gz -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 1
-mv analysis/2021-02-17_06_imputation analysis/2021-02-17_06_imputation_nc6nc22nc25nc26
-2021-02-17: runall.sh imputeREF -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/use/inversions_info/HsInv0501_haplotypes/haplotypes_EUR.vcf.gz -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 1
-mv analysis/2021-02-17_06_imputation analysis/2021-02-17_06_imputation_nc17nc18
-
+2021-02-18: runall.sh imputeREF -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/use/inversions_info/HsInv0501_haplotypes/haplotypes_EUR.vcf.gz -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/all14samps -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 1
+mv analysis/2021-02-18_06_imputation analysis/2021-02-18_06_imputation_all14samps
+2021-02-18: runall.sh imputeREF -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/use/inversions_info/HsInv0501_haplotypes/haplotypes_EUR.vcf.gz -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 1
+mv analysis/2021-02-18_06_imputation analysis/2021-02-18_06_imputation_nc6nc22nc25nc26
+2021-02-18: runall.sh imputeREF -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/use/inversions_info/HsInv0501_haplotypes/haplotypes_EUR.vcf.gz -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 1
+mv analysis/2021-02-18_06_imputation analysis/2021-02-18_06_imputation_nc17nc18
 
 DATE=2021-02-17
 rm analysis/${DATE}_06_imputation_merged/*
@@ -440,5 +442,24 @@ done
 
 2021-02-17: runall.sh imputetables -i analysis/2021-02-17_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
 2021-02-17: 
-	mv analysis/2021-02-16_07_imputationTables analysis/2021-02-16_07_imputationTables_DELinvs
+	
 	mv analysis/2021-02-17_07_imputationTables analysis/2021-02-17_07_imputationTables_HsInv0501
+
+
+
+
+
+
+2021-12-18: Manually added HsInv0501 to data/use/inversions_info/2020.08.inversions_hg38.gff. The coordinates from the hg38 conversion project were estimated.
+
+			printf "200000\n1000000" >  data/use/conditions/winsizeCrossovers.txt
+			bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.strict.gff
+			cp project/logfiles/2020-10-14 analysis/2020-10-14_09_crossovers
+			mv analysis/2020-10-14_09_crossovers analysis/2020-10-14_09_crossovers_200k
+
+
+#####
+2021-02-18: runall.sh imputeREF -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/use/inversions_info/HsInv0501_haplotypes/haplotypes_EUR.vcf.gz -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/all14samps -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 1
+2021-02-18: runall.sh imputeREF -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/use/inversions_info/HsInv0501_haplotypes/haplotypes_EUR.vcf.gz -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc6nc22nc25nc26 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 1
+2021-02-18: runall.sh imputeREF -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/use/inversions_info/HsInv0501_haplotypes/haplotypes_EUR.vcf.gz -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 1
+2021-02-18: runall.sh imputetables -i analysis/2021-02-18_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
