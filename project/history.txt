@@ -444,10 +444,8 @@ done
 2021-02-18: mv analysis/2021-02-18_07_imputationTables analysis/2021-02-18_07_imputationTables_HsInv0501
 
 2021-12-18: Manually added HsInv0501 to data/use/inversions_info/2020.07.inversions_hg38.gff. The coordinates were estimated in the hg38 conversion project and are in data/raw/inversions_info/HsInv0501_haplotypes.
+2021-02-18: Updated local data/use folder. 
 
 			printf "200000\n1000000" >  data/use/conditions/winsizeCrossovers.txt
 			bash runall.sh crossovers -f data/raw/avery_crossovers/allcrossovers_hg38.txt.gz -c data/use/inversions_info/2020.07.inversions_hg38.gff -n data/use/avery_crossovers/numOfCells.txt -x data/use/conditions/winsizeCrossovers.txt -m data/use/recMaps -b data/use/assembly_hg38/minmax.strict.gff
-			cp project/logfiles/2020-10-14 analysis/2020-10-14_09_crossovers
-			mv analysis/2020-10-14_09_crossovers analysis/2020-10-14_09_crossovers_200k
-
-
+			cp project/logfiles/2021-02-18 analysis/2021-02-18_09_crossovers
