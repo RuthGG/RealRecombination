@@ -397,7 +397,7 @@ mv analysis/2021-02-18_06_imputation analysis/2021-02-18_06_imputation_nc6nc22nc
 2021-02-18: runall.sh imputeREF -f data/use/conditions/inversionToImpute.txt -x data/use/conditions/imputConditions.txt -r data/use/inversions_info/HsInv0501_haplotypes/haplotypes_EUR.vcf.gz -m data/raw/1000genomes_hg19_maps -i data/use/avery_individuals/nc17nc18 -c data/use/inversions_info/Inversions_coordinates_hg19.csv -g data/use/inversions_info/all_genotypes.csv -s 1
 mv analysis/2021-02-18_06_imputation analysis/2021-02-18_06_imputation_nc17nc18
 
-DATE=2021-02-17
+DATE=2021-02-18
 rm analysis/${DATE}_06_imputation_merged/*
 mkdir analysis/${DATE}_06_imputation_merged
 CONLIST=$(cut -f1 data/use/conditions/imputConditions.txt )
@@ -426,7 +426,7 @@ for CONDITION in $CONLIST;do
 done
 
 	R:
-		date<-"2021-02-17"
+		date<-"2021-02-18"
 		 multilist <- readLines(paste0("analysis/",date,"_06_imputation_merged/multilist.txt"))
 		 
 		 for (m in multilist) { 
@@ -440,7 +440,7 @@ done
 		 	write.table(merged, paste0("analysis/",date,"_06_imputation_merged/", m , "_readSum.vcf"), quote = FALSE, sep = "\t", row.names = FALSE, append = TRUE)
 		 }
 
-2021-02-18: runall.sh imputetables -i analysis/2021-02-17_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
+2021-02-18: runall.sh imputetables -i analysis/2021-02-18_06_imputation_merged -p data/use/avery_individuals/samples_population.txt -t data/use/inversions_info/Inversions_imputability.txt
 2021-02-18: mv analysis/2021-02-18_07_imputationTables analysis/2021-02-18_07_imputationTables_HsInv0501
 
 2021-12-18: Manually added HsInv0501 to data/use/inversions_info/2020.07.inversions_hg38.gff. The coordinates were estimated in the hg38 conversion project and are in data/raw/inversions_info/HsInv0501_haplotypes.
