@@ -207,7 +207,7 @@ tagtab<-read.table("../../analysis/2021-01-07_tagsnps_all/tagSNPGenotypedInvs_co
 
 # Cuando el tagsnp check code vaya bien borrar esto
 tagtab$V4<-NULL
-colnames(tagtab)<-c("Individual", "TagSNP.genotype", "TagSNP.probability","TagSNP.sequenced","TagSNP.existing", "Inversion", "TagSNP.population")
+colnames(tagtab)<-c("Individual", "TagSNP.genotype", "TagSNP.support","TagSNP.sequenced","TagSNP.existing", "Inversion", "TagSNP.population")
 
 # Borrar aquellos resultados redundantes!
 ceulist<-unique(tagtab[which(tagtab$TagSNP.population == "CEU") , "Inversion" ])
@@ -246,13 +246,13 @@ We had `r length(unique(tagtab$Inversion))` inversions with known perfect tag SN
 * **TagSNP.existing:** how many tag SNPs we know 
 * **TagSNP.sequenced:** how many tag SNPs were actually sequenced in the individual VCFs
 * **TagSNP.genotype:** the predominant predicted orientation
-* **TagSNP.probability:** the percentage of sequenced SNPs that agreed with the orientation prediction.
+* **TagSNP.support:** the percentage of sequenced SNPs that agreed with the orientation prediction.
 
 ```{r, include =FALSE}
 
 
 #  STEP 02
-tagtab_test_wide<-dcast(tagtab[tagtab$TagSNP.probability >=0.8,], Individual + Inversion ~ TagSNP.population , value.var = "TagSNP.genotype" )
+tagtab_test_wide<-dcast(tagtab[tagtab$TagSNP.support >=0.8,], Individual + Inversion ~ TagSNP.population , value.var = "TagSNP.genotype" )
 tagtab_filtered<-do.call(rbind, apply(tagtab_test_wide, 1, function(x){
   
    if(!is.na(x["GLB"])){
@@ -291,13 +291,13 @@ tagtab_summary[is.na(tagtab_summary$TagSNP.genotype ),  ]<-tagtab_unfiltered[
 
 ```
 
-Only those results with TagSNP.probability >= 0.8 were accepted. 
-<!-- **`r nrow(tagtab_summary[tagtab_summary$TagSNP.probability >=0.8,])` out of `r nrow(tagtab_summary)` inversion-individual pairs had valid tag SNP-mediated imputation results available**.  -->
+Only those results with TagSNP.support >= 0.8 were accepted. 
+<!-- **`r nrow(tagtab_summary[tagtab_summary$TagSNP.support >=0.8,])` out of `r nrow(tagtab_summary)` inversion-individual pairs had valid tag SNP-mediated imputation results available**.  -->
 
 ```{r tagSNP, echo = FALSE}
   # Show
     kbl(
-      head(tagtab[,c("Inversion", "Individual", "TagSNP.existing", "TagSNP.sequenced", "TagSNP.genotype", "TagSNP.probability")], 4), booktabs=T, row.names = FALSE, caption = "Sample rows from the tagSNP check results", position = "h")%>%
+      head(tagtab[,c("Inversion", "Individual", "TagSNP.existing", "TagSNP.sequenced", "TagSNP.genotype", "TagSNP.support")], 4), booktabs=T, row.names = FALSE, caption = "Sample rows from the tagSNP check results", position = "h")%>%
         kable_styling(position = "center")
 ```
 
@@ -400,7 +400,7 @@ plotable<-covTab[covTab$CI == 500000 & covTab$MAF == 0.025 & covTab$INV %in% c("
 In this last part I create a table where we can see what happened with each inversion in each individual at a glance. Before explaining how inversions were classified, I need to define or revisit some key concepts:
 
 * **Good imputation results:** those cases that are imputable according to Jon's previous studies (i.e. "Tagged", "Imputable" or "No_Polymorphic") and the probability value of the predicted genotype is >= 0.9.
-* **Good tagSNP results:** those cases with a tag SNP-mediated imputation result showing a TagSNP.probability >= 0.8.
+* **Good tagSNP results:** those cases with a tag SNP-mediated imputation result showing a TagSNP.support >= 0.8.
 * **Enough coverage:** sequenced vs. existing SNPs with MAF >=0.025 proportion (Cov.seq.vs.exp_maf) is >=0.3 or more than 500 SNPs sequenced (Cov.sequenced_maf).
 
 Knowing these conditions, we can find each inversion-individual pair classified as one of these categories: 
@@ -421,7 +421,7 @@ In some cases, a record could fit in more than one category (e.g. Not imputable 
 
 ```{r, include = FALSE}
 
-  allgeno<-merge(genotypes, tagtab_summary[,c("Inversion", "Individual", "TagSNP.sequenced","TagSNP.probability", "TagSNP.population",  "TagSNP.genotype")], by = c("Inversion", "Individual"), all = TRUE)
+  allgeno<-merge(genotypes, tagtab_summary[,c("Inversion", "Individual", "TagSNP.sequenced","TagSNP.support", "TagSNP.population",  "TagSNP.genotype")], by = c("Inversion", "Individual"), all = TRUE)
   colnames(allgeno)[colnames(allgeno) %in% c("Probability","Genotype")]<-c("Imp.probability", "Imp.genotype")
   
     # Get individual names for coverage table
@@ -436,9 +436,9 @@ In some cases, a record could fit in more than one category (e.g. Not imputable 
   allgeno$Result<-NA
   
   # Good imputation = (!(is.na(allgeno$Imp.probability)) & allgeno$Imp.probability >= 0.9)
-  # Good tagSNP =  allgeno$TagSNP.probability >=0.8 
+  # Good tagSNP =  allgeno$TagSNP.support >=0.8 
   # Bad coverage =  allgeno$seq.vs.exp_maf < 0.3 & allgeno$sequenced_maf < 500 
-  # Not good tag SNP = (allgeno$TagSNP.probability < 0.8 | is.na(allgeno$TagSNP.probability ))
+  # Not good tag SNP = (allgeno$TagSNP.support < 0.8 | is.na(allgeno$TagSNP.support ))
   # Not good imputation = (allgeno$Imp.probability < 0.9 | is.na(allgeno$Imp.probability ))
 
   
@@ -452,28 +452,28 @@ In some cases, a record could fit in more than one category (e.g. Not imputable 
   
   # R.badImputation
   allgeno[which( (allgeno$Imp.probability < 0.9 | is.na(allgeno$Imp.probability ) )& # Not good imputation
-                  (allgeno$TagSNP.probability < 0.8 | is.na(allgeno$TagSNP.probability )) &  # Not good tag SNP
+                  (allgeno$TagSNP.support < 0.8 | is.na(allgeno$TagSNP.support )) &  # Not good tag SNP
                    is.na(allgeno$Result)), "Result"]<-"R.badImputation"
   
   # C.Tag.Imput
   allgeno[which( (!(is.na(allgeno$Imp.probability)) & allgeno$Imp.probability >= 0.9) & # Good imputation
-                   allgeno$TagSNP.probability >=0.8 & # Good tag SNP
+                   allgeno$TagSNP.support >=0.8 & # Good tag SNP
                    allgeno$Imp.genotype != allgeno$TagSNP.genotype & # Imputation not equal to tag snp
                    is.na(allgeno$Result)), "Result"]<-"C.Tag.Imput"
     
   # A.Tagged
-  allgeno[which( allgeno$TagSNP.probability >=0.8 & # Good tagSNP
+  allgeno[which( allgeno$TagSNP.support >=0.8 & # Good tagSNP
                    (allgeno$Imp.probability < 0.9 | is.na(allgeno$Imp.probability )) & #Not good imputation
                    is.na(allgeno$Result)), "Result"]<-"A.Tagged"
   
   # A.Imputed
   allgeno[which( (!(is.na(allgeno$Imp.probability)) & allgeno$Imp.probability >= 0.9)& # Good imputation
-                (allgeno$TagSNP.probability < 0.8 | is.na(allgeno$TagSNP.probability )) & # Not good tag SNP
+                (allgeno$TagSNP.support < 0.8 | is.na(allgeno$TagSNP.support )) & # Not good tag SNP
                   is.na(allgeno$Result)), "Result"]<-"A.Imputed"
   
   # A.Tag.Imput
   allgeno[which(  (!(is.na(allgeno$Imp.probability)) & allgeno$Imp.probability >= 0.9) & # Good imputation
-                  allgeno$TagSNP.probability >=0.8 & # Good tagSNP
+                  allgeno$TagSNP.support >=0.8 & # Good tagSNP
                   allgeno$Imp.genotype == allgeno$TagSNP.genotype & # Imputation equal to tag snp
                   is.na(allgeno$Result)), "Result"]<-"A.Tag.Imput"
   
@@ -520,7 +520,7 @@ invSummary<-dcast(invSummary, Inversion ~ Result)
 
 
 ```{r final, echo = FALSE}
-allgeno<-allgeno[,c("Inversion","Individual","Population","Result","Imputability", "Origin","Imp.probability","Imp.genotype",       "TagSNP.sequenced","TagSNP.probability", "TagSNP.population" , "TagSNP.genotype" ,   "Cov.seq.vs.exp_maf","Cov.sequenced_maf" ,"HET.genotype","HOMO.genotype","all.genotype"   )]
+allgeno<-allgeno[,c("Inversion","Individual","Population","Result","Imputability", "Origin","Imp.probability","Imp.genotype",       "TagSNP.sequenced","TagSNP.support", "TagSNP.population" , "TagSNP.genotype" ,   "Cov.seq.vs.exp_maf","Cov.sequenced_maf" ,"HET.genotype","HOMO.genotype","all.genotype"   )]
 
   # Show
 
