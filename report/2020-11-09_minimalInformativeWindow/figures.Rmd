@@ -15,11 +15,11 @@ colnames(correlations)<-c("correl_count", "mode", "winsize")
 # correlations
 
 library(ggplot2)
-
+correlations$winsize<-correlations$winsize*10
 p<-ggplot(correlations)+
   geom_boxplot(data = correlations[correlations$mode == "center",], aes(x=winsize,y=correl_count,fill=mode, group = winsize, color = mode), alpha = 0.5)+
-  geom_boxplot(data = correlations[correlations$mode == "prob",], aes(x=winsize,y=correl_count,fill=mode, group = winsize, color = mode), alpha = 0.5)  + geom_smooth(aes(x = winsize, y = correl_count, color = mode, fill = mode), alpha = 0)+
-  geom_vline(aes(xintercept = 10000), alpha = 0.1)+geom_vline(aes(xintercept = 50000), alpha = 0.1)+geom_vline(aes(xintercept = 200000), alpha = 0.1)
+  geom_boxplot(data = correlations[correlations$mode == "prob",], aes(x=winsize,y=correl_count,fill=mode, group = winsize, color = mode), alpha = 0.5)  + geom_smooth(aes(x = winsize, y = correl_count, color = mode, fill = mode), alpha = 0)#+
+  # geom_vline(aes(xintercept = 10000), alpha = 0.1)+geom_vline(aes(xintercept = 50000), alpha = 0.1)+geom_vline(aes(xintercept = 200000), alpha = 0.1)
 
 
 fig <- ggplotly(p)

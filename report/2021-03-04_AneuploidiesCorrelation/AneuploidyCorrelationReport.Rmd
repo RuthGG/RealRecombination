@@ -1,0 +1,598 @@
+---
+title: "Chromosomal aberrations and inversions in heterozygosis
+"
+author: "Ruth Gómez Graciani"
+output:
+  bookdown::pdf_document2:
+    toc: false
+    latex_engine: xelatex
+  header-includes:
+  - \usepackage{xcolor}
+  - \usepackage{framed}
+mainfont: OpenSans
+editor_options: 
+  chunk_output_type: console
+---
+\renewcommand{\topfraction}{.85}
+\renewcommand{\bottomfraction}{.7}
+\renewcommand{\textfraction}{.15}
+\renewcommand{\floatpagefraction}{.66}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{4}
+
+
+_In this report, I analyze the realtionship between the amount of chromosomes in heterozygosis and amount of aneuploidies._
+
+```{r setup, include=FALSE}
+
+# Libraries
+library(ggpubr)
+library(kableExtra)
+library(ggplot2)
+library(viridis)
+library(tidyr)
+library(tufte)
+library(gridExtra)
+library(psych)
+library(PerformanceAnalytics)
+
+# Chromosome order
+chrNames<-c("chr1", "chr2", "chr3", "chr4", "chr5" ,"chr6" , "chr7", "chr8", "chr9", "chr10" ,"chr11" , "chr12", "chr13", "chr14", "chr15" ,"chr16" ,"chr17","chr18","chr19","chr20","chr21", "chr22")
+
+# Genotype and recombination info -> normGenoData
+load("../2020-11-25_GraphicalRepresentationReport/normGenoData.RData")
+
+# Inversion physical size
+  invsizes<-read.table("../../data/use/inversions_info/2020.07.inversions_hg38.csv", 
+                       sep = "\t", header = FALSE, stringsAsFactors = FALSE)
+  
+  invsizes$Size<-invsizes$V6-invsizes$V3-1
+
+  invsizes<-invsizes[, c("V2","V3", "V6", "Size")]
+  colnames(invsizes)<-c("Inversion","start", "end", "Size")
+  
+# Incorporate size info to genotype and recombination info
+  normGenoData<-merge(normGenoData, invsizes)
+  
+# Amount of aneuploidies
+  aneuploidies<-read.table("../../data/use/avery_aneuploidies/aneuploidycountsperdonorperchromosome.txt", header = T)
+
+# Normalization factors 
+  
+   numofcells<-read.table("../../data/use/avery_crossovers/numOfCells.txt")
+   crossovers<-read.table("../../data/use/avery_crossovers/allcrossovers_center.bed", header = TRUE)
+   
+   # Chrossovers per cell in all the individual
+   normalization<-merge(numofcells, data.frame(table(crossovers$donor)  ), by.x = "V1", by.y = "Var1")
+   colnames(normalization)<-c("donor", "cells",  "crossovers")
+   normalization$xpercell<-normalization$crossovers/normalization$cells
+   
+   # Chrossovers per chromosome
+   normalization.c<-merge(numofcells, data.frame(table(crossovers$donor, crossovers$chr)  ), by.x = "V1", by.y = "Var1")
+   colnames(normalization.c)<-c("donor", "cells", 'chr', "crossovers")
+   normalization.c$xperchr<-normalization$crossovers/normalization$cells
+
+```
+
+# The data
+
+If a recombination event takes place within an inversion region in heterozygosis, dicentric and acentric chromosomes will be formed. Later, the dicentric will breake at a random point between is two centromeres. In Bell et al. 2020, besides recombination information, they also provide chromosomal aberration counts by chromosome and individual (Table  \@ref(tab:TABaneuploidies)), in which the amount of inversions in heterozygosis could have a role. To simplify the analysis, I selected the columns corresponding to gains and losses of whole chromosomes, and gains and losses of chromosome arms. Figure  \@ref(fig:PLOTaneuploidiesNorm) shows the relative values in aberrations per cell. 
+
+```{r TABaneuploidies, echo = FALSE, message = FALSE, warning= FALSE}
+
+# head(aneuploidies)
+
+       kbl(
+      head(aneuploidies[,c(1:10)]), booktabs=T, row.names = FALSE,  caption = "Sample aneuploidy table", position = "h")%>%
+        kable_styling(position = "center", latex_options =c( "scale_down"))
+kbl(
+      head(aneuploidies[,c(11:16)]), booktabs=T, row.names = FALSE, position = "h")%>%
+        kable_styling(position = "center", latex_options =c( "scale_down"))
+
+```
+
+```{r PLOTaneuploidiesNorm, echo=FALSE, fig.cap = "Amount of different aberration types in counts per cell by individual and chromosome. Colors are relative, not equivalent between plots. "}
+
+# Aneuploidies in long format, filtered with only used info, donors and chormosomes
+
+  aneuploidies_lng<-reshape2::melt(aneuploidies[,c("donor", "chr", "totalArmGains", "totalArmLosses", "totalWholeGains", "totalWholeLosses")], id.vars = c("donor", "chr"))
+  aneuploidies_lng<-aneuploidies_lng[aneuploidies_lng$donor != "all" & !(aneuploidies_lng$chr %in% c("overall", "XY")),]
+
+  # Sort chromosomes
+  aneuploidies_lng$chr<-ordered(aneuploidies_lng$chr, chrNames)
+
+  # Calculate the dependent variable aberrations per cell   
+  aneuploidies_lng<-merge(aneuploidies_lng, normalization[,c("donor", "cells")])
+  aneuploidies_lng$CountsperCell<-aneuploidies_lng$value/aneuploidies_lng$cells
+
+
+out <- by(data = aneuploidies_lng, INDICES = aneuploidies_lng$variable, FUN = function(m) {
+      m <- droplevels(m)
+      m <- ggplot(m, aes(x = donor, y = chr, fill = CountsperCell)) + 
+         geom_tile()+scale_fill_viridis()+
+        ggtitle(m$variable[1])+
+        theme(legend.position = "none",axis.text.x=element_text( size=5,angle = 90, vjust = , hjust=1), axis.text.y=element_text( size=5), legend.title = element_blank(), title = element_text(size = 7))+
+        scale_y_discrete(limits = rev(levels(aneuploidies_lng$chr)))
+      
+   })
+
+
+annotate_figure(ggarrange(plotlist= out), top = "Amount of each aberration type in counts per cell \nValues not equivalent between plots")
+
+
+```
+
+The quantity of cM affected by the presence of an inversion in heterzygousis would be the determinant factor for a possible increase of chromosomal aberrations. Genetic size measurements for each inversion and individual are obtained by transforming the normalized recombination rates in cM/Mb to cM and making the mean of the available measurements. Figure \@ref(fig:PLOTnormalizedMeans) shows value distributions and correlation between physical and genetic size for inversion genetic sizes calculated with the mean of STD, HOM and HET individuals. Since we expect recombination rates to be affected in heterozygous individuals, I consider the genetic size of each inversion to be the mean genetic sizes of the region in homozygous individuals. Figure \@ref(fig:PLOTinvpos) shows the distribution of inversions, in counts and genetic sizes, across the different chromosomes, which gives an idea of the probability of a chromosome to be affected by recombination events taking place in an inversion region in heterozygosis. 
+
+```{r normalized, echo=FALSE,warning=FALSE, message=FALSE, fig.height=6}
+
+# Calculate cM inside inversions for each inversion-individual pair
+
+  # Take only inside inversion windows
+  inData<-normGenoData[ normGenoData$position == "inv" ,]
+
+  # Calculate percentage of overlap between window and inversion
+  inData$percOverlap<-inData$Size / 200000
+
+  inData$percOverlap<- ifelse(inData$percOverlap > 1,  # si el porcentaje de overlap es >1 (la inversion es muy grande)
+           ifelse(inData$start > inData$startWin, (inData$endWin - inData$start +1 ) / 200000 # principio de inversion grande
+                  , ifelse(inData$end < inData$endWin, (inData$end - inData$startWin +1 ) / 200000 # final de la inv grande
+                           , 1)) # enmedio de la inv grande
+           , inData$percOverlap)
+
+ # Calculate cM in original 200kb window from normalized recRate
+  inData$cM.QN<-  50*log(1/(1-(2*(inData$cM.Mb.QN * (200000/1000000)))))
+
+  # Take the percentage of window that spans the inversion
+  inData$cM.QN.inv<-inData$cM.QN * inData$percOverlap
+
+  # Make the sum for each inversion and individual
+  inData_bypair<-aggregate(cM.QN.inv  ~ Inversion+Individual+Genotype+Size,   data=inData, sum)
+
+# Set plot options
+makeCorrel<-function(table, title){
+  
+  a<-ggplot(table, aes(x = log10(cM.QN.inv) ))+geom_histogram()+
+    ggtitle("Distribution of genetic distances")+
+   theme(plot.title = element_text( size=9), axis.title.x=element_text( size=8), axis.title.y=element_text( size=8))
+  
+  
+  b<-ggplot(table, aes(x = log10(Size), y = log10(cM.QN.inv))) + 
+   geom_point() + stat_smooth(method = "lm", col = "#00798c") +  
+   ggtitle("Genetic distance vs. physical length")+ 
+ stat_cor(method = "pearson", label.x.npc = 0, label.y.npc = 1 ) +
+    theme(plot.title = element_text( size=9), axis.title.x=element_text( size=8), axis.title.y=element_text( size=8))
+  
+  annotate_figure( ggarrange(a, b), top = text_grob(title, size = 10))
+  
+}
+
+# Make plot facets data
+  # Make inversion genetic sizes according to STD mean sizes
+    stdData<-inData_bypair[inData_bypair$Genotype == "STD" ,]
+    agg_std<-aggregate( cM.QN.inv  ~ Inversion+Size    ,data = stdData, mean)
+    std<-makeCorrel(agg_std, "STD individuals")
+  
+  # Make inversion genetic sizes according to HOMO  mean sizes
+    homoData<-inData_bypair[inData_bypair$Genotype %in% c("STD", "INV") ,]
+    agg_homo<-aggregate( cM.QN.inv  ~ Inversion+Size    ,data = homoData, mean)
+    hom<-makeCorrel(agg_homo, "STD+INV individuals")
+  
+  # Make inversion genetic sizes according to HET mean sizes
+    hetData<-inData_bypair[inData_bypair$Genotype %in% c("HET") ,]
+    agg_het<-aggregate( cM.QN.inv  ~ Inversion+Size    ,data = hetData, mean)
+    het<-makeCorrel(agg_het, "HET individuals")
+
+# Include agg_homo, inversion genetic sizes according to HOMO  mean sizes, into master table
+  normGenoData<-merge(normGenoData, agg_homo)
+
+
+```
+
+```{r PLOTnormalizedMeans, fig.cap = "Value distributions and correlation between physical and genetic size for inversion genetic sizes calculated with the mean of STD, HOM and HET individuals", echo=FALSE, message = FALSE, warning = FALSE , fig.height=6}
+
+
+ annotate_figure( ggarrange(std, hom,het, ncol = 1), top = text_grob("Normalized mean cM measurements (1 point = 1 inversion)" , size = 12))
+
+
+```
+
+```{r PLOTinvpos, echo=FALSE, fig.cap="Bar plots represent amount of inversions in each chromosome, colored by the sum of inversions sizes in cM, which is also indicated by bar colors. This sum of inversion genetic sizes corresponds to the maximum cM affected, given that an individual in heterozygous for all the detectable inversions.", warning=FALSE, message=FALSE}
+
+# Take inversion position distribution in number of invs and cM.
+  invPos<-unique(normGenoData[,c("chrWin", "Inversion", "cM.QN.inv")])
+  invPos$chrWin<-ordered(invPos$chrWin, levels=chrNames)
+  invPosSize<-aggregate(cM.QN.inv  ~ chrWin, data = invPos, sum)
+  invPosSize<-merge(invPosSize, table(invPos$chrWin), by.x = "chrWin", by.y = "Var1", all.y = TRUE)
+
+# Make plot
+ggplot(invPosSize, aes(x =chrWin, y = Freq, fill= log10(cM.QN.inv) , label= round(cM.QN.inv, 3) ) )+
+  geom_bar(stat="identity")+
+  geom_text(nudge_y = 0.25, size = 2)+
+  ggtitle("Distribution of inversion counts and sizes in cM by chromosome")+
+  scale_fill_viridis(labels = c(0.001,0.01, 0.1, 1, 10)) + 
+  guides(fill=guide_colorbar(title="cM.QN.inv"))+
+  theme(legend.position = "top", legend.justification='left',
+        axis.text.x = element_text(size = 7),axis.text.y = element_text(size = 7) )+
+  xlab("Chromosome")+ylab("Amount of inversions")
+  
+ 
+```
+
+# Variables to test
+
+In this analysis, the dependent variable is count of aberrations per cell (as mentioned before, we will look at different types of aberrations), and the independent variable to test for inversions in heterozygosis effect will be the sum of cM affected by heterozygous inversions in each chromosome. In addition, crossovers are suggested to protect against chromosomal aberrations:
+
+> We found that chromosome gains originating in meiosis I—when recombination occurs—had 36% fewer total crossovers than matched, well-segregated chromosomes did (Supplementary Methods), suggesting that crossovers protected against meiosis I nondisjunction of the chromosomes on which they occurred (Extended Data Fig. 9b and Supplementary Notes). No similar relationship was observed for meiosis II gains (although the simulated control distribution for meiosis II is inherently less accurate; Supplemen- tary Notes) or at other levels of aggregation (Extended Data Fig. 9b–d and Supplementary Notes). 
+>
+> `r tufte::quote_footer('--- Bell et al. 2020')`
+
+So we should take into consideration the amount of crossovers, which I could measure as crossovers per cell in each chromosome (crossovers per chromosome) or as crossovers per cell in general. 
+
+> Another study can be total aberrations per individual with crossovers per cell and total cM affected.
+>
+> `r tufte::quote_footer('--- Side note')`
+
+A multiple regression is suitable to test for inversions in heterozygosis effect while controlling the recombination rate effect as well:
+
+> Use multiple regression when you have a more than two measurement variables, one is the dependent variable and the rest are independent variables. You can use it to predict values of the dependent variable, or if you're careful, you can use it for suggestions about which independent variables have a major effect on the dependent variable.
+>
+> `r tufte::quote_footer('--- Handbook of biological statistics')`
+
+However, first we have to know the distribution of the variables and the relationships between them: 
+
+> Whenever you have a dataset with multiple numeric variables, it is a good idea to look at the correlations among these variables.  One reason is that if you have a dependent variable, you can easily see which independent variables correlate with that dependent variable.  A second reason is that if you will be constructing a multiple regression model, adding an independent variable that is strongly correlated with an independent variable already in the model is unlikely to improve the model much, and you may have good reason to chose one variable over another. 
+>
+> Finally, it is worthwhile to look at the distribution of the numeric variables.  If the distributions differ greatly, using Kendall or Spearman correlations may be more appropriate.  Also, if independent variables differ in distribution from the dependent variable, the independent variables may need to be transformed.
+>
+> `r tufte::quote_footer('--- Handbook of biological statistics')`
+
+```{r analysisData, include = FALSE}
+
+# Count cM in heterozygosis for each indibvidual and chromosome
+  #subset
+  hetData<-unique(normGenoData[normGenoData$Genotype == "HET",
+                               c("cM.QN.inv", "Inversion", "Individual", "Genotype", "chrWin")])
+  # sum  
+  hetCounted<-aggregate( cM.QN.inv  ~ Individual+chrWin, hetData, sum)
+  # Complete cases
+  hetCounted<-hetCounted %>% complete(Individual, nesting(chrWin), fill = list(cM.QN.inv = 0))
+
+# Add aneuploidy information
+  aneupHet<-merge(aneuploidies_lng, hetCounted, by.x = c("donor", "chr"), by.y = c("Individual", "chrWin"))
+
+# Add normalization factors for chromosomes
+  aneupHet<-merge(aneupHet, normalization.c)
+  aneupHet<-merge(aneupHet, normalization[,c("donor", "xpercell")])
+
+
+    
+```
+
+## Variable distributions
+
+Dependent variables (counts per cell of different types of aberrations) seem to have a distribution that turns more or less normal with a logarithmic transformation, as shown in figure \@ref(fig:PLOTdependentDistr).
+
+```{r PLOTdependentDistr, echo = FALSE, fig.cap="Dependent variables distribution, raw and log10 transformed"}
+
+plot1<-ggplot(aneupHet)+geom_histogram(aes(x = CountsperCell))+facet_grid(variable~.)+ggtitle("Dependent variable options \nRaw")
+plot2<-ggplot(aneupHet)+geom_histogram(aes(x = log10(CountsperCell)))+facet_grid(variable~.)+ggtitle("Dependent variable options \nLog10 transformed")
+
+ggarrange(plot1, plot2, nrow = 1)
+
+```
+
+Genetic distance in heterozygosis seems to work better with a logarithmic transformation as well (Figure \@ref(fig:PLOTgendistDistr)).
+
+```{r PLOTgendistDistr, echo = FALSE, fig.cap="Dependent variables distribution, raw and log10 transformed"}
+independents<-unique(aneupHet[,c("donor", "chr", "cM.QN.inv","xperchr", "xpercell")])
+  
+plot1<-ggplot(independents )+geom_histogram(aes(x = cM.QN.inv))+ggtitle("cM.QN.inv distribution \nRaw")
+plot2<-ggplot(independents)+geom_histogram(aes(x = log10(cM.QN.inv)))+ggtitle("DcM.QN.inv distribution \nLog10 transformed")
+
+ggarrange(plot1, plot2, nrow = 1)
+
+
+
+
+```
+
+Finally, variables related to global crossover distribution and per-chromosome crossover distribution are more or less normal already (Figure \@ref(fig:PLOTcrosstDistr)). 
+
+```{r PLOTcrosstDistr, echo = FALSE, fig.cap="Dependent variables distribution, raw and log10 transformed"}
+independents<-unique(aneupHet[,c("donor", "chr", "cM.QN.inv","xperchr", "xpercell")])
+  
+plot1<-ggplot(independents )+geom_histogram(aes(x = xperchr), bins = 10)+ggtitle("Crossovers per chromosome distribution \nRaw")
+plot2<-ggplot(unique(independents[,c("donor", "xpercell")]) )+geom_histogram(aes(x = xpercell), bins = 10)+ggtitle("Crossovers per cell distribution \nRaw")
+
+ggarrange(plot1, plot2, nrow = 1)
+
+```
+
+
+```{r FUNmultiCorrel, echo= FALSE}
+multiCorrel<-function(analyze){
+
+# With the corr.test function in the psych package, the “Correlation matrix” shows r-values and the “Probability values” table shows p-values.
+
+test<-corr.test(analyze,
+          use = "pairwise",
+          method="pearson",
+          adjust="none",     # Can adjust p-values; see ?p.adjust for options
+          alpha=.05)
+
+# it is worthwhile to look at the distribution of the numeric variables.  If the distributions differ greatly, using Kendall or Spearman correlations may be more appropriate.  Also, if independent variables differ in distribution from the dependent variable, the independent variables may need to be transformed.
+
+# The PerformanceAnalytics plot shows r-values, with asterisks indicating significance, as well as a histogram of the individual variables. 
+
+chart.Correlation(analyze,
+                   method="pearson",
+                   histogram=TRUE)
+return(test)
+}
+```
+
+## Variable correlations - raw data
+
+The results, however, between our two main variables we want to look at, are better with untransformed data,
+
+### totalArmLosses
+
+```{r varr1, echo= FALSE}
+
+multiCorrel(aneupHet[aneupHet$variable == "totalArmLosses", c("CountsperCell", "xperchr", "xpercell", "cM.QN.inv")])
+
+
+```
+### totalArmGains
+
+```{r varr2, echo= FALSE}
+
+multiCorrel(aneupHet[aneupHet$variable == "totalArmGains",c("CountsperCell", "xperchr", "xpercell", "cM.QN.inv")])
+
+
+```
+### totalWholeLosses
+
+```{r varr3, echo= FALSE}
+
+multiCorrel(aneupHet[aneupHet$variable == "totalWholeLosses", c("CountsperCell", "xperchr", "xpercell", "cM.QN.inv")])
+
+
+```
+### totalWholeGains
+
+```{r varr4, echo= FALSE}
+
+multiCorrel(aneupHet[aneupHet$variable == "totalWholeGains", c("CountsperCell", "xperchr", "xpercell", "cM.QN.inv")])
+```
+
+
+```{r curves}
+
+Data = aneupHet[aneupHet$variable == "totalArmLosses",c("CountsperCell", "cM.QN.inv")]
+ 
+library(dplyr)
+
+Data =
+mutate(Data,
+       Length2 = cM.QN.inv*cM.QN.inv,
+       Length3 = cM.QN.inv*cM.QN.inv*cM.QN.inv,
+       Length4 = cM.QN.inv*cM.QN.inv*cM.QN.inv*cM.QN.inv)
+
+# Define the models to compare
+
+model.1 = lm (CountsperCell ~ cM.QN.inv,                               data=Data)
+model.2 = lm (CountsperCell ~ cM.QN.inv + Length2,                     data=Data)
+model.3 = lm (CountsperCell ~ cM.QN.inv + Length2 + Length3,           data=Data)
+model.4 = lm (CountsperCell ~ cM.QN.inv + Length2 + Length3 + Length4, data=Data)
+
+# Generate the model selection criteria statistics for these models
+ summary(model.1)
+AIC(model.1)
+ summary(model.2)
+AIC(model.2)
+anova(model.3, model.4)
+ summary(model.3)
+AIC(model.3)
+ summary(model.4)
+AIC(model.4)
+
+Data$logCounts<-1/(Data$CountsperCell)
+Data$logcM<-1/(Data$cM.QN.inv)
+Data<-Data[Data$logCounts != Inf & Data$logcM != Inf,]
+
+model.final = lm (logCounts ~ logcM , 
+               data=Data)
+summary(model.final)  
+hist(residuals(model.final),
+     col="darkgray")
+
+library(rcompanion)
+
+plotNormalHistogram(aneupHet$cM.QN.inv)
+
+qqnorm(aneupHet$cM.QN.inv)
+qqline(aneupHet$cM.QN.inv, col = "red")
+
+
+T_tuk =
+     transformTukey(aneupHet$cM.QN.inv,
+                     plotit=FALSE)
+
+plotNormalHistogram(T_tuk)
+qqnorm(T_tuk)
+qqline(T_tuk, col = "red")
+
+C_tuk =
+     transformTukey(aneupHet$CountsperCell,
+                     plotit=FALSE)
+plotNormalHistogram(C_tuk)
+
+Data<-data.frame(C_tuk, T_tuk, aneupHet$xpercell)
+
+model.final = lm (C_tuk ~ T_tuk + aneupHet.xpercell, 
+               data=Data)
+summary(model.final)  
+hist(residuals(model.final),
+     col="darkgray")
+
+```
+
+Model |  AIC |  Adjusted R-squared |  p-valueExtraSS
+1     | -4598.353 | 0.01642 |
+2     | -4596.654 | 0.01449 | 0.5853
+3     | -4594.733 | 0.01194 | 0.7807
+4     | -4593.354 | 0.01086 | 0.4342
+## Variable curviliniar regressions - raw data
+
+## Variable correlations - partially transformed data
+
+```{r logTransformationsp, include = FALSE}
+# Transform to log genetic size
+  aneupHet.p<-aneupHet
+   aneupHet.p$log10GeneticSize <- log10(aneupHet.p$cM.QN.inv)
+   # aneupHet$log10CountsperCell<-log10(aneupHet$CountsperCell)
+
+   aneupHet.p<-aneupHet.p[!(aneupHet.p$log10GeneticSize %in% c(-Inf, Inf) ),]
+   
+```
+
+
+### totalArmLosses
+
+```{r varp1, echo= FALSE}
+
+multiCorrel(aneupHet.p[aneupHet.p$variable == "totalArmLosses", c("CountsperCell", "xperchr", "xpercell", "log10GeneticSize")])
+
+
+```
+### totalArmGains
+
+```{r varp2, echo= FALSE}
+
+multiCorrel(aneupHet.p[aneupHet.p$variable == "totalArmGains", c("CountsperCell", "xperchr", "xpercell", "log10GeneticSize")])
+
+
+```
+### totalWholeLosses
+
+```{r varp3, echo= FALSE}
+
+multiCorrel(aneupHet.p[aneupHet.p$variable == "totalWholeLosses", c("CountsperCell", "xperchr", "xpercell", "log10GeneticSize")])
+
+
+```
+### totalWholeGains
+
+```{r varp4, echo= FALSE}
+
+multiCorrel(aneupHet.p[aneupHet.p$variable == "totalWholeGains", c("CountsperCell", "xperchr", "xpercell", "log10GeneticSize")])
+
+
+```
+
+
+## Variable correlations - transformed data
+
+```{r logTransformations, include = FALSE}
+# Transform to log genetic size
+  aneupHet_raw<-aneupHet
+   aneupHet$log10GeneticSize <- log10(aneupHet$cM.QN.inv)
+   aneupHet$log10CountsperCell<-log10(aneupHet$CountsperCell)
+
+   aneupHet<-aneupHet[!(aneupHet$log10GeneticSize %in% c(-Inf, Inf)) & !(aneupHet$log10CountsperCell %in% c(-Inf, Inf)),]
+   
+```
+
+After doing a log10 transformation to the dependent variables and the genetic distance in heterozygosis (and removing points with -Inf values, which is required to perform the following analyses), the next step is to know the correlations among variables. With this information I will make sure that independent variables are actually independent, and select which of the methods to account for interindividual recombination rate variability is more useful. 
+
+
+### totalArmLosses
+
+```{r var1, echo= FALSE}
+
+multiCorrel(aneupHet[aneupHet$variable == "totalArmLosses", c("log10CountsperCell", "xperchr", "xpercell", "log10GeneticSize")])
+
+
+```
+### totalArmGains
+
+```{r var2, echo= FALSE}
+
+multiCorrel(aneupHet[aneupHet$variable == "totalArmGains", c("log10CountsperCell", "xperchr", "xpercell", "log10GeneticSize")])
+
+
+```
+### totalWholeLosses
+
+```{r var3, echo= FALSE}
+
+multiCorrel(aneupHet[aneupHet$variable == "totalWholeLosses", c("log10CountsperCell", "xperchr", "xpercell", "log10GeneticSize")])
+
+
+```
+### totalWholeGains
+
+```{r var4, echo= FALSE}
+
+multiCorrel(aneupHet[aneupHet$variable == "totalWholeGains", c("log10CountsperCell", "xperchr", "xpercell", "log10GeneticSize")])
+
+
+```
+
+
+
+
+
+
+
+## Multiple regression - raw data
+
+```{r FUNmultiregression, echo = FALSE}
+testMulti<-aneupHet_raw[aneupHet_raw$variable == "totalArmLosses",c("CountsperCell", "xpercell", "cM.QN.inv")]
+
+# A full model and a null are defined, 
+model.null = lm(CountsperCell ~ 1,
+                data=testMulti)
+
+model.full = lm(CountsperCell ~ . ,
+                data=testMulti)
+    
+step(model.null,
+     scope = list(upper=model.full),
+             direction="both",
+             data=testMulti)    
+
+model.final =lm(formula = CountsperCell ~ cM.QN.inv + xpercell, data = testMulti)
+summary(model.final)
+
+library(car)
+
+Anova(model.final,
+      Type="II")
+
+ 
+
+testMulti$predy = predict(model.final)
+
+plot(predy ~ CountsperCell,
+     data=testMulti,
+     pch = 16,
+     xlab="Actual response value",
+     ylab="Predicted response value")
+
+abline(0,1, col="blue", lwd=2)
+
+hist(residuals(model.final),
+     col="darkgray")
+
+plot(fitted(model.final),
+     residuals(model.final)
+     )
+
+plot(model.final) 
+
+```
+

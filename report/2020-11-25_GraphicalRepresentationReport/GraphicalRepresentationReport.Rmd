@@ -12,6 +12,13 @@ output:
 
 mainfont: OpenSans
 ---
+\renewcommand{\topfraction}{.85}
+\renewcommand{\bottomfraction}{.7}
+\renewcommand{\textfraction}{.15}
+\renewcommand{\floatpagefraction}{.66}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{4}
 
 _In this report, I analyze the differences in local recombination rates between heterozygous and homozygous individuals for an inversion._
 
@@ -95,6 +102,8 @@ normGenoData<-merge(genotypes,normData, by.x =c("Individual", "Inversion" ), by.
 
 # EXCLUDE DATA IF NEEDED
 # normGenoData<-normGenoData[!(normGenoData$Inversion %in% c("HsInv0052id" ,"HsInv0052sd" ,"HsInv0052si" )),]
+
+save(normGenoData, file = "normGenoData.RData")
 
 ```
 
@@ -269,8 +278,8 @@ Size distributions (log transformed) for all the available inversions (expected)
 
 ```{r PLOTgenotypingBias, echo = FALSE, fig.cap ="", fig.pos="!H"}
 
-expected <- data.frame(size =invinfo$Size ,logsize = log(invinfo$Size), source = "expected")
-genotyped<-data.frame(size=unique(testTT[,c("Size", "Inversion")])$Size, logsize=(log(unique(testTT[,c("Size", "Inversion")])$Size)), source = "genotyped")
+expected <- data.frame(size =invinfo$Size ,logsize = log10(invinfo$Size), source = "expected")
+genotyped<-data.frame(size=unique(testTT[,c("Size", "Inversion")])$Size, logsize=(log10(unique(testTT[,c("Size", "Inversion")])$Size)), source = "genotyped")
 
 sizeComp<-rbind(expected, genotyped)
 
@@ -351,9 +360,9 @@ PLOTlognormalDistriutions<-function(normGenoData){
   highlightColor<-"#008080"
 
   plot2<-ggplot()+
-        geom_histogram(data = normGenoData, aes(x = log(cM.Mb.QN_dln)))+
-        geom_histogram(data = zeroData,aes(x = log(cM.Mb.QN_dln)), fill = highlightColor)+
-        geom_text(data = , aes(x = log(replacementValue), y = nrow(zeroData), label = paste0("Amount of 0 values: ", nrow(zeroData)) ),
+        geom_histogram(data = normGenoData, aes(x = log10(cM.Mb.QN_dln)))+
+        geom_histogram(data = zeroData,aes(x = log10(cM.Mb.QN_dln)), fill = highlightColor)+
+        geom_text(data = , aes(x = log10(replacementValue), y = nrow(zeroData), label = paste0("Amount of 0 values: ", nrow(zeroData)) ),
                   vjust = -1, hjust = 0.1, color =highlightColor )
   
   return(list(plot1, plot2)) 
@@ -570,10 +579,10 @@ PLOTpanel<-function(testTT, title){
   
   # Correlation with logsize
       
-   testTT$logSize<-log(testTT$Size)
+   testTT$logSize<-log10(testTT$Size)
      correlogsize<-ggplot(testTT[testTT$winPos == "inv_1", ], aes(x = logSize, y = Means.Fold.Changelog)) + 
    geom_point() + stat_smooth(method = "lm", col = "#00798c") +  
-   ggtitle("log(Size) vs. Fold change in Het vs Hom")+ 
+   ggtitle("log10(Size) vs. Fold change in Het vs Hom")+ 
  stat_cor(method = "pearson", label.x.npc = 0, label.y.npc = 1 ) +
     theme(plot.title = element_text( size=9))
     
@@ -722,7 +731,6 @@ PLOTpanel(testTT[!(testTT$Inversion %in% c("HsInv0325", "HsInv0501") ),],"HsInv0
 <!-- counts<-data.frame(table(sub$SizeGroup)) -->
 <!-- colnames(counts)<-c("Group", "n.Invs") -->
 <!-- counts$minsize<-aggregate(Size ~ SizeGroup, data= sub, min)$Size -->
-<!-- counts$maxsize<-aggregate(Size ~ SizeGroup, data= sub, max)$Size -->
 
 <!-- counts.0.75<-counts -->
 
