@@ -57,8 +57,6 @@ if __name__ == "__main__": # if file was called and not imported
 
   # MAKE RECOMBINATION RATES  - Basic table parsing
   # --------------------------------------------------------------------------- #
-
-
   # Replace points by numbers to avoid dividing by 0
   data['startXs'] = np.where((data.overlap == 0),1,data.startXs)
   data['endXs'] = np.where((data.overlap == 0),2,data.endXs)

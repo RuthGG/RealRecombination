@@ -1,8 +1,0 @@
-build/
-.lock-wscript
-.waf-*
-doc/doxygen
-data/
-doc/api
-.pyc
-.DS_Store
