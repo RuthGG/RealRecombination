@@ -1,0 +1,477 @@
+
+
+<!-- --- -->
+<!-- title: "Detection of large scale inversion location patterns with ordinal logistic regression" -->
+<!-- author: "Ruth Gómez Graciani" -->
+<!-- output: -->
+<!--   bookdown::pdf_document2: default -->
+<!-- header-includes: -->
+<!--  \usepackage{float} -->
+<!--  \floatplacement{figure}{H} -->
+<!--  \floatplacement{table}{H} -->
+<!-- --- -->
+
+## All inversions
+
+```{r, include=FALSE}
+# Scaled/notScaled
+xVars<- "cells.scaled + crossovers.scaled + count.all.scaled + cM.QN.sum.all.scaled "
+```
+
+### All Structural Variants
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalStructuralVariantsCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- F
+saveGuess<-F
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+### Whole Aneuploidies
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalWholeAneuploidiesCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- F
+saveGuess<-F
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+### Whole Losses
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalWholeLossesCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- F
+saveGuess<-F
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+
+### Whole Gains
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalWholeGainsCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- F
+saveGuess<-F
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+### All Arm Aberrations
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalArmLevelStructuralVariantsCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- F
+saveGuess<-F
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+
+### Arm Losses
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalArmLossesCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+useForLosses<-paste0(myFormula, ".RData")
+starting <- F
+saveGuess<-T
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+
+### Arm Gains
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalArmGainsCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+useForGains<-paste0(myFormula, ".RData")
+
+starting <- F
+saveGuess<-T
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+
+## Centromeric inversions
+
+```{r, include=FALSE}
+# Scaled/notScaled
+xVars<- "cells.scaled + crossovers.scaled + count.centro.scaled + cM.QN.sum.centro.scaled "
+```
+
+
+### Whole Aneuploidies
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalWholeAneuploidiesCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- F
+saveGuess<-F
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+### Arm Losses
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalArmLossesCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- T
+saveGuess<-F
+Guess<-useForLosses
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+
+### Arm Gains
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalArmGainsCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+starting <- T
+saveGuess<-F
+Guess<-useForGains
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+
+
+
+## Telomeric inversions
+
+```{r, include=FALSE}
+# Scaled/notScaled
+xVars<- "cells.scaled + crossovers.scaled + count.telom.scaled + cM.QN.sum.telom.scaled "
+```
+
+
+### Whole Aneuploidies
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalWholeAneuploidiesCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- F
+saveGuess<-F
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+### Arm Losses
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalArmLossesCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- T
+saveGuess<-F
+Guess<-useForLosses
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+
+### Arm Gains
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalArmGainsCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- F
+saveGuess<-F
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+
+
+
+
+
+## Big inversions
+
+```{r, include=FALSE}
+# Scaled/notScaled
+xVars<- "cells.scaled + crossovers.scaled + count.big.scaled + cM.QN.sum.big.scaled "
+```
+
+
+### Whole Aneuploidies
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalWholeAneuploidiesCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- F
+saveGuess<-F
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+### Arm Losses
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalArmLossesCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- F
+saveGuess<-F
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+
+
+### Arm Gains
+
+```{r, include=FALSE}
+# Inversion type
+yVar<-"totalArmGainsCategory"
+
+
+# Formula
+myFormula<-paste0(yVar,"~", xVars)
+xVarsVector<-strsplit(xVars, " [+] ")[[1]]
+
+starting <- F
+saveGuess<-F
+Guess<-""
+# Samples for prediction
+# samples<-data.frame(vars=xVarsVector, sam=c(50,4,0,4), names=c(NA,"Low, Med-low, Med-high, High", "centromeric, arm, telomeric", "Low, Med-low, Med-high, High"), stringsAsFactors = F )
+
+# Pass to file
+save(yVar,xVars,myFormula,xVarsVector, starting , Guess, saveGuess, file= "analysisParams.RData")
+```
+
+
+```{r , child = '03invAnalysisShort.Rmd'}
+```
+
+

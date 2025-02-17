@@ -1,0 +1,259 @@
+<!-- 
+---
+title: "Detection of large scale inversion location patterns with ordinal logistic regression"
+author: "Ruth Gómez Graciani"
+output:
+  bookdown::pdf_document2:
+    toc: false
+    latex_engine: xelatex
+header-includes:
+  \usepackage{float}
+  \floatplacement{figure}{H}
+---
+-->
+
+```{r, include=FALSE}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(ggplot2, ggpubr)
+
+# set conditions for code output
+knitr::opts_chunk$set(message=FALSE, warning=FALSE, error=FALSE,fig.pos = "!H")
+showcode=FALSE #for include or echo - echo=showcode // include=showcode
+runbash=FALSE # for eval=runbash
+runR=TRUE #for eval=runR
+```
+
+
+_In this report, I analyze the realtionship between the amount of chromosomes in heterozygosis and amount of aneuploidies, which is key to distinguish whether the observed reduction in crossover rate in heterozygotes is due to a physical impediment of recombination, or due to a generation of aberrations and later discard from the crossover dataset._
+
+```{r setup, echo=showcode, eval=runR}
+
+# Genotype and recombination info -> normGenoData
+load("../2020-11-25_GraphicalRepresentationReport/normGenoData.RData")
+
+# Inversion physical size
+  invsizes<-read.table("../../data/use/inversions_info/2020.07.inversions_hg38.csv", 
+                       sep = "\t", header = FALSE, stringsAsFactors = FALSE)
+  
+  invsizes$Size<-invsizes$V6-invsizes$V3-1
+
+  invsizes<-invsizes[, c("V2","V3", "V6", "Size")]
+  colnames(invsizes)<-c("Inversion","start", "end", "Size")
+  
+# Incorporate size info to genotype and recombination info
+  normGenoData<-merge(normGenoData, invsizes)
+  
+# Amount of aneuploidies
+  aneuploidies<-read.table("../../data/use/avery_aneuploidies/aneuploidycountsperdonorperchromosome.txt", header = T)
+
+# Normalization factors 
+  
+   numofcells<-read.table("../../data/use/avery_crossovers/numOfCells.txt")
+   crossovers<-read.table("../../data/use/avery_crossovers/allcrossovers_center.bed", header = TRUE)
+   
+   # Chrossovers per cell in all the individual
+   normalization<-merge(numofcells, data.frame(table(crossovers$donor)  ), by.x = "V1", by.y = "Var1", all = T)
+   colnames(normalization)<-c("donor", "cells",  "crossovers")
+   normalization$xpercell<-normalization$crossovers/normalization$cells
+   
+   # Chrossovers per chromosome
+   normalization.c<-merge(numofcells, data.frame(table(crossovers$donor, crossovers$chr)  ), by.x = "V1", by.y = "Var1", all = T)
+   colnames(normalization.c)<-c("donor", "cells", 'chr', "crossovers")
+   normalization.c$xperchr<-normalization.c$crossovers/normalization.c$cells
+
+   chromnames<-paste0("chr", c(1:22))
+```
+
+# Introduction
+
+There are two possible mechanisms that can lead to recombination reduction between opposite orientations of an inversion:
+
+* A physical impediment to pair or recombine.
+* Purifying selection against the unbalanced results of a crossover between orientations. 
+
+In Bell et al. (2020), they sequence 900 to 2000 gametes from 20 donors, and then the sequenced chromosomes have 3 possible fates:
+
+* Halthy chromosome: goes to the crossover dataset and it is used to elaborate single-individual crossover maps.
+* Chromosome with small and medium aberrations: it is discarded.
+* Whole chromosome and chromosome arm gains and losses: they are counted in the aberration dataset. 
+
+We observe a reduction in crossover rate in heterozygotes compared to homozygotes, but due to the methodology in Bell et al. 2020, this is not enough to confirm whether the inhibition mechanism is physical inhibition or purifying selection. However, we can complement that observation with the measurement of alterations in the aberration count caused by inversions in heterozygosis. If more heterozygous inversions leads to more aberrations in that chromosome, that would be consistent with a purifying selection scenario. 
+
+# Variables to test
+
+As per the independent variable, I initially measured, on each chromosome and individual, how many centiMorgans were affected by inversions in heterozygosis as a proxy of the probability of having an aberration-generating crossover. In addition, I selected some inversion subsets that may have a larger impact in the aberration count: 
+
+* Inversions near the centromere will form a very large acentric spanning almost all the chromosome arm, so we expect them to influence the number of chromosome arm losses. I counted as centromeric regions the 20% of each arm next to the centromere, since any inversion in that region would cause an acentric of at least ~80% of the arm. 
+* Inversions near the telomere will form a very small acentric fragment, but if the dicentric fragment breaks near the centromere, the results of the crossover will be a chromosome arm gain and a chromosome arm loss. In addition, these regions concentrate most of the crossovers in the cromosome. I counted as telomeric regions the same regions we selected based on recombination density in the population-based recombination map analysis. 
+* Big inversions represent a highest chance of crossover just by probability, and we observed a consistent reduction in crossovers in heterozygotes compared to homozygotes. All those discarded crossovers could be contributing to the aberration count. I considered as big inversions those that span more than 1 window in the single-individual crossover maps (>200 kb).
+
+```{r sections, echo=showcode, eval=runR, fig.cap="The selection of inversion subsets. The map windows that contain the inversion are marked in as dark gray lines (or red for big inversions), and also with points for easier visualization. Inversions within the green region are considered to be near the centromere. Inversions within the blue region are considered to be near the telomere." ,  fig.height=6}
+# I want to make a "big inversion" dataset and a "near centromere" dataset and a "near telomere" dataset
+
+chromSizes<-read.table("../../../20211117_PopRecombination/report/20220519_tutorialLogisticModel/afterMeetingWindows/data/windows.txt", header = T)
+chromSizes$Chromosome<-factor(chromSizes$Chromosome, levels = chromnames)
+invcoor<-unique(normGenoData[normGenoData$position == "inv",c("Inversion", "chrWin", "startWin", "endWin")])
+invcoor_complete<-read.table("../../data/use/inversions_info/2020.08.inversions_hg38.gff", sep = "\t")
+colnames(invcoor)[2]<-"Chromosome"
+
+# NEAR CENTROMERE DATASET <- Calculate the 80% from telomere to centromere
+closeCen<-data.frame()
+closeCenInvs<-data.frame()
+for(c in unique(chromSizes$Chromosome)){
+  csubset<-chromSizes[chromSizes$Chromosome == c,]
+  if("centromeric" %in% csubset$ChrRegion){
+    s1<-min(csubset[csubset$ChrRegion == "telomeric", "Start"])
+    e1<-min(csubset[csubset$ChrRegion == "centromeric", "End"])
+    s2<-max(csubset[csubset$ChrRegion == "centromeric", "Start"])
+    e2<-max(csubset[csubset$ChrRegion == "telomeric", "End"])
+    
+    start<-s1+((e1-s1+1)*0.8)-1
+    end<-s2+((e2-s2+1)*0.2)-1
+  } else{
+    s1<-min(csubset$Start)
+    e1<-min(csubset$End)
+    
+    start <- s1
+    end<- s1+((e1-s1+1)*0.2)-1
+  }
+  closeCenInvs<-rbind(closeCenInvs,invcoor[invcoor$Chromosome == c & invcoor$startWin >= start & invcoor$endWin <= end,])
+  closeCen<-rbind(closeCen, data.frame(Chromosome = c,Start =  start, End = end))
+}
+
+names.closeCenInvs<-unique(closeCenInvs$Inversion)
+
+
+# BIG INVERSION DATASET <- all those with >1 window
+invcoor_complete$size<-invcoor_complete$V5 - invcoor_complete$V4 + 1
+names.bigInvs<-as.character(invcoor_complete[invcoor_complete$size > 20000, "V9"])
+names.bigInvs<-gsub( ";.*$", "",   gsub("^.*=H", "H", names.bigInvs))
+
+
+# NEAR TELOMERE DATASET
+# Inversions overlapping with "telomeric" 
+tregions<-chromSizes[chromSizes$ChrRegion == "telomeric",]
+
+names.closeTelInvs<-unique(unlist(apply(tregions, 1, function(x){
+  invcoor[invcoor$Chromosome == x["Chromosome"] & invcoor$endWin  <= x["End"] & invcoor$startWin >= x["Start"],"Inversion"]
+})))
+
+# PLOT
+
+ggplot()+
+  geom_rect(data=chromSizes, aes(xmin = Start, xmax = End, ymin = 0, ymax = 1), alpha=0.1, fill = "black" )+
+  geom_rect(data=chromSizes[chromSizes$ChrRegion == "telomeric",], aes(xmin = Start, xmax = End, ymin = 0, ymax = 1, fill = ChrRegion), alpha=0.5 )+
+  facet_grid(Chromosome~.)+
+  # geom_rect(data = invcoor, aes(xmin = startWin, xmax = endWin, ymin = 0.25, ymax = 0.75))+
+  geom_rect(data=closeCen, aes(xmin = Start, xmax = End, ymin = 0, ymax = 1), alpha = 0.5, fill = "aquamarine2")+
+  geom_point(data =invcoor, aes(x = (endWin+startWin+1)/2, y = 0.5), size = 1)+
+  geom_rect(data =invcoor, aes(xmin = startWin, xmax = endWin , ymin = 0.3, ymax = 0.7))+
+  geom_rect(data =invcoor[invcoor$Inversion %in% names.bigInvs,], aes(xmin = startWin, xmax = endWin , ymin = 0.3, ymax = 0.7), fill = "red")+
+  xlab("")+ylab("")+theme(legend.position = "none")+
+  theme(strip.text.y.right = element_text(angle = 0))+
+  ggtitle("The subsets of inversions ")
+
+
+
+
+```
+
+
+
+As a dependent variable, I used the number of arm gains and arm losses, which are the types of aberrations expected to be influenced by the independent variable. 
+
+In our fist attempts in this analysis I made some correlations, however, as it will be shown later, a big portion of cases had 0 heterozygous inversions and/or 0 aberrations detected, so I opted for converting them into binomial variables and comparing absence and presence of each.
+
+
+```{r analysisTable,  echo=showcode, eval=runR}
+# Calculate cM inside inversions for each inversion-individual pair
+
+  # Take only inside inversion windows
+  inData<-normGenoData[ normGenoData$position == "inv" ,]
+
+  # Calculate percentage of overlap between window and inversion
+  inData$percOverlap<-inData$Size / 200000
+
+  inData$percOverlap<- ifelse(inData$percOverlap > 1,  # si el porcentaje de overlap es >1 (la inversion es muy grande)
+           ifelse(inData$start > inData$startWin, (inData$endWin - inData$start +1 ) / 200000 # principio de inversion grande
+                  , ifelse(inData$end < inData$endWin, (inData$end - inData$startWin +1 ) / 200000 # final de la inv grande
+                           , 1)) # enmedio de la inv grande
+           , inData$percOverlap)
+
+ # Calculate cM in original 200kb window from normalized recRate
+  inData$cM.QN<-  50*log(1/(1-(2*(inData$cM.Mb.QN * (200000/1000000)))))
+
+  # Take the percentage of window that spans the inversion
+  inData$cM.QN.inv<-inData$cM.QN * inData$percOverlap
+
+  # Make the sum for each inversion and individual
+  inData_bypair<-aggregate(cM.QN.inv  ~ Inversion+Individual+Genotype+Size+chrWin,   data=inData, sum)
+
+# Calculate expected or theoretical cM for each inversion based on homozygotes
+  GenSizeInvs<-aggregate( cM.QN.inv ~ Inversion , inData_bypair[inData_bypair$Genotype != "HET",], sum)
+
+# Now I want to make a table with measurements for each ind and chr, and for each dataset
+centiCounts<-data.frame()
+  for(p in unique(inData_bypair$Individual)){
+    hetfor<-inData_bypair[inData_bypair$Individual == p & inData_bypair$Genotype == "HET",c("Inversion", "chrWin")]
+    hetfor<-merge(hetfor, GenSizeInvs)
+    
+    colList<-list()
+    
+    all<-data.frame(table(hetfor$chrWin))
+    all<-merge(all, aggregate(cM.QN.inv ~ chrWin, hetfor, sum), by.y = "chrWin", by.x = "Var1", all = T)
+    colnames(all)<-c("chrWin","count.all", "cM.QN.sum.all")
+    colList[["all"]]<- all
+    
+    namesList<-list("centro" = names.closeCenInvs, "telom"= names.closeTelInvs, "big" = names.bigInvs)
+    for (names in c("centro", "telom", "big")){
+      countvec<-data.frame(table( hetfor[hetfor$Inversion %in% namesList[[names]], "chrWin"  ]))
+      if(nrow(hetfor[hetfor$Inversion %in% namesList[[names]],])> 0){
+        vec<-merge(countvec, aggregate(cM.QN.inv ~ chrWin, hetfor[hetfor$Inversion %in% namesList[[names]],], sum), by.x = "Var1", by.y = "chrWin", all = T)
+      }else{
+        vec<-countvec
+        vec$v3<-0
+      }
+      colnames(vec)<-c("chrWin",paste0("count.", names), paste0("cM.QN.sum.",names))
+      colList[[names]]<-vec
+    }
+
+    merged<-Reduce(function(x, y) merge(x, y, all=TRUE), colList)  
+    merged$Individual<-p
+    centiCounts<-rbind(centiCounts, merged)
+  }
+  
+
+# And finally I merge it with aneuploidies and normalization
+TestDataset<-merge(aneuploidies, normalization.c, all.y = T)
+TestDataset<-merge(TestDataset, centiCounts, by.x = c("donor", "chr"), by.y = c("Individual", "chrWin"), all.x = T)
+TestDataset[is.na(TestDataset)]<-0
+TestDataset<-TestDataset[TestDataset$donor != "all",]
+TestDataset$chr <- factor(TestDataset$chr, levels = chromnames)
+
+# trim TestDataset
+TestDataset<-TestDataset[,c("donor", "chr", "totalStructuralVariants", "totalWholeAneuploidies","totalWholeLosses", "totalWholeGains", "totalArmLevelStructuralVariants", "totalArmLosses", "totalArmGains","cells", "crossovers", "xperchr", "count.all", "cM.QN.sum.all", "count.centro", "cM.QN.sum.centro", "count.telom", "cM.QN.sum.telom", "count.big", "cM.QN.sum.big" )]
+
+# To long format JIC
+sumnames<-paste0("cM.QN.sum.", c("all", "centro", "telom", "big"))
+countnames<-paste0("count.", c("all", "centro", "telom", "big"))
+TestDataset.long<-reshape2::melt(TestDataset, id.vars =c("donor", "chr", "cells", "crossovers", "xperchr", sumnames, countnames) )
+
+colnames(TestDataset.long)[colnames(TestDataset.long) %in% c("variable", "value")]<-c("TypeOfAberration", "NumOfAberrations")
+
+TestDataset.long<-reshape2::melt(TestDataset.long, id.vars = c("donor", "chr", "cells", "crossovers", "xperchr","TypeOfAberration", "NumOfAberrations", countnames))
+colnames(TestDataset.long)[colnames(TestDataset.long) %in% c("variable", "value")]<-c("InvSubset.sum", "cM.Mb.sum")
+
+TestDataset.long<-reshape2::melt(TestDataset.long, id.vars = c("donor", "chr", "cells", "crossovers", "xperchr","TypeOfAberration", "NumOfAberrations", "InvSubset.sum", "cM.Mb.sum"))
+colnames(TestDataset.long)[colnames(TestDataset.long) %in% c("variable", "value")]<-c("InvSubset.count", "Inv.count")
+
+TestDataset.long<-TestDataset.long[ gsub("cM.QN.sum.", "", TestDataset.long$InvSubset.sum) == gsub("count.", "", TestDataset.long$InvSubset.count),  ]
+
+
+###CLEANUP
+rm(all, aneuploidies, centiCounts, chromSizes, closeCen, closeCenInvs, colList, countvec , crossovers, csubset, GenSizeInvs, hetfor, inData, inData_bypair, invcoor, invsizes, merged, namesList, normalization, normalization.c, normGenoData, numofcells, tregions, vec )
+
+
+
+save(TestDataset, TestDataset.long, file= "TestDataset.RData")
+
+```

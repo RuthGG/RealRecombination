@@ -1,0 +1,467 @@
+<!--
+---
+title: "Detection of large scale inversion location patterns with ordinal logistic regression"
+author: "Ruth Gómez Graciani"
+output:
+  bookdown::pdf_document2:
+    toc: false
+    latex_engine: xelatex
+header-includes:
+  \usepackage{float}
+  \floatplacement{figure}{H}
+  \floatplacement{table}{H}
+---
+
+--> 
+```{r, include=FALSE}
+if (!require("pacman")) install.packages("pacman")
+# set conditions for code output
+knitr::opts_chunk$set(message=FALSE, warning=FALSE, error=FALSE,fig.pos = "!H")
+showcode=FALSE #for include or echo - echo=showcode 
+runbash=TRUE # for eval=runbash
+runR=TRUE #for eval=runR
+
+```
+
+<!-- Raw data:  -->
+
+```{r , echo=showcode, eval=runR}
+
+pacman::p_load(foreign, ggplot2, MASS, Hmisc, reshape2, ordinal)
+load("TestDataset.RData")
+load(file= "analysisParams.RData")
+```
+
+## Model assumptions
+
+My data points are one measurement for each chromosome and individual, and for them I have information about crossover rate, number of cells, heterozygous inversions, number of different types of aneluploidies. Telocentric chromosomes should be discarded from the arm aberration measurements, since they were counted as whole chromosome aberrations.
+
+The assumptions of the Ordinal Logistic Regression are as follow:
+
+1. The dependent variable is ordered.
+1. One or more of the independent variables are either continuous, categorical or ordinal.
+1. No multi-collinearity.
+1. Proportional odds.
+
+I show the data distributions in the Figure \@ref(fig:varDistribution). 
+
+<!-- The inversion counts have only a number of possible options, so they can be considered an ordinal variable. Since there are only a few cases of some of the inversion count options (Table \@ref(tab:reassignCategoriesB)) I will make a "3 or more" category (count cases in Table \@ref(tab:reassignCategoriesA)). The independent variables are continuous and categorical, so assumptions 1 and 2 are satisfied.  -->
+
+
+
+```{r , eval=runR, echo=showcode,  fig.cap="Raincloud plots for each variable."}
+
+pacman::p_load(ggdist, ggplot2, gghalves, reshape2, patchwork)
+  
+windowData <- TestDataset
+windowData$chromType<-ifelse(windowData$chr %in% c("chr13", "chr14", "chr15", "chr21", "chr22"), "Telocentric", "No-telocentric")
+  
+  # Melt data
+  windowDataMelted <- melt(windowData, id.vars = c( "donor", "chr", "chromType")) 
+  # windowDataMelted$value <- as.numeric(windowDataMelted$value)
+  
+  # Group info
+  windowDataMelted$dataGroup<- ifelse(windowDataMelted$variable %in% c("count.all", "count.telom", "count.centro", "count.big"), "Inversion counts", 
+                                      ifelse(windowDataMelted$variable %in% c("cM.QN.sum.all", "cM.QN.sum.centro", "cM.QN.sum.telom", "cM.QN.sum.big"), "Inversion cM sum",
+                                             ifelse(windowDataMelted$variable %in% c("xperchr"), "CO/cell for each chromosome",
+                                             ifelse(windowDataMelted$variable %in% c("cells"), "Individual cells",
+                                             ifelse(windowDataMelted$variable %in% c("crossovers"), "Absolute crossover count for each chromosome",
+                                                    ifelse(windowDataMelted$variable %in% c("totalArmLevelStructuralVariants", "totalArmLosses", "totalArmGains"), "Arm aberrations",  "Other aberrations"))))))
+
+  # Make list of plots
+  plot_list<-list()
+  for (group in unique(windowDataMelted$dataGroup)) {
+    
+    plotTable <- windowDataMelted[(windowDataMelted$value != -Inf) & (windowDataMelted$dataGroup == group),]
+    
+    if(group %in% c("Individual cells")){
+      plotTable<-unique(plotTable[,c("donor", "variable", "value")])
+      plotTable$chr<-"all"
+      plotTable$chromType <-"all"
+    }
+    
+    plot_list[[group]] <- ggplot(plotTable, aes(x = variable, y = value))+
+      # Half violin
+      ggdist::stat_halfeye(adjust = .5, width = .6, .width = 0, justification = -.2, point_colour = NA) +
+      # Boxplot 
+      geom_boxplot(width = .1, outlier.shape = NA) +
+      # Points
+      gghalves::geom_half_point_panel(side = "l", range_scale = .6,  alpha = .5, aes(color = chromType))+
+      # scale_color_manual(values = c(rep("#3c7ae7",11),rep("#89b23e",11) ))+
+      # Adjust coordinates
+      coord_flip()+
+      # coord_flip( xlim = c(1.3, NA))+
+      # Adjust labels
+      theme(axis.title.y = element_blank(), legend.position = "top")+
+      # Title
+      ggtitle(group)
+  }
+  name = "Distribution of variables"
+  # Plot list of plots
+  wrap_plots(plot_list)+ plot_annotation( title = name)+plot_layout(guides = 'collect') & theme(legend.position = 'top')
+
+group<-"Individual CO rate"
+```
+
+Now we select without telocentric or only telocentric chromosomes
+
+```{r , eval=runR, echo=showcode,  fig.cap="Raincloud plots for each variable."}
+
+pacman::p_load(ggdist, ggplot2, gghalves, reshape2, patchwork)
+  
+windowData <- TestDataset
+windowData$chromType<-ifelse(windowData$chr %in% c("chr13", "chr14", "chr15", "chr21", "chr22"), "Telocentric", "No-telocentric")
+
+if (useTelocentric == F) {
+  print("Using only non-telocentric chromosomes")
+  windowData<-windowData[windowData$chromType != "Telocentric",]
+}else{
+    print("Using only telocentric chromosomes")
+  windowData<-windowData[windowData$chromType == "Telocentric",]
+}
+
+TestDataset<-windowData
+  # Melt data
+  windowDataMelted <- melt(windowData, id.vars = c( "donor", "chr", "chromType")) 
+  # windowDataMelted$value <- as.numeric(windowDataMelted$value)
+  
+  # Group info
+  windowDataMelted$dataGroup<- ifelse(windowDataMelted$variable %in% c("count.all", "count.telom", "count.centro", "count.big"), "Inversion counts", 
+                                      ifelse(windowDataMelted$variable %in% c("cM.QN.sum.all", "cM.QN.sum.centro", "cM.QN.sum.telom", "cM.QN.sum.big"), "Inversion cM sum",
+                                             ifelse(windowDataMelted$variable %in% c("xperchr"), "CO/cell for each chromosome",
+                                             ifelse(windowDataMelted$variable %in% c("cells"), "Individual cells",
+                                             ifelse(windowDataMelted$variable %in% c("crossovers"), "Absolute crossover count for each chromosome",
+                                                    ifelse(windowDataMelted$variable %in% c("totalArmLevelStructuralVariants", "totalArmLosses", "totalArmGains"), "Arm aberrations",  "Other aberrations"))))))
+
+  # Make list of plots
+  plot_list<-list()
+  for (group in unique(windowDataMelted$dataGroup)) {
+    
+    plotTable <- windowDataMelted[(windowDataMelted$value != -Inf) & (windowDataMelted$dataGroup == group),]
+    
+    if(group %in% c("Individual cells")){
+      plotTable<-unique(plotTable[,c("donor", "variable", "value")])
+      plotTable$chr<-"all"
+      plotTable$chromType <-"all"
+    }
+    
+    plot_list[[group]] <- ggplot(plotTable, aes(x = variable, y = value))+
+      # Half violin
+      ggdist::stat_halfeye(adjust = .5, width = .6, .width = 0, justification = -.2, point_colour = NA) +
+      # Boxplot 
+      geom_boxplot(width = .1, outlier.shape = NA) +
+      # Points
+      gghalves::geom_half_point_panel(side = "l", range_scale = .6,  alpha = .5, aes(color = chr))+
+      # scale_color_manual(values = c(rep("#3c7ae7",11),rep("#89b23e",11) ))+
+      # Adjust coordinates
+      coord_flip()+
+      # coord_flip( xlim = c(1.3, NA))+
+      # Adjust labels
+      theme(axis.title.y = element_blank(), legend.position = "top")+
+      # Title
+      ggtitle(group)
+  }
+  name = "Distribution of variables"
+  # Plot list of plots
+  wrap_plots(plot_list)+ plot_annotation( title = name)+plot_layout(guides = 'collect') & theme(legend.position = 'top')
+
+group<-"Individual CO rate"
+```
+
+We can analyze them on their own.
+
+```{r , echo=showcode, eval=runR}
+
+
+alltab<-data.frame("CountGroups" = c(0))
+for (category in c( "totalStructuralVariants", "totalWholeAneuploidies" , "totalWholeLosses", "totalWholeGains", "totalArmLevelStructuralVariants" ,"totalArmLosses", "totalArmGains" )) {
+  df<-data.frame(table(TestDataset[,category]))
+  colnames(df)<-c("CountGroups", category)
+  alltab<-merge( alltab, df, by = "CountGroups", all=T)
+}
+
+knitr::kable(alltab, caption = "Original category counts")
+
+```
+
+
+
+
+```{r , echo=showcode, eval=runR}
+
+alltab<-data.frame("CountGroups" = c(0))
+for (category in c( "totalStructuralVariants", "totalWholeAneuploidies" , "totalWholeLosses", "totalWholeGains", "totalArmLevelStructuralVariants" ,"totalArmLosses", "totalArmGains" )) {
+  # Store vector
+  fill<-TestDataset[,category]
+  # Reassign category
+  category<- paste0(category,"Category")
+  # Copy vector
+  TestDataset[,category]<-as.factor(fill)
+  # Reassign levels
+  lev<-levels(TestDataset[,category])
+  catcon<- (3-length(lev))*-1
+  levels(TestDataset[,category])<-  c(c("0", "1", "2"), rep("3+",catcon))
+  df<-data.frame(table(TestDataset[,category]))
+  colnames(df)<-c("CountGroups", category)
+  alltab<-merge( alltab, df, by = "CountGroups", all=T)
+}
+knitr::kable(alltab, caption = "New category counts")
+
+
+
+```
+
+
+With these groups, I visualize the relationships between dependent and independent variables in Figure \@ref(fig:groupDifferences).
+
+```{r , eval=runR, echo=showcode,  fig.cap="Boxplots for each dependent variable group and each independent variable quickly show candidates of having a strong effect. We can also see that there is missing data for some chromosome region types, because windows with 3+ inversions are scarce.",  fig.height=8 }
+
+pacman::p_load(ggplot2, reshape2,  grid, gridExtra)
+winRegions<-TestDataset
+winRegions_long<-melt(winRegions , id.vars = c("donor", "chr", "totalStructuralVariantsCategory", "totalWholeAneuploidiesCategory" ,  "totalWholeLossesCategory", "totalWholeGainsCategory","totalArmLevelStructuralVariantsCategory" , "totalArmLossesCategory", "totalArmGainsCategory", "cells", "crossovers", "xperchr"), measure.vars = c("count.all", "count.centro", "count.telom", "count.big"))
+
+option <- "append" # empty o append
+# Make list of plots
+  plot_list<-list()
+  for (group in c( "totalStructuralVariantsCategory", "totalWholeAneuploidiesCategory" , "totalWholeLossesCategory", "totalWholeGainsCategory", "totalArmLevelStructuralVariantsCategory", "totalArmLossesCategory", "totalArmGainsCategory")) {
+
+    # Make new table
+    winRegions_long$plotgroup<-winRegions_long[,group]
+    # winRegions_long$value <- as.numeric(winRegions_long$value)
+    winRegions$plotgroup <- winRegions[,group]
+    # Make main plot
+    p <- ggplot(winRegions_long)+
+      geom_boxplot(aes(x = plotgroup, group = plotgroup, fill = plotgroup, y = value ), outlier.alpha = 0 , alpha = 0.8)+
+      geom_point(aes(x = plotgroup, y = value ), alpha = 0.3, position = position_jitter(height = 0.1, width = 0.3))+
+      facet_wrap(variable~., scales = "free", nrow = 1)+
+      xlab("")+ylab("Value")+
+      theme(legend.position = "none")+
+      ggtitle(group)
+
+
+    # Make secondary plot
+    h<- ggplot(winRegions)+
+      geom_bar(aes(x= plotgroup, fill = plotgroup), position ="dodge")+
+      # facet_grid(ChrRegion~. )+
+      xlab("")+
+      theme(legend.position = "none", axis.title.y = element_blank())+
+      ggtitle("")
+
+
+
+     if (option == "empty") {
+           gp <- ggplotGrob(p)
+          h_grob<-ggplotGrob(h)
+
+          # Calculate empty area from main plot
+          empty.area <- gtable_filter(gp, "panel", trim = F)
+          empty.area <- empty.area$layout[sapply(empty.area$grob, function(x){class(x)[[1]]=="zeroGrob"}),]
+
+          empty.area$t <- empty.area$t - 1 #extend up by 1 cell to cover facet header
+          empty.area$b <- empty.area$b + 1 #extend down by 1 cell to cover x-axis
+
+          # Add grob to main plot
+          gp0 <- gtable_add_grob(x = gp,
+                                 grobs = h_grob,
+                                 t = min(empty.area$t),
+                                 l = min(empty.area$l),
+                                 b = max(empty.area$b),
+                                 r = max(empty.area$r))
+
+            # Print plot
+
+            plot_list[[group]] <- arrangeGrob(gp0)
+
+     } else if (option == "append") {
+
+        plot_list[[group]] <- arrangeGrob(p,h, nrow = 1, widths = c(3, 1) )
+
+     }
+
+    }
+
+
+  # Plot list of plots
+  wrap_plots(plot_list, ncol=1)+ plot_annotation( title = "Differences in each chromosomal variable between inversion count groups")
+
+
+```
+
+```{r , eval=runR, echo=showcode,  fig.cap="Boxplots for each dependent variable group and each independent variable quickly show candidates of having a strong effect. We can also see that there is missing data for some chromosome region types, because windows with 3+ inversions are scarce.",  fig.height=8 }
+
+pacman::p_load(ggplot2, reshape2,  grid, gridExtra)
+winRegions<-TestDataset
+winRegions_long<-melt(winRegions , id.vars = c("donor", "chr", "totalStructuralVariantsCategory", "totalWholeAneuploidiesCategory" , "totalWholeLossesCategory", "totalWholeGainsCategory", "totalArmLevelStructuralVariantsCategory", "totalArmLossesCategory", "totalArmGainsCategory", "cells", "crossovers", "xperchr"), measure.vars = c("cM.QN.sum.all", "cM.QN.sum.centro", "cM.QN.sum.telom", "cM.QN.sum.big"))
+
+option <- "append" # empty o append
+# Make list of plots
+  plot_list<-list()
+  for (group in c( "totalStructuralVariantsCategory", "totalWholeAneuploidiesCategory" , "totalWholeLossesCategory", "totalWholeGainsCategory", "totalArmLevelStructuralVariantsCategory", "totalArmLossesCategory", "totalArmGainsCategory")) {
+
+    # Make new table
+    winRegions_long$plotgroup<-winRegions_long[,group]
+    # winRegions_long$value <- as.numeric(winRegions_long$value)
+    winRegions$plotgroup <- winRegions[,group]
+    # Make main plot
+    p <- ggplot(winRegions_long)+
+      geom_boxplot(aes(x = plotgroup, group = plotgroup, fill = plotgroup, y = value ), outlier.alpha = 0 , alpha = 0.8)+
+      geom_point(aes(x = plotgroup, y = value ), alpha = 0.3, position = position_jitter(height = 0.1, width = 0.3))+
+      facet_wrap(variable~., scales = "free", nrow = 1)+
+      xlab("")+ylab("Value")+
+      theme(legend.position = "none")+
+      ggtitle(group)
+
+
+    # Make secondary plot
+    h<- ggplot(winRegions)+
+      geom_bar(aes(x= plotgroup, fill = plotgroup), position ="dodge")+
+      # facet_grid(ChrRegion~. )+
+      xlab("")+
+      theme(legend.position = "none", axis.title.y = element_blank())+
+      ggtitle("")
+
+
+
+     if (option == "empty") {
+           gp <- ggplotGrob(p)
+          h_grob<-ggplotGrob(h)
+
+          # Calculate empty area from main plot
+          empty.area <- gtable_filter(gp, "panel", trim = F)
+          empty.area <- empty.area$layout[sapply(empty.area$grob, function(x){class(x)[[1]]=="zeroGrob"}),]
+
+          empty.area$t <- empty.area$t - 1 #extend up by 1 cell to cover facet header
+          empty.area$b <- empty.area$b + 1 #extend down by 1 cell to cover x-axis
+
+          # Add grob to main plot
+          gp0 <- gtable_add_grob(x = gp,
+                                 grobs = h_grob,
+                                 t = min(empty.area$t),
+                                 l = min(empty.area$l),
+                                 b = max(empty.area$b),
+                                 r = max(empty.area$r))
+
+            # Print plot
+
+            plot_list[[group]] <- arrangeGrob(gp0)
+
+     } else if (option == "append") {
+
+        plot_list[[group]] <- arrangeGrob(p,h, nrow = 1, widths = c(3, 1) )
+
+     }
+
+    }
+
+
+  # Plot list of plots
+  wrap_plots(plot_list, ncol=1)+ plot_annotation( title = "Differences in each chromosomal variable between cM.QN.sum groups")
+
+
+```
+
+
+
+
+
+\newpage
+
+Finally, I will test assumption number 3, no multi-collinearity between independent variables. Figure \@ref(fig:correlations) shows that some of the independent variables are significantly correlated, but this does not confirm multi-collinearity. I performed a variance inflation factor test on the corresponging linear model to further check the multi-collinearity (Table \@ref(tab:multicoll)). The general rule of thumbs for VIF test is that if the VIF value is greater than 5, we should proceed with caution, and if the value is greater than 10, then there is multi-collinearity, so we can say that the third assumption (no multi-collinearity) is satisfied, but that we should be cautious when interpreting results involving the chromosome region variable. This result may be explained by the significantly higher recombination rate of telomere regions.
+
+
+```{r , eval=runR, echo=showcode,  fig.cap="Correlation matrix of independent variables." }
+pacman::p_load(PerformanceAnalytics, GGally, cowplot) 
+
+# Select columns
+cols<- c("cells", "crossovers", "count.all", "cM.QN.sum.all", "count.centro", "cM.QN.sum.centro", "count.telom", "cM.QN.sum.telom", "count.big", "cM.QN.sum.big")
+# if ("X" %in% winRegions$ChromType   ) {cols <- c(cols, "ChromType")}
+
+# Setup corrplot
+  diagonal <- function(data, mapping, ...){
+    p<-ggplot(data=data, mapping = mapping)+
+      geom_histogram(aes(y= ..density..), bins = 9, fill = "lightgray", color = "gray")+
+      geom_density()
+  }
+
+ lines <- function(data, mapping, ...){
+    p<-ggplot(data=data, mapping = mapping)+
+      geom_smooth(method=lm, alpha=0)+
+      geom_point(size=0.5)
+ }
+
+ p1<- ggpairs(winRegions,  mapping = aes( alpha = 0.5),columns = cols,
+              # lower = list(continuous = wrap("smooth", size = 0.5)),
+              lower = list(continuous = lines),
+              diag = list(continuous = diagonal),
+              upper = list(continuous = wrap("cor", method = "pearson", size = 3)))+
+   ggtitle("Pearson correlation")+theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+   scale_fill_manual(values=c("#00AFBB", "#E7B800", "#FC4E07")) +scale_color_manual(values=c("#00AFBB", "#E7B800", "#FC4E07"))
+
+  p2<- ggpairs(winRegions,  mapping = aes(alpha = 0.5),columns = cols,
+              # lower = list(continuous = wrap("smooth", size = 0.5)),
+              lower = list(continuous = lines),
+              diag = list(continuous = diagonal),
+              upper = list(continuous = wrap("cor", method = "spearman", size = 3)))+
+   ggtitle("Spearman correlation")+theme(axis.text.x = element_text(angle = 45, hjust = 1))+
+   scale_fill_manual(values=c("#00AFBB", "#E7B800", "#FC4E07")) +scale_color_manual(values=c("#00AFBB", "#E7B800", "#FC4E07"))
+
+  # Print corrplots
+ # plot_grid(
+ #   ggmatrix_gtable(p1),
+ #   ggmatrix_gtable(p2),
+ #   nrow = 2)
+
+ p1
+
+```
+
+
+
+```{r , eval=runR, echo=showcode}
+pacman::p_load("car")
+# check VIF
+# paste(paste(cols, collapse = "+")
+  modlm <- lm(as.numeric(as.character(totalArmLossesCategory)) ~ cells+crossovers+count.all+cM.QN.sum.all, data = winRegions)
+knitr::kable(vif(modlm), caption = "Variance Inflation Factor")
+
+
+  modlm <- lm(as.numeric(as.character(totalArmLossesCategory)) ~ cells+crossovers+count.telom+cM.QN.sum.telom, data = winRegions)
+knitr::kable(vif(modlm), caption = "Variance Inflation Factor")
+
+  modlm <- lm(as.numeric(as.character(totalArmLossesCategory)) ~ cells+crossovers+count.centro+cM.QN.sum.centro, data = winRegions)
+knitr::kable(vif(modlm), caption = "Variance Inflation Factor")
+
+  modlm <- lm(as.numeric(as.character(totalArmLossesCategory)) ~ cells+crossovers+count.big+cM.QN.sum.big, data = winRegions)
+knitr::kable(vif(modlm), caption = "Variance Inflation Factor")
+
+
+
+
+
+```
+
+The proportional odds assumption will be tested for each model that we fit in the following analyses.
+
+\newpage
+## Scaling of distributions
+
+Standardized coefficients are useful in multiple scenarios,for example, to compare effects of predictors reported in different units. In out case it is necessary because the `polr` function depends on methods that require data scalation for them to be the reliable. The most straightforward way is using the Agresti method of standardization, applied with the `scale()` function, which adjusts the mean to 0 and the standard deviation to 1. Once the model is fitted, we can use the standard deviation of the original distribution to transform scaled coefficients to natural coefficients and viceversa.
+
+
+
+```{r ,  echo=showcode, eval=runR}
+
+for (v in cols){
+  winRegions[, paste0(v, ".scaled")]<-scale(winRegions[,v])[,1]
+}
+
+
+```
+
+
+<!-- We now store the data as an R object for the next document -->
+
+```{r, echo=FALSE, eval=runR}
+save(winRegions, file= "winRegions.RData")
+```
+

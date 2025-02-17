@@ -1,0 +1,54 @@
+---
+title: "Detection of large scale inversion location patterns with ordinal logistic regression"
+author: "Ruth Gómez Graciani"
+output:
+  bookdown::pdf_document2: default
+header-includes:
+ \usepackage{float}
+ \floatplacement{figure}{H}
+ \floatplacement{table}{H}
+---
+
+\tableofcontents
+
+\newpage
+# Windows generation
+
+```{r child = '01PrepareTheData_Aberrations.Rmd'}
+```
+
+\newpage
+
+# Non-telocentric chromosomes
+## Data preparation
+
+```{r}
+useTelocentric = F
+save(useTelocentric, file= "analysisParams.RData")
+```
+
+```{r child = '02ExploreTheData_Aberrations.Rmd'}
+
+```
+
+```{r , child = '03invAnalysisAggregator.Rmd'}
+```
+
+<!-- Para correr esta ultima parte, quitar todas las arm aberrations -->
+
+
+<!-- # Telocentric chromosomes -->
+<!-- ## Data preparation -->
+<!-- ```{r} -->
+<!-- useTelocentric = T -->
+<!-- save(useTelocentric, file= "analysisParams.RData") -->
+<!-- ``` -->
+
+<!-- ```{r child = '02ExploreTheData_Aberrations.Rmd'} -->
+
+<!-- ``` -->
+
+
+<!-- ```{r , child = '03invAnalysisAggregator.Rmd'} -->
+<!-- ``` -->
+

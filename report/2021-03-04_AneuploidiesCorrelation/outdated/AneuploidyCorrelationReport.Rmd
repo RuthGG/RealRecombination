@@ -343,6 +343,39 @@ The results, however, between our two main variables we want to look at, are bet
 
 multiCorrel(aneupHet[aneupHet$variable == "totalArmLosses", c("CountsperCell", "xperchr", "xpercell", "cM.QN.inv")])
 
+ggplot(aneupHet[aneupHet$variable == "totalArmLosses", c("CountsperCell",  "cM.QN.inv")]       , aes(x = cM.QN.inv, y = CountsperCell))+ 
+   geom_point() + stat_smooth(method = "lm", col = "#00798c") +  
+   # ggtitle("log10(Size) vs. Fold change in Het vs Hom")+ 
+ stat_cor(method = "pearson", label.x.npc = 0, label.y.npc = 1 ) +
+    theme(plot.title = element_text( size=9))
+  # scale_x_log10()+
+  # scale_y_log10()
+
+library(GGally)
+ggpairs(aneupHet[aneupHet$variable == "totalArmLosses", c("CountsperCell", "xperchr", "xpercell", "cM.QN.inv")] )
+
+
+t<-aneupHet[aneupHet$variable == "totalArmLosses", c("CountsperCell", "xperchr", "xpercell", "cM.QN.inv")]
+
+mod<-lm(CountsperCell ~ xperchr + xpercell + cM.QN.inv,t)
+summary(mod)
+pacman::p_load(MASS, performance)
+stepAIC(mod, direction="both")
+mod<-lm(CountsperCell ~  xpercell + cM.QN.inv,t)
+check_model(mod)
+
+t$CountsperCell_logprep<-t$CountsperCell
+t$CountsperCell_logprep<-ifelse(t$CountsperCell_logprep == 0, 0.00000001, t$CountsperCell_logprep)
+t$cM.QN.inv_logprep<-ifelse(t$cM.QN.inv == 0, 1e-20, t$cM.QN.inv)
+
+mod<-lm(CountsperCell ~ xperchr + xpercell + log(cM.QN.inv_logprep),t)
+summary(mod)
+stepAIC(mod, direction="both")
+mod<-lm(CountsperCell ~  xpercell + cM.QN.inv,t[t$])
+c<-check_model(mod)
+
+c$OUTLIERS
+
 
 ```
 ### totalArmGains
@@ -551,7 +584,17 @@ multiCorrel(aneupHet[aneupHet$variable == "totalWholeGains", c("log10CountsperCe
 ## Multiple regression - raw data
 
 ```{r FUNmultiregression, echo = FALSE}
-testMulti<-aneupHet_raw[aneupHet_raw$variable == "totalArmLosses",c("CountsperCell", "xpercell", "cM.QN.inv")]
+
+
+corr.test(x = testMulti$cM.QN.inv , y = testMulti$value , method =  "kendall")
+
+testMulti<-aneupHet[aneupHet$variable == "totalArmLosses",]
+summary(testMulti)
+
+testMulti$hasAberrations<-ifelse(testMulti$value == 0, "FALSE", "TRUE")
+
+ggplot(testMulti)+geom_boxplot(aes(x = hasAberrations, y = log10(cM.QN.inv)))
+
 
 # A full model and a null are defined, 
 model.null = lm(CountsperCell ~ 1,
@@ -595,4 +638,194 @@ plot(fitted(model.final),
 plot(model.final) 
 
 ```
+
+
+# New analysis one year later
+
+
+After running the first chunk...
+
+```{r}
+# I want to make a "big inversion" dataset and a "near centromere" dataset and a "near telomere" dataset
+
+chromSizes<-read.table("../../../20211117_PopRecombination/report/20220519_tutorialLogisticModel/afterMeetingWindows/data/windows.txt", header = T)
+
+invcoor<-unique(normGenoData[normGenoData$position == "inv",c("Inversion", "chrWin", "startWin", "endWin")])
+colnames(invcoor)[2]<-"Chromosome"
+ggplot()+geom_rect(data=chromSizes, aes(xmin = Start, xmax = End, ymin = 0, ymax = 1, fill = ChrRegion), alpha=0.5 )+facet_grid(Chromosome~~.)+
+  geom_point(data =invcoor, aes(x = (endWin+startWin+1)/2, y = 0.5))+
+  geom_rect(data = invcoor, aes(xmin = startWin, xmax = endWin, ymin = 0.25, ymax = 0.75))
+
+# NEAR CENTROMERE DATASET <- Calculate the 80% from telomere to centromere
+closeCen<-data.frame()
+closeCenInvs<-data.frame()
+for(c in unique(chromSizes$Chromosome)){
+  csubset<-chromSizes[chromSizes$Chromosome == c,]
+  if("centromeric" %in% csubset$ChrRegion){
+    s1<-min(csubset[csubset$ChrRegion == "telomeric", "Start"])
+    e1<-min(csubset[csubset$ChrRegion == "centromeric", "End"])
+    s2<-max(csubset[csubset$ChrRegion == "centromeric", "Start"])
+    e2<-max(csubset[csubset$ChrRegion == "telomeric", "End"])
+    
+    start<-s1+((e1-s1+1)*0.8)-1
+    end<-s2+((e2-s2+1)*0.2)-1
+  } else{
+    s1<-min(csubset$Start)
+    e1<-min(csubset$End)
+    
+    start <- s1
+    end<- s1+((e1-s1+1)*0.2)-1
+  }
+  closeCenInvs<-rbind(closeCenInvs,invcoor[invcoor$Chromosome == c & invcoor$startWin >= start & invcoor$endWin <= end,])
+  closeCen<-rbind(closeCen, data.frame(Chromosome = c,Start =  start, End = end))
+}
+
+names.closeCenInvs<-unique(closeCenInvs$Inversion)
+
+
+# BIG INVERSION DATASET <- all those with >1 window
+names.bigInvs<-unique(invcoor[duplicated(invcoor$Inversion),"Inversion"])
+
+# NEAR TELOMERE DATASET
+# Inversions overlapping with "telomeric" 
+tregions<-chromSizes[chromSizes$ChrRegion == "telomeric",]
+
+names.closeTelInvs<-unique(unlist(apply(tregions, 1, function(x){
+  invcoor[invcoor$Chromosome == x["Chromosome"] & invcoor$endWin  <= x["End"] & invcoor$startWin >= x["Start"],"Inversion"]
+})))
+
+# PLOT
+ggplot()+
+  geom_rect(data=chromSizes, aes(xmin = Start, xmax = End, ymin = 0, ymax = 1), alpha=0.1, fill = "black" )+
+  geom_rect(data=chromSizes[chromSizes$ChrRegion == "telomeric",], aes(xmin = Start, xmax = End, ymin = 0, ymax = 1, fill = ChrRegion), alpha=0.5 )+
+  facet_grid(Chromosome~.)+
+  # geom_rect(data = invcoor, aes(xmin = startWin, xmax = endWin, ymin = 0.25, ymax = 0.75))+
+  geom_rect(data=closeCen, aes(xmin = Start, xmax = End, ymin = 0, ymax = 1), alpha = 0.5, fill = "aquamarine2")+
+  geom_point(data =invcoor, aes(x = (endWin+startWin+1)/2, y = 0.5), size = 1)+
+  geom_rect(data =invcoor, aes(xmin = startWin, xmax = endWin , ymin = 0.3, ymax = 0.7))+
+  geom_rect(data =invcoor[invcoor$Inversion %in% names.bigInvs,], aes(xmin = startWin, xmax = endWin , ymin = 0.3, ymax = 0.7), fill = "red")+
+  xlab("")+ylab("")+theme(legend.position = "none")+
+  ggtitle("The subsets of inversions ")
+
+
+
+
+```
+
+Now calculate cM affected by these invs for each dataset
+
+```{r}
+
+
+# Calculate cM inside inversions for each inversion-individual pair
+
+  # Take only inside inversion windows
+  inData<-normGenoData[ normGenoData$position == "inv" ,]
+
+  # Calculate percentage of overlap between window and inversion
+  inData$percOverlap<-inData$Size / 200000
+
+  inData$percOverlap<- ifelse(inData$percOverlap > 1,  # si el porcentaje de overlap es >1 (la inversion es muy grande)
+           ifelse(inData$start > inData$startWin, (inData$endWin - inData$start +1 ) / 200000 # principio de inversion grande
+                  , ifelse(inData$end < inData$endWin, (inData$end - inData$startWin +1 ) / 200000 # final de la inv grande
+                           , 1)) # enmedio de la inv grande
+           , inData$percOverlap)
+
+ # Calculate cM in original 200kb window from normalized recRate
+  inData$cM.QN<-  50*log(1/(1-(2*(inData$cM.Mb.QN * (200000/1000000)))))
+
+  # Take the percentage of window that spans the inversion
+  inData$cM.QN.inv<-inData$cM.QN * inData$percOverlap
+
+  # Make the sum for each inversion and individual
+  inData_bypair<-aggregate(cM.QN.inv  ~ Inversion+Individual+Genotype+Size+chrWin,   data=inData, sum)
+
+# Calculate expected or theoretical cM for each inversion based on homozygotes
+  GenSizeInvs<-aggregate( cM.QN.inv ~ Inversion , inData_bypair[inData_bypair$Genotype != "HET",], sum)
+
+# Now I want to make a table with measurements for each ind and chr, and for each dataset
+centiCounts<-data.frame()
+  for(p in unique(inData_bypair$Individual)){
+    hetfor<-inData_bypair[inData_bypair$Individual == p & inData_bypair$Genotype == "HET",c("Inversion", "chrWin")]
+    hetfor<-merge(hetfor, GenSizeInvs)
+    
+    all<-centro<-telom<-big<-data.frame(chrWin = NA, cM.QN.sum = NA)
+    
+    all<-aggregate(cM.QN.inv ~ chrWin, hetfor, sum)
+    colnames(all)[2]<-"cM.QN.sum.all"
+    if(nrow(hetfor[hetfor$Inversion %in% names.closeCenInvs,])> 0){ centro<-aggregate(cM.QN.inv ~ chrWin, hetfor[hetfor$Inversion %in% names.closeCenInvs,], sum)}
+    colnames(centro)[2]<-"cM.QN.sum.centro"
+    if(nrow(hetfor[hetfor$Inversion %in% names.closeTelInvs,]) > 0){telom<-aggregate(cM.QN.inv ~ chrWin, hetfor[hetfor$Inversion %in% names.closeTelInvs,], sum)}
+    colnames(telom)[2]<-"cM.QN.sum.telom"
+    if(nrow(hetfor[hetfor$Inversion %in% names.bigInvs,]) > 0){big<-aggregate(cM.QN.inv ~ chrWin, hetfor[hetfor$Inversion %in% names.bigInvs,], sum)}
+      colnames(big)[2]<-"cM.QN.sum.big"
+
+    merged<-Reduce(function(x, y) merge(x, y, all=TRUE), list(all, centro, telom, big))  
+    merged$Individual<-p
+    centiCounts<-rbind(centiCounts, merged)
+  }
+  
+centiCounts<-centiCounts[!(is.na(centiCounts$chrWin )),]
+centiCounts[is.na(centiCounts)]<-0
+
+# And finally I merge it with aneuploidies and normalization
+TestDataset<-merge(aneuploidies, normalization.c)
+TestDataset<-merge(TestDataset, centiCounts, by.x = c("donor", "chr"), by.y = c("Individual", "chrWin"), all.x = T)
+TestDataset[is.na(TestDataset)]<-0
+
+# To long format JIC
+TestDataset.long<-reshape2::melt(TestDataset, id.vars =c("donor", "chr", "cells", "crossovers", "xperchr", "cM.QN.sum.all", "cM.QN.sum.centro", "cM.QN.sum.telom", "cM.QN.sum.big") )
+colnames(TestDataset.long)[c(10, 11)]<-c("TypeOfAberration", "NumOfAberrations")
+
+TestDataset.long<-reshape2::melt(TestDataset.long, id.vars = c("donor", "chr", "cells", "crossovers", "xperchr","TypeOfAberration", "NumOfAberrations"))
+colnames(TestDataset.long)[c(8,9)]<-c("TypeOfcMCount", "cM.Mb.sum")
+```
+
+Finally, we  are ready for statistical analysis
+
+```{r}
+
+makeSquareTest<-function(xvar, yvar, namex, namey){
+  table(xvar, yvar)
+  perc<-as.data.frame(table(xvar, yvar))
+  perc$percent<-apply(perc, 1, function(x){
+    as.numeric(x["Freq"]) / sum( perc[perc$xvar == x["xvar"], "Freq"] ) 
+    })
+  c<-chisq.test(xvar, yvar)
+  f<-fisher.test(xvar, yvar)
+  ggplot()+geom_bar(aes(x = xvar, fill = yvar), position ="fill")+
+    geom_text(data = perc, aes(x = xvar, y = (1- percent)*1.05 , label = paste0("N = ", Freq, " (",round(percent*100, 2), "%)")))+
+    geom_text(aes(x = -Inf, y = 1.05, label = paste0(f$method, ", p-value = ", round(f$p.value, 4 ), "\n",
+                                                     c$method, ", p-value = ", round(c$p.value, 4 ))), hjust = -0.05, size = 3)+
+    theme(  legend.position = "bottom")+  ylab("")+ggtitle(paste0(namex," vs. ", namey))
+}
+
+
+# ARM LOSSES vs all kinds of invsT
+plotlist<-list()
+for(invType in unique(TestDataset.long$TypeOfcMCount)){
+  
+    plotlist[[invType]]<- makeSquareTest(ifelse(TestDataset[,invType] == 0, "NoInvs", "Invs"),  # xvar
+                 ifelse(TestDataset$totalArmLosses == 0, "NoLosses", "Losses"),  # yvar
+                 invType, "totalArmLosses") # names
+
+}
+
+do.call("grid.arrange", c(plotlist))
+
+# ARM GAINS vs all kinds of invsT
+plotlist<-list()
+for(invType in unique(TestDataset.long$TypeOfcMCount)){
+  
+    plotlist[[invType]]<- makeSquareTest(ifelse(TestDataset[,invType] == 0, "NoInvs", "Invs"),  # xvar
+                   ifelse(TestDataset$totalArmGains == 0, "NoGains", "Gains"),  # yvar
+                 invType, "totalArmGains") # names
+
+}
+
+do.call("grid.arrange", c(plotlist))
+
+```
+
+
 

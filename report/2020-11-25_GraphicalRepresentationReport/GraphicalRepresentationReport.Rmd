@@ -122,7 +122,6 @@ save(normGenoData, file = "normGenoData.RData")
   # Now I set the groups according to the original distribution of sizes
 
   sizeThreshold<-quantile(invsizes$Size, 0.75)
-  
   invinfo$SizeGroup<-ifelse(invinfo$Size > sizeThreshold, "Big", "Small")
 
 ```
@@ -635,7 +634,105 @@ PLOTpanel(testTT[!(testTT$Inversion %in% c("HsInv0325", "HsInv0501") ),],"HsInv0
 ```
 
 
+```{r}
+ # testTT$logSize<-log10(testTT$Size)origin
 
+
+p<-   ggplot(testTT[testTT$winPos == "inv_1" & !(testTT$Inversion %in% c("HsInv0325", "HsInv1256")) , ], aes(x = Size, y = Means.Fold.Changelog)) + 
+   geom_point(aes( color=Origin)) +
+     stat_smooth(method = "lm", col = "#00798c") +  stat_smooth(method = "lm", aes(color=Origin, fill = Origin), alpha = 0) +  
+   ggtitle("Inversion size effect in crossover rate decrease")+ 
+ stat_cor(method = "pearson", label.x.npc =1, label.y.npc = 1, hjust=1, col = "#00798c" ) +
+     stat_cor(method = "pearson", label.x.npc =1, label.y.npc = 0.95, hjust=1 , aes(color=Origin)) +
+  scale_x_log10(breaks = scales::trans_breaks("log10", function(x) 10^x),   labels = scales::trans_format("log10", scales::math_format(10^.x)) )  +
+          annotation_logticks(sides = "b")+
+  xlab("Inversion size")+ ylab("log2 fold change of average crossover rates inside inversion  \n( Heterozygous / Homozygous ) ")
+   
+   
+   ggsave( plot = p, filename = "Rplot_no325-1256-501.png")
+   
+```
+
+```{r}
+#CORRELATION TEST
+library(MASS)
+library(ggplot2)
+library(scales)
+testTT[testTT$Inversion == "HsInv0501", "Origin"]<-"NAHR"
+testTT[testTT$Inversion == "HsInv0191", "Origin"]<-"NH"
+
+posterPlot<-function(table, name){
+  standardColor<-"#0d4b63"
+ p<- ggplot(table, aes(x = Size, y = Means.Fold.Changelog)) + 
+   # Points, colored
+    geom_point(aes( color=Origin)) +
+   # Statistics by group
+    # stat_cor(method = "pearson", label.x.npc =1, label.y.npc = 0.95, hjust=1 , aes(color=Origin)) +
+     # stat_smooth(method = "lm", aes(color=Origin, fill = Origin), alpha = 0) +  
+   # Statistics global
+    stat_smooth(method = "lm", col = standardColor) +  
+    stat_cor(method = "pearson", label.x.npc =1, label.y.npc = 1, hjust=1, col = "black" ) +
+   # Guide 0
+    geom_hline(yintercept = 0, color =  "#c24f41", linetype="dashed", alpha = 1)+
+   # Guide size
+    geom_vline(xintercept = sizeThreshold, color = standardColor, linetype = "dashed", alpha = 0.5)+
+    annotate(geom = "text", x = sizeThreshold, y = -3.8, label = paste0("3rd quartile in size = ", round(sizeThreshold/1000, 2), " kb"),
+             hjust = -0.05, color = standardColor, alpha = 1)+
+   # X axis log
+    scale_x_log10(breaks = scales::trans_breaks("log10", function(x) 10^x),   labels = scales::trans_format("log10", scales::math_format(10^.x)) )  +
+    annotation_logticks(sides = "b")+
+    # Legend position
+    theme(legend.position = c(0.2, 0.2))+
+   # Outside labels
+    xlab("Inversion size")+  
+    ylab("log2 fold change of average crossover rates inside inversion  \n( Heterozygous / Homozygous ) ")+
+    ggtitle("Inversion size effect in crossover rate decrease")
+
+
+   return(p)
+   ggsave( plot = p, filename = paste0("Rplot_","posterPlot",".png" ), width = 929, height = 767, units = "px", dpi = 300, scale = 2)
+}
+   
+
+p<-posterPlot(testTT[testTT$winPos == "inv_1" & !(testTT$Inversion %in% c("HsInv0325")) , ], "no325")
+
+posterPlot(testTT[testTT$winPos == "inv_1" & !(testTT$Inversion %in% c("HsInv0325", "HsInv1256", "HsInv0501")) , ], "no325-1256-501")
+posterPlot(testTT[testTT$winPos == "inv_1" & !(testTT$Inversion %in% c("HsInv0325", "HsInv0501")) , ], "no325-501")
+posterPlot(testTT[testTT$winPos == "inv_1" & !(testTT$Inversion %in% c("HsInv0501")) , ], "no501")
+
+posterPlot(testTT[testTT$winPos == "inv_1"  , ], "allinvs")
+
+#BINOMIAL TEST
+binomTest<-function(table){
+  
+  samples<-nrow(table)
+  success<-nrow(table[table$Means.Fold.Changelog > 0 , ])
+
+   # H0: The coin is not biased. 
+   # H1: The coin is biased in favour of FC<0 (tails)
+   # We need to calculate more than just the probability that it lands on FC>0 (heads) "success" times. If it landed on FC>0 (heads) fewer than "success" times, that would be even more evidence that the coin is biased in favour of FC<0 (tails).Consequently we need to add up the probability of it landing on  FC>0 (heads) 1 time, 2 times, … all the way up to "success" times. IF (P[X≤"heads"] < 0.05) THEN H1 (tails win more). AKA IF (P[X≤"FC>0 "] < 0.05) THEN H1 (FC<0  win more)
+  
+    if (pbinom(success, samples, 0.5) < 0.05){#cumulative probability P[X≤"FC>0 "]
+    sprintf("We had %i inversions recombining more in heterozygotes from %i samples, P[X≤FC>0] is %f, which is smaller than 0.05, so the ratio is biased in favor of FC < 0.",success, samples, pbinom(success, samples, 0.5 )   )
+  } else{
+        sprintf("We had %i inversions recombining more in heterozygotes from %i samples, P[X≤FC>0] is %f, which is larger than 0.05, so the ratio is not biased.",success, samples, pbinom(success, samples, 0.5 )   )
+  }
+  
+}
+
+binomTest(testTT[testTT$winPos == "inv_1", ])
+binomTest(testTT[testTT$winPos == "inv_1"& testTT$SizeGroup == "Small" , ])
+binomTest(testTT[testTT$winPos == "inv_1"& testTT$SizeGroup == "Big" , ])
+
+   
+```
+
+> binomTest(testTT[testTT$winPos == "inv_1", ])
+> [1] "We had 24 inversions recombining more in heterozygotes from 59 samples, P[X≤FC>0] is 0.096263, which is larger than 0.05, so the ratio is not biased."
+> binomTest(testTT[testTT$winPos == "inv_1"& testTT$SizeGroup == "Small" , ])
+> [1] "We had 24 inversions recombining more in heterozygotes from 53 samples, P[X≤FC>0] is 0.291566, which is larger than 0.05, so the ratio is not biased."
+> binomTest(testTT[testTT$winPos == "inv_1"& testTT$SizeGroup == "Big" , ])
+> [1] "We had 0 inversions recombining more in heterozygotes from 6 samples, P[X≤FC>0] is 0.015625, which is smaller than 0.05, so the ratio is biased in favor of FC < 0."
 
 # Modelo nulo con genotipos al azar
 
@@ -667,689 +764,3 @@ PLOTpanel(testTT[!(testTT$Inversion %in% c("HsInv0325", "HsInv0501") ),],"HsInv0
 * p-value of the normalized rec.rate in the out distribution, to compare between invs, especially for outliers?
 
 
-
-
-# ------------------------------------------
-
-
-<!-- ```{r distributionOFZeros, include=FALSE } -->
-<!-- proportion<-sum(normGenoData$cM.Mb.QN == 0) / nrow(normGenoData) -->
-<!-- proportion -->
-
-<!-- ggplot(normGenoData)+geom_histogram(aes(x = cM.Mb.QN))+geom_text(aes(x = 0.05, y = 4000, label = paste0(round(proportion*100, 2), "% of 0 values"))) -->
-
-<!-- normGenoData_inside<-normGenoData[normGenoData$position== "inv",] -->
-
-
-
-<!-- proportion_in<-sum(normGenoData_inside$cM.Mb.QN == 0) / nrow(normGenoData_inside) -->
-<!-- ggplot(normGenoData_inside)+geom_histogram(aes(x = cM.Mb.QN))+facet_grid(. ~ Genotype ) -->
-
-
-<!-- +geom_text(aes(x = 0.05, y = -Inf, label = paste0(round(proportion_in*100, 2), "% of 0 values"))) -->
-
-
-<!-- #--------------------------- -->
-<!-- inversion<-"HsInv1256" -->
-
-<!-- plotable<-normGenoData_inside[normGenoData_inside$Inversion == inversion ,] -->
-
-<!-- ggplot(plotable)+geom_bar(aes(x = idWin, y = cM.Mb.QN), stat = "identity")+facet_grid(Genotype~Individual)+ -->
-<!--   geom_text(aes(x = idWin, y = Inf, label = Genotype))#+ -->
-<!--   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) -->
-
-<!-- ggplot(plotable)+geom_histogram(aes(x = cM.Mb.QN)) -->
-<!-- ggplot(plotable)+geom_point(aes(x = Inversion, y = cM.Mb.QN), position = "jitter") -->
-<!-- # ggplot(plotable)+geom_boxplot(aes(x = Inversion, y = cM.Mb.QN)) -->
-<!-- ``` -->
-
-
-<!-- ## Inversion groups -->
-
-<!-- It could be that inversions with different sizes show different behaviors. To account for that, I want to divide inversions in two groups of size. There is a bias in the distribution of genotyped inversions when compared with all the available inversions because small ones tend to be NH-generated and unique and big ones to be NAHR-generated and thus probably recurrent, making small inversions more likely to be correctly genotyped (Figure \@ref(fig:PLOTgroupSelection)). Thus, I decided to calculate the classification thresholds from the original distribution rather than the genotyped inversions distribution, which would return skewed thresholds. -->
-
-<!-- I tested two classification thresholds, the median and the 3rd quantile, rounded to 9kb and 24kb. Table  \@ref(tab:TABgroupSummary)) shows some basic information about the groups -->
-
-<!-- <!-- # CHANGE GROUP SIZE ACCORDING IN invinfoData TO THIS ANALYSIS! --> -->
-
-
-<!-- ```{r TABgroupSummary, echo = FALSE,  message = FALSE, warning = FALSE} -->
-
-<!-- sub<-unique(testTT[,c("Group.0.5", "SizeGroup", "Size")]) -->
-
-<!-- # MEDIAN THRESHOLD -->
-
-<!-- counts<-data.frame(table(sub$Group.0.5)) -->
-<!-- colnames(counts)<-c("Group", "n.Invs") -->
-<!-- counts$minsize<-aggregate(Size ~ Group.0.5, data= sub, min)$Size -->
-<!-- counts$maxsize<-aggregate(Size ~ Group.0.5, data= sub, max)$Size -->
-
-<!-- counts.0.5<-counts -->
-
-<!-- #  0.75 THRESHOLD -->
-
-<!-- counts<-data.frame(table(sub$SizeGroup)) -->
-<!-- colnames(counts)<-c("Group", "n.Invs") -->
-<!-- counts$minsize<-aggregate(Size ~ SizeGroup, data= sub, min)$Size -->
-
-<!-- counts.0.75<-counts -->
-
-<!-- counts<-merge(counts.0.5, counts.0.75, by = "Group", suffixes = c("", "")) -->
-<!--   # Show -->
-<!--    kbl( -->
-<!--      counts, booktabs=T, row.names = FALSE, caption = "Basic information for the two group sizes in which inversions were divided", position = "h")     %>% -->
-<!--         kable_styling(position = "center")%>% -->
-<!--         add_header_above( c(" " = 1, "Median" = 3, "3rd Quantile" = 3)) -->
-
-
-<!-- ``` -->
-
-<!-- ## Recombination rate differences -->
-
-<!-- The selected window size is bigger than most inversions. In those cases that the inversion spans more than one window, we made the mean of the windows. -->
-
-<!-- <!-- A plot with inversion size distribution and window threshold, with percentages. This shows the % of invs bigger and smaller than the window size, and how much bigger or smaller they are. --> -->
-<!-- <!-- ```{r PLOTwindowVSinvSize, echo = FALSE, message = FALSE, fig.cap ="The optimal minimum informative window size is 150-200 kb, but this is much larger than most of the available inversions.", fig.height=1} --> -->
-<!-- <!-- ggplot(testTT)+geom_point(aes(x = (Size), y = Inversion))+geom_vline(xintercept = (200000)) --> -->
-<!-- <!-- ``` --> -->
-
-
-<!-- Then, for each inversion, the mean values for heterozygous and homozygous individuals was calculated and to compared both gorups with the fold change (log2(Homozygous/Heterozygous)). -->
-
-<!-- **HsInv0325 was considered an outlier for now.** -->
-
-
-<!-- ```{r removeOutlier, include = FALSE} -->
-
-<!-- # without outlayer -->
-<!-- # testTT<-testTT[testTT$Inversion != "HsInv0325", ] -->
-<!-- ``` -->
-
-<!-- ```{r PLOTlineplot, echo = FALSE, fig.cap ="Line plots showing tendencies for big and small inversions, using two thresholds to define the categories. HsInv0325 was considered an outlier and removed", message = FALSE, warning = FALSE, fig.pos="!H"} -->
-
-<!-- # Lineplot -->
-<!-- lineplot0.5<-ggplot(testTT[testTT$relpos <2,])+geom_line(aes(x = winPos, y = Means.Fold.Changelog, group = Inversion), color = "steelblue4")+ -->
-<!--          facet_grid(Group.0.5 ~ . ) + -->
-<!--          # geom_text(data = testTT[testTT$winPos == "inv_1", ] , aes(x = winPos, y = Means.Fold.Changelog, label = Inversion) )+ -->
-<!--   geom_hline(yintercept = 0, color = "red", alpha = 0.75)+ -->
-<!--   ggtitle("Median size threshold") -->
-
-<!-- lineplot0.7<-ggplot(testTT[testTT$relpos <2,])+geom_line(aes(x = winPos, y = Means.Fold.Changelog, group = Inversion), color = "steelblue4")+ -->
-<!--          facet_grid(SizeGroup ~ . ) + -->
-<!--          # geom_text(data = testTT[testTT$winPos == "inv_1", ] , aes(x = winPos, y = Means.Fold.Changelog, label = Inversion) )+ -->
-<!--   geom_hline(yintercept = 0, color = "red", alpha = 0.75)+ -->
-<!--   ggtitle("3r Quartile size threshold") -->
-
-<!-- grid.arrange(lineplot0.5, lineplot0.7, nrow = 1) -->
-<!-- ``` -->
-
-
-
-
-<!-- ```{r PLOTpositiveNegative, echo = FALSE, fig.cap ="Amount of cases with Heterozygous > Homozygous and viceversa.", fig.pos="!H"} -->
-
-<!-- # Remember! Het/Homo -->
-
-<!-- testTable<-testTT[testTT$side == "inv",] -->
-
-<!-- testTable$difgroup<-ifelse(testTable$Means.Fold.Changelog>0, "HET > HOM", "HET < HOM" ) -->
-
-<!-- barplots0.5<-ggplot(testTable)+geom_bar(aes(x = Group.0.5, fill = difgroup), position = "dodge")+ -->
-<!--   ggtitle("Median size threshold") -->
-<!-- barplots0.7<-ggplot(testTable)+geom_bar(aes(x = SizeGroup, fill = difgroup), position = "dodge")+ -->
-<!--   ggtitle("3rd Quartile size threshold") -->
-
-<!-- ggarrange(barplots0.5, barplots0.7, nrow = 1, legend = "bottom",common.legend = TRUE) -->
-
-<!-- ``` -->
-
-<!-- ```{r PLOTboxplot, echo = FALSE, fig.cap ="Box plots showing tendencies for big and small inversions, using two thresholds to define the categories. HsInv0325 was considered an outlier and removed", message = FALSE, warning = FALSE, fig.pos="!H"} -->
-
-<!-- # Boxplot -->
-
-<!--  boxplot0.5<- ggplot(testTT[testTT$winPos == "inv_1",], aes(y = Means.Fold.Changelog, x = Group.0.5))+ -->
-<!--     geom_boxplot(outlier.size =  -Inf )+ -->
-<!--     geom_jitter( width = 0.1)+ -->
-<!--     ggtitle("Median size threshold") -->
-
-
-<!--  boxplot0.7<- ggplot(testTT[testTT$winPos == "inv_1",], aes(y = Means.Fold.Changelog, x = SizeGroup))+ -->
-<!--     geom_boxplot(outlier.size =  -Inf )+ -->
-<!--     geom_jitter( width = 0.1)+ -->
-<!--     ggtitle("3r Quartile size threshold") -->
-
-
-<!-- grid.arrange(boxplot0.5, boxplot0.7, nrow = 1) -->
-
-<!-- ``` -->
-
-
-<!-- ```{r PLOTcorrelation, echo = FALSE, fig.cap ="Correlation between log transformed size and fold change after removing outliers.", message = FALSE, warning = FALSE, fig.pos="!H"} -->
-
-<!-- # Correlation -->
-<!-- testTT$logSize<-log(testTT$Size) -->
-
-<!-- ggpubr::ggscatter(testTT[testTT$winPos == "inv_1" -->
-<!--                          & testTT$Inversion != "HsInv0325" -->
-<!--                           # & testTT$Inversion != "HsInv0501" -->
-<!--                          , ], x = "logSize", y = "Means.Fold.Changelog", -->
-<!--           add = "reg.line",                                 # Add regression line -->
-<!--           conf.int = TRUE,                                  # Add confidence interval -->
-<!--           add.params = list(color = "blue", -->
-<!--                             fill = "lightgray") -->
-<!--           )+ -->
-<!--   stat_cor(method = "spearman", label.x.npc = 0, label.y.npc = 1 ) -->
-
-
-
-<!-- ``` -->
-
-<!-- ### Robust regression -->
-<!-- From https://rpubs.com/dvallslanaquera/robust_regression -->
-
-<!-- Although the linear regression methods are a very common tool among data analyst, it is really hard to work with data which really presents a linear relationship. Because of that, we have to take robust versions of the classical linear regression method into consideration. -->
-
-<!-- The main objective of the robust statistics are to change the weight of each value depending on how its behaviour changes as well. This is specially useful when we have outliers and extreme values and we don’t want to eliminate them (which, by the way, could be a bad idea in most cases). -->
-
-<!-- We have two different kinds of stimators: -->
-<!-- * Those which use the the method of least squares as the traditional linear regression but they change the stimator. -->
-<!-- * Those which use other different residual function. -->
-
-<!-- In this analysis we will use both in order to see how them behave. So we will calculate: -->
-<!-- * LQS regression through LMS, LWS and LTS (MASS library). -->
-<!-- * RLM regression through minimal squares bi-weighted (MASS library). -->
-<!-- * RQ regression (quantreg library). -->
-
-<!-- If we try to make a traditional linear regression we could see an abnormal pattern of the data, with some outliers: -->
-
-<!-- ```{r PLOTRobustcorrelation} -->
-
-<!-- robustData<-testTT[testTT$winPos == "inv_1"   , ] -->
-
-<!-- ggplot(robustData, aes(x = logSize, y = Means.Fold.Changelog)) + -->
-<!--   geom_point() + stat_smooth(method = "lm", col = "red") + theme_minimal() + -->
-<!--   ggtitle("Size vs. Fold change in Het vs Hom")+ -->
-<!-- stat_cor(method = "pearson", label.x.npc = 0, label.y.npc = 1 ) -->
-
-<!-- ``` -->
-<!-- *1. Outliers* -->
-<!-- Let’s try to make a Cook’s barplot (olsrr library) to see the values which are too influential. -->
-
-<!-- ```{r} -->
-<!-- require(olsrr) -->
-<!-- robustDataClean<-robustData[!(robustData$Means.Fold.Changelog %in% c(Inf, -Inf)),] -->
-
-<!-- fitLS <- lm(logSize ~ Means.Fold.Changelog, data = robustDataClean) -->
-<!--   ols_plot_cooksd_bar(fitLS) -->
-
-
-<!-- ``` -->
-
-<!-- We can see in the plot that there are outliers messing up the linear regression method. It is clear that we have to try to solve this with a robust version of the regression method. To remove them is not option since they are not input errors. -->
-
-<!-- *2. Robust method creation* -->
-
-<!-- We can create any robust model with the MASS and quantreg libraries. -->
-
-<!-- ```{r} -->
-<!-- require(MASS) -->
-<!-- require(quantreg) -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- # 2.1. Huber loss -->
-
-<!-- fitH <- rlm(logSize ~ Means.Fold.Changelog, data = robustDataClean, k2 = 1.345) -->
-
-<!-- # 2.2. LMS -->
-
-<!-- fitLMS <- lqs(logSize ~ Means.Fold.Changelog, data = robustDataClean, method = "lms") -->
-
-<!-- # 2.3. LTS -->
-
-<!-- fitLTS <- lqs(logSize ~ Means.Fold.Changelog, data = robustDataClean, method = "lts") -->
-
-<!-- # 2.4. LAD -->
-
-<!-- fitLAD <- rq(logSize ~ Means.Fold.Changelog, data = robustDataClean, tau = 0.5) -->
-
-<!-- # 2.5. S-estimator -->
-
-<!-- fitS <- lqs(logSize ~ Means.Fold.Changelog, data = robustDataClean, method = "S") -->
-
-<!-- # 2.6. MM-estimator -->
-
-<!-- fitMM <- rlm(logSize ~ Means.Fold.Changelog, data = robustDataClean, method = "MM") -->
-
-<!-- ``` -->
-
-<!-- *3. Plot* -->
-
-<!-- ```{r} -->
-<!-- plot(robustDataClean$logSize, robustDataClean$Means.Fold.Changelog, -->
-<!--       xlab = "logSize", ylab = "Means.Fold.Changelog", type = "p", -->
-<!--       pch = 20, cex = .8) -->
-<!-- abline(fitLS, col = 1) -->
-<!-- abline(fitH, col = 2) -->
-<!-- abline(fitLAD, col = 3) -->
-<!-- abline(fitLTS, col = 4) -->
-<!-- abline(fitLMS, col = 5) -->
-<!-- abline(fitS, col = 6) -->
-<!-- abline(fitMM, col = 7) -->
-<!-- legend(4, 4, c("LS", "Huber", "LAD","LTS","LMS", -->
-<!--                   "S-estimador","MM-estimador" ), -->
-<!--            lty = rep(1, 7), bty = "n", -->
-<!--            col = c(1, 2, 3, 4, 5, 6, 7)) -->
-
-<!-- ``` -->
-
-<!-- *4. Precision of the methods* -->
-
-<!-- Now we are going to test the methods we have just created. -->
-
-<!-- ```{r} -->
-<!-- training_rows <- sample(1:nrow(robustDataClean), 0.8 * nrow(robustDataClean)) -->
-<!-- training_data <- robustDataClean[training_rows, ] -->
-<!-- test_data <- robustDataClean[-training_rows, ] -->
-
-<!-- lm_Predicted <- predict(fitLS, test_data) -->
-<!-- rob_Predicted <- predict(fitLTS, test_data) -->
-
-<!-- lm_actuals_pred <- cbind(lm_Predicted, test_data$income) -->
-<!-- rob_actuals_pred <- cbind(rob_Predicted, test_data$income) -->
-
-<!-- mean(apply(lm_actuals_pred, 1, min)/ -->
-<!--         apply(lm_actuals_pred, 1, max)) -->
-
-
-<!-- mean(apply(rob_actuals_pred, 1, min)/ -->
-<!--         apply(rob_actuals_pred, 1, max)) -->
-
-<!-- ``` -->
-
-
-<!-- 5. Election of the best robust regression method -->
-
-<!-- It is classicaly choosen by its R2 value. -->
-<!-- ```{r} -->
-
-<!-- summary(fitLS)$r.squared -->
-
-<!-- ## [1] 0.07725306 -->
-
-<!-- summary(fitLS)$coefficients[,4] -->
-
-<!--         #  (Intercept) Means.Fold.Changelog -->
-<!--         # 5.323899e-36         3.464342e-02 -->
-<!-- require(robustbase) -->
-<!-- fitLTS <- ltsReg(robustDataClean$Means.Fold.Changelog, robustDataClean$logSize ) -->
-<!-- summary(fitLTS)$r.squared -->
-
-<!-- ## [1] 0.02770389 -->
-
-<!-- summary(fitLTS)$coefficients[,4] -->
-
-<!--                         # Intercept robustDataClean$Means.Fold.Changelog -->
-<!--                         # 1.069536e-39                         2.335855e-01 -->
-<!-- ``` -->
-
-
-<!-- from http://r-statistics.co/Robust-Regression-With-R.html -->
-
-<!-- How To Specify A Robust Regression Model -->
-<!-- ```{r} -->
-
-<!-- library(MASS) -->
-<!-- rlm_mod <- rlm(logSize ~ Means.Fold.Changelog, robustDataClean, psi =psi.bisquare )  # robust reg model -->
-<!-- summary(rlm_mod) -->
-<!-- # Call: rlm(formula = logSize ~ Means.Fold.Changelog, data = robustDataClean, -->
-<!-- #     psi = psi.bisquare) -->
-<!-- # Residuals: -->
-<!-- #     Min      1Q  Median      3Q     Max -->
-<!-- # -2.7087 -0.7838 -0.1269  1.2359  6.1634 -->
-<!-- # -->
-<!-- # Coefficients: -->
-<!-- #                      Value   Std. Error t value -->
-<!-- # (Intercept)           7.5831  0.2477    30.6086 -->
-<!-- # Means.Fold.Changelog -0.4061  0.2682    -1.5142 -->
-<!-- # -->
-<!-- # Residual standard error: 1.338 on 55 degrees of freedom -->
-
-
-<!-- # Compare Performance of rlm() with lm() -->
-
-<!-- # Lets build the equivalent lm() model so we can compare the errors against the respective fitted values. -->
-
-<!-- lm_mod <- lm(logSize ~ Means.Fold.Changelog, robustDataClean)  # lm reg model -->
-
-<!-- # Calculate the Errors -->
-
-<!-- # Errors from lm() model -->
-<!-- DMwR::regr.eval(robustDataClean$logSize, lm_mod$fitted.values) -->
-<!-- #       mae       mse      rmse      mape -->
-<!-- # 1.4771689 3.4825672 1.8661638 0.1844118 -->
-
-<!-- # Errors from rlm() model -->
-<!-- DMwR::regr.eval(robustDataClean$logSize, rlm_mod$fitted.values) -->
-<!-- #       mae       mse      rmse      mape -->
-<!-- # 1.4487861 3.9430343 1.9857075 0.1698485 -->
-
-<!-- # As expected, the errors from the robust regression model is lesser than the linear regression model. -->
-
-<!-- ``` -->
-
-<!-- from http://use-r-carlvogt.github.io/PDFs/2017Avril_Cantoni_Rlunch.pdf -->
-
-<!-- from https://datascienceplus.com/robust-regressions-dealing-with-outliers-in-r/ -->
-
-<!-- *Plots* -->
-
-<!-- A useful way of dealing with outliers is by running a robust regression, or a regression that adjusts the weights assigned to each observation in order to reduce the skew resulting from the outliers. -->
-
-<!-- In this particular example, we will build a regression to analyse internet usage in megabytes across different observations. You will see that we have several outliers in this dataset. Specifically, we have three incidences where internet consumption is vastly higher than other observations in the dataset. -->
-
-<!-- Let’s see how we can use a robust regression to mitigate for these outliers. -->
-
-<!-- Firstly, let’s plot Cook’s distance and the QQ Plot: -->
-
-<!-- ```{r} -->
-<!-- ## Cook's distance -->
-
-<!-- fitLS <- lm(logSize ~ Means.Fold.Changelog, data = robustDataClean) -->
-<!--   ols_plot_cooksd_bar(fitLS) -->
-
-
-<!-- ## QQplot -->
-<!-- # Logsize -->
-<!-- # qqnorm(robustData$logSize, pch = 1, frame = FALSE) -->
-<!-- # qqline(robustData$logSize, col = "steelblue", lwd = 2) -->
-<!-- # RecRate -->
-<!-- qqnorm(robustDataClean$Means.Fold.Changelog, pch = 1, frame = FALSE) -->
-<!-- qqline(robustDataClean$Means.Fold.Changelog, col = "steelblue", lwd = 2) -->
-<!-- ``` -->
-<!-- We can see that a plot of Cook’s distance shows clear outliers, and the QQ plot demonstrates the same (with a significant number of our observations not lying on the regression line). -->
-
-<!-- When we get a summary of our data, we see that the maximum value for usage sharply exceeds the mean or median: -->
-
-<!-- ```{r} -->
-<!-- summary(robustDataClean[,c("logSize", "Means.Fold.Changelog")]) -->
-
-<!-- ``` -->
-
-<!-- *OLS Regression* -->
-
-<!-- Let’s now run a standard OLS regression and see what we come up with. -->
-<!-- ```{r} -->
-<!-- #OLS Regression -->
-<!-- summary(ols <- lm(Means.Fold.Changelog ~ logSize, data = robustDataClean)) -->
-
-<!-- # -->
-<!-- # Call: -->
-<!-- # lm(formula = Means.Fold.Changelog ~ logSize, data = robustDataClean) -->
-<!-- # -->
-<!-- # Residuals: -->
-<!-- #      Min       1Q   Median       3Q      Max -->
-<!-- # -2.21840 -0.32894  0.04455  0.48898  1.77433 -->
-<!-- # -->
-<!-- # Coefficients: -->
-<!-- #             Estimate Std. Error t value Pr(>|t|) -->
-<!-- # (Intercept)  1.15756    0.42496   2.724 0.008630 ** -->
-<!-- # logSize     -0.18206    0.05077  -3.586 0.000714 *** -->
-<!-- # --- -->
-<!-- # Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 -->
-<!-- # -->
-<!-- # Residual standard error: 0.7945 on 55 degrees of freedom -->
-<!-- # Multiple R-squared:  0.1895,	Adjusted R-squared:  0.1748 -->
-<!-- # F-statistic: 12.86 on 1 and 55 DF,  p-value: 0.0007136 -->
-
-<!-- ``` -->
-
-<!-- *Cook’s Distance* -->
-
-<!-- A method we can use to determine outliers in our dataset is Cook’s distance. As a rule of thumb, if Cook’s distance is greater than 1, or if the distance in absolute terms is significantly greater than others in the dataset, then this is a good indication that we are dealing with an outlier. -->
-
-<!-- ```{r} -->
-
-<!-- #Compute Cooks Distance -->
-<!-- dist <- cooks.distance(ols) -->
-<!-- dist<-data.frame(dist) -->
-<!-- s <- stdres(ols) -->
-<!-- a <- cbind(robustDataClean[,c("logSize", "Means.Fold.Changelog")], dist, s) -->
-
-<!-- #Sort in order of standardized residuals -->
-<!-- sabs <- abs(s) -->
-<!-- a <- cbind(robustDataClean[,c("logSize", "Means.Fold.Changelog")], dist, s, sabs) -->
-<!-- asorted <- a[order(-sabs), ] -->
-<!-- asorted[1:10, ] -->
-
-
-<!-- # logSize Means.Fold.Changelog       dist         s     sabs -->
-<!-- # 359  9.342859            5.3700967 0.32983740  5.269840 5.269840 -->
-<!-- # 389 15.309216           -3.8481013 0.98338467 -2.592696 2.592696 -->
-<!-- # 511  7.797702           -2.2015850 0.03076615 -1.848373 1.848373 -->
-<!-- # 460  9.868430            1.1352010 0.03348209  1.484413 1.484413 -->
-<!-- # 433  9.793561            0.9894965 0.02629501  1.339858 1.339858 -->
-<!-- # 112  5.774552           -1.2801390 0.03534663 -1.306418 1.306418 -->
-
-<!-- ``` -->
-<!-- We are adding Cook’s distance and standardized residuals to our dataset. _Observe that we have the highest Cook’s distance and the highest standaridized residual for the observation with the greatest RecRate difference. No??_ -->
-
-
-<!-- *Huber and Bisquare Weights* -->
-
-<!-- At this point, we can now adjust the weights assigned to each observation to adjust our regression results accordingly. -->
-
-<!-- Let’s see how we can do this using Huber and Bisquare weights. -->
-
-<!-- ```{r} -->
-<!-- #Huber Weights -->
-<!-- summary(rr.huber <- rlm(Means.Fold.Changelog ~ logSize, data = robustDataClean)) -->
-<!-- # -->
-<!-- # Call: rlm(formula = Means.Fold.Changelog ~ logSize, data = robustDataClean) -->
-<!-- # Residuals: -->
-<!-- #     Min      1Q  Median      3Q     Max -->
-<!-- # -2.6553 -0.3935  0.0976  0.4099  5.7741 -->
-<!-- # -->
-<!-- # Coefficients: -->
-<!-- #             Value   Std. Error t value -->
-<!-- # (Intercept)  0.8313  0.3779     2.1999 -->
-<!-- # logSize     -0.1322  0.0450    -2.9349 -->
-<!-- # -->
-<!-- # Residual standard error: 0.6117 on 56 degrees of freedom -->
-
-<!-- huber <- data.frame(logSize = robustDataClean$logSize, resid = rr.huber$resid, weight = rr.huber$w) -->
-<!-- huber2 <- huber[order(rr.huber$w), ] -->
-<!-- huber2[1:10, ] -->
-
-<!-- #     logSize     resid    weight -->
-<!-- # 359  9.342859  5.774059 0.1424818 -->
-<!-- # 389 15.309216 -2.655315 0.3098806 -->
-<!-- # 511  7.797702 -2.001912 0.4109672 -->
-<!-- # 460  9.868430  1.608650 0.5113919 -->
-<!-- # 433  9.793561  1.453047 0.5661524 -->
-<!-- # 615  8.147867 -1.412431 0.5824944 -->
-<!-- # 112  5.774552 -1.347950 0.6103073 -->
-<!-- # 543  7.989221  1.309196 0.6283959 -->
-<!-- # 454 12.332119 -1.262227 0.6519174 -->
-<!-- # 337 11.470498 -1.190101 0.6914103 -->
-
-
-<!-- #Bisquare weighting -->
-<!-- rr.bisquare <- rlm(Means.Fold.Changelog ~ logSize, data = robustDataClean, psi = psi.bisquare) -->
-<!-- summary(rr.bisquare) -->
-<!-- # Call: rlm(formula = Means.Fold.Changelog ~ logSize, data = robustDataClean, -->
-<!-- #     psi = psi.bisquare) -->
-<!-- # Residuals: -->
-<!-- #     Min      1Q  Median      3Q     Max -->
-<!-- # -2.9410 -0.4371  0.1005  0.3617  5.7076 -->
-<!-- # -->
-<!-- # Coefficients: -->
-<!-- #             Value   Std. Error t value -->
-<!-- # (Intercept)  0.5543  0.3911     1.4173 -->
-<!-- # logSize     -0.0955  0.0466    -2.0472 -->
-<!-- # -->
-<!-- # Residual standard error: 0.5696 on 56 degrees of freedom -->
-
-<!-- bisqr <- data.frame(logSize = robustDataClean$logSize, resid = rr.bisquare$resid, weight = rr.bisquare$w) -->
-<!-- bisqr2 <- bisqr[order(rr.bisquare$w), ] -->
-<!-- bisqr2[1:10, ] -->
-
-<!-- #       logSize     resid    weight -->
-<!-- # 359  9.342859  5.707645 0.0000000 -->
-<!-- # 389 15.309216 -2.941003 0.0000000 -->
-<!-- # 511  7.797702 -2.011537 0.1865703 -->
-<!-- # 460  9.868430  1.522921 0.4547154 -->
-<!-- # 454 12.332119 -1.438501 0.5034311 -->
-<!-- # 615  8.147867 -1.434926 0.5054402 -->
-<!-- # 433  9.793561  1.370069 0.5423082 -->
-<!-- # 337 11.470498 -1.334709 0.5623976 -->
-<!-- # 543  7.989221  1.292532 0.5858598 -->
-<!-- # 112  5.774552 -1.283222 0.5910855 -->
-
-<!-- ``` -->
-
-<!-- In both of the above instances, observe that a much lower weight of 0.14 is assigned to observation 359 using Huber weights, and a weight of 0 is assigned to the same observation using Bisquare weighting. -->
-
-<!-- In this regard, we are allowing the respective regressions to adjust the weights in a way that yields lesser importance to outliers in our model. -->
-
-<!-- \newpage -->
-
-<!-- # Statistical analysis -->
-
-
-
-
-
-
-
-<!-- ```{r ttest} -->
-<!-- # CHUNK 4 -->
-
-<!-- # Statistical test with only info within inversion region -->
-
-<!-- insides<-toPlot[toPlot$position == "inv",] -->
-
-<!-- stat_results<-data.frame(Inversion = character(), -->
-<!--                          n.Homozygous = integer(), -->
-<!--                          n.Heterozygous = integer(), -->
-<!--                          b.pval= double(), -->
-<!--                          t.pval = double(), -->
-<!--                          stringsAsFactors = FALSE ) -->
-
-
-<!-- for (inv in unique(insides$inv)){ -->
-<!--   oneinv<-insides[insides$inv == inv,] -->
-<!--   Data<-data.frame(Group=oneinv$Haplotype, Value = oneinv$cM.Mb.QN) -->
-
-<!--   nhom<-sum(Data$Group == "Homozygous") -->
-<!--   nhet<-sum(Data$Group == "Heterozygous") -->
-
-<!--   if(nhom >= 2 & nhet >=2){ -->
-<!--     # Barlett test -->
-<!--     btest<-bartlett.test(Value ~ Group, data=Data) -->
-
-<!--     if(btest$p.value >= 0.05){ -->
-<!--       test<-t.test(Value ~ Group, data=Data, -->
-<!--          var.equal=TRUE, -->
-<!--          conf.level=0.95) -->
-<!--     }else{ -->
-<!--       test<-t.test(Value ~ Group, data=Data, -->
-<!--          var.equal=FALSE, -->
-<!--          conf.level=0.95) -->
-<!--     } -->
-
-<!--     pval<-test$p.value -->
-<!--     bval<-btest$p.value -->
-<!--     # library(lattice) -->
-<!--     # -->
-<!--     # histogram(~ Value | Group, -->
-<!--     #           data=Data, -->
-<!--     #           layout=c(1,2)      #  columns and rows of individual plots -->
-<!--     #           ) -->
-<!--     # -->
-<!--     # boxplot(Value ~ Group, -->
-<!--     #         data = Data, -->
-<!--     #         ylab="Value") -->
-<!--   }else{ -->
-<!--     bval<-NA -->
-<!--     pval<-NA -->
-<!--   } -->
-<!--   row <- c(inv, nhom ,nhet,bval, pval) -->
-<!--   stat_results[nrow(stat_results)+1,]<-row -->
-<!-- } -->
-
-<!-- stat_results<-merge(stat_results, invinfo[,c("Group", "inv", "size")], by.x = "Inversion", by.y = "inv") -->
-
-<!-- stat_results$t.pval <- as.numeric(stat_results$t.pval) -->
-
-<!-- ggplot(stat_results)+geom_boxplot(aes(x = Group, y = t.pval))+geom_point(aes(x = Group, y = t.pval)) -->
-
-<!-- ggplot(stat_results)+geom_point(aes(x = log(size), y = t.pval)) -->
-
-<!-- stat_results$logsize<-log(stat_results$size) -->
-
-<!--   ggscatter(stat_results, x = "logsize", y = "t.pval", -->
-<!--           add = "reg.line",                                 # Add regression line -->
-<!--           conf.int = TRUE,                                  # Add confidence interval -->
-<!--           add.params = list(color = "blue", -->
-<!--                             fill = "lightgray") -->
-<!--           )+ -->
-<!--   stat_cor(method = "pearson", label.x = 5, label.y = 1.1) -->
-
-<!-- # oneinv<-insides[insides$inv == "HsInv0290",] -->
-<!-- # Data<-data.frame(Group=oneinv$Haplotype, Value = oneinv$cM.Mb.QN) -->
-
-<!-- # # Barlett test -->
-<!-- # bartlett.test(Value ~ Group, data=Data) -->
-<!-- ### If p-value >= 0.05, use var.equal=TRUE below -->
-
-<!-- # t.test(Value ~ Group, data=Data, -->
-<!-- #        var.equal=TRUE, -->
-<!-- #        conf.level=0.95) -->
-
-
-
-<!-- M1  = 0.006811897                      # Mean for sample 1 -->
-<!-- M2  = 0.010633379                      # Mean for sample 2 -->
-<!-- # aggregate( Value ~ Group , Data, sd) -->
-<!-- S1  =  0.003025116                      # Std dev for sample 1 -->
-<!-- S2  =  0.003303599                     # Std dev for sample 2 -->
-
-<!-- Cohen.d = (M1 - M2)/sqrt(((S1^2) + (S2^2))/2) -->
-
-<!-- library(pwr) -->
-
-<!-- pwr.t.test( -->
-<!--        n = NULL,                   # Observations in _each_ group -->
-<!--        d = Cohen.d, -->
-<!--        sig.level = 0.05,           # Type I probability -->
-<!--        power = 0.90,               # 1 minus Type II probability -->
-<!--        type = "two.sample",        # Change for one- or two-sample -->
-<!--        alternative = "two.sided") -->
-
-
-
-
-<!-- ``` -->
-
-
-<!-- ```{r chisqTest, echo = FALSE} -->
-
-<!-- print("Chi squared test using Median threshold") -->
-
-<!-- Matriz = as.matrix(table( testTable$difgroup, testTable$Group.0.5)) -->
-<!-- Matriz -->
-<!-- chisq.test(Matriz, -->
-<!--            correct=TRUE) -->
-
-<!-- print("------------------------------------------------") -->
-
-<!-- print("Chi squared test using 3rd Quartile threshold") -->
-
-<!-- Matriz = as.matrix(table( testTable$difgroup, testTable$SizeGroup)) -->
-<!-- Matriz -->
-<!-- chisq.test(Matriz, -->
-<!--            correct=TRUE) -->
-
-
-<!-- ``` -->
