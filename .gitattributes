@@ -5,3 +5,6 @@ code/software/qctool/build/release/components/SNPSummaryComponent/libSNPSummaryC
 *qctool_v2.0.7 filter=lfs diff=lfs merge=lfs -text
 */qctool/build/release/genfile/all_tests filter=lfs diff=lfs merge=lfs -text
 analysis/2020-05-29_09_crossovers/windows_x_crossovers_weighted.txt filter=lfs diff=lfs merge=lfs -text
+*.html linguist-detectable=false
+*.Rmd linguist-language=RMarkdown
+*.rmd linguist-language=RMarkdown
